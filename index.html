@@ -38,7 +38,6 @@
             background-color: #FAF8F5;
             color: #1F1E1C;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            /* Sembunyikan kursor bawaan khusus di layar desktop agar kustom kursor terlihat elegan */
         }
         @media (min-width: 1024px) {
             body, a, button, input, select, textarea {
@@ -108,7 +107,7 @@
     <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
 
     <!-- AUDIO BACKSOUND PEMUTAR MUSIK -->
-    <audio id="bg-music" src="img/Backsound.mp3" loop></audio>
+    <audio id="bg-music" src="img/backsound.mp3" loop></audio>
 
     <!-- TOMBOL MELAYANG KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
@@ -669,7 +668,7 @@
         </div>
     </div>
 
-    <!-- MODAL DASHBOARD INTERAKTIF (ADMIN BISA INPUT CATIN & 7 VENDOR) -->
+    <!-- MODAL DASHBOARD INTERAKTIF (DENGAN FORM BIODATA & RUNDOWN CATIN) -->
     <div id="dashboard-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
         <div class="bg-ivory rounded-3xl max-w-5xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh] border border-stone-200">
             <button onclick="closeDashboardModal()" class="absolute top-5 right-5 text-muted hover:text-charcoal bg-white p-2 rounded-full shadow"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -682,7 +681,7 @@
                 </div>
             </div>
 
-            <!-- TAMPILAN KLIEN -->
+            <!-- TAMPILAN KLIEN (DENGAN TAB RUNDOWN & BIODATA FORM) -->
             <div id="client-dashboard-content" class="space-y-6">
                 <div class="grid sm:grid-cols-3 gap-4">
                     <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
@@ -724,6 +723,101 @@
                             <tbody id="vendor-table-body" class="divide-y divide-stone-100"></tbody>
                         </table>
                     </div>
+                </div>
+
+                <!-- FORMULIR BIODATA PENGANTIN & RUNDOWN UNTUK CATIN -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm space-y-6">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-champagne text-white px-2.5 py-1 rounded-full">Formulir Eksklusif Catin</span>
+                        <h4 class="font-editorial text-2xl font-bold text-charcoal mt-2">Isi Biodata &amp; Data Rundown Acara Anda</h4>
+                        <p class="text-xs text-muted mt-1">Lengkapi data berikut untuk kebutuhan cetak undangan, buku tamu, dan rundown acara oleh tim Langit Planner.</p>
+                    </div>
+
+                    <form onsubmit="sendCatinBiodataToWhatsApp(event)" class="space-y-5 text-xs">
+                        <div class="grid sm:grid-cols-2 gap-6 p-4 rounded-xl bg-ivory border border-stone-200">
+                            <div class="space-y-4">
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">1. Data Calon Pengantin Wanita (CPW)</h5>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Lengkap Wanita (&amp; Gelar)</label>
+                                    <input type="text" id="catin-cpw-full" required placeholder="Cth: Nova Aulia, S.Pd" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Panggilan Wanita</label>
+                                    <input type="text" id="catin-cpw-nick" required placeholder="Cth: Nova" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Ayahanda CPW</label>
+                                    <input type="text" id="catin-cpw-ayah" placeholder="Bapak ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Ibunda CPW</label>
+                                    <input type="text" id="catin-cpw-ibu" placeholder="Ibu ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Saudara-saudara (Keluarga CPW)</label>
+                                    <textarea id="catin-cpw-saudara" rows="2" placeholder="Sebutkan nama saudara..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Saksi dari Pihak Wanita (CPW)</label>
+                                    <input type="text" id="catin-cpw-saksi" placeholder="Nama saksi..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">2. Data Calon Pengantin Pria (CPP)</h5>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Lengkap Pria (&amp; Gelar)</label>
+                                    <input type="text" id="catin-cpp-full" required placeholder="Cth: Rizki Pratama, S.Kom" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Panggilan Pria</label>
+                                    <input type="text" id="catin-cpp-nick" required placeholder="Cth: Rizki" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Ayahanda CPP</label>
+                                    <input type="text" id="catin-cpp-ayah" placeholder="Bapak ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Ibunda CPP</label>
+                                    <input type="text" id="catin-cpp-ibu" placeholder="Ibu ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Saudara-saudara (Keluarga CPP)</label>
+                                    <textarea id="catin-cpp-saudara" rows="2" placeholder="Sebutkan nama saudara..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Saksi dari Pihak Pria (CPP)</label>
+                                    <input type="text" id="catin-cpp-saksi" placeholder="Nama saksi..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-4">
+                            <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">3. Pendukung Acara, Tamu VIP &amp; Request Musik</h5>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Sambutan Resepsi</label>
+                                    <input type="text" id="catin-sambutan" placeholder="Nama pemberi sambutan..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-charcoal mb-1">Nama Pembaca Ayat Suci Al-Qur'an</label>
+                                    <input type="text" id="catin-tilawah" placeholder="Nama Qori/Tilawah..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block font-bold text-charcoal mb-1">Nama Tamu VIP (Pisahkan dengan koma)</label>
+                                <textarea id="catin-vip" rows="2" placeholder="Bapak Bupati, Bapak Kadis, dll..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-bold text-charcoal mb-1">List Lagu Request (Untuk Entertainment)</label>
+                                <textarea id="catin-lagu" rows="2" placeholder="Judul lagu & penyanyi favorit..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i><span>Kirim Data Biodata &amp; Rundown ke WhatsApp Yogs (Admin)</span>
+                        </button>
+                    </form>
                 </div>
             </div>
 
@@ -846,7 +940,6 @@
         }
         animateCursor();
 
-        // Efek hover membesar saat menyentuh tombol atau link
         document.querySelectorAll('a, button, input, select, textarea, details').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorRing.style.transform += ' scale(1.5)';
@@ -1191,6 +1284,52 @@
                 const firstKey = Object.keys(db)[0];
                 loadAdminData(firstKey);
             }
+        }
+
+        // FUNGSI KIRIM BIODATA & RUNDOWN CATIN KE WHATSAPP ADMIN (YOGS)
+        function sendCatinBiodataToWhatsApp(e) {
+            e.preventDefault();
+            const cpwFull = document.getElementById('catin-cpw-full').value;
+            const cpwNick = document.getElementById('catin-cpw-nick').value;
+            const cpwAyah = document.getElementById('catin-cpw-ayah').value || '-';
+            const cpwIbu = document.getElementById('catin-cpw-ibu').value || '-';
+            const cpwSaudara = document.getElementById('catin-cpw-saudara').value || '-';
+            const cpwSaksi = document.getElementById('catin-cpw-saksi').value || '-';
+
+            const cppFull = document.getElementById('catin-cpp-full').value;
+            const cppNick = document.getElementById('catin-cpp-nick').value;
+            const cppAyah = document.getElementById('catin-cpp-ayah').value || '-';
+            const cppIbu = document.getElementById('catin-cpp-ibu').value || '-';
+            const cppSaudara = document.getElementById('catin-cpp-saudara').value || '-';
+            const cppSaksi = document.getElementById('catin-cpp-saksi').value || '-';
+
+            const sambutan = document.getElementById('catin-sambutan').value || '-';
+            const tilawah = document.getElementById('catin-tilawah').value || '-';
+            const vip = document.getElementById('catin-vip').value || '-';
+            const lagu = document.getElementById('catin-lagu').value || '-';
+
+            const text = `Halo Yogs Langit Planner! Berikut data biodata & rundown acara dari pengantin (*${cpwNick} & ${cppNick}*):%0A%0A` +
+                         `*--- 1. CALON PENGANTIN WANITA (CPW) ---*%0A` +
+                         `- Nama Lengkap: ${cpwFull}%0A` +
+                         `- Nama Panggilan: ${cpwNick}%0A` +
+                         `- Ayahanda: ${cpwAyah}%0A` +
+                         `- Ibunda: ${cpwIbu}%0A` +
+                         `- Saudara: ${cpwSaudara}%0A` +
+                         `- Saksi CPW: ${cpwSaksi}%0A%0A` +
+                         `*--- 2. CALON PENGANTIN PRIA (CPP) ---*%0A` +
+                         `- Nama Lengkap: ${cppFull}%0A` +
+                         `- Nama Panggilan: ${cppNick}%0A` +
+                         `- Ayahanda: ${cppAyah}%0A` +
+                         `- Ibunda: ${cppIbu}%0A` +
+                         `- Saudara: ${cppSaudara}%0A` +
+                         `- Saksi CPP: ${cppSaksi}%0A%0A` +
+                         `*--- 3. PENDUKUNG ACARA & VIP ---*%0A` +
+                         `- Sambutan Resepsi: ${sambutan}%0A` +
+                         `- Pembaca Al-Quran: ${tilawah}%0A` +
+                         `- Tamu VIP: ${vip}%0A` +
+                         `- Request Lagu: ${lagu}%0A`;
+
+            window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
         }
 
         function renderCalendar() {
