@@ -651,7 +651,7 @@
             <div class="md:col-span-6 p-6 sm:p-10 flex flex-col justify-center">
                 <div class="text-center mb-6">
                     <h3 class="font-editorial text-3xl font-semibold text-charcoal">Langit Tracker</h3>
-                    <p class="text-xs text-muted mt-1">Masuk sebagai admin (yogs) atau catin</p>
+                    <p class="text-xs text-muted mt-1">Masuk menggunakan akun Catin atau Admin</p>
                 </div>
                 <form onsubmit="handleLogin(event)" class="space-y-4">
                     <div>
@@ -660,7 +660,7 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-charcoal mb-1">Password</label>
-                        <input type="password" id="login-pass" required placeholder="Password..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm">
+                        <input type="password" id="login-pass" required placeholder="Masukkan kata sandi..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm">
                     </div>
                     <button type="submit" class="w-full bg-[#9A7B3E] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl text-sm transition mt-2">Masuk ke Langit Tracker →</button>
                 </form>
@@ -668,7 +668,7 @@
         </div>
     </div>
 
-    <!-- MODAL DASHBOARD INTERAKTIF (DENGAN FORM BIODATA & RUNDOWN CATIN) -->
+    <!-- MODAL DASHBOARD INTERAKTIF (DENGAN FORM BIODATA & CUSTOM PASSWORD CATIN) -->
     <div id="dashboard-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
         <div class="bg-ivory rounded-3xl max-w-5xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh] border border-stone-200">
             <button onclick="closeDashboardModal()" class="absolute top-5 right-5 text-muted hover:text-charcoal bg-white p-2 rounded-full shadow"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -821,14 +821,14 @@
                 </div>
             </div>
 
-            <!-- TAMPILAN ADMIN (INPUT & KONTROL 7 VENDOR) -->
+            <!-- TAMPILAN ADMIN (INPUT CATIN, PASSWORD KHUSUS, & KONTROL 7 VENDOR) -->
             <div id="admin-dashboard-content" class="hidden space-y-6">
                 <div class="bg-charcoal text-white p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4">
                     <div>
                         <p class="text-xs text-champagne font-semibold uppercase tracking-wider">Mode Kontrol Admin (Yogs)</p>
-                        <p class="text-xs text-stone-300 mt-0.5">Pilih Catin atau buat baru untuk input data pernikahan.</p>
+                        <p class="text-xs text-stone-300 mt-0.5">Pilih Catin atau buat baru untuk mengatur akun, password, &amp; status vendor.</p>
                     </div>
-                    <div class="flex items-center gap-3">
+                    <div class="flex flex-wrap items-center gap-3">
                         <select id="admin-select-catin" onchange="switchAdminCatin(this.value)" class="px-4 py-2.5 rounded-xl text-xs font-bold text-charcoal bg-white"></select>
                         <button type="button" onclick="prepareNewCatinForm()" class="bg-champagne hover:bg-champagneDark text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
                             <i data-lucide="user-plus" class="w-4 h-4"></i><span>+ Input Catin Baru</span>
@@ -838,7 +838,7 @@
 
                 <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
                     <div class="flex items-center justify-between border-b border-stone-100 pb-3">
-                        <h4 id="admin-form-mode-title" class="font-bold text-sm text-charcoal uppercase tracking-wider">Edit Data Catin</h4>
+                        <h4 id="admin-form-mode-title" class="font-bold text-sm text-charcoal uppercase tracking-wider">Edit Data &amp; Password Catin</h4>
                         <button type="button" onclick="deleteCurrentCatin()" class="text-rose-600 hover:underline text-xs font-semibold">Hapus Catin Ini</button>
                     </div>
 
@@ -861,7 +861,8 @@
                         </div>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs pt-2 border-t border-stone-100">
+                    <!-- Baris Paket, Venue, Progress, Username & Password Catin -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 text-xs pt-3 border-t border-stone-100">
                         <div>
                             <label class="block font-bold text-charcoal mb-1">5. Paket Pernikahan *</label>
                             <select id="admin-edit-pkg" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white">
@@ -873,16 +874,20 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block font-bold text-charcoal mb-1">Venue & Tanggal Acara *</label>
+                            <label class="block font-bold text-charcoal mb-1">Venue &amp; Tanggal *</label>
                             <input type="text" id="admin-edit-venue" placeholder="Ballroom — Des 2026" class="w-full px-3 py-2 rounded-xl border border-stone-300">
                         </div>
                         <div>
-                            <label class="block font-bold text-charcoal mb-1">Uang Disetor / Progress (%)</label>
+                            <label class="block font-bold text-charcoal mb-1">Progress Dana (%)</label>
                             <input type="number" id="admin-edit-progress" min="0" max="100" class="w-full px-3 py-2 rounded-xl border border-stone-300">
                         </div>
                         <div>
-                            <label class="block font-bold text-champagneDark mb-1">Username Login Catin</label>
-                            <input type="text" id="admin-edit-user" placeholder="username" class="w-full px-3 py-2 rounded-xl border border-stone-300 font-mono">
+                            <label class="block font-bold text-champagneDark mb-1">🔑 Username Catin *</label>
+                            <input type="text" id="admin-edit-user" placeholder="cth: rizki" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-champagneDark mb-1">🔒 Password Catin *</label>
+                            <input type="text" id="admin-edit-pass" placeholder="cth: langit2026" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono">
                         </div>
                     </div>
 
@@ -903,11 +908,23 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between pt-4 border-t border-stone-200">
+                    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-stone-200">
                         <span id="admin-save-feedback" class="text-xs font-bold text-emerald-700"></span>
-                        <button type="button" onclick="saveAdminChanges()" class="bg-champagne hover:bg-champagneDark text-white px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg flex items-center gap-2">
-                            <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data & Tampilkan ke Website</span>
-                        </button>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button type="button" onclick="copyDatabaseForGitHub()" class="bg-stone-800 hover:bg-charcoal text-amber-300 px-5 py-3.5 rounded-xl text-xs font-bold transition shadow flex items-center gap-2" title="Salin kode database agar bisa ditempel ke GitHub dan diakses dari HP klien">
+                                <i data-lucide="copy" class="w-4 h-4"></i><span>Salin Kode Database (Untuk GitHub)</span>
+                            </button>
+                            <button type="button" onclick="saveAdminChanges()" class="bg-champagne hover:bg-champagneDark text-white px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg flex items-center gap-2">
+                                <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data &amp; Password</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Petunjuk Sinkronisasi GitHub untuk HP Klien -->
+                    <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-relaxed">
+                        <strong>💡 Tips Penting Agar Catin Bisa Login dari HP Mereka Sendiri:</strong><br>
+                        1. Setelah klik <strong>Simpan Data &amp; Password</strong>, data langsung aktif di browser perangkat ini.<br>
+                        2. Agar Catin bisa login dari HP mereka masing-masing (secara online di Vercel), klik tombol <strong>"Salin Kode Database (Untuk GitHub)"</strong> di atas, lalu tempelkan (replace) ke bagian <code>const DEFAULT_DATABASE = ...</code> di dalam file <code>index.html</code> pada GitHub-mu!
                     </div>
                 </div>
             </div>
@@ -984,6 +1001,7 @@
 
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
 
+        // DATABASE DEFAULT (BISA DI-UPDATE DARI TOMBOL SALIN KODE DI DASHBOARD ADMIN)
         const DEFAULT_DATABASE = {
             rizki: {
                 username: "rizki",
@@ -1011,16 +1029,18 @@
         let selectedConsultDate = '25 Oktober 2026';
 
         function getDB() {
-            const saved = localStorage.getItem('langit_db_catin_v3');
+            const saved = localStorage.getItem('langit_db_catin_v4');
             if (!saved) {
-                localStorage.setItem('langit_db_catin_v3', JSON.stringify(DEFAULT_DATABASE));
+                localStorage.setItem('langit_db_catin_v4', JSON.stringify(DEFAULT_DATABASE));
                 return DEFAULT_DATABASE;
             }
-            return JSON.parse(saved);
+            const parsed = JSON.parse(saved);
+            // Gabungkan dengan DEFAULT_DATABASE agar catin baru di GitHub selalu ikut terbaca
+            return { ...DEFAULT_DATABASE, ...parsed };
         }
 
         function saveDB(db) {
-            localStorage.setItem('langit_db_catin_v3', JSON.stringify(db));
+            localStorage.setItem('langit_db_catin_v4', JSON.stringify(db));
             renderPublicProjects();
         }
 
@@ -1091,7 +1111,7 @@
             if (user === 'yogs' && pass === 'adminlangit') {
                 closeLoginModal();
                 document.getElementById('user-role-badge').innerText = "Administrator Portal (Yogs)";
-                document.getElementById('dashboard-title').innerText = "Manajemen Input Catin & Status 7 Vendor";
+                document.getElementById('dashboard-title').innerText = "Manajemen Akun, Password Catin & Status 7 Vendor";
                 document.getElementById('client-dashboard-content').classList.add('hidden');
                 document.getElementById('admin-dashboard-content').classList.remove('hidden');
                 populateAdminDropdown();
@@ -1100,8 +1120,9 @@
                 document.getElementById('dashboard-modal').classList.remove('hidden');
                 lucide.createIcons();
             } else if (db[user]) {
-                if (pass !== db[user].password && pass !== 'langit2026') {
-                    alert("Kata sandi salah!");
+                const expectedPass = db[user].password || 'langit2026';
+                if (pass !== expectedPass) {
+                    alert("Kata sandi salah! Silakan cek kembali password Catin Anda.");
                     return;
                 }
                 closeLoginModal();
@@ -1111,7 +1132,7 @@
                 document.getElementById('dashboard-modal').classList.remove('hidden');
                 lucide.createIcons();
             } else {
-                alert("Username tidak ditemukan! Gunakan 'yogs' (admin) atau username panggilan Catin yang terdaftar.");
+                alert("Username tidak ditemukan! Gunakan username panggilan Catin yang telah didaftarkan Admin.");
             }
         }
 
@@ -1128,6 +1149,16 @@
             document.getElementById('client-venue').innerText = data.venue;
             document.getElementById('client-progress-text').innerText = `${data.progress}% Disetor`;
             document.getElementById('client-progress-bar').style.width = `${data.progress}%`;
+
+            // Isi otomatis nama di form biodata bawah
+            const cpwFullInput = document.getElementById('catin-cpw-full');
+            const cpwNickInput = document.getElementById('catin-cpw-nick');
+            const cppFullInput = document.getElementById('catin-cpp-full');
+            const cppNickInput = document.getElementById('catin-cpp-nick');
+            if (cpwFullInput && !cpwFullInput.value) cpwFullInput.value = data.brideFull || '';
+            if (cpwNickInput && !cpwNickInput.value) cpwNickInput.value = data.brideNick || '';
+            if (cppFullInput && !cppFullInput.value) cppFullInput.value = data.groomFull || '';
+            if (cppNickInput && !cppNickInput.value) cppNickInput.value = data.groomNick || '';
 
             const tbody = document.getElementById('vendor-table-body');
             tbody.innerHTML = '';
@@ -1152,7 +1183,7 @@
             sel.innerHTML = '';
             Object.keys(db).forEach(key => {
                 const c = db[key];
-                sel.innerHTML += `<option value="${key}">${c.groomNick} & ${c.brideNick} (${c.package})</option>`;
+                sel.innerHTML += `<option value="${key}">${c.groomNick} & ${c.brideNick} (User: ${key} | Pass: ${c.password || 'langit2026'})</option>`;
             });
         }
 
@@ -1168,7 +1199,7 @@
 
             currentActiveCatin = usernameKey;
             document.getElementById('admin-select-catin').value = usernameKey;
-            document.getElementById('admin-form-mode-title').innerText = `Edit Data Catin: ${data.groomNick} & ${data.brideNick}`;
+            document.getElementById('admin-form-mode-title').innerText = `Edit Data & Password Catin: ${data.groomNick} & ${data.brideNick}`;
             document.getElementById('admin-groom-full').value = data.groomFull || '';
             document.getElementById('admin-groom-nick').value = data.groomNick || '';
             document.getElementById('admin-bride-full').value = data.brideFull || '';
@@ -1177,13 +1208,14 @@
             document.getElementById('admin-edit-venue').value = data.venue || '';
             document.getElementById('admin-edit-progress').value = data.progress || 0;
             document.getElementById('admin-edit-user').value = data.username || usernameKey;
+            document.getElementById('admin-edit-pass').value = data.password || 'langit2026';
 
             renderAdminVendorInputs(data.vendors);
         }
 
         function prepareNewCatinForm() {
             currentActiveCatin = '__NEW__';
-            document.getElementById('admin-form-mode-title').innerText = "Input Pasangan Catin Baru";
+            document.getElementById('admin-form-mode-title').innerText = "Input Pasangan Catin Baru & Buat Password";
             document.getElementById('admin-groom-full').value = '';
             document.getElementById('admin-groom-nick').value = '';
             document.getElementById('admin-bride-full').value = '';
@@ -1192,6 +1224,7 @@
             document.getElementById('admin-edit-venue').value = 'Ballroom — 2027';
             document.getElementById('admin-edit-progress').value = 30;
             document.getElementById('admin-edit-user').value = '';
+            document.getElementById('admin-edit-pass').value = 'langit2026';
 
             const blankVendors = VENDOR_CATEGORIES.map(cat => ({
                 cat: cat,
@@ -1241,6 +1274,8 @@
                 usernameKey = groomNick.toLowerCase().replace(/\s+/g, '');
             }
 
+            const customPass = document.getElementById('admin-edit-pass').value.trim() || 'langit2026';
+
             const updatedVendors = VENDOR_CATEGORIES.map((catName, i) => ({
                 cat: catName,
                 name: document.getElementById(`admin-v-name-${i}`).value.trim() || 'Mitra Langit Planner',
@@ -1250,7 +1285,7 @@
             const db = getDB();
             db[usernameKey] = {
                 username: usernameKey,
-                password: 'langit2026',
+                password: customPass,
                 groomFull: groomFull,
                 groomNick: groomNick,
                 brideFull: brideFull,
@@ -1267,8 +1302,18 @@
             document.getElementById('admin-select-catin').value = usernameKey;
 
             const fb = document.getElementById('admin-save-feedback');
-            fb.innerText = `✓ Tersimpan! Data ${groomNick} & ${brideNick} (Username: ${usernameKey}) aktif.`;
-            setTimeout(() => { fb.innerText = ''; }, 5000);
+            fb.innerText = `✓ Tersimpan! User: "${usernameKey}" | Pass: "${customPass}" aktif.`;
+            setTimeout(() => { fb.innerText = ''; }, 6000);
+        }
+
+        function copyDatabaseForGitHub() {
+            const db = getDB();
+            const codeString = `const DEFAULT_DATABASE = ${JSON.stringify(db, null, 4)};`;
+            navigator.clipboard.writeText(codeString).then(() => {
+                alert("✓ Kode Database Berhasil Disalin!\n\nSekarang buka file index.html di GitHub kamu, cari tulisan 'const DEFAULT_DATABASE = ...' lalu tempel (Paste) untuk menggantikannya agar seluruh Catin bisa login dari HP mereka masing-masing.");
+            }).catch(() => {
+                prompt("Salin kode di bawah ini dan tempelkan ke index.html di GitHub:", codeString);
+            });
         }
 
         function deleteCurrentCatin() {
