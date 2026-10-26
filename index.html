@@ -38,6 +38,12 @@
             background-color: #FAF8F5;
             color: #1F1E1C;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Sembunyikan kursor bawaan khusus di layar desktop agar kustom kursor terlihat elegan */
+        }
+        @media (min-width: 1024px) {
+            body, a, button, input, select, textarea {
+                cursor: none;
+            }
         }
         .font-editorial {
             font-family: 'Cormorant Garamond', serif;
@@ -70,12 +76,39 @@
             color: #A39E93;
             font-weight: 300;
         }
+
+        /* STYLE CUSTOM CURSOR ANIMATION */
+        .custom-cursor {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            border-radius: 50%;
+            transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+            transform: translate(-50%, -50%);
+        }
+        #cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid #C5A059;
+            background-color: rgba(197, 160, 89, 0.05);
+        }
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #C5A059;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-champagne selection:text-white">
 
+    <!-- ELEMEN ANIMASI CUSTOM CURSOR -->
+    <div id="cursor-ring" class="custom-cursor hidden lg:block"></div>
+    <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
+
     <!-- AUDIO BACKSOUND PEMUTAR MUSIK -->
-    <audio id="bg-music" src="img/Backsound.mp3" loop></audio>
+    <audio id="bg-music" src="img/backsound.mp3" loop></audio>
 
     <!-- TOMBOL MELAYANG KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
@@ -793,6 +826,38 @@
 
     <!-- SCRIPT UTAMA -->
     <script>
+        // SCRIPT ANIMASI CUSTOM CURSOR
+        const cursorRing = document.getElementById('cursor-ring');
+        const cursorDot = document.getElementById('cursor-dot');
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+        });
+
+        function animateCursor() {
+            ringX += (mouseX - ringX) * 0.2;
+            ringY += (mouseY - ringY) * 0.2;
+            cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Efek hover membesar saat menyentuh tombol atau link
+        document.querySelectorAll('a, button, input, select, textarea, details').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.transform += ' scale(1.5)';
+                cursorRing.style.borderColor = '#1F1E1C';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.transform = cursorRing.style.transform.replace(' scale(1.5)', '');
+                cursorRing.style.borderColor = '#C5A059';
+            });
+        });
+
         // SCRIPT PEMUTAR MUSIK BACKSOUND
         const bgAudio = document.getElementById('bg-music');
         let isMusicPlaying = false;
