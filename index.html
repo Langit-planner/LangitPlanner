@@ -107,7 +107,7 @@
     <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
 
     <!-- AUDIO BACKSOUND PEMUTAR MUSIK -->
-    <audio id="bg-music" src="img/Backsound.mp3" loop></audio>
+    <audio id="bg-music" src="img/backsound.mp3" loop></audio>
 
     <!-- TOMBOL MELAYANG KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
@@ -120,7 +120,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group shrink-0">
                 <div class="w-11 h-11 rounded-full ig-ring shrink-0 shadow-sm">
-                    <img src="img/logo-ig.JPG" 
+                    <img src="img/logo-ig.jpg" 
                          onerror="const f=['img/logo-ig.png','img/logo-ig.jpeg','img/Logo-ig.jpg','img/Logo-ig.png','img/logo.png','img/logo.jpg']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
                          alt="Logo Langit Planner" 
                          class="site-logo-img w-full h-full rounded-full object-cover border-2 border-white bg-charcoal">
@@ -214,7 +214,7 @@
         </div>
     </section>
 
-    <!-- DASBOR LANGIT TRACKER & PROJECT BERJALAN -->
+    <!-- DASBOR LANGIT TRACKER & PROJECT BERJALAN (PUBLIK HANYA BISA LIHAT STATUS UMUM, DETAIL DIKUNCI) -->
     <section id="projek" class="py-24 bg-sand/70 border-y border-stone-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
@@ -225,11 +225,12 @@
                         Pantau persiapan pernikahan Anda kapan saja, dari mana saja.
                     </h2>
                     <p class="text-muted text-sm leading-relaxed">
-                        Setiap pasangan yang bekerja sama dengan kami mendapat akses ke <strong>Langit Tracker</strong> — dashboard persiapan pernikahan yang bisa dibuka dari HP maupun laptop. Tidak ada lagi progres yang hanya diketahui koordinator. Apa yang kami lihat, Anda lihat juga.
+                        Setiap pasangan yang bekerja sama dengan kami mendapat akses pribadi ke <strong>Langit Tracker</strong> — dashboard persiapan pernikahan eksklusif yang dilindungi kata sandi. Detail administrasi dan formulir rundown hanya dapat diakses oleh pengantin bersangkutan dan Admin.
                     </p>
                     <div class="flex flex-wrap gap-3 pt-4">
-                        <button onclick="openLoginModal()" class="bg-[#6E5D46] hover:bg-charcoal text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-md">
-                            Masuk ke Langit Tracker
+                        <button onclick="openLoginModal()" class="bg-[#6E5D46] hover:bg-charcoal text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-2">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                            <span>Login ke Langit Tracker</span>
                         </button>
                     </div>
                 </div>
@@ -604,6 +605,8 @@
                                         <option value="Diamond Package">Diamond Package</option>
                                         <option value="Silver Package">Silver Package</option>
                                         <option value="Full Planning">Full Planning</option>
+                                        <option value="Day-of Coordination">Day-of Coordination</option>
+                                        <option value="Custom Package">Custom Package</option>
                                     </select>
                                 </div>
                             </div>
@@ -648,12 +651,12 @@
             <div class="md:col-span-6 p-6 sm:p-10 flex flex-col justify-center">
                 <div class="text-center mb-6">
                     <h3 class="font-editorial text-3xl font-semibold text-charcoal">Langit Tracker</h3>
-                    <p class="text-xs text-muted mt-1">Masuk menggunakan akun Catin atau Admin</p>
+                    <p class="text-xs text-muted mt-1">Portal Khusus Catin &amp; Admin (Private)</p>
                 </div>
                 <form onsubmit="handleLogin(event)" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-charcoal mb-1">Username</label>
-                        <input type="text" id="login-user" required placeholder="Cth: rizki atau yogs" class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm">
+                        <input type="text" id="login-user" required placeholder="Masukkan username akun..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-charcoal mb-1">Password</label>
@@ -665,7 +668,7 @@
         </div>
     </div>
 
-    <!-- MODAL DASHBOARD INTERAKTIF (DENGAN FORM BIODATA & CUSTOM PASSWORD CATIN) -->
+    <!-- MODAL DASHBOARD INTERAKTIF (HANYA BISA DIAKSES SETELAH LOGIN) -->
     <div id="dashboard-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
         <div class="bg-ivory rounded-3xl max-w-5xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh] border border-stone-200">
             <button onclick="closeDashboardModal()" class="absolute top-5 right-5 text-muted hover:text-charcoal bg-white p-2 rounded-full shadow"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -678,7 +681,7 @@
                 </div>
             </div>
 
-            <!-- TAMPILAN KLIEN (DENGAN TAB RUNDOWN & BIODATA FORM) -->
+            <!-- TAMPILAN KLIEN (HANYA MUNCUL SAAT KLIEN LOGIN) -->
             <div id="client-dashboard-content" class="space-y-6">
                 <div class="grid sm:grid-cols-3 gap-4">
                     <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
@@ -696,9 +699,13 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                <!-- KOTAK PROGRES PEMBAYARAN (KHUSUS DIAMOND / SILVER & JIKA DICENTANG ADMIN) -->
+                <div id="client-payment-progress-box" class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-xs text-charcoal uppercase tracking-wider">Progres Pembayaran Dana</h4>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-champagneDark"></i>
+                            <h4 class="font-bold text-xs text-charcoal uppercase tracking-wider">Progres Pembayaran Paket (Private)</h4>
+                        </div>
                         <span id="client-progress-text" class="text-xs font-bold text-white bg-champagneDark px-3 py-1 rounded-full">0%</span>
                     </div>
                     <div class="w-full bg-stone-100 h-3 rounded-full overflow-hidden">
@@ -818,7 +825,7 @@
                 </div>
             </div>
 
-            <!-- TAMPILAN ADMIN (INPUT CATIN, PASSWORD KHUSUS, & KONTROL 7 VENDOR) -->
+            <!-- TAMPILAN ADMIN (INPUT CATIN, PASSWORD KHUSUS, OPSI PROGRES BAYAR, & 7 VENDOR) -->
             <div id="admin-dashboard-content" class="hidden space-y-6">
                 <div class="bg-charcoal text-white p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4">
                     <div>
@@ -836,7 +843,9 @@
                 <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
                     <div class="flex items-center justify-between border-b border-stone-100 pb-3">
                         <h4 id="admin-form-mode-title" class="font-bold text-sm text-charcoal uppercase tracking-wider">Edit Data &amp; Password Catin</h4>
-                        <button type="button" onclick="deleteCurrentCatin()" class="text-rose-600 hover:underline text-xs font-semibold">Hapus Catin Ini</button>
+                        <button type="button" onclick="deleteCurrentCatin()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span>Hapus Catin Ini</span>
+                        </button>
                     </div>
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
@@ -858,11 +867,11 @@
                         </div>
                     </div>
 
-                    <!-- Baris Paket, Venue, Progress, Username & Password Catin -->
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 text-xs pt-3 border-t border-stone-100">
+                    <!-- Baris Paket, Venue, Username & Password Catin -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs pt-3 border-t border-stone-100">
                         <div>
                             <label class="block font-bold text-charcoal mb-1">5. Paket Pernikahan *</label>
-                            <select id="admin-edit-pkg" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white">
+                            <select id="admin-edit-pkg" onchange="handleAdminPackageChange()" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white font-semibold">
                                 <option value="Diamond Package">Diamond Package</option>
                                 <option value="Silver Package">Silver Package</option>
                                 <option value="Full Planning">Full Planning</option>
@@ -875,16 +884,32 @@
                             <input type="text" id="admin-edit-venue" placeholder="Ballroom — Des 2026" class="w-full px-3 py-2 rounded-xl border border-stone-300">
                         </div>
                         <div>
-                            <label class="block font-bold text-charcoal mb-1">Progress Dana (%)</label>
-                            <input type="number" id="admin-edit-progress" min="0" max="100" class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-champagneDark mb-1">🔑 Username Catin *</label>
+                            <label class="block font-bold text-champagneDark mb-1">🔑 Username Login Catin *</label>
                             <input type="text" id="admin-edit-user" placeholder="cth: rizki" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono">
                         </div>
                         <div>
-                            <label class="block font-bold text-champagneDark mb-1">🔒 Password Catin *</label>
+                            <label class="block font-bold text-champagneDark mb-1">🔒 Password Login Catin *</label>
                             <input type="text" id="admin-edit-pass" placeholder="cth: langit2026" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono">
+                        </div>
+                    </div>
+
+                    <!-- PENGATURAN KHUSUS PROGRES PEMBAYARAN (CONTENG ADMIN & KHUSUS DIAMOND/SILVER) -->
+                    <div class="p-4 rounded-xl bg-ivory border border-stone-200/90 space-y-3 text-xs">
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <label class="flex items-center gap-2.5 cursor-pointer select-none">
+                                <input type="checkbox" id="admin-show-progress" onchange="toggleAdminProgressInput()" class="w-4 h-4 accent-[#9A7B3E] rounded cursor-pointer">
+                                <span class="font-bold text-charcoal">Aktifkan &amp; Tampilkan Progres Pembayaran di Portal Pribadi Catin</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider bg-champagne/20 text-champagneDark px-2 py-0.5 rounded-full">Khusus Diamond &amp; Silver</span>
+                            </label>
+                            <span id="admin-pkg-progress-note" class="text-[11px] text-muted italic">
+                                *Progres pembayaran hanya tampil saat Catin login sendiri (tidak tampil di publik).
+                            </span>
+                        </div>
+
+                        <div id="admin-progress-input-wrapper" class="flex items-center gap-4 pt-2 border-t border-stone-200/70">
+                            <label class="font-bold text-charcoal shrink-0">Persentase Pembayaran Masuk (%):</label>
+                            <input type="number" id="admin-edit-progress" min="0" max="100" placeholder="0 - 100" class="w-28 px-3 py-1.5 rounded-lg border border-stone-300 bg-white font-bold text-charcoal">
+                            <span class="text-[11px] text-muted">Hanya dapat dilihat oleh Catin bersangkutan di dalam portal.</span>
                         </div>
                     </div>
 
@@ -919,9 +944,9 @@
 
                     <!-- Petunjuk Sinkronisasi GitHub untuk HP Klien -->
                     <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-relaxed">
-                        <strong>💡 Tips Penting Agar Catin Bisa Login dari HP Mereka Sendiri:</strong><br>
-                        1. Setelah klik <strong>Simpan Data &amp; Password</strong>, data langsung aktif di browser perangkat ini.<br>
-                        2. Agar Catin bisa login dari HP mereka masing-masing (secara online di Vercel), klik tombol <strong>"Salin Kode Database (Untuk GitHub)"</strong> di atas, lalu tempelkan (replace) ke bagian <code>const DEFAULT_DATABASE = ...</code> di dalam file <code>index.html</code> pada GitHub-mu!
+                        <strong>💡 Penting Saat Menghapus atau Menambah Catin:</strong><br>
+                        1. Setelah menghapus atau menyimpan Catin, perubahan langsung tersimpan di browser perangkat ini.<br>
+                        2. Agar perubahan (termasuk Catin yang dihapus) berlaku permanen di internet/Vercel, klik tombol <strong>"Salin Kode Database (Untuk GitHub)"</strong> di atas, lalu tempelkan (replace) ke bagian <code>const DEFAULT_DATABASE = ...</code> di dalam file <code>index.html</code> pada GitHub-mu!
                     </div>
                 </div>
             </div>
@@ -999,7 +1024,7 @@
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
 
         // DATABASE DEFAULT (BISA DI-UPDATE DARI TOMBOL SALIN KODE DI DASHBOARD ADMIN)
-        const DEFAULT_DATABASE = {
+     const DEFAULT_DATABASE = {
     "sainiayu": {
         "username": "sainiayu",
         "password": "langit2026",
@@ -1052,36 +1077,54 @@
         let currentActiveCatin = 'rizki';
         let selectedConsultDate = '25 Oktober 2026';
 
+        // PERBAIKAN LOGIKA DATABASE AGAR CATIN YANG DIHAPUS TIDAK MUNCUL LAGI
         function getDB() {
-            const saved = localStorage.getItem('langit_db_catin_v4');
-            if (!saved) {
-                localStorage.setItem('langit_db_catin_v4', JSON.stringify(DEFAULT_DATABASE));
-                return DEFAULT_DATABASE;
+            const saved = localStorage.getItem('langit_db_catin_v5');
+            if (saved !== null) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {
+                    return DEFAULT_DATABASE;
+                }
             }
-            const parsed = JSON.parse(saved);
-            // Gabungkan dengan DEFAULT_DATABASE agar catin baru di GitHub selalu ikut terbaca
-            return { ...DEFAULT_DATABASE, ...parsed };
+            localStorage.setItem('langit_db_catin_v5', JSON.stringify(DEFAULT_DATABASE));
+            return DEFAULT_DATABASE;
         }
 
         function saveDB(db) {
-            localStorage.setItem('langit_db_catin_v4', JSON.stringify(db));
+            localStorage.setItem('langit_db_catin_v5', JSON.stringify(db));
             renderPublicProjects();
         }
 
+        function isEligibleForProgress(pkgName) {
+            return pkgName === 'Diamond Package' || pkgName === 'Silver Package';
+        }
+
+        // TAMPILAN PUBLIK: TANPA DANA DISETOR, TANPA PROGRESS BAR, & TIDAK BISA BUKA PORTAL TANPA LOGIN
         function renderPublicProjects() {
             const container = document.getElementById('public-project-list');
             if (!container) return;
             container.innerHTML = '';
             const db = getDB();
+            const keys = Object.keys(db);
 
-            Object.keys(db).forEach(key => {
+            if (keys.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 text-center rounded-2xl bg-ivory border border-stone-200/80 text-muted text-sm">
+                        Belum ada project aktif yang ditampilkan saat ini.
+                    </div>
+                `;
+                return;
+            }
+
+            keys.forEach(key => {
                 const item = db[key];
                 const bookedCount = item.vendors.filter(v => v.status === 'Sudah Dibooking Admin').length;
                 const totalVendors = item.vendors.length;
 
                 const vendorPills = item.vendors.map(v => {
                     const isBooked = v.status === 'Sudah Dibooking Admin';
-                    return `<span class="px-2 py-0.5 rounded text-[10px] font-medium border ${isBooked ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-stone-100 text-muted border-stone-200'}">${v.cat}: ${v.name || '-'}</span>`;
+                    return `<span class="px-2.5 py-1 rounded-lg text-[10px] font-medium border ${isBooked ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-stone-100 text-muted border-stone-200'}">${v.cat}: ${v.name || '-'}</span>`;
                 }).join('');
 
                 container.innerHTML += `
@@ -1095,17 +1138,18 @@
                                 <p class="text-xs text-muted mt-0.5">${item.groomFull} &amp; ${item.brideFull} — 📍 ${item.venue}</p>
                             </div>
                             <div class="text-right">
-                                <span class="text-xs font-bold text-champagneDark">Dana Disetor: ${item.progress}%</span>
-                                <p class="text-[11px] text-emerald-700 font-semibold">${bookedCount}/${totalVendors} Vendor Terbooking</p>
+                                <span class="inline-flex items-center gap-1 text-[11px] text-emerald-800 bg-emerald-100/80 px-3 py-1 rounded-full font-bold">
+                                    ✓ ${bookedCount}/${totalVendors} Vendor Terkonfirmasi
+                                </span>
                             </div>
                         </div>
-                        <div class="w-full bg-stone-200 h-1.5 rounded-full overflow-hidden">
-                            <div class="bg-champagne h-full rounded-full" style="width: ${item.progress}%"></div>
-                        </div>
                         <div class="flex flex-wrap gap-1.5 pt-1">${vendorPills}</div>
-                        <div class="pt-2 flex justify-end">
-                            <button onclick="quickPreviewClient('${key}')" class="text-xs font-bold text-charcoal hover:text-champagneDark flex items-center gap-1">
-                                <span>Lihat Detail Lengkap di Portal</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        <div class="pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                            <span class="text-[11px] text-muted italic flex items-center gap-1">
+                                <i data-lucide="lock" class="w-3 h-3"></i> Detail portal &amp; administrasi bersifat pribadi
+                            </span>
+                            <button onclick="promptClientLogin('${key}')" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1 transition">
+                                <span>Login Portal Catin</span><i data-lucide="key-round" class="w-3.5 h-3.5"></i>
                             </button>
                         </div>
                     </div>
@@ -1114,12 +1158,13 @@
             lucide.createIcons();
         }
 
-        function quickPreviewClient(usernameKey) {
-            loadClientData(usernameKey);
-            document.getElementById('admin-dashboard-content').classList.add('hidden');
-            document.getElementById('client-dashboard-content').classList.remove('hidden');
-            document.getElementById('dashboard-modal').classList.remove('hidden');
-            lucide.createIcons();
+        function promptClientLogin(usernameKey) {
+            document.getElementById('login-user').value = usernameKey;
+            document.getElementById('login-pass').value = '';
+            openLoginModal();
+            setTimeout(() => {
+                document.getElementById('login-pass').focus();
+            }, 100);
         }
 
         function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
@@ -1139,8 +1184,12 @@
                 document.getElementById('client-dashboard-content').classList.add('hidden');
                 document.getElementById('admin-dashboard-content').classList.remove('hidden');
                 populateAdminDropdown();
-                const firstKey = Object.keys(db)[0] || 'rizki';
-                loadAdminData(firstKey);
+                const keys = Object.keys(db);
+                if (keys.length > 0) {
+                    loadAdminData(keys[0]);
+                } else {
+                    prepareNewCatinForm();
+                }
                 document.getElementById('dashboard-modal').classList.remove('hidden');
                 lucide.createIcons();
             } else if (db[user]) {
@@ -1165,24 +1214,35 @@
             const data = db[usernameKey];
             if (!data) return;
 
-            document.getElementById('user-role-badge').innerText = `Client Portal — ${data.groomNick} & ${data.brideNick}`;
+            document.getElementById('user-role-badge').innerText = `Client Portal (Private) — ${data.groomNick} & ${data.brideNick}`;
             document.getElementById('dashboard-title').innerText = `Langit Tracker: ${data.groomNick} & ${data.brideNick}`;
             document.getElementById('client-fullname-couple').innerText = `${data.groomFull} & ${data.brideFull}`;
             document.getElementById('client-nickname-couple').innerText = `Sapaan: Kak ${data.groomNick} & Kak ${data.brideNick}`;
             document.getElementById('client-package').innerText = data.package;
             document.getElementById('client-venue').innerText = data.venue;
-            document.getElementById('client-progress-text').innerText = `${data.progress}% Disetor`;
-            document.getElementById('client-progress-bar').style.width = `${data.progress}%`;
+
+            // Tampilkan progres pembayaran HANYA JIKA paket Diamond/Silver DAN dicentang oleh Admin
+            const progressBox = document.getElementById('client-payment-progress-box');
+            const eligible = isEligibleForProgress(data.package);
+            const showFlag = data.showProgress !== false; // default true jika eligible
+
+            if (eligible && showFlag) {
+                progressBox.classList.remove('hidden');
+                document.getElementById('client-progress-text').innerText = `${data.progress || 0}% Terbayar`;
+                document.getElementById('client-progress-bar').style.width = `${data.progress || 0}%`;
+            } else {
+                progressBox.classList.add('hidden');
+            }
 
             // Isi otomatis nama di form biodata bawah
             const cpwFullInput = document.getElementById('catin-cpw-full');
             const cpwNickInput = document.getElementById('catin-cpw-nick');
             const cppFullInput = document.getElementById('catin-cpp-full');
             const cppNickInput = document.getElementById('catin-cpp-nick');
-            if (cpwFullInput && !cpwFullInput.value) cpwFullInput.value = data.brideFull || '';
-            if (cpwNickInput && !cpwNickInput.value) cpwNickInput.value = data.brideNick || '';
-            if (cppFullInput && !cppFullInput.value) cppFullInput.value = data.groomFull || '';
-            if (cppNickInput && !cppNickInput.value) cppNickInput.value = data.groomNick || '';
+            if (cpwFullInput) cpwFullInput.value = data.brideFull || '';
+            if (cpwNickInput) cpwNickInput.value = data.brideNick || '';
+            if (cppFullInput) cppFullInput.value = data.groomFull || '';
+            if (cppNickInput) cppNickInput.value = data.groomNick || '';
 
             const tbody = document.getElementById('vendor-table-body');
             tbody.innerHTML = '';
@@ -1201,17 +1261,51 @@
             });
         }
 
+        function handleAdminPackageChange() {
+            const pkg = document.getElementById('admin-edit-pkg').value;
+            const checkbox = document.getElementById('admin-show-progress');
+            const note = document.getElementById('admin-pkg-progress-note');
+
+            if (isEligibleForProgress(pkg)) {
+                checkbox.disabled = false;
+                note.innerText = "*Paket Diamond/Silver mendukung fitur progres pembayaran di portal pribadi Catin.";
+                note.className = "text-[11px] text-emerald-700 font-medium";
+            } else {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+                note.innerText = "*Paket selain Diamond & Silver tidak menampilkan progres pembayaran.";
+                note.className = "text-[11px] text-rose-600 font-medium";
+            }
+            toggleAdminProgressInput();
+        }
+
+        function toggleAdminProgressInput() {
+            const checkbox = document.getElementById('admin-show-progress');
+            const wrapper = document.getElementById('admin-progress-input-wrapper');
+            if (checkbox.checked && !checkbox.disabled) {
+                wrapper.classList.remove('hidden');
+            } else {
+                wrapper.classList.add('hidden');
+            }
+        }
+
         function populateAdminDropdown() {
             const db = getDB();
             const sel = document.getElementById('admin-select-catin');
             sel.innerHTML = '';
-            Object.keys(db).forEach(key => {
+            const keys = Object.keys(db);
+            if (keys.length === 0) {
+                sel.innerHTML = `<option value="">-- Belum Ada Catin --</option>`;
+                return;
+            }
+            keys.forEach(key => {
                 const c = db[key];
                 sel.innerHTML += `<option value="${key}">${c.groomNick} & ${c.brideNick} (User: ${key} | Pass: ${c.password || 'langit2026'})</option>`;
             });
         }
 
         function switchAdminCatin(usernameKey) {
+            if (!usernameKey) return;
             currentActiveCatin = usernameKey;
             loadAdminData(usernameKey);
         }
@@ -1234,6 +1328,12 @@
             document.getElementById('admin-edit-user').value = data.username || usernameKey;
             document.getElementById('admin-edit-pass').value = data.password || 'langit2026';
 
+            const eligible = isEligibleForProgress(data.package);
+            const checkbox = document.getElementById('admin-show-progress');
+            checkbox.disabled = !eligible;
+            checkbox.checked = eligible && (data.showProgress !== false);
+
+            handleAdminPackageChange();
             renderAdminVendorInputs(data.vendors);
         }
 
@@ -1249,6 +1349,11 @@
             document.getElementById('admin-edit-progress').value = 30;
             document.getElementById('admin-edit-user').value = '';
             document.getElementById('admin-edit-pass').value = 'langit2026';
+
+            const checkbox = document.getElementById('admin-show-progress');
+            checkbox.disabled = false;
+            checkbox.checked = true;
+            handleAdminPackageChange();
 
             const blankVendors = VENDOR_CATEGORIES.map(cat => ({
                 cat: cat,
@@ -1299,6 +1404,8 @@
             }
 
             const customPass = document.getElementById('admin-edit-pass').value.trim() || 'langit2026';
+            const selectedPkg = document.getElementById('admin-edit-pkg').value;
+            const showProg = isEligibleForProgress(selectedPkg) && document.getElementById('admin-show-progress').checked;
 
             const updatedVendors = VENDOR_CATEGORIES.map((catName, i) => ({
                 cat: catName,
@@ -1307,6 +1414,11 @@
             }));
 
             const db = getDB();
+            // Jika ganti username dari catin lama, hapus key lama
+            if (currentActiveCatin !== '__NEW__' && currentActiveCatin !== usernameKey && db[currentActiveCatin]) {
+                delete db[currentActiveCatin];
+            }
+
             db[usernameKey] = {
                 username: usernameKey,
                 password: customPass,
@@ -1314,9 +1426,10 @@
                 groomNick: groomNick,
                 brideFull: brideFull,
                 brideNick: brideNick,
-                package: document.getElementById('admin-edit-pkg').value,
+                package: selectedPkg,
                 venue: document.getElementById('admin-edit-venue').value.trim() || 'Tanjung Selor',
-                progress: parseInt(document.getElementById('admin-edit-progress').value) || 0,
+                showProgress: showProg,
+                progress: showProg ? (parseInt(document.getElementById('admin-edit-progress').value) || 0) : 0,
                 vendors: updatedVendors
             };
 
@@ -1334,7 +1447,7 @@
             const db = getDB();
             const codeString = `const DEFAULT_DATABASE = ${JSON.stringify(db, null, 4)};`;
             navigator.clipboard.writeText(codeString).then(() => {
-                alert("✓ Kode Database Berhasil Disalin!\n\nSekarang buka file index.html di GitHub kamu, cari tulisan 'const DEFAULT_DATABASE = ...' lalu tempel (Paste) untuk menggantikannya agar seluruh Catin bisa login dari HP mereka masing-masing.");
+                alert("✓ Kode Database Berhasil Disalin!\n\nSekarang buka file index.html di GitHub kamu, cari tulisan 'const DEFAULT_DATABASE = ...' lalu tempel (Paste) untuk menggantikannya agar seluruh perubahan & penghapusan Catin tersimpan permanen di server.");
             }).catch(() => {
                 prompt("Salin kode di bawah ini dan tempelkan ke index.html di GitHub:", codeString);
             });
@@ -1342,16 +1455,24 @@
 
         function deleteCurrentCatin() {
             const db = getDB();
-            if (Object.keys(db).length <= 1) {
-                alert("Minimal harus ada 1 project Catin yang aktif.");
+            if (currentActiveCatin === '__NEW__' || !db[currentActiveCatin]) {
+                alert("Pilih Catin yang sudah terdaftar untuk dihapus.");
                 return;
             }
-            if (confirm("Yakin ingin menghapus data Catin ini dari daftar project?")) {
+            const c = db[currentActiveCatin];
+            if (confirm(`Yakin ingin menghapus data Catin "${c.groomNick} & ${c.brideNick}" secara permanen dari daftar project?`)) {
                 delete db[currentActiveCatin];
                 saveDB(db);
                 populateAdminDropdown();
-                const firstKey = Object.keys(db)[0];
-                loadAdminData(firstKey);
+                const remainingKeys = Object.keys(db);
+                if (remainingKeys.length > 0) {
+                    loadAdminData(remainingKeys[0]);
+                } else {
+                    prepareNewCatinForm();
+                }
+                const fb = document.getElementById('admin-save-feedback');
+                fb.innerText = `✓ Data Catin berhasil dihapus! Jangan lupa klik 'Salin Kode Database' jika ingin memperbarui GitHub.`;
+                setTimeout(() => { fb.innerText = ''; }, 6000);
             }
         }
 
