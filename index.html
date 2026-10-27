@@ -107,7 +107,7 @@
     <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
 
     <!-- AUDIO BACKSOUND PEMUTAR MUSIK -->
-    <audio id="bg-music" src="img/Backsound.mp3" loop></audio>
+    <audio id="bg-music" src="img/backsound.mp3" loop></audio>
 
     <!-- TOMBOL MELAYANG KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
@@ -120,17 +120,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group shrink-0">
                 <div class="w-11 h-11 rounded-full ig-ring shrink-0 shadow-sm">
-                    <img src="img/logo-ig.png" 
-                         onerror="if(!this.dataset.jpg){this.dataset.jpg=1;this.src='img/logo-ig.jpg';}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
+                    <img src="img/logo-ig.jpg" 
+                         onerror="const f=['img/logo-ig.png','img/logo-ig.jpeg','img/Logo-ig.jpg','img/Logo-ig.png','img/logo.png','img/logo.jpg']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
                          alt="Logo Langit Planner" 
                          class="site-logo-img w-full h-full rounded-full object-cover border-2 border-white bg-charcoal">
                 </div>
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-editorial text-2xl sm:text-3xl font-bold tracking-wider text-charcoal leading-none">LANGIT</span>
-                        <span class="text-[11px] uppercase tracking-[0.22em] text-champagneDark font-bold">Planner</span>
-                    </div>
-                    <span class="text-[11px] text-muted flex items-center gap-1 mt-0.5">@langit_planner</span>
+                <div class="flex items-center gap-1.5">
+                    <span class="font-editorial text-2xl sm:text-3xl font-bold tracking-wider text-charcoal leading-none">LANGIT</span>
+                    <span class="text-[11px] uppercase tracking-[0.22em] text-champagneDark font-bold">Planner</span>
                 </div>
             </a>
 
