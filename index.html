@@ -1050,9 +1050,8 @@
             data.vendors.forEach(v => {
                 tbody.innerHTML += `<tr><td class="py-3.5 font-bold">${v.cat}</td><td class="py-3.5">${v.name || '-'}</td><td class="py-3.5"><span class="px-3 py-1 rounded-full text-[11px] font-bold ${v.status === 'Sudah Dibooking Admin' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${v.status}</span></td></tr>`;
             });
-        }
-
-        function saveAndSendCatinBiodata(e) {
+        } 
+                function saveAndSendCatinBiodata(e) {
             e.preventDefault();
             if (!loggedInClientKey) return;
 
@@ -1084,7 +1083,7 @@
             }
 
             // OTOMATIS KIRIM KE GOOGLE SPREADSHEET ADMIN
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyVNPG5ehl7WoGc3CBbe6aKkHpuanwQcKCi7ZP7jlUUMP4deohOHfCIrAD4ywXXIS7qQg/exec'; // Ganti dengan URL /exec punyamu
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxmymzwpIV8n7X3_-lrkVspryIysvTS0sUc450dgmujNkTVLlrtZR2TCE4ofw3OyAmv_w/exec'; // Ganti dengan URL /exec punyamu
             fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
