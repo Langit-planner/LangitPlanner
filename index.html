@@ -919,22 +919,29 @@
         function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
         function closeDashboardModal() { document.getElementById('dashboard-modal').classList.add('hidden'); }
 
-        function handleLogin(e) {
+               function handleLogin(e) {
             e.preventDefault();
             const user = document.getElementById('login-user').value.toLowerCase().trim();
             const pass = document.getElementById('login-pass').value.trim();
             const db = getDB();
             if (user === 'yogs' && pass === 'adminlangit') {
                 closeLoginModal(); loggedInClientKey = null;
-                document.getElementById('user-role-badge').innerText = "Administrator Portal (Yogs)"; document.getElementById('dashboard-title').innerText = "Manajemen Catin & Vendor";
-                document.getElementById('client-dashboard-content').classList.add('hidden'); document.getElementById('admin-dashboard-content').classList.remove('hidden');
-                populateAdminDropdown(); const keys = Object.keys(db); if (keys.length > 0) loadAdminData(keys[0]); else prepareNewCatinForm();
-                document.getElementById('dashboard-modal').classList.remove('hidden'); lucide.createIcons();
+                document.getElementById('user-role-badge').innerText = "Administrator Portal (Yogs)"; 
+                document.getElementById('dashboard-title').innerText = "Manajemen Catin & Vendor";
+                document.getElementById('client-dashboard-content').classList.add('hidden'); 
+                document.getElementById('admin-dashboard-content').classList.remove('hidden');
+                populateAdminDropdown(); 
+                const keys = Object.keys(db); 
+                if (keys.length > 0) loadAdminData(keys[0]); else prepareNewCatinForm();
+                document.getElementById('dashboard-modal').classList.remove('hidden'); 
+                lucide.createIcons();
             } else if (db[user]) {
                 if (pass !== (db[user].password || 'langit2026')) { alert("Password salah!"); return; }
                 closeLoginModal(); loggedInClientKey = user; loadClientData(user);
-                document.getElementById('admin-dashboard-content').classList.add('hidden'); document.getElementById('client-dashboard-content').classList.remove('hidden');
-                document.getElementById('dashboard-modal').classList.remove('hidden'); lucide.createIcons();
+                document.getElementById('admin-dashboard-content').classList.add('hidden'); 
+                document.getElementById('client-dashboard-content').classList.remove('hidden');
+                document.getElementById('dashboard-modal').classList.remove('hidden'); 
+                lucide.createIcons();
             } else { alert("Username tidak ditemukan!"); }
         }
 
