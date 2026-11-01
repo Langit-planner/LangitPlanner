@@ -1382,33 +1382,109 @@
 
         // DATABASE DEFAULT (BISA DI-UPDATE DARI TOMBOL SALIN KODE DI DASHBOARD ADMIN)
         const DEFAULT_DATABASE = {
-            rizki: {
-                username: "rizki",
-                password: "langit2026",
-                groomFull: "Rizki Pratama, S.Kom",
-                groomNick: "Rizki",
-                brideFull: "Nova Aulia, S.Pd",
-                brideNick: "Nova",
-                package: "Diamond Package",
-                venue: "Ballroom — 20 Des 2026",
-                weddingDate: "2026-12-20",
-                docUrl: "",
-                showProgress: true,
-                progress: 85,
-                vendors: [
-                    { cat: "Dekorasi", name: "Erza Art Decor", status: "Sudah Dibooking Admin" },
-                    { cat: "MUA", name: "Ratih Salon Professional", status: "Sudah Dibooking Admin" },
-                    { cat: "MC", name: "MC Najwa Zenuba", status: "Sudah Dibooking Admin" },
-                    { cat: "Musik", name: "Opa Music Entertainment", status: "Sudah Dibooking Admin" },
-                    { cat: "Henna", name: "Henna Art Kaltara", status: "Sudah Dibooking Admin" },
-                    { cat: "WCC", name: "Langit Wedding Content Creator", status: "Sudah Dibooking Admin" },
-                    { cat: "Catering", name: "Wafda Catering (1000 Porsi)", status: "Sudah Dibooking Admin" }
-                ]
+    "rizki": {
+        "username": "rizki",
+        "password": "langit2026",
+        "groomFull": "Rizki Pratama, S.Kom",
+        "groomNick": "Rizki",
+        "brideFull": "Nova Aulia, S.Pd",
+        "brideNick": "Nova",
+        "package": "Diamond Package",
+        "venue": "Ballroom — 20 Des 2026",
+        "weddingDate": "2026-12-20",
+        "docUrl": "",
+        "showProgress": true,
+        "progress": 85,
+        "vendors": [
+            {
+                "cat": "Dekorasi",
+                "name": "Erza Art Decor",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "MUA",
+                "name": "Ratih Salon Professional",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "MC",
+                "name": "MC Najwa Zenuba",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "Musik",
+                "name": "Opa Music Entertainment",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "Henna",
+                "name": "Henna Art Kaltara",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "WCC",
+                "name": "Langit Wedding Content Creator",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "Catering",
+                "name": "Wafda Catering (1000 Porsi)",
+                "status": "Sudah Dibooking Admin"
             }
-        };
-
-        let currentActiveCatin = 'rizki';
-
+        ]
+    },
+    "kristinaldy": {
+        "username": "kristinaldy",
+        "password": "langit2026",
+        "groomFull": "Aldy",
+        "groomNick": "Aldy",
+        "brideFull": "Kristin",
+        "brideNick": "Kristin",
+        "package": "Silver Package",
+        "venue": "Gedung Wanita - 20  Maret 2027",
+        "weddingDate": "2027-03-20",
+        "docUrl": "",
+        "showProgress": true,
+        "progress": 22,
+        "vendors": [
+            {
+                "cat": "Dekorasi",
+                "name": "Salonanna",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "MUA",
+                "name": "Ratih",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "MC",
+                "name": "Yolanda",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "Musik",
+                "name": "Oppa",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "Henna",
+                "name": "Mitra Langit Planner",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "WCC",
+                "name": "Langit Picture",
+                "status": "Sudah Dibooking Admin"
+            },
+            {
+                "cat": "Catering",
+                "name": "Hj. Sabar",
+                "status": "Sudah Dibooking Admin"
+            }
+        ]
+    }
+};
         // PERBAIKAN LOGIKA DATABASE AGAR CATIN YANG DIHAPUS TIDAK MUNCUL LAGI
         function getDB() {
             const saved = localStorage.getItem('langit_db_catin_v5');
