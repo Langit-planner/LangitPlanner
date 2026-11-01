@@ -106,6 +106,63 @@
             height: 8px;
             background-color: #C5A059;
         }
+
+        /* STYLE ANIMASI 5 FOTO KIPAS (FAN DECK) DI HERO SECTION */
+        .fan-deck {
+            position: relative;
+            width: 100%;
+            height: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+        }
+        .fan-card {
+            position: absolute;
+            width: 240px;
+            height: 330px;
+            border-radius: 1.35rem;
+            border: 6px solid #FFFFFF;
+            box-shadow: 0 20px 38px -10px rgba(31, 30, 28, 0.28);
+            overflow: hidden;
+            transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-origin: 50% 110%;
+            background: #1F1E1C;
+        }
+        @media (max-width: 640px) {
+            .fan-deck { height: 370px; }
+            .fan-card { width: 175px; height: 245px; border-width: 4px; }
+        }
+        .fan-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        /* Posisi Default Kipas 5 Kartu */
+        .fan-card.pos-1 { transform: translateX(-115px) translateY(24px) rotate(-18deg) scale(0.88); z-index: 10; }
+        .fan-card.pos-2 { transform: translateX(-60px) translateY(8px) rotate(-9deg) scale(0.94); z-index: 20; }
+        .fan-card.pos-3 { transform: translateX(0px) translateY(0px) rotate(0deg) scale(1); z-index: 30; }
+        .fan-card.pos-4 { transform: translateX(60px) translateY(8px) rotate(9deg) scale(0.94); z-index: 20; }
+        .fan-card.pos-5 { transform: translateX(115px) translateY(24px) rotate(18deg) scale(0.88); z-index: 10; }
+
+        /* Saat area kipas didekati kursor, kipas sedikit melebar */
+        .fan-deck:hover .fan-card.pos-1 { transform: translateX(-145px) translateY(28px) rotate(-22deg) scale(0.88); }
+        .fan-deck:hover .fan-card.pos-2 { transform: translateX(-75px) translateY(10px) rotate(-11deg) scale(0.94); }
+        .fan-deck:hover .fan-card.pos-3 { transform: translateX(0px) translateY(-4px) rotate(0deg) scale(1); }
+        .fan-deck:hover .fan-card.pos-4 { transform: translateX(75px) translateY(10px) rotate(11deg) scale(0.94); }
+        .fan-deck:hover .fan-card.pos-5 { transform: translateX(145px) translateY(28px) rotate(22deg) scale(0.88); }
+
+        /* Saat salah satu kartu disentuh kursor: membesar ke depan, lurus, dan paling atas */
+        .fan-deck .fan-card:hover {
+            transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important;
+            z-index: 60 !important;
+            box-shadow: 0 32px 60px -12px rgba(31, 30, 28, 0.5);
+            border-color: #C5A059;
+        }
+        .fan-deck .fan-card:hover img {
+            transform: scale(1.06);
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-champagne selection:text-white">
@@ -115,7 +172,11 @@
     <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
 
     <!-- AUDIO BACKSOUND PEMUTAR MUSIK -->
-    <audio id="bg-music" src="img/Backsound.mp3" loop></audio>
+    <audio id="bg-music" preload="auto" loop>
+        <source src="img/Backsound.mp3" type="audio/mpeg">
+        <source src="img/backsound.mp3" type="audio/mpeg">
+        <source src="img/Backsound.MP3" type="audio/mpeg">
+    </audio>
 
     <!-- TOMBOL MELAYANG KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
@@ -129,7 +190,7 @@
             <a href="#" class="flex items-center gap-3 group shrink-0">
                 <div class="w-11 h-11 rounded-full ig-ring shrink-0 shadow-sm">
                     <img src="img/logo-ig.JPG" 
-                         onerror="const f=['img/logo-ig.png','img/logo-ig.JPG','img/logo-ig.JPG','img/logo-ig.png','img/logo.png','img/logo.JPG']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
+                         onerror="const f=['img/logo-ig.jpg','img/logo-ig.png','img/logo-ig.jpeg','img/Logo-ig.JPG','img/Logo-ig.jpg','img/logo.JPG','img/logo.png']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
                          alt="Logo Langit Planner" 
                          class="site-logo-img w-full h-full rounded-full object-cover border-2 border-white bg-charcoal">
                 </div>
@@ -215,18 +276,69 @@
                 </div>
 
                 <div class="lg:col-span-5 relative">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] border-8 border-white">
-                        <img id="hero-image" 
-                             src="img/ig-1.jpg" 
-                             onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';" 
-                             alt="Langit Planner" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 right-6 text-white">
-                            <p class="text-xs uppercase tracking-widest text-champagne font-semibold">Special Promo</p>
-                            <p class="font-editorial text-2xl italic">"Gratis Laundry Pakaian 1 Tahun"</p>
+                    <!-- 5 FOTO BENTUK KIPAS INTERAKTIF (MEMBESAR SAAT DISENTUH KURSOR) -->
+                    <div class="fan-deck">
+                        <!-- Foto 1 (Kiri Ujung) -->
+                        <div class="fan-card pos-1">
+                            <img src="img/ig-2.jpg" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80';" 
+                                 alt="Portofolio 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Elegance</p>
+                                <p class="font-editorial text-sm italic">Jackie &amp; Dewi</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 2 (Kiri Tengah) -->
+                        <div class="fan-card pos-2">
+                            <img src="img/ig-3.jpg" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80';" 
+                                 alt="Portofolio 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Sacred Details</p>
+                                <p class="font-editorial text-sm italic">Kristin &amp; Aldy</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 3 (Tengah Utama) -->
+                        <div class="fan-card pos-3">
+                            <img src="img/ig-1.jpg" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';" 
+                                 alt="Portofolio Utama">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <p class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Special Promo</p>
+                                <p class="font-editorial text-lg leading-tight italic">"Gratis Laundry Pakaian 1 Tahun"</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 4 (Kanan Tengah - Bisa tambah img/ig-4.jpg nanti, saat ini otomatis pakai ig-2.jpg) -->
+                        <div class="fan-card pos-4">
+                            <img src="img/ig-4.jpg" 
+                                 onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-2.jpg';}else{this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80';}" 
+                                 alt="Portofolio 4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Exclusive Venue</p>
+                                <p class="font-editorial text-sm italic">Langit Planner</p>
+                            </div>
+                        </div>
+
+                        <!-- Foto 5 (Kanan Ujung - Bisa tambah img/ig-5.jpg nanti, saat ini otomatis pakai ig-3.jpg) -->
+                        <div class="fan-card pos-5">
+                            <img src="img/ig-5.jpg" 
+                                 onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-3.jpg';}else{this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80';}" 
+                                 alt="Portofolio 5">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Best Moment</p>
+                                <p class="font-editorial text-sm italic">Kaltara Wedding</p>
+                            </div>
                         </div>
                     </div>
+                    <p class="text-center text-[11px] text-muted mt-3 italic">✨ Arahkan kursor ke salah satu dari 5 kartu foto di atas untuk memperbesar</p>
                 </div>
             </div>
         </div>
@@ -1212,9 +1324,12 @@
             });
         });
 
-        // SCRIPT PEMUTAR MUSIK BACKSOUND
+        // SCRIPT PEMUTAR MUSIK BACKSOUND (SESUAI NAMA FILE 'img/Backsound.mp3' DI GITHUB)
         const bgAudio = document.getElementById('bg-music');
         let isMusicPlaying = false;
+        const audioCandidates = ['img/Backsound.mp3', 'img/backsound.mp3', 'img/Backsound.MP3'];
+        let audioTryIndex = 0;
+
         function toggleMusic() {
             const icon = document.getElementById('music-icon');
             const text = document.getElementById('music-text');
@@ -1223,16 +1338,27 @@
                 isMusicPlaying = false;
                 icon.setAttribute('data-lucide', 'volume-x');
                 text.innerText = "Putar Musik";
+                lucide.createIcons();
             } else {
                 bgAudio.play().then(() => {
                     isMusicPlaying = true;
                     icon.setAttribute('data-lucide', 'volume-2');
                     text.innerText = "Jeda Musik";
-                }).catch(e => {
-                    alert("Gagal memutar musik. Pastikan file mp3 bernama 'backsound.mp3' sudah diupload ke dalam folder img/ di GitHub!");
+                    lucide.createIcons();
+                }).catch(() => {
+                    // Coba kandidat nama file berikutnya jika gagal
+                    audioTryIndex = (audioTryIndex + 1) % audioCandidates.length;
+                    bgAudio.src = audioCandidates[audioTryIndex];
+                    bgAudio.play().then(() => {
+                        isMusicPlaying = true;
+                        icon.setAttribute('data-lucide', 'volume-2');
+                        text.innerText = "Jeda Musik";
+                        lucide.createIcons();
+                    }).catch(() => {
+                        alert("Gagal memutar musik. Pastikan file 'Backsound.mp3' berada di dalam folder img/ di GitHub.");
+                    });
                 });
             }
-            lucide.createIcons();
         }
 
         const SITE_CONFIG = {
