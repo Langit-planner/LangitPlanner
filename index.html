@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LANGIT PLANNER | Wedding & Event Organizer (@langit_planner)</title>
-    <link rel="icon" href="img/logo-ig.JPG" type="image/jpeg">
     
-    <!-- Meta SEO & OpenGraph (Untuk Preview Link WhatsApp Mewah) -->
-    <meta name="description" content="Langit Planner | Wedding & Event Organizer Tanjung Selor, Kaltara. Wujudkan pernikahan impian tanpa cemas dengan paket eksklusif serta fitur Langit Tracker untuk pantau progres dan vendor secara real-time. Konsultasi gratis via WA: 082293697141 (Yogs).">
+    <link rel="icon" href="img/logo-ig.JPG" type="image/jpeg">
+    <meta name="description" content="Langit Planner | Wedding & Event Organizer Tanjung Selor, Kaltara. Wujudkan pernikahan impian tanpa cemas dengan paket eksklusif serta fitur Langit Tracker.">
     <meta property="og:title" content="LANGIT PLANNER | Wedding & Event Organizer Kaltara">
     <meta property="og:description" content="Wujudkan pernikahan impian tanpa cemas bersama Langit Planner. Dilengkapi portal eksklusif Langit Tracker untuk memantau 7 vendor utama secara real-time.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
@@ -15,11 +14,9 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond (Serif) & Plus Jakarta Sans (Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -43,149 +40,56 @@
         }
     </script>
     <style>
-        body {
-            background-color: #FAF8F5;
-            color: #1F1E1C;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        @media (min-width: 1024px) {
-            body, a, button, input, select, textarea {
-                cursor: none;
-            }
-        }
-        .font-editorial {
-            font-family: 'Cormorant Garamond', serif;
-        }
-        .glass-nav {
-            background: rgba(250, 248, 245, 0.92);
-            backdrop-filter: blur(12px);
-        }
-        .ig-ring {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            padding: 2px;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .input-editorial {
-            background: transparent;
-            border-bottom: 1px solid #D6D1C7;
-            padding: 0.6rem 0;
-            font-size: 0.875rem;
-            color: #1F1E1C;
-            width: 100%;
-            transition: border-color 0.2s;
-        }
-        .input-editorial:focus {
-            outline: none;
-            border-bottom-color: #1F1E1C;
-        }
-        .input-editorial::placeholder {
-            color: #A39E93;
-            font-weight: 300;
-        }
+        body { background-color: #FAF8F5; color: #1F1E1C; font-family: 'Plus Jakarta Sans', sans-serif; }
+        @media (min-width: 1024px) { body, a, button, input, select, textarea { cursor: none; } }
+        .font-editorial { font-family: 'Cormorant Garamond', serif; }
+        .glass-nav { background: rgba(250, 248, 245, 0.92); backdrop-filter: blur(12px); }
+        .ig-ring { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 2px; }
+        details > summary::-webkit-details-marker { display: none; }
+        .input-editorial { background: transparent; border-bottom: 1px solid #D6D1C7; padding: 0.6rem 0; font-size: 0.875rem; color: #1F1E1C; width: 100%; transition: border-color 0.2s; }
+        .input-editorial:focus { outline: none; border-bottom-color: #1F1E1C; }
+        .input-editorial::placeholder { color: #A39E93; font-weight: 300; }
 
-        /* STYLE CUSTOM CURSOR ANIMATION */
-        .custom-cursor {
-            pointer-events: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            border-radius: 50%;
-            transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
-            transform: translate(-50%, -50%);
-        }
-        #cursor-ring {
-            width: 36px;
-            height: 36px;
-            border: 1.5px solid #C5A059;
-            background-color: rgba(197, 160, 89, 0.05);
-        }
-        #cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #C5A059;
-        }
+        .custom-cursor { pointer-events: none; position: fixed; top: 0; left: 0; z-index: 9999; border-radius: 50%; transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s; transform: translate(-50%, -50%); }
+        #cursor-ring { width: 36px; height: 36px; border: 1.5px solid #C5A059; background-color: rgba(197, 160, 89, 0.05); }
+        #cursor-dot { width: 8px; height: 8px; background-color: #C5A059; }
 
-        /* STYLE ANIMASI 5 FOTO KIPAS (FAN DECK) DI HERO SECTION */
-        .fan-deck {
-            position: relative;
-            width: 100%;
-            height: 460px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px;
-        }
-        .fan-card {
-            position: absolute;
-            width: 240px;
-            height: 330px;
-            border-radius: 1.35rem;
-            border: 6px solid #FFFFFF;
-            box-shadow: 0 20px 38px -10px rgba(31, 30, 28, 0.28);
-            overflow: hidden;
-            transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-            transform-origin: 50% 110%;
-            background: #1F1E1C;
-        }
-        @media (max-width: 640px) {
-            .fan-deck { height: 370px; }
-            .fan-card { width: 175px; height: 245px; border-width: 4px; }
-        }
-        .fan-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        /* Posisi Default Kipas 5 Kartu */
+        .fan-deck { position: relative; width: 100%; height: 460px; display: flex; align-items: center; justify-content: center; perspective: 1200px; }
+        .fan-card { position: absolute; width: 240px; height: 330px; border-radius: 1.35rem; border: 6px solid #FFFFFF; box-shadow: 0 20px 38px -10px rgba(31, 30, 28, 0.28); overflow: hidden; transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 50% 110%; background: #1F1E1C; }
+        @media (max-width: 640px) { .fan-deck { height: 370px; } .fan-card { width: 175px; height: 245px; border-width: 4px; } }
+        .fan-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .fan-card.pos-1 { transform: translateX(-115px) translateY(24px) rotate(-18deg) scale(0.88); z-index: 10; }
         .fan-card.pos-2 { transform: translateX(-60px) translateY(8px) rotate(-9deg) scale(0.94); z-index: 20; }
         .fan-card.pos-3 { transform: translateX(0px) translateY(0px) rotate(0deg) scale(1); z-index: 30; }
         .fan-card.pos-4 { transform: translateX(60px) translateY(8px) rotate(9deg) scale(0.94); z-index: 20; }
         .fan-card.pos-5 { transform: translateX(115px) translateY(24px) rotate(18deg) scale(0.88); z-index: 10; }
 
-        /* Saat area kipas didekati kursor, kipas sedikit melebar */
         .fan-deck:hover .fan-card.pos-1 { transform: translateX(-145px) translateY(28px) rotate(-22deg) scale(0.88); }
         .fan-deck:hover .fan-card.pos-2 { transform: translateX(-75px) translateY(10px) rotate(-11deg) scale(0.94); }
         .fan-deck:hover .fan-card.pos-3 { transform: translateX(0px) translateY(-4px) rotate(0deg) scale(1); }
         .fan-deck:hover .fan-card.pos-4 { transform: translateX(75px) translateY(10px) rotate(11deg) scale(0.94); }
         .fan-deck:hover .fan-card.pos-5 { transform: translateX(145px) translateY(28px) rotate(22deg) scale(0.88); }
 
-        /* Saat salah satu kartu disentuh kursor: membesar ke depan, lurus, dan paling atas */
-        .fan-deck .fan-card:hover {
-            transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important;
-            z-index: 60 !important;
-            box-shadow: 0 32px 60px -12px rgba(31, 30, 28, 0.5);
-            border-color: #C5A059;
-        }
-        .fan-deck .fan-card:hover img {
-            transform: scale(1.06);
-        }
+        .fan-deck .fan-card:hover { transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important; z-index: 60 !important; box-shadow: 0 32px 60px -12px rgba(31, 30, 28, 0.5); border-color: #C5A059; }
+        .fan-deck .fan-card:hover img { transform: scale(1.06); }
     </style>
 </head>
 <body class="antialiased selection:bg-champagne selection:text-white">
 
-    <!-- ELEMEN ANIMASI CUSTOM CURSOR -->
     <div id="cursor-ring" class="custom-cursor hidden lg:block"></div>
     <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
 
-    <!-- AUDIO BACKSOUND PEMUTAR MUSIK -->
     <audio id="bg-music" preload="auto" loop>
         <source src="img/Backsound.mp3" type="audio/mpeg">
         <source src="img/backsound.mp3" type="audio/mpeg">
         <source src="img/Backsound.MP3" type="audio/mpeg">
     </audio>
 
-    <!-- TOMBOL MELAYANG KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
         <i data-lucide="volume-x" id="music-icon" class="w-4 h-4"></i>
         <span id="music-text">Putar Musik</span>
     </button>
 
-    <!-- NAVBAR -->
     <header class="fixed w-full top-0 z-50 glass-nav border-b border-stone-200/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group shrink-0">
@@ -201,7 +105,6 @@
                 </div>
             </a>
 
-            <!-- NAV MENU DESKTOP -->
             <nav class="hidden lg:flex items-center space-x-5 text-xs font-semibold uppercase tracking-wider text-charcoal/80">
                 <button onclick="openLoginModal()" class="text-champagneDark hover:text-champagne transition flex items-center gap-1.5 bg-sand px-3.5 py-2 rounded-full border border-stone-300/80 shadow-sm">
                     <i data-lucide="lock" class="w-3.5 h-3.5"></i>
@@ -229,7 +132,6 @@
             </button>
         </div>
 
-        <!-- MOBILE MENU DROPDOWN -->
         <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-b border-stone-200 px-6 py-5 space-y-3 text-sm font-medium shadow-xl">
             <button onclick="openLoginModal(); toggleMobileMenu();" class="w-full text-left py-2.5 px-3 rounded-xl bg-sand text-champagneDark font-bold flex items-center gap-2">
                 <i data-lucide="lock" class="w-4 h-4"></i> Masuk Langit Tracker (Portal Catin)
@@ -242,15 +144,9 @@
             <a href="#testimoni" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Testimoni Pengantin</a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">FAQ</a>
             <a href="#konsultasi" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne">Kontak & Jadwal</a>
-            <div class="pt-2">
-                <a href="https://wa.me/6282293697141" target="_blank" class="w-full bg-charcoal text-white py-3 rounded-full text-xs font-bold flex items-center justify-center gap-2">
-                    <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i> Hubungi 082293697141 (Yogs)
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
@@ -277,13 +173,9 @@
                 </div>
 
                 <div class="lg:col-span-5 relative">
-                    <!-- 5 FOTO BENTUK KIPAS INTERAKTIF (MEMBESAR SAAT DISENTUH KURSOR) -->
                     <div class="fan-deck">
-                        <!-- Foto 1 (Kiri Ujung) -->
                         <div class="fan-card pos-1">
-                            <img src="img/ig-2.jpg" 
-                                 onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80';" 
-                                 alt="Portofolio 1">
+                            <img src="img/ig-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80';" alt="Portofolio 1">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
                                 <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Elegance</p>
@@ -291,11 +183,8 @@
                             </div>
                         </div>
 
-                        <!-- Foto 2 (Kiri Tengah) -->
                         <div class="fan-card pos-2">
-                            <img src="img/ig-3.jpg" 
-                                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80';" 
-                                 alt="Portofolio 2">
+                            <img src="img/ig-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80';" alt="Portofolio 2">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
                                 <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Sacred Details</p>
@@ -303,11 +192,8 @@
                             </div>
                         </div>
 
-                        <!-- Foto 3 (Tengah Utama) -->
                         <div class="fan-card pos-3">
-                            <img src="img/ig-1.jpg" 
-                                 onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';" 
-                                 alt="Portofolio Utama">
+                            <img src="img/ig-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';" alt="Portofolio Utama">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 text-white">
                                 <p class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Special Promo</p>
@@ -315,11 +201,8 @@
                             </div>
                         </div>
 
-                        <!-- Foto 4 (Kanan Tengah - Bisa tambah img/ig-4.jpg nanti, saat ini otomatis pakai ig-2.jpg) -->
                         <div class="fan-card pos-4">
-                            <img src="img/ig-4.jpg" 
-                                 onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-2.jpg';}else{this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80';}" 
-                                 alt="Portofolio 4">
+                            <img src="img/ig-4.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-2.jpg';}else{this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80';}" alt="Portofolio 4">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
                                 <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Exclusive Venue</p>
@@ -327,11 +210,8 @@
                             </div>
                         </div>
 
-                        <!-- Foto 5 (Kanan Ujung - Bisa tambah img/ig-5.jpg nanti, saat ini otomatis pakai ig-3.jpg) -->
                         <div class="fan-card pos-5">
-                            <img src="img/ig-5.jpg" 
-                                 onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-3.jpg';}else{this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80';}" 
-                                 alt="Portofolio 5">
+                            <img src="img/ig-5.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-3.jpg';}else{this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80';}" alt="Portofolio 5">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
                                 <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Best Moment</p>
@@ -345,11 +225,9 @@
         </div>
     </section>
 
-    <!-- DASBOR LANGIT TRACKER & PROJECT BERJALAN (PUBLIK HANYA BISA LIHAT STATUS UMUM, DETAIL DIKUNCI) -->
     <section id="projek" class="py-24 bg-sand/70 border-y border-stone-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
-                
                 <div class="lg:col-span-5 space-y-6">
                     <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold">— LANGIT TRACKER LIVE</p>
                     <h2 class="font-editorial text-4xl sm:text-5xl font-normal italic text-charcoal leading-tight">
@@ -378,73 +256,62 @@
                         <div class="space-y-4 max-h-[520px] overflow-y-auto pr-1" id="public-project-list"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- ALUR KERJA (HOW WE WORK) -->
     <section id="alur" class="py-20 bg-ivory border-b border-stone-200/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">How We Work</p>
                 <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">4 Langkah Menuju Hari Bahagia</h2>
-                <p class="text-muted text-sm sm:text-base mt-3">
-                    Proses perencanaan yang terstruktur, transparan, dan bebas stres sejak hari pertama Anda menghubungi kami.
-                </p>
+                <p class="text-muted text-sm sm:text-base mt-3">Proses perencanaan yang terstruktur, transparan, dan bebas stres sejak hari pertama.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-7 rounded-3xl border border-stone-200/80 shadow-sm relative group hover:border-champagne transition">
+                <div class="bg-white p-7 rounded-3xl border border-stone-200/85 shadow-sm relative group hover:border-champagne transition">
                     <span class="font-editorial text-5xl font-bold text-champagne/30 group-hover:text-champagne transition">01</span>
                     <h3 class="font-editorial text-2xl font-bold text-charcoal mt-3">Obrolan &amp; Konsultasi</h3>
-                    <p class="text-xs text-muted mt-2 leading-relaxed">Diskusi santai membahas konsep impian, estimasi jumlah tamu, pilihan venue, dan penyesuaian anggaran tanpa biaya apa pun.</p>
+                    <p class="text-xs text-muted mt-2 leading-relaxed">Diskusi santai membahas konsep impian, estimasi jumlah tamu, pilihan venue, dan anggaran tanpa biaya.</p>
                 </div>
-                <div class="bg-white p-7 rounded-3xl border border-stone-200/80 shadow-sm relative group hover:border-champagne transition">
+                <div class="bg-white p-7 rounded-3xl border border-stone-200/85 shadow-sm relative group hover:border-champagne transition">
                     <span class="font-editorial text-5xl font-bold text-champagne/30 group-hover:text-champagne transition">02</span>
                     <h3 class="font-editorial text-2xl font-bold text-charcoal mt-3">Lock Tanggal &amp; Akun</h3>
-                    <p class="text-xs text-muted mt-2 leading-relaxed">Penguncian tanggal acara melalui DP dan pembuatan akun eksklusif <strong>Langit Tracker</strong> khusus untuk Anda dan pasangan.</p>
+                    <p class="text-xs text-muted mt-2 leading-relaxed">Penguncian tanggal acara melalui DP dan pembuatan akun eksklusif <strong>Langit Tracker</strong>.</p>
                 </div>
-                <div class="bg-white p-7 rounded-3xl border border-stone-200/80 shadow-sm relative group hover:border-champagne transition">
+                <div class="bg-white p-7 rounded-3xl border border-stone-200/85 shadow-sm relative group hover:border-champagne transition">
                     <span class="font-editorial text-5xl font-bold text-champagne/30 group-hover:text-champagne transition">03</span>
                     <h3 class="font-editorial text-2xl font-bold text-charcoal mt-3">Kurasi Vendor &amp; Rundown</h3>
-                    <p class="text-xs text-muted mt-2 leading-relaxed">Pemilihan 7 vendor utama, pengisian form biodata rundown secara online, serta Technical Meeting bersama seluruh vendor.</p>
+                    <p class="text-xs text-muted mt-2 leading-relaxed">Pemilihan 7 vendor utama, pengisian form biodata rundown online, serta Technical Meeting.</p>
                 </div>
                 <div class="bg-charcoal text-white p-7 rounded-3xl border border-champagne shadow-lg relative">
                     <span class="font-editorial text-5xl font-bold text-champagne">04</span>
                     <h3 class="font-editorial text-2xl font-bold text-white mt-3">Eksekusi Hari-H</h3>
-                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">Tim profesional Langit Planner mengatur seluruh jalannya acara dari awal hingga akhir. Anda dan keluarga cukup menikmati momen bahagia.</p>
+                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">Tim profesional Langit Planner mengatur jalannya acara dari awal hingga akhir tanpa cemas.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PILIHAN PAKET LAYANAN -->
     <section id="layanan" class="py-20 bg-white border-b border-stone-200/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Skema Pendampingan</p>
                 <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Pilihan Paket Layanan</h2>
-                <p class="text-muted text-sm sm:text-base mt-3">
-                    Pilih skema pendampingan yang paling sesuai dengan waktu dan kesiapan Anda.
-                </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-ivory rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                <div class="bg-ivory rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-stone-100 px-3 py-1 rounded-full">Day-of Coordination</span>
                         <h3 class="font-editorial text-3xl font-bold mt-4 text-charcoal">Day-of Coordination</h3>
                         <p class="text-sm text-muted mt-2">Untuk Anda yang sudah menyiapkan sendiri, tinggal butuh eksekutor hari-H.</p>
-                        
                         <div class="my-6 pt-6 border-t border-stone-200 space-y-3 text-xs text-charcoal/85">
-                            <p class="font-semibold uppercase tracking-wider text-champagneDark">Investasi & Fasilitas:</p>
+                            <p class="font-semibold uppercase tracking-wider text-champagneDark">Fasilitas Utama:</p>
                             <p>— Koordinator utama + 8 kru di hari-H</p>
-                            <p>— Technical meeting & penyusunan rundown detail (H-30)</p>
-                            <p>— Konfirmasi ulang seluruh vendor (H-7)</p>
-                            <p>— Pendampingan gladi resik</p>
-                            <p>— Pendampingan penuh 12 jam di hari-H</p>
-                            <p>— Laporan penutupan & serah terima</p>
+                            <p>— Technical meeting & rundown (H-30)</p>
+                            <p>— Konfirmasi ulang vendor (H-7)</p>
+                            <p>— Pendampingan penuh 12 jam</p>
                         </div>
                     </div>
                     <a href="#konsultasi" onclick="selectPackage('Day-of Coordination')" class="w-full text-center py-3 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-medium transition">Tanya Paket Ini</a>
@@ -456,28 +323,24 @@
                         <span class="text-xs font-semibold uppercase tracking-wider text-champagne bg-white/10 px-3 py-1 rounded-full">Full Planning</span>
                         <h3 class="font-editorial text-4xl font-bold mt-4">Full Planning</h3>
                         <p class="text-sm text-stone-300 mt-2">Pendampingan menyeluruh sejak ide pertama sampai tamu terakhir pulang.</p>
-                        
                         <div class="my-6 pt-6 border-t border-white/10 space-y-3 text-sm text-stone-200">
                             <p class="font-semibold text-champagne">✨ Fasilitas Utama:</p>
-                            <p class="text-xs leading-relaxed text-stone-300">Konsultasi konsep, moodboard & desain acara | Kurasi dan negosiasi seluruh vendor | Manajemen anggaran + laporan berkala | Timeline lengkap dari H-12 bulan hingga hari-H | Koordinator utama + 15 kru di hari-H | Konsultasi tanpa batas via WhatsApp.</p>
+                            <p class="text-xs leading-relaxed text-stone-300">Konsultasi konsep &amp; desain | Kurasi seluruh vendor | Manajemen anggaran | Timeline lengkap H-12 bulan | Koordinator + 15 kru di hari-H | Konsultasi tanpa batas via WA.</p>
                         </div>
                     </div>
                     <a href="#konsultasi" onclick="selectPackage('Full Planning')" class="w-full text-center py-3 rounded-full bg-champagne hover:bg-champagneDark text-white text-sm font-bold transition">Konsultasi Full Planning</a>
                 </div>
 
-                <div class="bg-ivory rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                <div class="bg-ivory rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-stone-100 px-3 py-1 rounded-full">Custom Package</span>
                         <h3 class="font-editorial text-3xl font-bold mt-4 text-charcoal">Custom Package</h3>
-                        <p class="text-sm text-muted mt-2">Susun sendiri cakupan kerjanya — cocok untuk <em>intimate</em>, adat, atau <em>destination wedding</em>.</p>
-                        
+                        <p class="text-sm text-muted mt-2">Susun sendiri cakupan kerjanya — cocok untuk intimate, adat, atau destination wedding.</p>
                         <div class="my-6 pt-6 border-t border-stone-200 space-y-3 text-xs text-charcoal/85">
-                            <p class="font-semibold uppercase tracking-wider text-champagneDark">Investasi & Fasilitas (Sesuai Kebutuhan):</p>
-                            <p>— Pilih modul: konsep, vendor, dekorasi, atau koordinasi saja</p>
+                            <p class="font-semibold uppercase tracking-wider text-champagneDark">Fasilitas:</p>
+                            <p>— Pilih modul sesuai kebutuhan</p>
                             <p>— Opsi paket adat lengkap (Jawa, Sunda, Minang, Batak)</p>
-                            <p>— Opsi <em>destination wedding</em> luar kota & luar negeri</p>
-                            <p>— Kolaborasi dengan brand kami: The Heritage, Mahligai Atelier, Erza Art Decor</p>
-                            <p>— Penawaran tertulis dalam 2 hari kerja</p>
+                            <p>— Kolaborasi brand rekanan terkurasi</p>
                         </div>
                     </div>
                     <a href="#konsultasi" onclick="selectPackage('Custom Package')" class="w-full text-center py-3 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-medium transition">Minta Penawaran</a>
@@ -486,138 +349,79 @@
         </div>
     </section>
 
-    <!-- DAFTAR PRICELIST RESMI -->
     <section id="paket" class="py-20 bg-sand/60 border-b border-stone-200/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Official Pricelist & Venue Package</p>
                 <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Daftar Pricelist Resmi</h2>
-                <p class="text-muted text-sm sm:text-base mt-3">
-                    Paket lengkap eksklusif Diamond & Silver Package beserta pilihan harga berdasarkan venue di Kaltara.
-                </p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-10">
-                <!-- Diamond Package -->
                 <div class="bg-charcoal text-white rounded-3xl p-8 sm:p-10 border-2 border-champagne shadow-2xl relative flex flex-col justify-between">
-                    <div class="absolute -top-3.5 right-6 bg-champagne text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow">
-                        Most Exclusive
-                    </div>
+                    <div class="absolute -top-3.5 right-6 bg-champagne text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow">Most Exclusive</div>
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-champagne bg-white/10 px-3 py-1 rounded-full">Diamond Package</span>
                         <h3 class="font-editorial text-4xl font-bold mt-4">Diamond Package</h3>
                         <p class="text-sm text-stone-300 mt-2">Paket termegah dengan fasilitas lengkap dan bonus eksklusif berlimpah.</p>
-                        
                         <div class="my-6 pt-6 border-t border-white/10 space-y-3 text-sm text-stone-200">
                             <p class="font-semibold text-champagne">✨ Fasilitas Utama:</p>
-                            <p class="text-xs leading-relaxed text-stone-300">Dekorasi Venue | Makeup Pengantin & Orang Tua | Gaun | Photographer | Catering 1000 Porsi | MC | WO | VideoTron | Music Entertainment | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
-                            
-                            <p class="font-semibold text-champagne pt-2">🎁 Free / Bonus Spesial:</p>
-                            <p class="text-xs leading-relaxed text-stone-300">Honeymoon ke Derawan | Tempat Seserahan | Prewedding | Wedding Content Creator | Refleksi Lavender 81 | Buku Tamu | Undangan Digital | <strong class="text-white underline">Gratis Laundry Pakaian 1 Tahun</strong>.</p>
+                            <p class="text-xs leading-relaxed text-stone-300">Dekorasi Venue | MUA | Gaun | Photographer | Catering 1000 Porsi | MC | WO | VideoTron | Music | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
+                            <p class="font-semibold text-champagne pt-2">🎁 Bonus Spesial:</p>
+                            <p class="text-xs leading-relaxed text-stone-300">Honeymoon Derawan | Seserahan | Prewedding | WCC | Refleksi | Buku Tamu | Undangan Digital | <strong class="text-white underline">Gratis Laundry Pakaian 1 Tahun</strong>.</p>
                         </div>
                     </div>
-
                     <div class="mt-8 pt-6 border-t border-white/10">
                         <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Pilihan Harga Berdasarkan Venue:</p>
                         <div class="grid grid-cols-3 gap-3 text-center mb-6">
-                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10">
-                                <p class="text-[11px] text-stone-400">Ballroom</p>
-                                <p class="font-bold text-base sm:text-lg text-champagne mt-0.5">93.550 K</p>
-                            </div>
-                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10">
-                                <p class="text-[11px] text-stone-400">Tamadun</p>
-                                <p class="font-bold text-base sm:text-lg text-champagne mt-0.5">116.850 K</p>
-                            </div>
-                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10">
-                                <p class="text-[11px] text-stone-400">Gedung Wanita</p>
-                                <p class="font-bold text-base sm:text-lg text-champagne mt-0.5">106.850 K</p>
-                            </div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-stone-400">Ballroom</p><p class="font-bold text-base text-champagne mt-0.5">93.550 K</p></div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-stone-400">Tamadun</p><p class="font-bold text-base text-champagne mt-0.5">116.850 K</p></div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-stone-400">Gedung Wanita</p><p class="font-bold text-base text-champagne mt-0.5">106.850 K</p></div>
                         </div>
-
-                        <a href="#konsultasi" onclick="selectPackage('Diamond Package')" class="w-full block text-center py-3.5 rounded-full bg-champagne hover:bg-champagneDark text-white text-sm font-bold transition shadow-lg">
-                            Booking Diamond Package
-                        </a>
+                        <a href="#konsultasi" onclick="selectPackage('Diamond Package')" class="w-full block text-center py-3.5 rounded-full bg-champagne hover:bg-champagneDark text-white text-sm font-bold transition shadow-lg">Booking Diamond Package</a>
                     </div>
                 </div>
 
-                <!-- Silver Package -->
                 <div class="bg-white rounded-3xl p-8 sm:p-10 border border-stone-200 shadow-xl relative flex flex-col justify-between">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-stone-100 px-3 py-1 rounded-full">Silver Package</span>
                         <h3 class="font-editorial text-4xl font-bold mt-4 text-charcoal">Silver Package</h3>
                         <p class="text-sm text-muted mt-2">Pilihan elegan dan efisien untuk pernikahan impian yang tetap berkesan.</p>
-                        
                         <div class="my-6 pt-6 border-t border-stone-100 space-y-3 text-sm text-charcoal/85">
                             <p class="font-semibold text-champagneDark">✨ Fasilitas Utama:</p>
-                            <p class="text-xs leading-relaxed text-muted">Dekorasi Venue | Makeup Pengantin & Orang Tua | Gaun | Photographer | Catering 1000 Porsi | MC | WO | Music Entertainment | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
-                            
-                            <p class="font-semibold text-champagneDark pt-2">🎁 Free / Bonus Spesial:</p>
+                            <p class="text-xs leading-relaxed text-muted">Dekorasi Venue | MUA | Gaun | Photographer | Catering 1000 Porsi | MC | WO | Music | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
+                            <p class="font-semibold text-champagneDark pt-2">🎁 Bonus Spesial:</p>
                             <p class="text-xs leading-relaxed text-muted">Tempat Seserahan | Prewedding | Refleksi Lavender 81 | Buku Tamu.</p>
                         </div>
                     </div>
-
                     <div class="mt-8 pt-6 border-t border-stone-100">
                         <p class="text-xs text-muted mb-3 uppercase tracking-wider font-semibold">Pilihan Harga Berdasarkan Venue:</p>
                         <div class="grid grid-cols-3 gap-3 text-center mb-6">
-                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200">
-                                <p class="text-[11px] text-muted">Ballroom</p>
-                                <p class="font-bold text-base sm:text-lg text-charcoal mt-0.5">71.500 K</p>
+                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200"><p class="text-[11px] text-muted">Ballroom</p><p class="font-bold text-base text-charcoal mt-0.5">71.500 K</p></div>
+                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200"><p class="text-[11px] text-muted">Tamadun</p><p class="font-bold text-base text-charcoal mt-0.5">87.600 K</p>
                             </div>
-                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200">
-                                <p class="text-[11px] text-muted">Tamadun</p>
-                                <p class="font-bold text-base sm:text-lg text-charcoal mt-0.5">87.600 K</p>
-                            </div>
-                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200">
-                                <p class="text-[11px] text-muted">Gedung Wanita</p>
-                                <p class="font-bold text-base sm:text-lg text-charcoal mt-0.5">77.600 K</p>
-                            </div>
+                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200"><p class="text-[11px] text-muted">Gedung Wanita</p><p class="font-bold text-base text-charcoal mt-0.5">77.600 K</p></div>
                         </div>
-
-                        <a href="#konsultasi" onclick="selectPackage('Silver Package')" class="w-full block text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-bold transition">
-                            Booking Silver Package
-                        </a>
+                        <a href="#konsultasi" onclick="selectPackage('Silver Package')" class="w-full block text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-bold transition">Booking Silver Package</a>
                     </div>
                 </div>
             </div>
 
-            <!-- EKOSISTEM MITRA VENDOR TERKURASI (TRUSTED PARTNERS) -->
             <div class="mt-16 pt-12 border-t border-stone-300/70 text-center">
                 <p class="text-[11px] uppercase tracking-[0.22em] text-muted font-bold mb-6">Mitra Vendor &amp; Rekanan Terbaik Kami di Kalimantan Utara</p>
                 <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Salonanna </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Family Dekor </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Ratih </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Mommento </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Alfa Decor </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Diana </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Ratih </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Alvina </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Monic </span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Erza Art Decor</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Ratih Salon Professional</span>
                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 MC Najwa Zenuba</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 MC Nazia Indah </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 MC Yolanda </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 MC Qurrunto Ayu </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Oppa Music Entertainment</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Ozi </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Arcanna </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ SalonAnna</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Fortuna </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🌿 Rofiqohenna </span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Opa Music Entertainment</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Wafda Catering</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🌿 Henna Art Kaltara</span>
                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Langit WCC</span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Kalimasada </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 YD Photo </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Mahkota </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Suka Photography </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Cerita Kita Picture </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">👗 Salonanna </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">👗 Diana </span>
-                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">👗 Ratih </span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">👗 Mahligai Atelier</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PORTOFOLIO -->
     <section id="portofolio" class="py-20 bg-white border-t border-stone-200/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -628,60 +432,41 @@
         </div>
     </section>
 
-    <!-- SECTION TESTIMONI & CERITA PENGANTIN -->
     <section id="testimoni" class="py-20 bg-sand/50 border-t border-stone-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Love Stories &amp; Reviews</p>
                 <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Kata Mereka Tentang Langit Planner</h2>
-                <p class="text-muted text-sm mt-3">Kebahagiaan dan ketenangan pengantin serta keluarga di hari-H adalah prioritas utama kami.</p>
             </div>
-
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-6">
                     <div class="space-y-4">
                         <div class="flex text-champagne text-sm">★★★★★</div>
-                        <p class="text-sm text-charcoal/85 italic leading-relaxed">
-                            "Awalnya sempat pusing mengatur vendor sambil kerja, tapi sejak pakai Langit Planner semuanya beres! Fitur Langit Tracker-nya juara banget, kami bisa pantau semua persiapan dari HP. Pas hari-H keluarga besar tinggal duduk manis."
-                        </p>
+                        <p class="text-sm text-charcoal/85 italic leading-relaxed">"Awalnya sempat pusing mengatur vendor, tapi sejak pakai Langit Planner semuanya beres! Fitur Langit Tracker-nya juara banget, kami bisa pantau semua persiapan dari HP."</p>
                     </div>
                     <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
                         <div class="w-10 h-10 rounded-full bg-charcoal text-champagne font-editorial font-bold flex items-center justify-center">R&amp;N</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-charcoal">Rizki &amp; Nova</h4>
-                            <p class="text-[11px] text-muted">Diamond Package — Ballroom</p>
-                        </div>
+                        <div><h4 class="font-bold text-xs text-charcoal">Rizki &amp; Nova</h4><p class="text-[11px] text-muted">Diamond Package — Ballroom</p></div>
                     </div>
                 </div>
-
                 <div class="bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-6">
                     <div class="space-y-4">
                         <div class="flex text-champagne text-sm">★★★★★</div>
-                        <p class="text-sm text-charcoal/85 italic leading-relaxed">
-                            "Tim Kak Yogs super sigap dan komunikatif. Semua detail kecil dari seserahan sampai lagu masuk pengantin diatur rapi banget lewat form online mereka. Terima kasih sudah mewujudkan pernikahan impian kami di Tanjung Selor!"
-                        </p>
+                        <p class="text-sm text-charcoal/85 italic leading-relaxed">"Tim Kak Yogs super sigap dan komunikatif. Semua detail kecil diatur rapi banget lewat form online mereka. Terima kasih Langit Planner!"</p>
                     </div>
                     <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
                         <div class="w-10 h-10 rounded-full bg-charcoal text-champagne font-editorial font-bold flex items-center justify-center">J&amp;D</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-charcoal">Jackie &amp; Dewi</h4>
-                            <p class="text-[11px] text-muted">Full Planning — Tanjung Selor</p>
-                        </div>
+                        <div><h4 class="font-bold text-xs text-charcoal">Jackie &amp; Dewi</h4><p class="text-[11px] text-muted">Full Planning — Tanjung Selor</p></div>
                     </div>
                 </div>
-
                 <div class="bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-6">
                     <div class="space-y-4">
                         <div class="flex text-champagne text-sm">★★★★★</div>
-                        <p class="text-sm text-charcoal/85 italic leading-relaxed">
-                            "Kru di lapangan sangat ramah kepada tamu VIP dan orang tua kami. Koordinasi dengan catering, dekorasi, dan dokumentasi berjalan mulus tanpa kendala. Sangat merekomendasikan Langit Planner untuk calon pengantin Kaltara!"
-                        </p>
+                        <p class="text-sm text-charcoal/85 italic leading-relaxed">"Kru di lapangan sangat ramah kepada tamu VIP dan orang tua kami. Koordinasi berjalan mulus tanpa kendala. Sangat merekomendasikan Langit Planner!"</p>
                     </div>
                     <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
                         <div class="w-10 h-10 rounded-full bg-charcoal text-champagne font-editorial font-bold flex items-center justify-center">K&amp;A</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-charcoal">Kristin &amp; Aldy</h4>
-                            <p class="text-[11px] text-muted">Silver Package — Gedung Wanita</p>
+                        <div><h4 class="font-bold text-xs text-charcoal">Kristin &amp; Aldy</h4><p class="text-[11px] text-muted">Silver Package — Gedung Wanita</p>
                         </div>
                     </div>
                 </div>
@@ -689,846 +474,221 @@
         </div>
     </section>
 
-    <!-- SECTION FAQ -->
     <section id="faq" class="py-24 bg-ivory border-t border-stone-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
-                
                 <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
                     <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold">— FAQ</p>
-                    <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal leading-tight">
-                        Pertanyaan yang paling sering ditanyakan
-                    </h2>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Belum terjawab? Kirim pertanyaan Anda langsung ke WhatsApp kami — biasanya dibalas di jam kerja.
-                    </p>
-                    <a href="https://wa.me/6282293697141" target="_blank" class="inline-block border border-charcoal hover:bg-charcoal hover:text-white text-charcoal px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition">
-                        Tanya Lewat WhatsApp
-                    </a>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal leading-tight">Pertanyaan yang sering ditanyakan</h2>
+                    <p class="text-muted text-sm leading-relaxed">Kirim pertanyaan Anda langsung ke WhatsApp kami di jam kerja.</p>
+                    <a href="https://wa.me/6282293697141" target="_blank" class="inline-block border border-charcoal hover:bg-charcoal text-charcoal px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition">Tanya Lewat WhatsApp</a>
                 </div>
-
                 <div class="lg:col-span-8 space-y-4">
                     <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer" open>
                         <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
                             <span>Kapan waktu terbaik mulai menghubungi wedding organizer?</span>
                             <span class="text-2xl font-light text-muted group-open:rotate-45 transition transform duration-300">+</span>
                         </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Waktu terbaik adalah 6 hingga 12 bulan sebelum hari H untuk paket Full Planning agar Anda bisa mengamankan tanggal venue dan vendor favorit. Namun untuk paket Day-of Coordination, minimal 1 hingga 2 bulan sebelum acara.
-                        </p>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Waktu terbaik adalah 6 hingga 12 bulan sebelum hari H untuk paket Full Planning, atau 1-2 bulan untuk Day-of Coordination.</p>
                     </details>
-
                     <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
                         <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
                             <span>Bagaimana sistem pembayarannya?</span>
-                            <span class="text-2xl font-light text-muted group-open:rotate-45 transition transform duration-300">+</span>
-                        </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Pembayaran dilakukan secara bertahap (termin) sesuai kesepakatan kontrak kerja. Untuk DP awal saat penguncian tanggal, dan pelunasan termin terakhir maksimal 30 hari sebelum hari-H acara.
-                        </p>
-                    </details>
-
-                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
-                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
-                            <span>Apakah deposit bisa dikembalikan?</span>
                             <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
                         </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Dana deposit atau Down Payment (DP) yang telah disetorkan bersifat tidak dapat dikembalikan (non-refundable) karena digunakan untuk mengunci tanggal dan mengikat vendor utama, namun dapat dijadwalkan ulang sesuai ketentuan force majeure.
-                        </p>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Profile pembayaran dilakukan bertahap sesuai kontrak.</p>
                     </details>
-
                     <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
-                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
-                            <span>Area kerja kalian sampai mana?</span>
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoutal flex items-center justify-between list-none">
+                            <span>Apakah area kerja kalian mencakup luar Tanjung Selor?</span>
                             <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
                         </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Basis utama Langit Planner adalah di Tanjung Selor dan mencakup seluruh wilayah Kalimantan Utara (Bulungan, Tarakan, Malinau, Nunukan, Berau) serta melayani destination wedding ke luar kota.
-                        </p>
-                    </details>
-
-                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
-                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
-                            <span>Apakah harus memakai vendor rekanan Langit Planner?</span>
-                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
-                        </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Tidak harus. Anda bebas menggunakan vendor pilihan sendiri maupun memilih dari daftar rekanan terkurasi kami. Tim Langit Planner akan tetap melakukan koordinasi penuh di hari-H.
-                        </p>
-                    </details>
-
-                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
-                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
-                            <span>Berapa jumlah kru yang hadir di hari-H?</span>
-                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
-                        </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Jumlah kru bervariasi mulai dari 8 hingga 15 orang profesional terlatih tergantung dari skala paket yang diambil (Day-of Coordination, Full Planning, atau Diamond Package) untuk memastikan seluruh area acara tertangani dengan sempurna.
-                        </p>
-                    </details>
-
-                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
-                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
-                            <span>Apakah bisa menangani pernikahan adat?</span>
-                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
-                        </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Sangat bisa! Kami berpengalaman dalam menangani berbagai prosesi adat Nusantara (Jawa, Sunda, Minang, Batak, dan Adat Lokal Kaltara) maupun pernikahan berkonsep modern / religious.
-                        </p>
-                    </details>
-
-                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
-                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
-                            <span>Bagaimana kalau terjadi hal di luar rencana saat hari-H?</span>
-                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
-                        </summary>
-                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">
-                            Setiap acara selalu kami lengkapi dengan rencana cadangan (Plan B) serta koordinator lapangan yang sigap mengambil tindakan cepat agar pengantin dan keluarga tetap tenang menikmati momen bahagia.
-                        </p>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Ya, kami mencakup seluruh wilayah Kalimantan Utara (Bulungan, Tarakan, Malinau, Nunukan, Berau).</p>
                     </details>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FORMULIR KONSULTASI (DENGAN KALENDER INTERAKTIF DINAMIS) -->
     <section id="konsultasi" class="py-24 bg-[#EFECE6] border-t border-stone-300/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                
                 <div class="lg:col-span-5 space-y-8 pt-2">
                     <div>
-                        <p class="text-[11px] uppercase tracking-[0.25em] text-muted font-semibold mb-4">— KONTAK & JADWAL</p>
-                        <h2 class="font-editorial text-5xl sm:text-6xl font-normal text-charcoal leading-[1.08]">
-                            Mari mulai dari obrolan santai
-                        </h2>
-                        <p class="text-sm text-muted mt-5 leading-relaxed">
-                            Konsultasi gratis, tanpa kewajiban apa pun. Ceritakan rencana Anda, dan kami bantu petakan langkah berikutnya.
-                        </p>
+                        <p class="text-[11px] uppercase tracking-[0.25em] text-muted font-semibold mb-4">— KONTAK & Jadwal</p>
+                        <h2 class="font-editorial text-5xl sm:text-6xl font-normal text-charcoal leading-[1.08]">Mari mulai dari obrolan santai</h2>
+                        <p class="text-sm text-muted mt-5 leading-relaxed">Konsultasi gratis, tanpa kewajiban apa pun. Ceritakan rencana Anda.</p>
                     </div>
-
                     <div class="space-y-6 text-xs text-muted pt-2">
-                        <div>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">KANTOR & AREA LAYANAN</p>
-                            <p class="leading-relaxed">Tanjung Selor, Kab. Bulungan<br>Kalimantan Utara, Indonesia</p>
+                        <div><p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">KANTOR</p><p class="leading-relaxed">Tanjung Selor, Kab. Bulungan, Kaltara</p>
                         </div>
-                        <div>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">JAM OPERASIONAL</p>
-                            <p class="leading-relaxed">Selasa – Minggu, 09.00 – 18.00 WITA<br>Senin & hari libur: dengan perjanjian</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">WHATSAPP &amp; INSTAGRAM</p>
-                            <p class="leading-relaxed font-semibold text-charcoal">082293697141 (Yogs) • @langit_planner</p>
-                        </div>
+                        <div><p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">WHATSAPP</p><p class="leading-relaxed font-semibold text-charcoal">082293697141 (Yogs)</p></div>
                     </div>
                 </div>
-
                 <div class="lg:col-span-7">
                     <div class="bg-[#FAF8F5] p-8 sm:p-12 shadow-sm border border-stone-200/80 rounded-3xl">
                         <p class="text-[10px] uppercase tracking-[0.25em] text-muted font-semibold mb-2">— FORMULIR KONSULTASI</p>
                         <h3 class="font-editorial text-3xl sm:text-4xl font-normal text-charcoal mb-8">Ceritakan rencana pernikahan Anda</h3>
-
                         <form onsubmit="sendToWhatsApp(event)" class="space-y-7">
                             <div class="grid sm:grid-cols-2 gap-8">
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">NAMA LENGKAP</label>
-                                    <input type="text" id="form-nama" required placeholder="Nama Anda & pasangan" class="input-editorial">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">NOMOR WHATSAPP</label>
-                                    <input type="tel" id="form-wa" required placeholder="08xxxxxxxxxx" class="input-editorial">
-                                </div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">NAMA LENGKAP</label><input type="text" id="form-nama" required placeholder="Nama Anda & pasangan" class="input-editorial"></div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-widest text-muted mb-1">WHATSAPP</label><input type="tel" id="form-wa" required placeholder="08..." class="input-editorial"></div>
                             </div>
-
                             <div class="grid sm:grid-cols-2 gap-8">
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">TANGGAL PERNIKAHAN</label>
-                                    <input type="date" id="form-tanggal" required class="input-editorial">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">ESTIMASI JUMLAH TAMU</label>
-                                    <select id="form-tamu" class="input-editorial">
-                                        <option value="Belum pasti">Pilih perkiraan</option>
-                                        <option value="< 300 Tamu (Intimate)">&lt; 300 Tamu</option>
-                                        <option value="500 - 800 Tamu">500 - 800 Tamu</option>
-                                        <option value="1000 Porsi / Tamu">1000 Porsi / Tamu</option>
-                                    </select>
-                                </div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">TANGGAL</label><input type="date" id="form-tanggal" required class="input-editorial"></div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-widest text-muted mb-1">TAMU</label><select id="form-tamu" class="input-editorial"><option value="< 300">&lt; 300 Tamu</option><option value="1000 Porsi">1000 Porsi</option></select></div>
                             </div>
-
                             <div class="grid sm:grid-cols-2 gap-8">
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">LOKASI / VENUE</label>
-                                    <input type="text" id="form-venue" placeholder="Ballroom, Tamadun, Gedung Wanita, dll" class="input-editorial">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">PAKET</label>
-                                    <select id="form-paket" class="input-editorial">
-                                        <option value="Diamond Package">Diamond Package</option>
-                                        <option value="Silver Package">Silver Package</option>
-                                        <option value="Full Planning">Full Planning</option>
-                                        <option value="Day-of Coordination">Day-of Coordination</option>
-                                        <option value="Custom Package">Custom Package</option>
-                                    </select>
-                                </div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">VENUE</label><input type="text" id="form-venue" placeholder="Ballroom..." class="input-editorial"></div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">PAKET</label><select id="form-paket" class="input-editorial"><option value="Diamond">Diamond</option><option value="Silver">Silver</option></select></div>
                             </div>
-
+                            <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">KONSEP</label><textarea id="form-konsep" rows="2" placeholder="Konsep..." class="input-editorial resize-y"></textarea></div>
                             <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">KONSEP IMPIAN</label>
-                                <textarea id="form-konsep" rows="2" placeholder="Ceritakan konsep impian Anda" class="input-editorial resize-y"></textarea>
-                            </div>
-
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-3">
-                                    JADWAL SESI DISKUSI <span id="selected-consultation-date" class="text-champagneDark font-bold ml-1"></span>
-                                </label>
-                                <div class="bg-[#F4F1EA] p-6 border border-stone-200 rounded-2xl">
+                                <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-3">JADWAL <span id="selected-consultation-date" class="text-champagneDark font-bold ml-1"></span></label>
+                                <div class="bg-[#F4F1EA] p-6 border rounded-2xl">
                                     <div class="flex items-center justify-between mb-4">
-                                        <button type="button" onclick="changeCalendarMonth(-1)" class="p-1.5 rounded-lg hover:bg-stone-200 text-charcoal transition">
-                                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                        </button>
-                                        <span id="calendar-month-label" class="font-editorial text-xl font-bold text-charcoal">November 2026</span>
-                                        <button type="button" onclick="changeCalendarMonth(1)" class="p-1.5 rounded-lg hover:bg-stone-200 text-charcoal transition">
-                                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                                        </button>
+                                        <button type="button" onclick="changeCalendarMonth(-1)" class="p-1.5 rounded-lg hover:bg-stone-200"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                                        <span id="calendar-month-label" class="font-editorial text-xl font-bold">November 2026</span>
+                                        <button type="button" onclick="changeCalendarMonth(1)" class="p-1.5 rounded-lg hover:bg-stone-200"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
                                     </div>
-                                    <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-muted uppercase mb-2">
-                                        <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
-                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-muted uppercase mb-2"><span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span></div>
                                     <div class="grid grid-cols-7 gap-1.5 text-center text-xs" id="calendar-grid"></div>
                                 </div>
                             </div>
-
-                            <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-semibold py-4 rounded-full text-xs uppercase tracking-[0.2em] transition shadow-md">
-                                KIRIM & JADWALKAN VIA WHATSAPP
-                            </button>
+                            <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-semibold py-4 rounded-full text-xs uppercase tracking-[0.2em] transition">KIRIM & JADWALKAN VIA WHATSAPP</button>
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FOOTER RESMI -->
     <footer class="bg-charcoal text-stone-300 py-16 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
                 <div class="md:col-span-5 space-y-4">
-                    <div class="flex items-center gap-2">
-                        <span class="font-editorial text-3xl font-bold tracking-wider text-white">LANGIT</span>
-                        <span class="text-xs uppercase tracking-[0.22em] text-champagne font-bold">Planner</span>
-                    </div>
-                    <p class="text-xs text-stone-400 leading-relaxed max-w-sm">
-                        Wedding &amp; Event Organizer profesional berbasis di Tanjung Selor, Kalimantan Utara. Menghadirkan ketenangan dan transparansi penuh melalui portal eksklusif <strong>Langit Tracker</strong>.
-                    </p>
+                    <div class="flex items-center gap-2"><span class="font-editorial text-3xl font-bold tracking-wider text-white">LANGIT</span><span class="text-xs uppercase tracking-[0.22em] text-champagne font-bold">Planner</span></div>
+                    <p class="text-xs text-stone-400 leading-relaxed max-w-sm">Wedding &amp; Event Organizer profesional berbasis di Tanjung Selor, Kaltara.</p>
                 </div>
-
                 <div class="md:col-span-3 space-y-3 text-xs">
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Navigasi Cepat</p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Navigasi</p>
                     <ul class="space-y-2 text-stone-400">
                         <li><a href="#projek" class="hover:text-white transition">Langit Tracker Live</a></li>
                         <li><a href="#alur" class="hover:text-white transition">4 Langkah Kerja</a></li>
-                        <li><a href="#paket" class="hover:text-white transition">Pricelist Diamond &amp; Silver</a></li>
-                        <li><a href="#portofolio" class="hover:text-white transition">Portofolio Instagram</a></li>
-                        <li><a href="#faq" class="hover:text-white transition">Pertanyaan Umum (FAQ)</a></li>
+                        <li><a href="#paket" class="hover:text-white transition">Pricelist</a></li>
                     </ul>
                 </div>
-
                 <div class="md:col-span-4 space-y-3 text-xs">
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Hubungi Kami</p>
-                    <p class="text-stone-400">📍 Tanjung Selor, Kabupaten Bulungan, Kalimantan Utara</p>
-                    <p class="text-stone-400">📞 WhatsApp: <a href="https://wa.me/6282293697141" target="_blank" class="text-white font-semibold hover:text-champagne">082293697141 (Yogs)</a></p>
-                    <p class="text-stone-400">📸 Instagram: <a href="https://www.instagram.com/langit_planner/" target="_blank" class="text-white font-semibold hover:text-champagne">@langit_planner</a></p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Kontak</p>
+                    <p class="text-stone-400">Tanjung Selor, Kaltara</p>
+                    <p class="text-stone-400">WhatsApp: <a href="https://wa.me/6282293697141" target="_blank" class="text-white font-semibold">082293697141 (Yogs)</a></p>
                 </div>
             </div>
-
             <div class="pt-8 flex flex-wrap items-center justify-between gap-4 text-[11px] text-stone-500">
-                <p>© 2026 Langit Planner Wedding &amp; Event Organizer. All rights reserved.</p>
-                <button onclick="openLoginModal()" class="text-champagne hover:underline flex items-center gap-1">
-                    <i data-lucide="lock" class="w-3 h-3"></i> Portal Catin &amp; Admin
-                </button>
+                <p>© 2026 Langit Planner. All rights reserved.</p>
+                <button onclick="openLoginModal()" class="text-champagne hover:underline flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Portal Catin &amp; Admin</button>
             </div>
         </div>
     </footer>
 
-    <!-- MODAL LOGIN "LANGIT TRACKER" -->
-    <div id="login-modal" class="hidden fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-[#FAF8F5] rounded-3xl max-w-4xl w-full p-3 sm:p-4 relative shadow-2xl overflow-hidden border border-stone-200 grid md:grid-cols-12">
-            <button onclick="closeLoginModal()" class="absolute top-5 right-5 z-20 text-muted hover:text-charcoal bg-white/80 p-2 rounded-full shadow-sm"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="md:col-span-6 relative rounded-2xl overflow-hidden min-h-[280px]">
-                <img src="img/ig-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80';" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
-                    <h4 class="font-editorial text-3xl leading-tight">Every Step to Your <span class="text-champagne italic">Perfect Day.</span></h4>
-                </div>
-            </div>
-            <div class="md:col-span-6 p-6 sm:p-10 flex flex-col justify-center">
-                <div class="text-center mb-6">
-                    <h3 class="font-editorial text-3xl font-semibold text-charcoal">Langit Tracker</h3>
-                    <p class="text-xs text-muted mt-1">Portal Khusus Catin &amp; Admin (Private)</p>
-                </div>
-                <form onsubmit="handleLogin(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-charcoal mb-1">Username</label>
-                        <input type="text" id="login-user" required placeholder="Masukkan username akun..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-charcoal mb-1">Password</label>
-                        <input type="password" id="login-pass" required placeholder="Masukkan kata sandi..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm">
-                    </div>
-                    <button type="submit" class="w-full bg-[#9A7B3E] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl text-sm transition mt-2">Masuk ke Langit Tracker →</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DASHBOARD INTERAKTIF (HANYA BISA DIAKSES SETELAH LOGIN) -->
-    <div id="dashboard-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
-        <div class="bg-ivory rounded-3xl max-w-5xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh] border border-stone-200">
-            <button onclick="closeDashboardModal()" class="absolute top-5 right-5 text-muted hover:text-charcoal bg-white p-2 rounded-full shadow"><i data-lucide="x" class="w-5 h-5"></i></button>
-
-            <div class="flex items-center gap-4 border-b border-stone-200 pb-4 mb-6 pr-10">
-                <div class="w-12 h-12 rounded-full bg-charcoal text-champagne flex items-center justify-center font-bold text-xl font-editorial">LP</div>
-                <div>
-                    <span id="user-role-badge" class="text-[10px] font-bold uppercase tracking-wider bg-champagne text-white px-2.5 py-0.5 rounded-full">Langit Tracker</span>
-                    <h3 id="dashboard-title" class="font-editorial text-2xl sm:text-3xl font-bold text-charcoal mt-0.5">Portal Persiapan</h3>
-                </div>
-            </div>
-
-            <!-- TAMPILAN KLIEN (HANYA MUNCUL SAAT KLIEN LOGIN) -->
-            <div id="client-dashboard-content" class="space-y-6">
-                
-                <!-- BARIS INFO UTAMA + COUNTDOWN HARI-H -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                        <p class="text-[10px] text-muted uppercase tracking-widest font-bold">Mempelai Pria & Wanita</p>
-                        <h4 id="client-fullname-couple" class="font-editorial text-xl font-bold text-charcoal mt-1">—</h4>
-                        <p id="client-nickname-couple" class="text-xs text-champagneDark font-semibold mt-1">Panggilan: —</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                        <p class="text-[10px] text-muted uppercase tracking-widest font-bold">Paket Layanan</p>
-                        <h4 id="client-package" class="font-bold text-sm text-charcoal mt-1.5">—</h4>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                        <p class="text-[10px] text-muted uppercase tracking-widest font-bold">Venue &amp; Jadwal</p>
-                        <h4 id="client-venue" class="font-bold text-sm text-charcoal mt-1.5">—</h4>
-                    </div>
-                    <div class="bg-charcoal text-white p-5 rounded-2xl border border-champagne shadow-sm flex flex-col justify-between">
-                        <p class="text-[10px] text-champagne uppercase tracking-widest font-bold flex items-center gap-1">
-                            <i data-lucide="clock" class="w-3 h-3"></i> Countdown Hari-H
-                        </p>
-                        <h4 id="client-countdown-badge" class="font-editorial text-2xl font-bold text-white mt-1">Menuju Hari Bahagia</h4>
-                        <p id="client-doc-area" class="text-[11px] text-stone-300 mt-1"></p>
-                    </div>
-                </div>
-
-                <!-- KOTAK PROGRES PEMBAYARAN (KHUSUS DIAMOND / SILVER & JIKA DICENTANG ADMIN) -->
-                <div id="client-payment-progress-box" class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="shield-check" class="w-4 h-4 text-champagneDark"></i>
-                            <h4 class="font-bold text-xs text-charcoal uppercase tracking-wider">Progres Pembayaran Paket (Private)</h4>
-                        </div>
-                        <span id="client-progress-text" class="text-xs font-bold text-white bg-champagneDark px-3 py-1 rounded-full">0%</span>
-                    </div>
-                    <div class="w-full bg-stone-100 h-3 rounded-full overflow-hidden">
-                        <div id="client-progress-bar" class="bg-champagne h-full rounded-full transition-all duration-500" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <!-- TABEL 7 VENDOR UTAMA -->
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
-                    <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider">Daftar 7 Vendor Terlibat & Status Booking Admin</h4>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs">
-                            <thead>
-                                <tr class="border-b border-stone-200 text-muted uppercase text-[10px]">
-                                    <th class="pb-3 font-bold">Kategori</th>
-                                    <th class="pb-3 font-bold">Nama Vendor</th>
-                                    <th class="pb-3 font-bold">Status Booking</th>
-                                </tr>
-                            </thead>
-                            <tbody id="vendor-table-body" class="divide-y divide-stone-100"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- CHECKLIST PERSIAPAN MANDIRI CATIN (INTERAKTIF) -->
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
-                    <div class="flex flex-wrap items-center justify-between gap-2">
-                        <div>
-                            <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider">Checklist Persiapan Menuju Hari-H</h4>
-                            <p class="text-xs text-muted">Centang tahapan yang sudah Anda selesaikan bersama pasangan (tersimpan otomatis).</p>
-                        </div>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-3 text-xs" id="client-checklist-container"></div>
-                </div>
-
-                <!-- FORMULIR BIODATA PENGANTIN & RUNDOWN UNTUK CATIN -->
-                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm space-y-6">
-                    <div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest bg-champagne text-white px-2.5 py-1 rounded-full">Formulir Eksklusif Catin</span>
-                        <h4 class="font-editorial text-2xl font-bold text-charcoal mt-2">Isi Biodata &amp; Data Rundown Acara Anda</h4>
-                        <p class="text-xs text-muted mt-1">Lengkapi data berikut untuk kebutuhan cetak undangan, buku tamu, dan rundown acara oleh tim Langit Planner.</p>
-                    </div>
-
-                    <form onsubmit="sendCatinBiodataToWhatsApp(event)" class="space-y-5 text-xs">
-                        <div class="grid sm:grid-cols-2 gap-6 p-4 rounded-xl bg-ivory border border-stone-200">
-                            <div class="space-y-4">
-                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">1. Data Calon Pengantin Wanita (CPW)</h5>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Lengkap Wanita (&amp; Gelar)</label>
-                                    <input type="text" id="catin-cpw-full" required placeholder="Cth: Nova Aulia, S.Pd" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Panggilan Wanita</label>
-                                    <input type="text" id="catin-cpw-nick" required placeholder="Cth: Nova" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Ayahanda CPW</label>
-                                    <input type="text" id="catin-cpw-ayah" placeholder="Bapak ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Ibunda CPW</label>
-                                    <input type="text" id="catin-cpw-ibu" placeholder="Ibu ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Saudara-saudara (Keluarga CPW)</label>
-                                    <textarea id="catin-cpw-saudara" rows="2" placeholder="Sebutkan nama saudara..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Saksi dari Pihak Wanita (CPW)</label>
-                                    <input type="text" id="catin-cpw-saksi" placeholder="Nama saksi..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                            </div>
-
-                            <div class="space-y-4">
-                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">2. Data Calon Pengantin Pria (CPP)</h5>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Lengkap Pria (&amp; Gelar)</label>
-                                    <input type="text" id="catin-cpp-full" required placeholder="Cth: Rizki Pratama, S.Kom" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Panggilan Pria</label>
-                                    <input type="text" id="catin-cpp-nick" required placeholder="Cth: Rizki" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Ayahanda CPP</label>
-                                    <input type="text" id="catin-cpp-ayah" placeholder="Bapak ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Ibunda CPP</label>
-                                    <input type="text" id="catin-cpp-ibu" placeholder="Ibu ..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Saudara-saudara (Keluarga CPP)</label>
-                                    <textarea id="catin-cpp-saudara" rows="2" placeholder="Sebutkan nama saudara..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Saksi dari Pihak Pria (CPP)</label>
-                                    <input type="text" id="catin-cpp-saksi" placeholder="Nama saksi..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-4">
-                            <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">3. Pendukung Acara, Tamu VIP &amp; Request Musik</h5>
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Sambutan Resepsi</label>
-                                    <input type="text" id="catin-sambutan" placeholder="Nama pemberi sambutan..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-charcoal mb-1">Nama Pembaca Ayat Suci Al-Qur'an</label>
-                                    <input type="text" id="catin-tilawah" placeholder="Nama Qori/Tilawah..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block font-bold text-charcoal mb-1">Nama Tamu VIP (Pisahkan dengan koma)</label>
-                                <textarea id="catin-vip" rows="2" placeholder="Bapak Bupati, Bapak Kadis, dll..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
-                            </div>
-                            <div>
-                                <label class="block font-bold text-charcoal mb-1">List Lagu Request (Untuk Entertainment)</label>
-                                <textarea id="catin-lagu" rows="2" placeholder="Judul lagu & penyanyi favorit..." class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
-                            <i data-lucide="send" class="w-4 h-4"></i><span>Kirim Data Biodata &amp; Rundown ke WhatsApp Yogs (Admin)</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- TAMPILAN ADMIN (INPUT CATIN, PASSWORD KHUSUS, OPSI PROGRES BAYAR, TANGGAL HARI-H, & 7 VENDOR) -->
-            <div id="admin-dashboard-content" class="hidden space-y-6">
-                <div class="bg-charcoal text-white p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4">
-                    <div>
-                        <p class="text-xs text-champagne font-semibold uppercase tracking-wider">Mode Kontrol Admin (Yogs)</p>
-                        <p class="text-xs text-stone-300 mt-0.5">Pilih Catin atau buat baru untuk mengatur akun, password, countdown, &amp; status vendor.</p>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-3">
-                        <select id="admin-select-catin" onchange="switchAdminCatin(this.value)" class="px-4 py-2.5 rounded-xl text-xs font-bold text-charcoal bg-white"></select>
-                        <button type="button" onclick="prepareNewCatinForm()" class="bg-champagne hover:bg-champagneDark text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
-                            <i data-lucide="user-plus" class="w-4 h-4"></i><span>+ Input Catin Baru</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
-                    <div class="flex items-center justify-between border-b border-stone-100 pb-3">
-                        <h4 id="admin-form-mode-title" class="font-bold text-sm text-charcoal uppercase tracking-wider">Edit Data &amp; Password Catin</h4>
-                        <button type="button" onclick="deleteCurrentCatin()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1">
-                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span>Hapus Catin Ini</span>
-                        </button>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">1. Nama Lengkap Catin Pria *</label>
-                            <input type="text" id="admin-groom-full" placeholder="Cth: Rizki Pratama, S.Kom" class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">2. Nama Panggilan Pria *</label>
-                            <input type="text" id="admin-groom-nick" placeholder="Cth: Rizki" class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">3. Nama Lengkap Catin Wanita *</label>
-                            <input type="text" id="admin-bride-full" placeholder="Cth: Nova Aulia, S.Pd" class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">4. Nama Panggilan Wanita *</label>
-                            <input type="text" id="admin-bride-nick" placeholder="Cth: Nova" class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                    </div>
-
-                    <!-- Baris Paket, Venue, Tanggal Countdown, Username & Password Catin -->
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs pt-3 border-t border-stone-100">
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">5. Paket Pernikahan *</label>
-                            <select id="admin-edit-pkg" onchange="handleAdminPackageChange()" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white font-semibold">
-                                <option value="Diamond Package">Diamond Package</option>
-                                <option value="Silver Package">Silver Package</option>
-                                <option value="Full Planning">Full Planning</option>
-                                <option value="Day-of Coordination">Day-of Coordination</option>
-                                <option value="Custom Package">Custom Package</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">Lokasi Venue &amp; Ket. Tanggal *</label>
-                            <input type="text" id="admin-edit-venue" placeholder="Ballroom — 20 Des 2026" class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">📅 Tanggal Hari-H (Untuk Countdown)</label>
-                            <input type="date" id="admin-edit-date" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white">
-                        </div>
-                    </div>
-
-                    <div class="grid sm:grid-cols-3 gap-4 text-xs">
-                        <div>
-                            <label class="block font-bold text-champagneDark mb-1">🔑 Username Login Catin *</label>
-                            <input type="text" id="admin-edit-user" placeholder="cth: rizki" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-champagneDark mb-1">🔒 Password Login Catin *</label>
-                            <input type="text" id="admin-edit-pass" placeholder="cth: langit2026" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-charcoal mb-1">📄 Link Dokumen / PDF Rundown (Opsional)</label>
-                            <input type="url" id="admin-edit-doc" placeholder="https://drive.google.com/..." class="w-full px-3 py-2 rounded-xl border border-stone-300">
-                        </div>
-                    </div>
-
-                    <!-- PENGATURAN KHUSUS PROGRES PEMBAYARAN (CONTENG ADMIN & KHUSUS DIAMOND/SILVER) -->
-                    <div class="p-4 rounded-xl bg-ivory border border-stone-200/90 space-y-3 text-xs">
-                        <div class="flex flex-wrap items-center justify-between gap-4">
-                            <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                                <input type="checkbox" id="admin-show-progress" onchange="toggleAdminProgressInput()" class="w-4 h-4 accent-[#9A7B3E] rounded cursor-pointer">
-                                <span class="font-bold text-charcoal">Aktifkan &amp; Tampilkan Progres Pembayaran di Portal Pribadi Catin</span>
-                                <span class="text-[10px] font-bold uppercase tracking-wider bg-champagne/20 text-champagneDark px-2 py-0.5 rounded-full">Khusus Diamond &amp; Silver</span>
-                            </label>
-                            <span id="admin-pkg-progress-note" class="text-[11px] text-muted italic">
-                                *Progres pembayaran hanya tampil saat Catin login sendiri (tidak tampil di publik).
-                            </span>
-                        </div>
-
-                        <div id="admin-progress-input-wrapper" class="flex items-center gap-4 pt-2 border-t border-stone-200/70">
-                            <label class="font-bold text-charcoal shrink-0">Persentase Pembayaran Masuk (%):</label>
-                            <input type="number" id="admin-edit-progress" min="0" max="100" placeholder="0 - 100" class="w-28 px-3 py-1.5 rounded-lg border border-stone-300 bg-white font-bold text-charcoal">
-                            <span class="text-[11px] text-muted">Hanya dapat dilihat oleh Catin bersangkutan di dalam portal.</span>
-                        </div>
-                    </div>
-
-                    <!-- Input 7 Vendor Spesifik -->
-                    <div class="pt-4 border-t border-stone-200">
-                        <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider mb-3">6. Nama Vendor (Dekorasi, MUA, MC, Musik, Henna, WCC, Catering)</h4>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-xs">
-                                <thead>
-                                    <tr class="border-b border-stone-200 text-muted">
-                                        <th class="pb-2 font-bold w-1/4">Kategori Vendor</th>
-                                        <th class="pb-2 font-bold w-2/5">Nama Vendor Pilihan</th>
-                                        <th class="pb-2 font-bold w-1/3">Status Booking Admin</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="admin-vendor-tbody" class="divide-y divide-stone-100"></tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-stone-200">
-                        <span id="admin-save-feedback" class="text-xs font-bold text-emerald-700"></span>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <button type="button" onclick="copyDatabaseForGitHub()" class="bg-stone-800 hover:bg-charcoal text-amber-300 px-5 py-3.5 rounded-xl text-xs font-bold transition shadow flex items-center gap-2" title="Salin kode database agar bisa ditempel ke GitHub dan diakses dari HP klien">
-                                <i data-lucide="copy" class="w-4 h-4"></i><span>Salin Kode Database (Untuk GitHub)</span>
-                            </button>
-                            <button type="button" onclick="saveAdminChanges()" class="bg-champagne hover:bg-champagneDark text-white px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg flex items-center gap-2">
-                                <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data &amp; Password</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Petunjuk Sinkronisasi GitHub untuk HP Klien -->
-                    <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-relaxed">
-                        <strong>💡 Penting Saat Menghapus atau Menambah Catin:</strong><br>
-                        1. Setelah menghapus atau menyimpan Catin, perubahan langsung tersimpan di browser perangkat ini.<br>
-                        2. Agar perubahan (termasuk Catin yang dihapus) berlaku permanen di internet/Vercel, klik tombol <strong>"Salin Kode Database (Untuk GitHub)"</strong> di atas, lalu tempelkan (replace) ke bagian <code>const DEFAULT_DATABASE = ...</code> di dalam file <code>index.html</code> pada GitHub-mu!
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-6 text-center">
-                <button onclick="closeDashboardModal()" class="bg-charcoal text-white px-6 py-2.5 rounded-full text-xs font-semibold">Tutup Portal</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPT UTAMA -->
+    <!-- SCRIPT UTAMA UNTUK FITUR BIODATA OTOMATIS, EDIT, & WHATSAPP ADMIN -->
     <script>
-        // FUNGSI TOGGLE MENU MOBILE (HAMBURGER MENU HP)
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
-        // SCRIPT ANIMASI CUSTOM CURSOR
         const cursorRing = document.getElementById('cursor-ring');
         const cursorDot = document.getElementById('cursor-dot');
-        let mouseX = 0, mouseY = 0;
-        let ringX = 0, ringY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-        });
-
-        function animateCursor() {
-            ringX += (mouseX - ringX) * 0.2;
-            ringY += (mouseY - ringY) * 0.2;
-            cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-            requestAnimationFrame(animateCursor);
-        }
+        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+        window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`; });
+        function animateCursor() { ringX += (mouseX - ringX) * 0.2; ringY += (mouseY - ringY) * 0.2; cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`; requestAnimationFrame(animateCursor); }
         animateCursor();
 
-        document.querySelectorAll('a, button, input, select, textarea, details').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorRing.style.transform += ' scale(1.5)';
-                cursorRing.style.borderColor = '#1F1E1C';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorRing.style.transform = cursorRing.style.transform.replace(' scale(1.5)', '');
-                cursorRing.style.borderColor = '#C5A059';
-            });
-        });
-
-        // SCRIPT PEMUTAR MUSIK BACKSOUND (SESUAI NAMA FILE 'img/Backsound.mp3' DI GITHUB)
         const bgAudio = document.getElementById('bg-music');
         let isMusicPlaying = false;
         const audioCandidates = ['img/Backsound.mp3', 'img/backsound.mp3', 'img/Backsound.MP3'];
         let audioTryIndex = 0;
-
         function toggleMusic() {
             const icon = document.getElementById('music-icon');
             const text = document.getElementById('music-text');
             if (isMusicPlaying) {
-                bgAudio.pause();
-                isMusicPlaying = false;
-                icon.setAttribute('data-lucide', 'volume-x');
-                text.innerText = "Putar Musik";
-                lucide.createIcons();
+                bgAudio.pause(); isMusicPlaying = false; icon.setAttribute('data-lucide', 'volume-x'); text.innerText = "Putar Musik"; lucide.createIcons();
             } else {
                 bgAudio.play().then(() => {
-                    isMusicPlaying = true;
-                    icon.setAttribute('data-lucide', 'volume-2');
-                    text.innerText = "Jeda Musik";
-                    lucide.createIcons();
+                    isMusicPlaying = true; icon.setAttribute('data-lucide', 'volume-2'); text.innerText = "Jeda Musik"; lucide.createIcons();
                 }).catch(() => {
-                    // Coba kandidat nama file berikutnya jika gagal
                     audioTryIndex = (audioTryIndex + 1) % audioCandidates.length;
                     bgAudio.src = audioCandidates[audioTryIndex];
                     bgAudio.play().then(() => {
-                        isMusicPlaying = true;
-                        icon.setAttribute('data-lucide', 'volume-2');
-                        text.innerText = "Jeda Musik";
-                        lucide.createIcons();
-                    }).catch(() => {
-                        alert("Gagal memutar musik. Pastikan file 'Backsound.mp3' berada di dalam folder img/ di GitHub.");
-                    });
+                        isMusicPlaying = true; icon.setAttribute('data-lucide', 'volume-2'); text.innerText = "Jeda Musik"; lucide.createIcons();
+                    }).catch(() => { alert("Pastikan file 'Backsound.mp3' ada di dalam folder img/ di GitHub."); });
                 });
             }
         }
 
         const SITE_CONFIG = {
             portfolios: [
-                { couple: "Rizki & Nova", caption: "The sacred moment of Rizki & Nova — Langit Planner", localImage: "img/ig-1.jpg", fallbackImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/langit_planner/" },
-                { couple: "Jackie & Dewi", caption: "Elegance in details — Langit Planner", localImage: "img/ig-2.jpg", fallbackImage: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/langit_planner/" },
-                { couple: "Kristin & Aldy", caption: "Ring & Watch Detail — Langit Planner", localImage: "img/ig-3.jpg", fallbackImage: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/p/DcVI3ddhelt/" }
+                { couple: "Rizki & Nova", caption: "The sacred moment of Rizki & Nova", localImage: "img/ig-1.jpg", fallbackImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/langit_planner/" },
+                { couple: "Jackie & Dewi", caption: "Elegance in details", localImage: "img/ig-2.jpg", fallbackImage: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/langit_planner/" },
+                { couple: "Kristin & Aldy", caption: "Ring & Watch Detail", localImage: "img/ig-3.jpg", fallbackImage: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/langit_planner/" }
             ]
         };
 
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
+        const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
 
-        const DEFAULT_CHECKLIST_ITEMS = [
-            "Penentuan tanggal & booking venue utama",
-            "Pendaftaran berkas administrasi KUA / Catatan Sipil",
-            "Fitting busana pengantin & seragam keluarga",
-            "Sesi foto prewedding & pembuatan undangan digital",
-            "Pengisian formulir biodata & lagu rundown",
-            "Technical Meeting bersama seluruh vendor & kru WO"
-        ];
-
-        // DATABASE DEFAULT (BISA DI-UPDATE DARI TOMBOL SALIN KODE DI DASHBOARD ADMIN)
         const DEFAULT_DATABASE = {
-    "kristinaldy": {
-        "username": "kristinaldy",
-        "password": "langit2026",
-        "groomFull": "Aldy",
-        "groomNick": "Aldy",
-        "brideFull": "Kristin",
-        "brideNick": "Kristin",
-        "package": "Silver Package",
-        "venue": "Gedung Wanita - 20  Maret 2027",
-        "weddingDate": "2027-03-20",
-        "docUrl": "",
-        "showProgress": true,
-        "progress": 22,
-        "vendors": [
-            {
-                "cat": "Dekorasi",
-                "name": "Salonanna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MUA",
-                "name": "Ratih",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MC",
-                "name": "Yolanda",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Musik",
-                "name": "Oppa",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Henna",
-                "name": "Mitra Langit Planner",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "WCC",
-                "name": "Langit Picture",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Catering",
-                "name": "Hj. Sabar",
-                "status": "Sudah Dibooking Admin"
+            rizki: {
+                username: "rizki", password: "langit2026", groomFull: "Rizki Pratama, S.Kom", groomNick: "Rizki", brideFull: "Nova Aulia, S.Pd", brideNick: "Nova", package: "Diamond Package", venue: "Ballroom — 20 Des 2026", weddingDate: "2026-12-20", docUrl: "", showProgress: true, progress: 85,
+                biodata: { cpwFull: "", cpwNick: "", cpwAyah: "", cpwIbu: "", cpwSaudara: "", cpwSaksi: "", cppFull: "", cppNick: "", cppAyah: "", cppIbu: "", cppSaudara: "", cppSaksi: "", sambutan: "", tilawah: "", vip: "", lagu: "" },
+                vendors: [
+                    { cat: "Dekorasi", name: "Erza Art Decor", status: "Sudah Dibooking Admin" },
+                    { cat: "MUA", name: "Ratih Salon Professional", status: "Sudah Dibooking Admin" },
+                    { cat: "MC", name: "MC Najwa Zenuba", status: "Sudah Dibooking Admin" },
+                    { cat: "Musik", name: "Opa Music Entertainment", status: "Sudah Dibooking Admin" },
+                    { cat: "Henna", name: "Henna Art Kaltara", status: "Sudah Dibooking Admin" },
+                    { cat: "WCC", name: "Langit Wedding Content Creator", status: "Sudah Dibooking Admin" },
+                    { cat: "Catering", name: "Wafda Catering (1000 Porsi)", status: "Sudah Dibooking Admin" }
+                ]
             }
-        ]
-    }
-};
-        // PERBAIKAN LOGIKA DATABASE AGAR CATIN YANG DIHAPUS TIDAK MUNCUL LAGI
+        };
+
+        let currentActiveCatin = 'rizki';
+        let loggedInClientKey = null;
+
         function getDB() {
-            const saved = localStorage.getItem('langit_db_catin_v5');
-            if (saved !== null) {
-                try {
-                    return JSON.parse(saved);
-                } catch (e) {
-                    return DEFAULT_DATABASE;
-                }
-            }
-            localStorage.setItem('langit_db_catin_v5', JSON.stringify(DEFAULT_DATABASE));
+            const saved = localStorage.getItem('langit_db_catin_v6');
+            if (saved !== null) { try { return JSON.parse(saved); } catch (e) { return DEFAULT_DATABASE; } }
+            localStorage.setItem('langit_db_catin_v6', JSON.stringify(DEFAULT_DATABASE));
             return DEFAULT_DATABASE;
         }
 
-        function saveDB(db) {
-            localStorage.setItem('langit_db_catin_v5', JSON.stringify(db));
-            renderPublicProjects();
-        }
+        function saveDB(db) { localStorage.setItem('langit_db_catin_v6', JSON.stringify(db)); renderPublicProjects(); }
+        function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
 
-        function isEligibleForProgress(pkgName) {
-            return pkgName === 'Diamond Package' || pkgName === 'Silver Package';
-        }
-
-        // TAMPILAN PUBLIK: TANPA DANA DISETOR, TANPA PROGRESS BAR, & TIDAK BISA BUKA PORTAL TANPA LOGIN
         function renderPublicProjects() {
             const container = document.getElementById('public-project-list');
             if (!container) return;
             container.innerHTML = '';
             const db = getDB();
             const keys = Object.keys(db);
-
-            if (keys.length === 0) {
-                container.innerHTML = `
-                    <div class="p-8 text-center rounded-2xl bg-ivory border border-stone-200/80 text-muted text-sm">
-                        Belum ada project aktif yang ditampilkan saat ini.
-                    </div>
-                `;
-                return;
-            }
-
+            if (keys.length === 0) { container.innerHTML = `<div class="p-8 text-center rounded-2xl bg-ivory border text-muted text-sm">Belum ada project aktif.</div>`; return; }
             keys.forEach(key => {
                 const item = db[key];
                 const bookedCount = item.vendors.filter(v => v.status === 'Sudah Dibooking Admin').length;
                 const totalVendors = item.vendors.length;
-
-                const vendorPills = item.vendors.map(v => {
-                    const isBooked = v.status === 'Sudah Dibooking Admin';
-                    return `<span class="px-2.5 py-1 rounded-lg text-[10px] font-medium border ${isBooked ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-stone-100 text-muted border-stone-200'}">${v.cat}: ${v.name || '-'}</span>`;
-                }).join('');
-
+                const vendorPills = item.vendors.map(v => `<span class="px-2.5 py-1 rounded-lg text-[10px] font-medium border ${v.status === 'Sudah Dibooking Admin' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-stone-100 text-muted'}">${v.cat}: ${v.name || '-'}</span>`).join('');
                 container.innerHTML += `
                     <div class="p-5 rounded-2xl bg-ivory border border-stone-200/90 hover:border-champagne transition space-y-3">
                         <div class="flex flex-wrap items-center justify-between gap-2">
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <h4 class="font-editorial text-2xl font-bold text-charcoal">${item.groomNick} & ${item.brideNick}</h4>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider bg-charcoal text-champagne px-2.5 py-0.5 rounded-full">${item.package}</span>
-                                </div>
+                                <div class="flex items-center gap-2"><h4 class="font-editorial text-2xl font-bold text-charcoal">${item.groomNick} & ${item.brideNick}</h4><span class="text-[10px] font-bold uppercase bg-charcoal text-champagne px-2.5 py-0.5 rounded-full">${item.package}</span></div>
                                 <p class="text-xs text-muted mt-0.5">${item.groomFull} &amp; ${item.brideFull} — 📍 ${item.venue}</p>
                             </div>
-                            <div class="text-right">
-                                <span class="inline-flex items-center gap-1 text-[11px] text-emerald-800 bg-emerald-100/80 px-3 py-1 rounded-full font-bold">
-                                    ✓ ${bookedCount}/${totalVendors} Vendor Terkonfirmasi
-                                </span>
-                            </div>
+                            <span class="inline-flex items-center gap-1 text-[11px] text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full font-bold">✓ ${bookedCount}/${totalVendors} Vendor Terkonfirmasi</span>
                         </div>
                         <div class="flex flex-wrap gap-1.5 pt-1">${vendorPills}</div>
-                        <div class="pt-2 border-t border-stone-200/60 flex items-center justify-between">
-                            <span class="text-[11px] text-muted italic flex items-center gap-1">
-                                <i data-lucide="lock" class="w-3 h-3"></i> Detail portal &amp; administrasi bersifat pribadi
-                            </span>
-                            <button onclick="promptClientLogin('${key}')" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1 transition">
-                                <span>Login Portal Catin</span><i data-lucide="key-round" class="w-3.5 h-3.5"></i>
-                            </button>
+                        <div class="pt-2 border-t flex items-center justify-between">
+                            <span class="text-[11px] text-muted italic"><i data-lucide="lock" class="w-3 h-3 inline"></i> Detail portal pribadi</span>
+                            <button onclick="promptClientLogin('${key}')" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1"><span>Login Portal Catin</span><i data-lucide="key-round" class="w-3.5 h-3.5"></i></button>
                         </div>
                     </div>
                 `;
@@ -1536,15 +696,7 @@
             lucide.createIcons();
         }
 
-        function promptClientLogin(usernameKey) {
-            document.getElementById('login-user').value = usernameKey;
-            document.getElementById('login-pass').value = '';
-            openLoginModal();
-            setTimeout(() => {
-                document.getElementById('login-pass').focus();
-            }, 100);
-        }
-
+        function promptClientLogin(key) { document.getElementById('login-user').value = key; document.getElementById('login-pass').value = ''; openLoginModal(); setTimeout(() => document.getElementById('login-pass').focus(), 100); }
         function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
         function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
         function closeDashboardModal() { document.getElementById('dashboard-modal').classList.add('hidden'); }
@@ -1554,46 +706,25 @@
             const user = document.getElementById('login-user').value.toLowerCase().trim();
             const pass = document.getElementById('login-pass').value.trim();
             const db = getDB();
-
             if (user === 'yogs' && pass === 'adminlangit') {
-                closeLoginModal();
-                document.getElementById('user-role-badge').innerText = "Administrator Portal (Yogs)";
-                document.getElementById('dashboard-title').innerText = "Manajemen Akun, Password Catin & Status 7 Vendor";
-                document.getElementById('client-dashboard-content').classList.add('hidden');
-                document.getElementById('admin-dashboard-content').classList.remove('hidden');
-                populateAdminDropdown();
-                const keys = Object.keys(db);
-                if (keys.length > 0) {
-                    loadAdminData(keys[0]);
-                } else {
-                    prepareNewCatinForm();
-                }
-                document.getElementById('dashboard-modal').classList.remove('hidden');
-                lucide.createIcons();
+                closeLoginModal(); loggedInClientKey = null;
+                document.getElementById('user-role-badge').innerText = "Administrator Portal (Yogs)"; document.getElementById('dashboard-title').innerText = "Manajemen Catin & Vendor";
+                document.getElementById('client-dashboard-content').classList.add('hidden'); document.getElementById('admin-dashboard-content').classList.remove('hidden');
+                populateAdminDropdown(); const keys = Object.keys(db); if (keys.length > 0) loadAdminData(keys[0]); else prepareNewCatinForm();
+                document.getElementById('dashboard-modal').classList.remove('hidden'); lucide.createIcons();
             } else if (db[user]) {
-                const expectedPass = db[user].password || 'langit2026';
-                if (pass !== expectedPass) {
-                    alert("Kata sandi salah! Silakan cek kembali password Catin Anda.");
-                    return;
-                }
-                closeLoginModal();
-                loadClientData(user);
-                document.getElementById('admin-dashboard-content').classList.add('hidden');
-                document.getElementById('client-dashboard-content').classList.remove('hidden');
-                document.getElementById('dashboard-modal').classList.remove('hidden');
-                lucide.createIcons();
-            } else {
-                alert("Username tidak ditemukan! Gunakan username panggilan Catin yang telah didaftarkan Admin.");
-            }
+                if (pass !== (db[user].password || 'langit2026')) { alert("Password salah!"); return; }
+                closeLoginModal(); loggedInClientKey = user; loadClientData(user);
+                document.getElementById('admin-dashboard-content').classList.add('hidden'); document.getElementById('client-dashboard-content').classList.remove('hidden');
+                document.getElementById('dashboard-modal').classList.remove('hidden'); lucide.createIcons();
+            } else { alert("Username tidak ditemukan!"); }
         }
 
         function calculateCountdownText(dateStr) {
             if (!dateStr) return "Menuju Hari Bahagia";
             const target = new Date(dateStr + "T00:00:00");
             if (isNaN(target.getTime())) return "Menuju Hari Bahagia";
-            const now = new Date();
-            const diffTime = target.getTime() - now.getTime();
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const diffDays = Math.ceil((target.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
             if (diffDays > 0) return `H - ${diffDays} Hari`;
             if (diffDays === 0) return "Hari Ini Hari Bahagia! 🎉";
             return "Acara Telah Terlaksana ✨";
@@ -1615,201 +746,158 @@
             });
         }
 
-        function toggleClientCheck(usernameKey, idx, checkedVal) {
+        function toggleClientCheck(usernameKey, idx, val) {
             const savedChecks = JSON.parse(localStorage.getItem('langit_checks_' + usernameKey) || '[true, true, false, false, false, false]');
-            savedChecks[idx] = checkedVal;
-            localStorage.setItem('langit_checks_' + usernameKey, JSON.stringify(savedChecks));
-            renderClientChecklist(usernameKey);
+            savedChecks[idx] = val; localStorage.setItem('langit_checks_' + usernameKey, JSON.stringify(savedChecks)); renderClientChecklist(usernameKey);
         }
 
         function loadClientData(usernameKey) {
-            const db = getDB();
-            const data = db[usernameKey];
-            if (!data) return;
-
-            document.getElementById('user-role-badge').innerText = `Client Portal (Private) — ${data.groomNick} & ${data.brideNick}`;
+            const db = getDB(); const data = db[usernameKey]; if (!data) return;
+            document.getElementById('user-role-badge').innerText = `Client Portal — ${data.groomNick} & ${data.brideNick}`;
             document.getElementById('dashboard-title').innerText = `Langit Tracker: ${data.groomNick} & ${data.brideNick}`;
             document.getElementById('client-fullname-couple').innerText = `${data.groomFull} & ${data.brideFull}`;
             document.getElementById('client-nickname-couple').innerText = `Sapaan: Kak ${data.groomNick} & Kak ${data.brideNick}`;
-            document.getElementById('client-package').innerText = data.package;
-            document.getElementById('client-venue').innerText = data.venue;
-
-            // Countdown & Link Dokumen
+            document.getElementById('client-package').innerText = data.package; document.getElementById('client-venue').innerText = data.venue;
             document.getElementById('client-countdown-badge').innerText = calculateCountdownText(data.weddingDate);
             const docArea = document.getElementById('client-doc-area');
-            if (data.docUrl) {
-                docArea.innerHTML = `<a href="${data.docUrl}" target="_blank" class="text-champagne underline font-semibold flex items-center gap-1 mt-1">📄 Buka Dokumen / Rundown ↗</a>`;
-            } else {
-                docArea.innerText = "Pantau persiapan secara berkala";
-            }
+            docArea.innerHTML = data.docUrl ? `<a href="${data.docUrl}" target="_blank" class="text-champagne underline font-semibold">📄 Buka Dokumen ↗</a>` : "Pantau persiapan berkala";
 
-            // Tampilkan progres pembayaran HANYA JIKA paket Diamond/Silver DAN dicentang oleh Admin
             const progressBox = document.getElementById('client-payment-progress-box');
-            const eligible = isEligibleForProgress(data.package);
-            const showFlag = data.showProgress !== false;
-
-            if (eligible && showFlag) {
-                progressBox.classList.remove('hidden');
-                document.getElementById('client-progress-text').innerText = `${data.progress || 0}% Terbayar`;
-                document.getElementById('client-progress-bar').style.width = `${data.progress || 0}%`;
-            } else {
-                progressBox.classList.add('hidden');
-            }
+            if (isEligibleForProgress(data.package) && data.showProgress !== false) {
+                progressBox.classList.remove('hidden'); document.getElementById('client-progress-text').innerText = `${data.progress || 0}% Terbayar`; document.getElementById('client-progress-bar').style.width = `${data.progress || 0}%`;
+            } else { progressBox.classList.add('hidden'); }
 
             renderClientChecklist(usernameKey);
 
-            // Isi otomatis nama di form biodata bawah
-            const cpwFullInput = document.getElementById('catin-cpw-full');
-            const cpwNickInput = document.getElementById('catin-cpw-nick');
-            const cppFullInput = document.getElementById('catin-cpp-full');
-            const cppNickInput = document.getElementById('catin-cpp-nick');
-            if (cpwFullInput) cpwFullInput.value = data.brideFull || '';
-            if (cpwNickInput) cpwNickInput.value = data.brideNick || '';
-            if (cppFullInput) cppFullInput.value = data.groomFull || '';
-            if (cppNickInput) cppNickInput.value = data.groomNick || '';
+            // Muat data biodata tersimpan jika ada
+            const bio = data.biodata || {};
+            document.getElementById('catin-cpw-full').value = bio.cpwFull || data.brideFull || '';
+            document.getElementById('catin-cpw-nick').value = bio.cpwNick || data.brideNick || '';
+            document.getElementById('catin-cpw-ayah').value = bio.cpwAyah || '';
+            document.getElementById('catin-cpw-ibu').value = bio.cpwIbu || '';
+            document.getElementById('catin-cpw-saudara').value = bio.cpwSaudara || '';
+            document.getElementById('catin-cpw-saksi').value = bio.cpwSaksi || '';
 
-            const tbody = document.getElementById('vendor-table-body');
-            tbody.innerHTML = '';
+            document.getElementById('catin-cpp-full').value = bio.cppFull || data.groomFull || '';
+            document.getElementById('catin-cpp-nick').value = bio.cppNick || data.groomNick || '';
+            document.getElementById('catin-cpp-ayah').value = bio.cppAyah || '';
+            document.getElementById('catin-cpp-ibu').value = bio.cppIbu || '';
+            document.getElementById('catin-cpp-saudara').value = bio.cppSaudara || '';
+            document.getElementById('catin-cpp-saksi').value = bio.cppSaksi || '';
+
+            document.getElementById('catin-sambutan').value = bio.sambutan || '';
+            document.getElementById('catin-tilawah').value = bio.tilawah || '';
+            document.getElementById('catin-vip').value = bio.vip || '';
+            document.getElementById('catin-lagu').value = bio.lagu || '';
+
+            const tbody = document.getElementById('vendor-table-body'); tbody.innerHTML = '';
             data.vendors.forEach(v => {
-                let badgeClass = 'bg-stone-100 text-muted';
-                if (v.status === 'Sudah Dibooking Admin') badgeClass = 'bg-emerald-100 text-emerald-800';
-                else if (v.status === 'Proses Negosiasi') badgeClass = 'bg-amber-100 text-amber-800';
-
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="py-3.5 font-bold text-charcoal">${v.cat}</td>
-                        <td class="py-3.5 text-charcoal/80 font-medium">${v.name || '-'}</td>
-                        <td class="py-3.5"><span class="px-3 py-1 rounded-full text-[11px] font-bold ${badgeClass}">${v.status}</span></td>
-                    </tr>
-                `;
+                tbody.innerHTML += `<tr><td class="py-3.5 font-bold">${v.cat}</td><td class="py-3.5">${v.name || '-'}</td><td class="py-3.5"><span class="px-3 py-1 rounded-full text-[11px] font-bold ${v.status === 'Sudah Dibooking Admin' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${v.status}</span></td></tr>`;
             });
+        }
+
+        // FUNGSI SIMPAN BIODATA OTOMATIS & KIRIM NOTIFIKASI KE ADMIN
+        function saveAndSendCatinBiodata(e) {
+            e.preventDefault();
+            if (!loggedInClientKey) return;
+
+            const bioData = {
+                cpwFull: document.getElementById('catin-cpw-full').value.trim(),
+                cpwNick: document.getElementById('catin-cpw-nick').value.trim(),
+                cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
+                cpwIbu: document.getElementById('catin-cpw-ibu').value.trim(),
+                cpwSaudara: document.getElementById('catin-cpw-saudara').value.trim(),
+                cpwSaksi: document.getElementById('catin-cpw-saksi').value.trim(),
+                cppFull: document.getElementById('catin-cpp-full').value.trim(),
+                cppNick: document.getElementById('catin-cpp-nick').value.trim(),
+                cppAyah: document.getElementById('catin-cpp-ayah').value.trim(),
+                cppIbu: document.getElementById('catin-cpp-ibu').value.trim(),
+                cppSaudara: document.getElementById('catin-cpp-saudara').value.trim(),
+                cppSaksi: document.getElementById('catin-cpp-saksi').value.trim(),
+                sambutan: document.getElementById('catin-sambutan').value.trim(),
+                tilawah: document.getElementById('catin-tilawah').value.trim(),
+                vip: document.getElementById('catin-vip').value.trim(),
+                lagu: document.getElementById('catin-lagu').value.trim()
+            };
+
+            const db = getDB();
+            if (db[loggedInClientKey]) {
+                db[loggedInClientKey].biodata = bioData;
+                saveDB(db);
+            }
+
+            const alertBox = document.getElementById('catin-success-alert');
+            alertBox.classList.remove('hidden');
+            setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
+
+            const text = `Halo Yogs Langit Planner! Pengantin (*${bioData.cpwNick} & ${bioData.cppNick}*) baru saja mengisi/memperbarui data biodata & rundown acara mereka di Langit Tracker.%0A%0A` +
+                         `*--- CPW ---*%0A- ${bioData.cpwFull} (Ayah: ${bioData.cpwAyah}, Ibu: ${bioData.cpwIbu})%0A%0A` +
+                         `*--- CPP ---*%0A- ${bioData.cppFull} (Ayah: ${bioData.cppAyah}, Ibu: ${bioData.cppIbu})%0A%0A` +
+                         `*--- PENDUKUNG ---*%0A- VIP: ${bioData.vip}%0A- Lagu: ${bioData.lagu}`;
+
+            window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
         }
 
         function handleAdminPackageChange() {
             const pkg = document.getElementById('admin-edit-pkg').value;
             const checkbox = document.getElementById('admin-show-progress');
             const note = document.getElementById('admin-pkg-progress-note');
-
-            if (isEligibleForProgress(pkg)) {
-                checkbox.disabled = false;
-                note.innerText = "*Paket Diamond/Silver mendukung fitur progres pembayaran di portal pribadi Catin.";
-                note.className = "text-[11px] text-emerald-700 font-medium";
-            } else {
-                checkbox.checked = false;
-                checkbox.disabled = true;
-                note.innerText = "*Paket selain Diamond & Silver tidak menampilkan progres pembayaran.";
-                note.className = "text-[11px] text-rose-600 font-medium";
-            }
+            if (isEligibleForProgress(pkg)) { checkbox.disabled = false; note.innerText = "*Mendukung progres pembayaran."; note.className = "text-[11px] text-emerald-700 font-medium"; }
+            else { checkbox.checked = false; checkbox.disabled = true; note.innerText = "*Tidak mendukung progres."; note.className = "text-[11px] text-rose-600 font-medium"; }
             toggleAdminProgressInput();
         }
 
         function toggleAdminProgressInput() {
             const checkbox = document.getElementById('admin-show-progress');
             const wrapper = document.getElementById('admin-progress-input-wrapper');
-            if (checkbox.checked && !checkbox.disabled) {
-                wrapper.classList.remove('hidden');
-            } else {
-                wrapper.classList.add('hidden');
-            }
+            if (checkbox.checked && !checkbox.disabled) wrapper.classList.remove('hidden'); else wrapper.classList.add('hidden');
         }
 
         function populateAdminDropdown() {
-            const db = getDB();
-            const sel = document.getElementById('admin-select-catin');
-            sel.innerHTML = '';
+            const db = getDB(); const sel = document.getElementById('admin-select-catin'); sel.innerHTML = '';
             const keys = Object.keys(db);
-            if (keys.length === 0) {
-                sel.innerHTML = `<option value="">-- Belum Ada Catin --</option>`;
-                return;
-            }
-            keys.forEach(key => {
-                const c = db[key];
-                sel.innerHTML += `<option value="${key}">${c.groomNick} & ${c.brideNick} (User: ${key} | Pass: ${c.password || 'langit2026'})</option>`;
-            });
+            if (keys.length === 0) { sel.innerHTML = `<option value="">-- Belum Ada Catin --</option>`; return; }
+            keys.forEach(k => { const c = db[k]; sel.innerHTML += `<option value="${k}">${c.groomNick} & ${c.brideNick} (User: ${k})</option>`; });
         }
 
-        function switchAdminCatin(usernameKey) {
-            if (!usernameKey) return;
-            currentActiveCatin = usernameKey;
-            loadAdminData(usernameKey);
-        }
-
-        function loadAdminData(usernameKey) {
-            const db = getDB();
-            const data = db[usernameKey];
-            if (!data) return;
-
-            currentActiveCatin = usernameKey;
-            document.getElementById('admin-select-catin').value = usernameKey;
-            document.getElementById('admin-form-mode-title').innerText = `Edit Data & Password Catin: ${data.groomNick} & ${data.brideNick}`;
-            document.getElementById('admin-groom-full').value = data.groomFull || '';
-            document.getElementById('admin-groom-nick').value = data.groomNick || '';
-            document.getElementById('admin-bride-full').value = data.brideFull || '';
-            document.getElementById('admin-bride-nick').value = data.brideNick || '';
-            document.getElementById('admin-edit-pkg').value = data.package || 'Diamond Package';
-            document.getElementById('admin-edit-venue').value = data.venue || '';
-            document.getElementById('admin-edit-date').value = data.weddingDate || '';
-            document.getElementById('admin-edit-doc').value = data.docUrl || '';
-            document.getElementById('admin-edit-progress').value = data.progress || 0;
-            document.getElementById('admin-edit-user').value = data.username || usernameKey;
+        function switchAdminCatin(key) { if (!key) return; currentActiveCatin = key; loadAdminData(key); }
+        function loadAdminData(key) {
+            const db = getDB(); const data = db[key]; if (!data) return;
+            currentActiveCatin = key; document.getElementById('admin-select-catin').value = key;
+            document.getElementById('admin-form-mode-title').innerText = `Edit: ${data.groomNick} & ${data.brideNick}`;
+            document.getElementById('admin-groom-full').value = data.groomFull || ''; document.getElementById('admin-groom-nick').value = data.groomNick || '';
+            document.getElementById('admin-bride-full').value = data.brideFull || ''; document.getElementById('admin-bride-nick').value = data.brideNick || '';
+            document.getElementById('admin-edit-pkg').value = data.package || 'Diamond Package'; document.getElementById('admin-edit-venue').value = data.venue || '';
+            document.getElementById('admin-edit-date').value = data.weddingDate || ''; document.getElementById('admin-edit-doc').value = data.docUrl || '';
+            document.getElementById('admin-edit-progress').value = data.progress || 0; document.getElementById('admin-edit-user').value = data.username || key;
             document.getElementById('admin-edit-pass').value = data.password || 'langit2026';
-
-            const eligible = isEligibleForProgress(data.package);
-            const checkbox = document.getElementById('admin-show-progress');
-            checkbox.disabled = !eligible;
-            checkbox.checked = eligible && (data.showProgress !== false);
-
-            handleAdminPackageChange();
-            renderAdminVendorInputs(data.vendors);
+            const checkbox = document.getElementById('admin-show-progress'); checkbox.disabled = !isEligibleForProgress(data.package);
+            checkbox.checked = isEligibleForProgress(data.package) && (data.showProgress !== false);
+            handleAdminPackageChange(); renderAdminVendorInputs(data.vendors);
         }
 
         function prepareNewCatinForm() {
-            currentActiveCatin = '__NEW__';
-            document.getElementById('admin-form-mode-title').innerText = "Input Pasangan Catin Baru & Buat Password";
-            document.getElementById('admin-groom-full').value = '';
-            document.getElementById('admin-groom-nick').value = '';
-            document.getElementById('admin-bride-full').value = '';
-            document.getElementById('admin-bride-nick').value = '';
-            document.getElementById('admin-edit-pkg').value = 'Diamond Package';
-            document.getElementById('admin-edit-venue').value = 'Ballroom — 2027';
-            document.getElementById('admin-edit-date').value = '';
-            document.getElementById('admin-edit-doc').value = '';
-            document.getElementById('admin-edit-progress').value = 30;
-            document.getElementById('admin-edit-user').value = '';
-            document.getElementById('admin-edit-pass').value = 'langit2026';
-
-            const checkbox = document.getElementById('admin-show-progress');
-            checkbox.disabled = false;
-            checkbox.checked = true;
+            currentActiveCatin = '__NEW__'; document.getElementById('admin-form-mode-title').innerText = "Input Catin Baru";
+            document.getElementById('admin-groom-full').value = ''; document.getElementById('admin-groom-nick').value = '';
+            document.getElementById('admin-bride-full').value = ''; document.getElementById('admin-bride-nick').value = '';
+            document.getElementById('admin-edit-pkg').value = 'Diamond Package'; document.getElementById('admin-edit-venue').value = 'Ballroom — 2027';
+            document.getElementById('admin-edit-date').value = ''; document.getElementById('admin-edit-doc').value = '';
+            document.getElementById('admin-edit-progress').value = 30; document.getElementById('admin-edit-user').value = ''; document.getElementById('admin-edit-pass').value = 'langit2026';
+            document.getElementById('admin-show-progress').disabled = false; document.getElementById('admin-show-progress').checked = true;
             handleAdminPackageChange();
-
-            const blankVendors = VENDOR_CATEGORIES.map(cat => ({
-                cat: cat,
-                name: '',
-                status: 'Sudah Dibooking Admin'
-            }));
+            const blankVendors = VENDOR_CATEGORIES.map(cat => ({ cat: cat, name: '', status: 'Sudah Dibooking Admin' }));
             renderAdminVendorInputs(blankVendors);
-            document.getElementById('admin-groom-full').focus();
         }
 
         function renderAdminVendorInputs(vendorList) {
-            const tbody = document.getElementById('admin-vendor-tbody');
-            tbody.innerHTML = '';
+            const tbody = document.getElementById('admin-vendor-tbody'); tbody.innerHTML = '';
             VENDOR_CATEGORIES.forEach((catName, i) => {
                 const existing = vendorList.find(v => v.cat.toLowerCase() === catName.toLowerCase()) || vendorList[i] || { cat: catName, name: '', status: 'Belum Dibooking' };
                 tbody.innerHTML += `
                     <tr>
-                        <td class="py-2.5 font-bold text-charcoal">- ${catName} :</td>
-                        <td class="py-2.5 pr-3">
-                            <input type="text" id="admin-v-name-${i}" value="${existing.name}" placeholder="Ketik nama vendor ${catName}..." class="w-full px-3 py-1.5 rounded-lg border border-stone-300 text-xs">
-                        </td>
-                        <td class="py-2.5">
-                            <select id="admin-v-status-${i}" class="w-full px-2.5 py-1.5 rounded-lg border border-stone-300 text-xs font-semibold bg-ivory">
-                                <option value="Sudah Dibooking Admin" ${existing.status === 'Sudah Dibooking Admin' ? 'selected' : ''}>✓ Sudah Dibooking Admin</option>
-                                <option value="Proses Negosiasi" ${existing.status === 'Proses Negosiasi' ? 'selected' : ''}>⏳ Proses Negosiasi</option>
-                                <option value="Belum Dibooking" ${existing.status === 'Belum Dibooking' ? 'selected' : ''}>○ Belum Dibooking</option>
-                            </select>
-                        </td>
+                        <td class="py-2.5 font-bold">- ${catName} :</td>
+                        <td class="py-2.5 pr-3"><input type="text" id="admin-v-name-${i}" value="${existing.name}" placeholder="Nama vendor..." class="w-full px-3 py-1.5 rounded-lg border text-xs"></td>
+                        <td class="py-2.5"><select id="admin-v-status-${i}" class="w-full px-2.5 py-1.5 rounded-lg border text-xs font-semibold bg-ivory"><option value="Sudah Dibooking Admin" ${existing.status === 'Sudah Dibooking Admin' ? 'selected' : ''}>✓ Terbooking</option><option value="Proses Negosiasi" ${existing.status === 'Proses Negosiasi' ? 'selected' : ''}>⏳ Negosiasi</option><option value="Belum Dibooking" ${existing.status === 'Belum Dibooking' ? 'selected' : ''}>○ Belum</option></select></td>
                     </tr>
                 `;
             });
@@ -1820,243 +908,91 @@
             const groomNick = document.getElementById('admin-groom-nick').value.trim();
             const brideFull = document.getElementById('admin-bride-full').value.trim();
             const brideNick = document.getElementById('admin-bride-nick').value.trim();
-
-            if (!groomFull || !groomNick || !brideFull || !brideNick) {
-                alert("Mohon lengkapi Nama Lengkap & Nama Panggilan Catin Pria dan Wanita!");
-                return;
-            }
-
+            if (!groomFull || !groomNick || !brideFull || !brideNick) { alert("Lengkapi nama lengkap & panggilan!"); return; }
             let usernameKey = document.getElementById('admin-edit-user').value.toLowerCase().replace(/\s+/g, '');
-            if (!usernameKey) {
-                usernameKey = groomNick.toLowerCase().replace(/\s+/g, '');
-            }
-
+            if (!usernameKey) usernameKey = groomNick.toLowerCase().replace(/\s+/g, '');
             const customPass = document.getElementById('admin-edit-pass').value.trim() || 'langit2026';
             const selectedPkg = document.getElementById('admin-edit-pkg').value;
             const showProg = isEligibleForProgress(selectedPkg) && document.getElementById('admin-show-progress').checked;
-
-            const updatedVendors = VENDOR_CATEGORIES.map((catName, i) => ({
-                cat: catName,
-                name: document.getElementById(`admin-v-name-${i}`).value.trim() || 'Mitra Langit Planner',
-                status: document.getElementById(`admin-v-status-${i}`).value
-            }));
-
+            const updatedVendors = VENDOR_CATEGORIES.map((catName, i) => ({ cat: catName, name: document.getElementById(`admin-v-name-${i}`).value.trim() || 'Mitra Langit Planner', status: document.getElementById(`admin-v-status-${i}`).value }));
             const db = getDB();
+            let existingBiodata = {};
+            if (db[usernameKey] && db[usernameKey].biodata) { existingBiodata = db[usernameKey].biodata; }
             if (currentActiveCatin !== '__NEW__' && currentActiveCatin !== usernameKey && db[currentActiveCatin]) {
+                existingBiodata = db[currentActiveCatin].biodata || {};
                 delete db[currentActiveCatin];
             }
-
-            db[usernameKey] = {
-                username: usernameKey,
-                password: customPass,
-                groomFull: groomFull,
-                groomNick: groomNick,
-                brideFull: brideFull,
-                brideNick: brideNick,
-                package: selectedPkg,
-                venue: document.getElementById('admin-edit-venue').value.trim() || 'Tanjung Selor',
-                weddingDate: document.getElementById('admin-edit-date').value || '',
-                docUrl: document.getElementById('admin-edit-doc').value.trim() || '',
-                showProgress: showProg,
-                progress: showProg ? (parseInt(document.getElementById('admin-edit-progress').value) || 0) : 0,
-                vendors: updatedVendors
-            };
-
-            saveDB(db);
-            populateAdminDropdown();
-            currentActiveCatin = usernameKey;
-            document.getElementById('admin-select-catin').value = usernameKey;
-
-            const fb = document.getElementById('admin-save-feedback');
-            fb.innerText = `✓ Tersimpan! User: "${usernameKey}" | Pass: "${customPass}" aktif.`;
-            setTimeout(() => { fb.innerText = ''; }, 6000);
+            db[usernameKey] = { username: usernameKey, password: customPass, groomFull: groomFull, groomNick: groomNick, brideFull: brideFull, brideNick: brideNick, package: selectedPkg, venue: document.getElementById('admin-edit-venue').value.trim() || 'Tanjung Selor', weddingDate: document.getElementById('admin-edit-date').value || '', docUrl: document.getElementById('admin-edit-doc').value.trim() || '', showProgress: showProg, progress: showProg ? (parseInt(document.getElementById('admin-edit-progress').value) || 0) : 0, biodata: existingBiodata, vendors: updatedVendors };
+            saveDB(db); populateAdminDropdown(); currentActiveCatin = usernameKey; document.getElementById('admin-select-catin').value = usernameKey;
+            const fb = document.getElementById('admin-save-feedback'); fb.innerText = `✓ Tersimpan! User: ${usernameKey} | Pass: ${customPass}`;
+            setTimeout(() => fb.innerText = '', 5000);
         }
 
         function copyDatabaseForGitHub() {
             const db = getDB();
             const codeString = `const DEFAULT_DATABASE = ${JSON.stringify(db, null, 4)};`;
             navigator.clipboard.writeText(codeString).then(() => {
-                alert("✓ Kode Database Berhasil Disalin!\n\nSekarang buka file index.html di GitHub kamu, cari tulisan 'const DEFAULT_DATABASE = ...' lalu tempel (Paste) untuk menggantikannya agar seluruh perubahan & penghapusan Catin tersimpan permanen di server.");
-            }).catch(() => {
-                prompt("Salin kode di bawah ini dan tempelkan ke index.html di GitHub:", codeString);
-            });
+                alert("✓ Berhasil Disalin! Tempelkan ke bagian 'const DEFAULT_DATABASE = ...' di file index.html GitHub.");
+            }).catch(() => { prompt("Salin kode ini:", codeString); });
         }
 
         function deleteCurrentCatin() {
             const db = getDB();
-            if (currentActiveCatin === '__NEW__' || !db[currentActiveCatin]) {
-                alert("Pilih Catin yang sudah terdaftar untuk dihapus.");
-                return;
-            }
+            if (currentActiveCatin === '__NEW__' || !db[currentActiveCatin]) { alert("Pilih Catin terdaftar."); return; }
             const c = db[currentActiveCatin];
-            if (confirm(`Yakin ingin menghapus data Catin "${c.groomNick} & ${c.brideNick}" secara permanen dari daftar project?`)) {
-                delete db[currentActiveCatin];
-                saveDB(db);
-                populateAdminDropdown();
-                const remainingKeys = Object.keys(db);
-                if (remainingKeys.length > 0) {
-                    loadAdminData(remainingKeys[0]);
-                } else {
-                    prepareNewCatinForm();
-                }
-                const fb = document.getElementById('admin-save-feedback');
-                fb.innerText = `✓ Data Catin berhasil dihapus! Jangan lupa klik 'Salin Kode Database' jika ingin memperbarui GitHub.`;
-                setTimeout(() => { fb.innerText = ''; }, 6000);
+            if (confirm(`Yakin hapus data "${c.groomNick} & ${c.brideNick}"?`)) {
+                delete db[currentActiveCatin]; saveDB(db); populateAdminDropdown();
+                const keys = Object.keys(db); if (keys.length > 0) loadAdminData(keys[0]); else prepareNewCatinForm();
             }
         }
 
-        // FUNGSI KIRIM BIODATA & RUNDOWN CATIN KE WHATSAPP ADMIN (YOGS)
-        function sendCatinBiodataToWhatsApp(e) {
-            e.preventDefault();
-            const cpwFull = document.getElementById('catin-cpw-full').value;
-            const cpwNick = document.getElementById('catin-cpw-nick').value;
-            const cpwAyah = document.getElementById('catin-cpw-ayah').value || '-';
-            const cpwIbu = document.getElementById('catin-cpw-ibu').value || '-';
-            const cpwSaudara = document.getElementById('catin-cpw-saudara').value || '-';
-            const cpwSaksi = document.getElementById('catin-cpw-saksi').value || '-';
-
-            const cppFull = document.getElementById('catin-cpp-full').value;
-            const cppNick = document.getElementById('catin-cpp-nick').value;
-            const cppAyah = document.getElementById('catin-cpp-ayah').value || '-';
-            const cppIbu = document.getElementById('catin-cpp-ibu').value || '-';
-            const cppSaudara = document.getElementById('catin-cpp-saudara').value || '-';
-            const cppSaksi = document.getElementById('catin-cpp-saksi').value || '-';
-
-            const sambutan = document.getElementById('catin-sambutan').value || '-';
-            const tilawah = document.getElementById('catin-tilawah').value || '-';
-            const vip = document.getElementById('catin-vip').value || '-';
-            const lagu = document.getElementById('catin-lagu').value || '-';
-
-            const text = `Halo Yogs Langit Planner! Berikut data biodata & rundown acara dari pengantin (*${cpwNick} & ${cppNick}*):%0A%0A` +
-                         `*--- 1. CALON PENGANTIN WANITA (CPW) ---*%0A` +
-                         `- Nama Lengkap: ${cpwFull}%0A` +
-                         `- Nama Panggilan: ${cpwNick}%0A` +
-                         `- Ayahanda: ${cpwAyah}%0A` +
-                         `- Ibunda: ${cpwIbu}%0A` +
-                         `- Saudara: ${cpwSaudara}%0A` +
-                         `- Saksi CPW: ${cpwSaksi}%0A%0A` +
-                         `*--- 2. CALON PENGANTIN PRIA (CPP) ---*%0A` +
-                         `- Nama Lengkap: ${cppFull}%0A` +
-                         `- Nama Panggilan: ${cppNick}%0A` +
-                         `- Ayahanda: ${cppAyah}%0A` +
-                         `- Ibunda: ${cppIbu}%0A` +
-                         `- Saudara: ${cppSaudara}%0A` +
-                         `- Saksi CPP: ${cppSaksi}%0A%0A` +
-                         `*--- 3. PENDUKUNG ACARA & VIP ---*%0A` +
-                         `- Sambutan Resepsi: ${sambutan}%0A` +
-                         `- Pembaca Al-Quran: ${tilawah}%0A` +
-                         `- Tamu VIP: ${vip}%0A` +
-                         `- Request Lagu: ${lagu}%0A`;
-
-            window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
-        }
-
-        // KALENDER DINAMIS (BISA GANTI BULAN & TAHUN)
         const MONTH_NAMES_ID = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-        const nowDate = new Date();
-        let calYear = nowDate.getFullYear();
-        let calMonth = nowDate.getMonth();
-        let selectedDay = nowDate.getDate();
+        let calYear = new Date().getFullYear(), calMonth = new Date().getMonth(), selectedDay = new Date().getDate();
         let selectedConsultDate = `${selectedDay} ${MONTH_NAMES_ID[calMonth]} ${calYear}`;
 
         function renderCalendar() {
-            const grid = document.getElementById('calendar-grid');
-            const label = document.getElementById('calendar-month-label');
-            const selectedText = document.getElementById('selected-consultation-date');
+            const grid = document.getElementById('calendar-grid'), label = document.getElementById('calendar-month-label'), selectedText = document.getElementById('selected-consultation-date');
             if (!grid || !label) return;
-
-            label.innerText = `${MONTH_NAMES_ID[calMonth]} ${calYear}`;
-            selectedText.innerText = `(${selectedConsultDate})`;
-            grid.innerHTML = '';
-
-            const firstDay = new Date(calYear, calMonth, 1).getDay();
-            const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-
-            for (let s = 0; s < firstDay; s++) {
-                grid.innerHTML += `<span></span>`;
-            }
+            label.innerText = `${MONTH_NAMES_ID[calMonth]} ${calYear}`; selectedText.innerText = `(${selectedConsultDate})`; grid.innerHTML = '';
+            const firstDay = new Date(calYear, calMonth, 1).getDay(), daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+            for (let s = 0; s < firstDay; s++) grid.innerHTML += `<span></span>`;
             for (let d = 1; d <= daysInMonth; d++) {
-                const isSelected = (d === selectedDay);
-                grid.innerHTML += `<button type="button" onclick="selectCalendarDate(${d})" class="py-2 rounded-full transition ${isSelected ? 'bg-charcoal text-white font-bold shadow' : 'text-charcoal/80 hover:bg-stone-200'}">${d}</button>`;
+                grid.innerHTML += `<button type="button" onclick="selectCalendarDate(${d})" class="py-2 rounded-full transition ${d === selectedDay ? 'bg-charcoal text-white font-bold shadow' : 'text-charcoal/80 hover:bg-stone-200'}">${d}</button>`;
             }
             lucide.createIcons();
         }
-
-        function changeCalendarMonth(delta) {
-            calMonth += delta;
-            if (calMonth > 11) { calMonth = 0; calYear++; }
-            if (calMonth < 0) { calMonth = 11; calYear--; }
-            selectedDay = 1;
-            selectedConsultDate = `${selectedDay} ${MONTH_NAMES_ID[calMonth]} ${calYear}`;
-            renderCalendar();
-        }
-
-        function selectCalendarDate(day) {
-            selectedDay = day;
-            selectedConsultDate = `${day} ${MONTH_NAMES_ID[calMonth]} ${calYear}`;
-            renderCalendar();
-        }
+        function changeCalendarMonth(delta) { calMonth += delta; if (calMonth > 11) { calMonth = 0; calYear++; } if (calMonth < 0) { calMonth = 11; calYear--; } selectedDay = 1; selectedConsultDate = `${selectedDay} ${MONTH_NAMES_ID[calMonth]} ${calYear}`; renderCalendar(); }
+        function selectCalendarDate(d) { selectedDay = d; selectedConsultDate = `${d} ${MONTH_NAMES_ID[calMonth]} ${calYear}`; renderCalendar(); }
 
         function renderPortfolios() {
-            const grid = document.getElementById('portfolio-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
+            const grid = document.getElementById('portfolio-grid'); if (!grid) return; grid.innerHTML = '';
             SITE_CONFIG.portfolios.forEach((item, index) => {
-                const savedImg = localStorage.getItem('langit_feed_' + index);
-                const imgSrc = savedImg ? savedImg : item.localImage;
                 grid.innerHTML += `
-                    <a href="${item.igPostUrl}" target="_blank" class="portfolio-item group rounded-3xl overflow-hidden bg-white border border-stone-200 shadow-sm block">
-                        <div class="px-4 py-3 bg-white flex items-center justify-between border-b">
-                            <span class="text-xs font-bold text-charcoal">langit_planner</span>
-                            <span class="text-[11px] text-pink-600 font-semibold">Lihat IG ↗</span>
-                        </div>
-                        <div class="relative aspect-square overflow-hidden bg-stone-100">
-                            <img src="${imgSrc}" onerror="this.src='${item.fallbackImage}';" alt="${item.couple}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        </div>
-                        <div class="p-4 bg-white">
-                            <h3 class="font-bold text-sm text-charcoal">${item.couple}</h3>
-                            <p class="text-xs text-muted mt-1">${item.caption}</p>
-                        </div>
+                    <a href="${item.igPostUrl}" target="_blank" class="portfolio-item group rounded-3xl overflow-hidden bg-white border shadow-sm block">
+                        <div class="px-4 py-3 bg-white flex items-center justify-between border-b"><span class="text-xs font-bold">langit_planner</span><span class="text-[11px] text-pink-600 font-semibold">IG ↗</span></div>
+                        <div class="relative aspect-square overflow-hidden bg-stone-100"><img src="${localStorage.getItem('langit_feed_' + index) || item.localImage}" onerror="this.src='${item.fallbackImage}';" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                        <div class="p-4 bg-white"><h3 class="font-bold text-sm">${item.couple}</h3><p class="text-xs text-muted mt-1">${item.caption}</p></div>
                     </a>
                 `;
             });
             lucide.createIcons();
         }
 
-        function selectPackage(pkgName) {
-            document.getElementById('form-paket').value = pkgName;
-            document.getElementById('konsultasi').scrollIntoView({ behavior: 'smooth' });
-        }
-
+        function selectPackage(pkg) { document.getElementById('form-paket').value = pkg; document.getElementById('konsultasi').scrollIntoView({ behavior: 'smooth' }); }
         function sendToWhatsApp(e) {
             e.preventDefault();
-            const nama = document.getElementById('form-nama').value;
-            const wa = document.getElementById('form-wa').value;
-            const tanggal = document.getElementById('form-tanggal').value;
-            const tamu = document.getElementById('form-tamu').value;
-            const paket = document.getElementById('form-paket').value;
-            const venue = document.getElementById('form-venue').value || '-';
-            const konsep = document.getElementById('form-konsep').value || '-';
-
-            const text = `Halo Yogs Langit Planner! Saya ingin menjadwalkan obrolan santai / konsultasi pernikahan:%0A%0A` +
-                         `*Nama Pasangan:* ${nama}%0A` +
-                         `*No. WhatsApp:* ${wa}%0A` +
-                         `*Tanggal Acara:* ${tanggal}%0A` +
-                         `*Estimasi Tamu:* ${tamu}%0A` +
-                         `*Lokasi / Venue:* ${venue}%0A` +
-                         `*Paket Diminati:* ${paket}%0A` +
-                         `*Konsep Impian:* ${konsep}%0A` +
-                         `*Jadwal Diskusi:* ${selectedConsultDate}%0A`;
-
+            const text = `Halo Yogs Langit Planner! Jadwal konsultasi:%0A- Nama: ${document.getElementById('form-nama').value}%0A- WA: ${document.getElementById('form-wa').value}%0A- Tanggal: ${document.getElementById('form-tanggal').value}%0A- Tamu: ${document.getElementById('form-tamu').value}%0A- Venue: ${document.getElementById('form-venue').value}%0A- Paket: ${document.getElementById('form-paket').value}%0A- Diskusi: ${selectedConsultDate}`;
             window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderPortfolios();
-            renderPublicProjects();
-            renderCalendar();
-            lucide.createIcons();
+        document.addEventListener('submit', function(e) {
+            if(e.target && e.target.getAttribute('onsubmit') && e.target.getAttribute('onsubmit').includes('sendCatinBiodataToWhatsApp')) {
+                e.preventDefault();
+                saveAndSendCatinBiodata(e);
+            }
         });
+
+        document.addEventListener('DOMContentLoaded', () => { renderPortfolios(); renderPublicProjects(); renderCalendar(); lucide.createIcons(); });
     </script>
 </body>
 </html>
