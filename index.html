@@ -854,60 +854,21 @@
         const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
 
         const DEFAULT_DATABASE = {
-
-    "kristinaldy": {
-        "username": "kristinaldy",
-        "password": "langit2026",
-        "groomFull": "Aldy",
-        "groomNick": "Aldy",
-        "brideFull": "Kristin",
-        "brideNick": "Kristin",
-        "package": "Silver Package",
-        "venue": "Gedung Wanita — 2027",
-        "weddingDate": "2027-03-20",
-        "docUrl": "",
-        "showProgress": true,
-        "progress": 21,
-        "biodata": {},
-        "vendors": [
-            {
-                "cat": "Dekorasi",
-                "name": "salonanna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MUA",
-                "name": "ratih",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MC",
-                "name": "yolanda",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Musik",
-                "name": "oppa",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Henna",
-                "name": "Mitra Langit Planner",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "WCC",
-                "name": "Langit Wedding Content Creator",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Catering",
-                "name": "hj sabar",
-                "status": "Sudah Dibooking Admin"
+            rizki: {
+                username: "rizki", password: "langit2026", groomFull: "Rizki Pratama, S.Kom", groomNick: "Rizki", brideFull: "Nova Aulia, S.Pd", brideNick: "Nova", package: "Diamond Package", venue: "Ballroom — 20 Des 2026", weddingDate: "2026-12-20", docUrl: "", showProgress: true, progress: 85,
+                biodata: { cpwFull: "", cpwNick: "", cpwAyah: "", cpwIbu: "", cpwSaudara: "", cpwSaksi: "", cppFull: "", cppNick: "", cppAyah: "", cppIbu: "", cppSaudara: "", cppSaksi: "", sambutan: "", tilawah: "", vip: "", lagu: "" },
+                vendors: [
+                    { cat: "Dekorasi", name: "Erza Art Decor", status: "Sudah Dibooking Admin" },
+                    { cat: "MUA", name: "Ratih Salon Professional", status: "Sudah Dibooking Admin" },
+                    { cat: "MC", name: "MC Najwa Zenuba", status: "Sudah Dibooking Admin" },
+                    { cat: "Musik", name: "Opa Music Entertainment", status: "Sudah Dibooking Admin" },
+                    { cat: "Henna", name: "Henna Art Kaltara", status: "Sudah Dibooking Admin" },
+                    { cat: "WCC", name: "Langit Wedding Content Creator", status: "Sudah Dibooking Admin" },
+                    { cat: "Catering", name: "Wafda Catering (1000 Porsi)", status: "Sudah Dibooking Admin" }
+                ]
             }
-        ]
-    }
-};
+        };
+
         let currentActiveCatin = 'rizki';
         let loggedInClientKey = null;
 
@@ -1050,13 +1011,13 @@
             data.vendors.forEach(v => {
                 tbody.innerHTML += `<tr><td class="py-3.5 font-bold">${v.cat}</td><td class="py-3.5">${v.name || '-'}</td><td class="py-3.5"><span class="px-3 py-1 rounded-full text-[11px] font-bold ${v.status === 'Sudah Dibooking Admin' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${v.status}</span></td></tr>`;
             });
-        } 
-                function saveAndSendCatinBiodata(e) {
+        }
+
+        function saveAndSendCatinBiodata(e) {
             e.preventDefault();
             if (!loggedInClientKey) return;
 
             const bioData = {
-                userKey: loggedInClientKey,
                 cpwFull: document.getElementById('catin-cpw-full').value.trim(),
                 cpwNick: document.getElementById('catin-cpw-nick').value.trim(),
                 cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
@@ -1074,33 +1035,6 @@
                 vip: document.getElementById('catin-vip').value.trim(),
                 lagu: document.getElementById('catin-lagu').value.trim()
             };
-
-            // Simpan ke LocalStorage browser lokal
-            const db = getDB();
-            if (db[loggedInClientKey]) {
-                db[loggedInClientKey].biodata = bioData;
-                saveDB(db);
-            }
-
-            // OTOMATIS KIRIM KE GOOGLE SPREADSHEET ADMIN
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxmymzwpIV8n7X3_-lrkVspryIysvTS0sUc450dgmujNkTVLlrtZR2TCE4ofw3OyAmv_w/exec'; // Ganti dengan URL /exec punyamu
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(bioData)
-            }).catch(err => console.error('Error sync spreadsheet:', err));
-
-            // Munculkan notifikasi sukses
-            const alertBox = document.getElementById('catin-success-alert');
-            alertBox.classList.remove('hidden');
-            setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
-
-            // Tetap buka WhatsApp ke Admin sebagai cadangan notifikasi instan
-            const text = `Halo Yogs Langit Planner! Pengantin (*${bioData.cpwNick} & ${bioData.cppNick}*) baru saja mengisi/memperbarui data biodata & rundown acara mereka (Data otomatis masuk Spreadsheet).`;
-            window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
-        }
-
 
             const db = getDB();
             if (db[loggedInClientKey]) {
