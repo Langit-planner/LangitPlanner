@@ -1020,11 +1020,12 @@
             });
         }
 
-        function saveAndSendCatinBiodata(e) {
+     function saveAndSendCatinBiodata(e) {
             e.preventDefault();
             if (!loggedInClientKey) return;
 
             const bioData = {
+                userKey: loggedInClientKey,
                 cpwFull: document.getElementById('catin-cpw-full').value.trim(),
                 cpwNick: document.getElementById('catin-cpw-nick').value.trim(),
                 cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
@@ -1043,23 +1044,32 @@
                 lagu: document.getElementById('catin-lagu').value.trim()
             };
 
+            // Simpan ke LocalStorage browser lokal
             const db = getDB();
             if (db[loggedInClientKey]) {
                 db[loggedInClientKey].biodata = bioData;
                 saveDB(db);
             }
 
+            // OTOMATIS KIRIM KE GOOGLE SPREADSHEET ADMIN
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwxE9gUR9mDmlsPq-Fh_sf5D0a3n-SXEK4ka2GhHrDikwOL14ZrA3DBK-LdRPhRe7FkfA/exec'; // Ganti dengan URL /exec punyamu
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bioData)
+            }).catch(err => console.error('Error sync spreadsheet:', err));
+
+            // Munculkan notifikasi sukses
             const alertBox = document.getElementById('catin-success-alert');
             alertBox.classList.remove('hidden');
             setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
 
-            const text = `Halo Yogs Langit Planner! Pengantin (*${bioData.cpwNick} & ${bioData.cppNick}*) baru saja mengisi/memperbarui data biodata & rundown acara mereka di Langit Tracker.%0A%0A` +
-                         `*--- CPW ---*%0A- ${bioData.cpwFull} (Ayah: ${bioData.cpwAyah}, Ibu: ${bioData.cpwIbu})%0A%0A` +
-                         `*--- CPP ---*%0A- ${bioData.cppFull} (Ayah: ${bioData.cppAyah}, Ibu: ${bioData.cppIbu})%0A%0A` +
-                         `*--- PENDUKUNG ---*%0A- VIP: ${bioData.vip}%0A- Lagu: ${bioData.lagu}`;
-
+            // Tetap buka WhatsApp ke Admin sebagai cadangan notifikasi instan
+            const text = `Halo Yogs Langit Planner! Pengantin (*${bioData.cpwNick} & ${bioData.cppNick}*) baru saja mengisi/memperbarui data biodata & rundown acara mereka (Data otomatis masuk Spreadsheet).`;
             window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
         }
+
 
         function handleAdminPackageChange() {
             const pkg = document.getElementById('admin-edit-pkg').value;
