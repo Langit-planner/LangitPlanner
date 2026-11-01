@@ -1055,8 +1055,12 @@
         function saveAndSendCatinBiodata(e) {
             e.preventDefault();
             if (!loggedInClientKey) return;
+        function saveAndSendCatinBiodata(e) {
+            e.preventDefault();
+            if (!loggedInClientKey) return;
 
             const bioData = {
+                userKey: loggedInClientKey,
                 cpwFull: document.getElementById('catin-cpw-full').value.trim(),
                 cpwNick: document.getElementById('catin-cpw-nick').value.trim(),
                 cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
@@ -1074,6 +1078,33 @@
                 vip: document.getElementById('catin-vip').value.trim(),
                 lagu: document.getElementById('catin-lagu').value.trim()
             };
+
+            // Simpan ke LocalStorage browser lokal
+            const db = getDB();
+            if (db[loggedInClientKey]) {
+                db[loggedInClientKey].biodata = bioData;
+                saveDB(db);
+            }
+
+            // OTOMATIS KIRIM KE GOOGLE SPREADSHEET ADMIN
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyVNPG5ehl7WoGc3CBbe6aKkHpuanwQcKCi7ZP7jlUUMP4deohOHfCIrAD4ywXXIS7qQg/exec'; // Ganti dengan URL /exec punyamu
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bioData)
+            }).catch(err => console.error('Error sync spreadsheet:', err));
+
+            // Munculkan notifikasi sukses
+            const alertBox = document.getElementById('catin-success-alert');
+            alertBox.classList.remove('hidden');
+            setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
+
+            // Tetap buka WhatsApp ke Admin sebagai cadangan notifikasi instan
+            const text = `Halo Yogs Langit Planner! Pengantin (*${bioData.cpwNick} & ${bioData.cppNick}*) baru saja mengisi/memperbarui data biodata & rundown acara mereka (Data otomatis masuk Spreadsheet).`;
+            window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
+        }
+
 
             const db = getDB();
             if (db[loggedInClientKey]) {
