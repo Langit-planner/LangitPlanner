@@ -1053,60 +1053,60 @@
 
             // const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
-// 1. Fungsi ambil data otomatis saat catin login
-async function loadCatinFromCloud(usernameKey) {
-    try {
-        const response = await fetch(SCRIPT_URL);
-        const dataList = await response.json();
-        const clientData = dataList.find(item => item['User Key'] === usernameKey);
+            // 1. Fungsi ambil data otomatis saat catin login
+            async function loadCatinFromCloud(usernameKey) {
+                try {
+                const response = await fetch(SCRIPT_URL);
+                const dataList = await response.json();
+                const clientData = dataList.find(item => item['User Key'] === usernameKey);
         
-        if (clientData) {
-            document.getElementById('catin-cpw-full').value = clientData['Nama CPW'] || '';
-            document.getElementById('catin-cpp-full').value = clientData['Nama CPP'] || '';
-            document.getElementById('catin-cpw-ayah').value = clientData['Ayah CPW'] || '';
-            document.getElementById('catin-cpw-ibu').value = clientData['Ibu CPW'] || '';
-            document.getElementById('catin-cpp-ayah').value = clientData['Ayah CPP'] || '';
-            document.getElementById('catin-cpp-ibu').value = clientData['Ibu CPP'] || '';
-            document.getElementById('catin-vip').value = clientData['VIP'] || '';
-            document.getElementById('catin-lagu').value = clientData['Lagu Request'] || '';
+                if (clientData) {
+                   document.getElementById('catin-cpw-full').value = clientData['Nama CPW'] || '';
+                   document.getElementById('catin-cpp-full').value = clientData['Nama CPP'] || '';
+                   document.getElementById('catin-cpw-ayah').value = clientData['Ayah CPW'] || '';
+                   document.getElementById('catin-cpw-ibu').value = clientData['Ibu CPW'] || '';
+                   document.getElementById('catin-cpp-ayah').value = clientData['Ayah CPP'] || '';
+                   document.getElementById('catin-cpp-ibu').value = clientData['Ibu CPP'] || '';
+                   document.getElementById('catin-vip').value = clientData['VIP'] || '';
+                   document.getElementById('catin-lagu').value = clientData['Lagu Request'] || '';
+                }
+            } catch (e) {
+                console.error("Gagal memuat data dari Spreadsheet:", e);
+            }
         }
-    } catch (e) {
-        console.error("Gagal memuat data dari Spreadsheet:", e);
-    }
-}
 
-// 2. Fungsi simpan data otomatis ke spreadsheet tanpa buka GitHub
-async function saveAndSendCatinBiodata(e) {
-    e.preventDefault();
-    if (!loggedInClientKey) return;
+        // 2. Fungsi simpan data otomatis ke spreadsheet tanpa buka GitHub
+        async function saveAndSendCatinBiodata(e) {
+            e.preventDefault();
+            if (!loggedInClientKey) return;
 
-    const payload = {
-        userKey: loggedInClientKey,
-        cpwFull: document.getElementById('catin-cpw-full').value.trim(),
-        cppFull: document.getElementById('catin-cpp-full').value.trim(),
-        cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
-        cpwIbu: document.getElementById('catin-cpw-ibu').value.trim(),
-        cppAyah: document.getElementById('catin-cpp-ayah').value.trim(),
-        cppIbu: document.getElementById('catin-cpp-ibu').value.trim(),
-        vip: document.getElementById('catin-vip').value.trim(),
-        lagu: document.getElementById('catin-lagu').value.trim()
-    };
+        const payload = {
+            userKey: loggedInClientKey,
+            cpwFull: document.getElementById('catin-cpw-full').value.trim(),
+            cppFull: document.getElementById('catin-cpp-full').value.trim(),
+            cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
+            cpwIbu: document.getElementById('catin-cpw-ibu').value.trim(),
+            cppAyah: document.getElementById('catin-cpp-ayah').value.trim(),
+            cppIbu: document.getElementById('catin-cpp-ibu').value.trim(),
+            vip: document.getElementById('catin-vip').value.trim(),
+            lagu: document.getElementById('catin-lagu').value.trim()
+        };
 
-    // Kirim langsung ke Google Sheets secara real-time
-    await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    });
+        // Kirim langsung ke Google Sheets secara real-time
+       await fetch(SCRIPT_URL, {
+           method: 'POST',
+           mode: 'no-cors',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(payload)
+       });
 
-    // Notifikasi sukses di layar catin
-    const alertBox = document.getElementById('catin-success-alert');
-    if (alertBox) {
-        alertBox.classList.remove('hidden');
-        setTimeout(() => alertBox.classList.add('hidden'), 7000);
-    }
-}
+       // Notifikasi sukses di layar catin
+       const alertBox = document.getElementById('catin-success-alert');
+       if (alertBox) {
+          alertBox.classList.remove('hidden');
+          setTimeout(() => alertBox.classList.add('hidden'), 7000);
+       }
+   }
 
         function handleAdminPackageChange() {
             const pkg = document.getElementById('admin-edit-pkg').value;
