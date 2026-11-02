@@ -885,16 +885,22 @@
         let currentActiveCatin = 'rizki';
         let loggedInClientKey = null;
 
-        function getDB() {
+                function getDB() {
             const saved = localStorage.getItem('langit_db_catin_v6');
             if (saved !== null) {
                 try {
                     const parsed = JSON.parse(saved);
-                    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+                    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && Object.keys(parsed).length > 0) {
+                        // Pastikan setiap record memiliki properti lengkap agar tidak crash
+                        for (let k in parsed) {
+                            if (!parsed[k].vendors || !Array.isArray(parsed[k].vendors)) {
+                                parsed[k].vendors = DEFAULT_DATABASE.rizki ? DEFAULT_DATABASE.rizki.vendors : [];
+                            }
+                        }
                         return parsed;
                     }
                 } catch (e) {
-                    return DEFAULT_DATABASE;
+                    console.error("Gagal parse DB lokal, reset ke default:", e);
                 }
             }
             localStorage.setItem('langit_db_catin_v6', JSON.stringify(DEFAULT_DATABASE));
@@ -904,36 +910,49 @@
         function saveDB(db) { localStorage.setItem('langit_db_catin_v6', JSON.stringify(db)); renderPublicProjects(); }
         function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
 
-        function renderPublicProjects() {
+                function renderPublicProjects() {
             const container = document.getElementById('public-project-list');
             if (!container) return;
             container.innerHTML = '';
             const db = getDB();
             const keys = Object.keys(db);
-            if (keys.length === 0) { container.innerHTML = `<div class="p-8 text-center rounded-2xl bg-ivory border text-muted text-sm">Belum ada project aktif.</div>`; return; }
+            if (keys.length === 0) { 
+                container.innerHTML = `<div class="p-8 text-center rounded-2xl bg-ivory border text-muted text-sm">Belum ada project aktif.</div>`; 
+                return; 
+            }
             keys.forEach(key => {
                 const item = db[key];
-                const bookedCount = item.vendors.filter(v => v.status === 'Sudah Dibooking Admin').length;
-                const totalVendors = item.vendors.length;
-                const vendorPills = item.vendors.map(v => `<span class="px-2.5 py-1 rounded-lg text-[10px] font-medium border ${v.status === 'Sudah Dibooking Admin' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-stone-100 text-muted'}">${v.cat}: ${v.name || '-'}</span>`).join('');
+                if (!item) return;
+                const vendors = Array.isArray(item.vendors) ? item.vendors : [];
+                const bookedCount = vendors.filter(v => v && v.status === 'Sudah Dibooking Admin').length;
+                const totalVendors = vendors.length;
+                const vendorPills = vendors.map(v => `<span class="px-2.5 py-1 rounded-lg text-[10px] font-medium border ${v.status === 'Sudah Dibooking Admin' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-stone-100 text-muted'}">${v.cat || 'Vendor'}: ${v.name || '-'}</span>`).join('');
+                
                 container.innerHTML += `
                     <div class="p-5 rounded-2xl bg-ivory border border-stone-200/90 hover:border-champagne transition space-y-3">
                         <div class="flex flex-wrap items-center justify-between gap-2">
                             <div>
-                                <div class="flex items-center gap-2"><h4 class="font-editorial text-2xl font-bold text-charcoal">${item.groomNick} & ${item.brideNick}</h4><span class="text-[10px] font-bold uppercase bg-charcoal text-champagne px-2.5 py-0.5 rounded-full">${item.package}</span></div>
-                                <p class="text-xs text-muted mt-0.5">${item.groomFull} &amp; ${item.brideFull} — 📍 ${item.venue}</p>
+                                <div class="flex items-center gap-2">
+                                    <h4 class="font-editorial text-2xl font-bold text-charcoal">${item.groomNick || 'Pengantin'} & ${item.brideNick || 'Pengantin'}</h4>
+                                    <span class="text-[10px] font-bold uppercase bg-charcoal text-champagne px-2.5 py-0.5 rounded-full">${item.package || 'Wedding Package'}</span>
+                                </div>
+                                <p class="text-xs text-muted mt-0.5">${item.groomFull || ''} &amp; ${item.brideFull || ''} — 📍 ${item.venue || 'Tanjung Selor'}</p>
                             </div>
                             <span class="inline-flex items-center gap-1 text-[11px] text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full font-bold">✓ ${bookedCount}/${totalVendors} Vendor Terkonfirmasi</span>
                         </div>
                         <div class="flex flex-wrap gap-1.5 pt-1">${vendorPills}</div>
                         <div class="pt-2 border-t flex items-center justify-between">
                             <span class="text-[11px] text-muted italic"><i data-lucide="lock" class="w-3 h-3 inline"></i> Detail portal pribadi</span>
-                            <button type="button" onclick="promptClientLogin('${key}')" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1"><span>Login Portal Catin</span><i data-lucide="key-round" class="w-3.5 h-3.5"></i></button>
+                            <button type="button" onclick="promptClientLogin('${key}')" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1">
+                                <span>Login Portal Catin</span><i data-lucide="key-round" class="w-3.5 h-3.5"></i>
+                            </button>
                         </div>
                     </div>
                 `;
             });
-            lucide.createIcons();
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
+            }
         }
 
         function promptClientLogin(key) { document.getElementById('login-user').value = key; document.getElementById('login-pass').value = ''; openLoginModal(); setTimeout(() => document.getElementById('login-pass').focus(), 100); }
@@ -1271,7 +1290,7 @@
             window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
         }
 
-        // Sinkronisasi Database Otomatis ke Google Sheets
+                // Sinkronisasi Database Otomatis ke Google Sheets
         const CLOUD_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
         async function syncDatabaseFromCloud() {
@@ -1279,9 +1298,14 @@
             try {
                 const res = await fetch(CLOUD_SHEET_URL);
                 const cloudData = await res.json();
-                if (cloudData && typeof cloudData === 'object' && Object.keys(cloudData).length > 0) {
-                    localStorage.setItem('langit_db_catin_v6', JSON.stringify(cloudData));
-                    renderPublicProjects();
+                // Validasi ketat: Cloud data harus berupa Object kamus (bukan Array) dan memiliki data valid
+                if (cloudData && typeof cloudData === 'object' && !Array.isArray(cloudData) && Object.keys(cloudData).length > 0) {
+                    // Hanya update jika data valid dan memiliki struktur catin yang benar
+                    const sampleKey = Object.keys(cloudData)[0];
+                    if (cloudData[sampleKey] && cloudData[sampleKey].groomNick) {
+                        localStorage.setItem('langit_db_catin_v6', JSON.stringify(cloudData));
+                        renderPublicProjects();
+                    }
                 }
             } catch (err) {
                 console.log('Menggunakan database lokal...');
@@ -1301,6 +1325,21 @@
                 }).catch(err => console.error('Gagal sync ke cloud:', err));
             }
         };
+
+        // Self-healing / perbaikan otomatis jika memori browser sebelumnya tertimpa data kosong / korup
+        (function autoRepairStorage() {
+            try {
+                const raw = localStorage.getItem('langit_db_catin_v6');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) || !parsed || Object.keys(parsed).length === 0 || !parsed.rizki) {
+                        localStorage.removeItem('langit_db_catin_v6');
+                    }
+                }
+            } catch (e) {
+                localStorage.removeItem('langit_db_catin_v6');
+            }
+        })();
 
         document.addEventListener('DOMContentLoaded', () => { 
             renderPortfolios(); 
