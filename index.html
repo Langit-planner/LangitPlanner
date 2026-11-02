@@ -1259,6 +1259,47 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => { renderPortfolios(); renderPublicProjects(); renderCalendar(); lucide.createIcons(); });
-    </script>
+ 
+    <!-- ================= SINKRONISASI OTOMATIS GOOGLE SHEETS ================= -->
+<script>
+(function() {
+    // 1. Masukkan URL Web App Google Apps Script kamu di sini:
+    const CLOUD_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
+
+    if (CLOUD_SHEET_URL.includes('https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec')) {
+        console.warn('URL Google Apps Script belum diganti. Harap masukkan URL /exec yang valid.');
+        return;
+    }
+
+    // Mengambil data database global dari Google Sheets saat pertama kali halaman dimuat
+    async function syncDatabaseFromCloud() {
+        try {
+            const res = await fetch(CLOUD_SHEET_URL);
+            const cloudData = await res.json();
+            if (cloudData && typeof cloudData === 'object' && Object.keys(cloudData).length > 0) {
+                localStorage.setItem('langit_db_catin_v6', JSON.stringify(cloudData));
+                if (typeof renderPublicProjects === 'function') renderPublicProjects();
+            }
+        } catch (err) {
+            console.error('Gagal memuat database dari Spreadsheet:', err);
+        }
+    }
+
+    // Mengirim pembaruan akun admin/klien langsung ke Google Sheets tanpa GitHub
+    const originalSaveDB = window.saveDB;
+    window.saveDB = function(db) {
+        if (typeof originalSaveDB === 'function') originalSaveDB(db);
+        fetch(CLOUD_SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'sync_all_db', payload: db })
+        }).catch(err => console.error('Gagal sync ke cloud:', err));
+    };
+
+    // Jalankan sinkronisasi awal saat web dibuka
+    syncDatabaseFromCloud();
+})();
+</script>
 </body>
 </html>
