@@ -978,7 +978,10 @@
                 lucide.createIcons();
             } else if (db[user]) {
                 if (pass !== (db[user].password || 'langit2026')) { alert("Password salah!"); return; }
-                closeLoginModal(); loggedInClientKey = user; loadClientData(user);
+                closeLoginModal(); 
+                loggedInClientKey = user; 
+                loadClientData(user);
+                loadCatinFromCloud(user); // Otomatis sinkronisasi data biodata terbaru dari Google Sheets
                 document.getElementById('admin-dashboard-content').classList.add('hidden'); 
                 document.getElementById('client-dashboard-content').classList.remove('hidden');
                 document.getElementById('dashboard-modal').classList.remove('hidden'); 
