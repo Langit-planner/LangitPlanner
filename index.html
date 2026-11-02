@@ -874,7 +874,16 @@
 
         function getDB() {
             const saved = localStorage.getItem('langit_db_catin_v6');
-            if (saved !== null) { try { return JSON.parse(saved); } catch (e) { return DEFAULT_DATABASE; } }
+            if (saved !== null) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+                        return parsed;
+                    }
+                } catch (e) {
+                    return DEFAULT_DATABASE;
+                }
+            }
             localStorage.setItem('langit_db_catin_v6', JSON.stringify(DEFAULT_DATABASE));
             return DEFAULT_DATABASE;
         }
@@ -1020,38 +1029,6 @@
             });
         }
 
-     function saveAndSendCatinBiodata(e) {
-            e.preventDefault();
-            if (!loggedInClientKey) return;
-
-            const bioData = {
-                userKey: loggedInClientKey,
-                cpwFull: document.getElementById('catin-cpw-full').value.trim(),
-                cpwNick: document.getElementById('catin-cpw-nick').value.trim(),
-                cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
-                cpwIbu: document.getElementById('catin-cpw-ibu').value.trim(),
-                cpwSaudara: document.getElementById('catin-cpw-saudara').value.trim(),
-                cpwSaksi: document.getElementById('catin-cpw-saksi').value.trim(),
-                cppFull: document.getElementById('catin-cpp-full').value.trim(),
-                cppNick: document.getElementById('catin-cpp-nick').value.trim(),
-                cppAyah: document.getElementById('catin-cpp-ayah').value.trim(),
-                cppIbu: document.getElementById('catin-cpp-ibu').value.trim(),
-                cppSaudara: document.getElementById('catin-cpp-saudara').value.trim(),
-                cppSaksi: document.getElementById('catin-cpp-saksi').value.trim(),
-                sambutan: document.getElementById('catin-sambutan').value.trim(),
-                tilawah: document.getElementById('catin-tilawah').value.trim(),
-                vip: document.getElementById('catin-vip').value.trim(),
-                lagu: document.getElementById('catin-lagu').value.trim()
-            };
-
-            // Simpan ke LocalStorage browser lokal
-            const db = getDB();
-            if (db[loggedInClientKey]) {
-                db[loggedInClientKey].biodata = bioData;
-                saveDB(db);
-            }
-
-            // URL Web App Google Apps Script kamu
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
         // 1. Fungsi ambil data otomatis saat catin login
@@ -1083,22 +1060,22 @@
 
             const bioData = {
                 userKey: loggedInClientKey,
-                cpwFull: document.getElementById('catin-cpw-full').value.trim(),
-                cpwNick: document.getElementById('catin-cpw-nick').value.trim(),
-                cpwAyah: document.getElementById('catin-cpw-ayah').value.trim(),
-                cpwIbu: document.getElementById('catin-cpw-ibu').value.trim(),
-                cpwSaudara: document.getElementById('catin-cpw-saudara').value.trim(),
-                cpwSaksi: document.getElementById('catin-cpw-saksi').value.trim(),
-                cppFull: document.getElementById('catin-cpp-full').value.trim(),
-                cppNick: document.getElementById('catin-cpp-nick').value.trim(),
-                cppAyah: document.getElementById('catin-cpp-ayah').value.trim(),
-                cppIbu: document.getElementById('catin-cpp-ibu').value.trim(),
-                cppSaudara: document.getElementById('catin-cpp-saudara').value.trim(),
-                cppSaksi: document.getElementById('catin-cpp-saksi').value.trim(),
-                sambutan: document.getElementById('catin-sambutan').value.trim(),
-                tilawah: document.getElementById('catin-tilawah').value.trim(),
-                vip: document.getElementById('catin-vip').value.trim(),
-                lagu: document.getElementById('catin-lagu').value.trim()
+                cpwFull: document.getElementById('catin-cpw-full') ? document.getElementById('catin-cpw-full').value.trim() : '',
+                cpwNick: document.getElementById('catin-cpw-nick') ? document.getElementById('catin-cpw-nick').value.trim() : '',
+                cpwAyah: document.getElementById('catin-cpw-ayah') ? document.getElementById('catin-cpw-ayah').value.trim() : '',
+                cpwIbu: document.getElementById('catin-cpw-ibu') ? document.getElementById('catin-cpw-ibu').value.trim() : '',
+                cpwSaudara: document.getElementById('catin-cpw-saudara') ? document.getElementById('catin-cpw-saudara').value.trim() : '',
+                cpwSaksi: document.getElementById('catin-cpw-saksi') ? document.getElementById('catin-cpw-saksi').value.trim() : '',
+                cppFull: document.getElementById('catin-cpp-full') ? document.getElementById('catin-cpp-full').value.trim() : '',
+                cppNick: document.getElementById('catin-cpp-nick') ? document.getElementById('catin-cpp-nick').value.trim() : '',
+                cppAyah: document.getElementById('catin-cpp-ayah') ? document.getElementById('catin-cpp-ayah').value.trim() : '',
+                cppIbu: document.getElementById('catin-cpp-ibu') ? document.getElementById('catin-cpp-ibu').value.trim() : '',
+                cppSaudara: document.getElementById('catin-cpp-saudara') ? document.getElementById('catin-cpp-saudara').value.trim() : '',
+                cppSaksi: document.getElementById('catin-cpp-saksi') ? document.getElementById('catin-cpp-saksi').value.trim() : '',
+                sambutan: document.getElementById('catin-sambutan') ? document.getElementById('catin-sambutan').value.trim() : '',
+                tilawah: document.getElementById('catin-tilawah') ? document.getElementById('catin-tilawah').value.trim() : '',
+                vip: document.getElementById('catin-vip') ? document.getElementById('catin-vip').value.trim() : '',
+                lagu: document.getElementById('catin-lagu') ? document.getElementById('catin-lagu').value.trim() : ''
             };
 
             // Simpan ke LocalStorage browser lokal agar tidak hilang saat reload
@@ -1127,10 +1104,13 @@
                 setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
             }
 
-            // Opsional: Buka notifikasi ringkas ke WhatsApp Admin
-            const text = `Halo Yogs Langit Planner! Pengantin (*${bioData.cpwNick} & ${bioData.cppNick}*) baru saja meng-update biodata acara (Data otomatis tersimpan di Spreadsheet).`;
-            window.open(`https://wa.me/6282293697141?text=${text}`, '_blank');
+            // Buka notifikasi ke WhatsApp Admin
+            const cpwName = bioData.cpwNick || 'Mempelai';
+            const cppName = bioData.cppNick || 'Mempelai';
+            const text = `Halo Yogs Langit Planner! Pengantin (*${cpwName} & ${cppName}*) baru saja meng-update biodata acara (Data otomatis tersimpan di Spreadsheet).`;
+            window.open(`https://wa.me/6282293697141?text=${encodeURIComponent(text)}`, '_blank');
         }
+
         function handleAdminPackageChange() {
             const pkg = document.getElementById('admin-edit-pkg').value;
             const checkbox = document.getElementById('admin-show-progress');
