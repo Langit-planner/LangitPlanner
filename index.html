@@ -72,6 +72,22 @@
 
         .fan-deck .fan-card:hover { transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important; z-index: 60 !important; box-shadow: 0 32px 60px -12px rgba(31, 30, 28, 0.5); border-color: #C5A059; }
         .fan-deck .fan-card:hover img { transform: scale(1.06); }
+
+        /* Animasi Transisi Halus (Smooth Tab Fade & Slide-In) */
+        @keyframes tabFadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .tab-anim-enter {
+            animation: tabFadeSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            will-change: opacity, transform;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-champagne selection:text-white">
@@ -112,18 +128,18 @@
                 </button>
                 <button onclick="switchTab('projek')" data-tab="projek" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-bold transition">Dashboard</button>
                 <button onclick="switchTab('alur')" data-tab="alur" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Alur</button>
+                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Price List</button>
                 <button onclick="switchTab('layanan')" data-tab="layanan" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Paket</button>
-                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Pricelist</button>
                 <button onclick="switchTab('portofolio')" data-tab="portofolio" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Portofolio</button>
                 <button onclick="switchTab('testimoni')" data-tab="testimoni" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Testimoni</button>
-                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">FAQ</button>
+                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Pertanyaan</button>
                 <button onclick="switchTab('konsultasi')" data-tab="konsultasi" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Booking</button>
             </nav>
 
             <div class="hidden md:flex items-center gap-3 shrink-0">
                 <a href="https://wa.me/6282293697141" target="_blank" class="bg-charcoal hover:bg-champagne text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition duration-300 shadow-sm flex items-center gap-1.5">
                     <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-                    <span>082293697141 (Yogs)</span>
+                    <span>Hubungi Saya</span>
                 </a>
             </div>
 
@@ -137,28 +153,28 @@
                 <i data-lucide="lock" class="w-4 h-4"></i> Masuk Langit Tracker (Portal Catin)
             </button>
             <button onclick="switchTab('projek'); toggleMobileMenu();" data-tab="projek" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
-                <span>Dashboard &amp; Project</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+                <span>Dashboard</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
             <button onclick="switchTab('alur'); toggleMobileMenu();" data-tab="alur" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
-                <span>Alur Kerja Kami</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-            </button>
-            <button onclick="switchTab('layanan'); toggleMobileMenu();" data-tab="layanan" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
-                <span>Pilihan Paket</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+                <span>Alur</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
             <button onclick="switchTab('paket'); toggleMobileMenu();" data-tab="paket" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
-                <span>Pricelist Resmi</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+                <span>Price List</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('layanan'); toggleMobileMenu();" data-tab="layanan" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Paket</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
             <button onclick="switchTab('portofolio'); toggleMobileMenu();" data-tab="portofolio" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
                 <span>Portofolio</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
             <button onclick="switchTab('testimoni'); toggleMobileMenu();" data-tab="testimoni" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
-                <span>Testimoni Pengantin</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+                <span>Testimoni</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
             <button onclick="switchTab('faq'); toggleMobileMenu();" data-tab="faq" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
-                <span>FAQ (Pertanyaan)</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+                <span>Pertanyaan</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
             <button onclick="switchTab('konsultasi'); toggleMobileMenu();" data-tab="konsultasi" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne flex items-center justify-between">
-                <span>Kontak &amp; Booking Jadwal</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+                <span>Booking</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
         </div></header>
 
@@ -1415,18 +1431,22 @@
 
         // ================= TAB NAVIGATION LOGIC =================
         function switchTab(tabName) {
-            const validTabs = ['projek', 'alur', 'layanan', 'paket', 'portofolio', 'testimoni', 'faq', 'konsultasi'];
+            const validTabs = ['projek', 'alur', 'paket', 'layanan', 'portofolio', 'testimoni', 'faq', 'konsultasi'];
             if (!validTabs.includes(tabName)) tabName = 'projek';
 
-            // Sembunyikan semua page view
+            // Sembunyikan semua page view dan bersihkan class animasi
             document.querySelectorAll('.page-view').forEach(view => {
                 view.classList.add('hidden');
+                view.classList.remove('tab-anim-enter');
             });
 
-            // Tampilkan page view yang dipilih
+            // Tampilkan page view yang dipilih dengan trigger animasi halus
             const targetView = document.getElementById('view-' + tabName);
             if (targetView) {
                 targetView.classList.remove('hidden');
+                // Force reflow agar animasi CSS terulang secara konsisten & smooth
+                void targetView.offsetWidth;
+                targetView.classList.add('tab-anim-enter');
             }
 
             // Update styling aktif untuk tombol desktop nav
