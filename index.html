@@ -121,19 +121,15 @@
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-1.5 text-xs font-semibold uppercase tracking-wider text-charcoal/80">
-                <button onclick="openLoginModal()" class="text-champagneDark hover:text-champagne transition flex items-center gap-1.5 bg-sand px-3 py-1.5 rounded-full border border-stone-300/80 shadow-sm mr-2">
-                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                    <span>Langit Tracker</span>
-                </button>
-                <button onclick="switchTab('projek')" data-tab="projek" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-bold transition">Dashboard</button>
-                <button onclick="switchTab('alur')" data-tab="alur" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Alur</button>
-                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Price List</button>
-                <button onclick="switchTab('layanan')" data-tab="layanan" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Paket</button>
-                <button onclick="switchTab('portofolio')" data-tab="portofolio" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Portofolio</button>
-                <button onclick="switchTab('testimoni')" data-tab="testimoni" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Testimoni</button>
-                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Pertanyaan</button>
-                <button onclick="switchTab('konsultasi')" data-tab="konsultasi" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Booking</button>
+            <nav class="hidden lg:flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-charcoal/80">
+                <button onclick="switchTab('projek')" data-tab="projek" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition">Dashboard</button>
+                <button onclick="switchTab('alur')" data-tab="alur" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Alur</button>
+                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Price List</button>
+                <button onclick="switchTab('layanan')" data-tab="layanan" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Paket</button>
+                <button onclick="switchTab('portofolio')" data-tab="portofolio" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Portofolio</button>
+                <button onclick="switchTab('testimoni')" data-tab="testimoni" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Testimoni</button>
+                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Pertanyaan</button>
+                <button onclick="switchTab('konsultasi')" data-tab="konsultasi" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Booking</button>
             </nav>
 
             <div class="hidden md:flex items-center gap-3 shrink-0">
@@ -870,6 +866,64 @@
                         <div class="overflow-x-auto"><table class="w-full text-left text-xs"><thead><tr class="border-b border-stone-200 text-muted"><th class="pb-2 font-bold w-1/4">Kategori</th><th class="pb-2 font-bold w-2/5">Nama Vendor</th><th class="pb-2 font-bold w-1/3">Status</th></tr></thead><tbody id="admin-vendor-tbody" class="divide-y divide-stone-100"></tbody></table></div>
                     </div>
 
+                    <!-- BIODATA DARI CATIN (DAPAT DILIHAT OLEH ADMIN) -->
+                    <div class="pt-5 border-t border-stone-200 space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                                <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider flex items-center gap-2">
+                                    <span>📋 Biodata Acara &amp; Rundown Catin</span>
+                                    <span id="admin-bio-status-badge" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800">Memeriksa data...</span>
+                                </h4>
+                                <p class="text-xs text-muted mt-0.5">Data yang diisi oleh Catin di portal atau disinkronkan dari Google Spreadsheet.</p>
+                            </div>
+                            <button type="button" onclick="refreshAdminBioFromCloud()" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1.5 bg-sand hover:bg-stone-200 px-3 py-1.5 rounded-xl border border-stone-300 transition shadow-sm">
+                                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                                <span>Tarik Data Terbaru</span>
+                            </button>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                            <!-- Biodata Wanita (CPW) -->
+                            <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3">
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">1. Biodata CPW (Mempelai Wanita)</h5>
+                                <div><label class="block font-bold mb-1">Nama Lengkap &amp; Gelar</label><input type="text" id="admin-bio-cpw-full" placeholder="Nama lengkap CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div><label class="block font-bold mb-1">Nama Panggilan</label><input type="text" id="admin-bio-cpw-nick" placeholder="Nama panggilan..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div><label class="block font-bold mb-1">Nama Ayah</label><input type="text" id="admin-bio-cpw-ayah" placeholder="Ayah CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                    <div><label class="block font-bold mb-1">Nama Ibu</label><input type="text" id="admin-bio-cpw-ibu" placeholder="Ibu CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                </div>
+                                <div><label class="block font-bold mb-1">Saudara-saudara</label><textarea id="admin-bio-cpw-saudara" rows="2" placeholder="Nama saudara..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                                <div><label class="block font-bold mb-1">Saksi Pihak Wanita</label><input type="text" id="admin-bio-cpw-saksi" placeholder="Saksi CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                            </div>
+
+                            <!-- Biodata Pria (CPP) -->
+                            <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3">
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">2. Biodata CPP (Mempelai Pria)</h5>
+                                <div><label class="block font-bold mb-1">Nama Lengkap &amp; Gelar</label><input type="text" id="admin-bio-cpp-full" placeholder="Nama lengkap CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div><label class="block font-bold mb-1">Nama Panggilan</label><input type="text" id="admin-bio-cpp-nick" placeholder="Nama panggilan..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div><label class="block font-bold mb-1">Nama Ayah</label><input type="text" id="admin-bio-cpp-ayah" placeholder="Ayah CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                    <div><label class="block font-bold mb-1">Nama Ibu</label><input type="text" id="admin-bio-cpp-ibu" placeholder="Ibu CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                </div>
+                                <div><label class="block font-bold mb-1">Saudara-saudara</label><textarea id="admin-bio-cpp-saudara" rows="2" placeholder="Nama saudara..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                                <div><label class="block font-bold mb-1">Saksi Pihak Pria</label><input type="text" id="admin-bio-cpp-saksi" placeholder="Saksi CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                            </div>
+                        </div>
+
+                        <!-- Rundown & Musik -->
+                        <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3 text-xs">
+                            <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">3. Rundown, VIP &amp; Musik</h5>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div><label class="block font-bold mb-1">Sambutan Resepsi</label><input type="text" id="admin-bio-sambutan" placeholder="Pemberi sambutan..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div><label class="block font-bold mb-1">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="admin-bio-tilawah" placeholder="Nama Qori/Tilawah..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <div><label class="block font-bold mb-1">Tamu VIP</label><textarea id="admin-bio-vip" rows="2" placeholder="Daftar tamu VIP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                                <div><label class="block font-bold mb-1">List Lagu Request (Entertainment)</label><textarea id="admin-bio-lagu" rows="2" placeholder="Judul lagu favorit..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-stone-200">
                         <span id="admin-save-feedback" class="text-xs font-bold text-emerald-700"></span>
                         <div class="flex flex-wrap items-center gap-3">
@@ -943,61 +997,22 @@
         const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
 
         const DEFAULT_DATABASE = {
-    "ka2027": {
-        "username": "ka2027",
-        "password": "langit2026",
-        "groomFull": "Aldy",
-        "groomNick": "Aldy",
-        "brideFull": "Kristin",
-        "brideNick": "Kristin",
-        "package": "Silver Package",
-        "venue": "Gedung Wanita — 2027",
-        "weddingDate": "2027-03-20",
-        "docUrl": "",
-        "showProgress": true,
-        "progress": 30,
-        "biodata": {},
-        "vendors": [
-            {
-                "cat": "Dekorasi",
-                "name": "SalonAnna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MUA",
-                "name": "Ratih",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MC",
-                "name": "Najwa",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Musik",
-                "name": "Oppa",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Henna",
-                "name": "Mitra Langit Planner",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "WCC",
-                "name": "Langit Wedding Content Creator",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Catering",
-                "name": "Hj Sabar",
-                "status": "Sudah Dibooking Admin"
+            aldi: {
+                username: "aldi", password: "langit2026", groomFull: "Aldi & Kristin", groomNick: "Aldi", brideFull: "Kristin", brideNick: "Kristin", package: "Diamond Package", venue: "Tanjung Selor — 2026", weddingDate: "2026-12-28", docUrl: "", showProgress: true, progress: 85,
+                biodata: { cpwFull: "", cpwNick: "", cpwAyah: "", cpwIbu: "", cpwSaudara: "", cpwSaksi: "", cppFull: "", cppNick: "", cppAyah: "", cppIbu: "", cppSaudara: "", cppSaksi: "", sambutan: "", tilawah: "", vip: "", lagu: "" },
+                vendors: [
+                    { cat: "Dekorasi", name: "SalonAnna", status: "Sudah Dibooking Admin" },
+                    { cat: "MUA", name: "Ratih", status: "Sudah Dibooking Admin" },
+                    { cat: "MC", name: "MC Najwa Zenuba", status: "Sudah Dibooking Admin" },
+                    { cat: "Musik", name: "Opa Music Entertainment", status: "Sudah Dibooking Admin" },
+                    { cat: "Henna", name: "Rofiqohenna", status: "Sudah Dibooking Admin" },
+                    { cat: "WCC", name: "Langit Wedding Content Creator", status: "Sudah Dibooking Admin" },
+                    { cat: "Catering", name: "Hj Sabar", status: "Sudah Dibooking Admin" }
+                ]
             }
-        ]
-    }
-};
+        };
 
-        let currentActiveCatin = 'null';
+        let currentActiveCatin = 'aldi';
         let loggedInClientKey = null;
 
                 function getDB() {
@@ -1283,6 +1298,77 @@
             keys.forEach(k => { const c = db[k]; sel.innerHTML += `<option value="${k}">${c.groomNick} & ${c.brideNick} (User: ${k})</option>`; });
         }
 
+        function renderAdminBiodata(bio) {
+            bio = bio || {};
+            if (document.getElementById('admin-bio-cpw-full')) document.getElementById('admin-bio-cpw-full').value = bio.cpwFull || '';
+            if (document.getElementById('admin-bio-cpw-nick')) document.getElementById('admin-bio-cpw-nick').value = bio.cpwNick || '';
+            if (document.getElementById('admin-bio-cpw-ayah')) document.getElementById('admin-bio-cpw-ayah').value = bio.cpwAyah || '';
+            if (document.getElementById('admin-bio-cpw-ibu')) document.getElementById('admin-bio-cpw-ibu').value = bio.cpwIbu || '';
+            if (document.getElementById('admin-bio-cpw-saudara')) document.getElementById('admin-bio-cpw-saudara').value = bio.cpwSaudara || '';
+            if (document.getElementById('admin-bio-cpw-saksi')) document.getElementById('admin-bio-cpw-saksi').value = bio.cpwSaksi || '';
+
+            if (document.getElementById('admin-bio-cpp-full')) document.getElementById('admin-bio-cpp-full').value = bio.cppFull || '';
+            if (document.getElementById('admin-bio-cpp-nick')) document.getElementById('admin-bio-cpp-nick').value = bio.cppNick || '';
+            if (document.getElementById('admin-bio-cpp-ayah')) document.getElementById('admin-bio-cpp-ayah').value = bio.cppAyah || '';
+            if (document.getElementById('admin-bio-cpp-ibu')) document.getElementById('admin-bio-cpp-ibu').value = bio.cppIbu || '';
+            if (document.getElementById('admin-bio-cpp-saudara')) document.getElementById('admin-bio-cpp-saudara').value = bio.cppSaudara || '';
+            if (document.getElementById('admin-bio-cpp-saksi')) document.getElementById('admin-bio-cpp-saksi').value = bio.cppSaksi || '';
+
+            if (document.getElementById('admin-bio-sambutan')) document.getElementById('admin-bio-sambutan').value = bio.sambutan || '';
+            if (document.getElementById('admin-bio-tilawah')) document.getElementById('admin-bio-tilawah').value = bio.tilawah || '';
+            if (document.getElementById('admin-bio-vip')) document.getElementById('admin-bio-vip').value = bio.vip || '';
+            if (document.getElementById('admin-bio-lagu')) document.getElementById('admin-bio-lagu').value = bio.lagu || '';
+
+            const badge = document.getElementById('admin-bio-status-badge');
+            if (badge) {
+                if (bio.cpwFull || bio.cppFull || bio.cpwAyah || bio.cppAyah || bio.vip || bio.lagu) {
+                    badge.className = "text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800";
+                    badge.innerText = "Sudah Diisi Catin ✅";
+                } else {
+                    badge.className = "text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800";
+                    badge.innerText = "Belum Diisi Catin ⏳";
+                }
+            }
+        }
+
+        async function refreshAdminBioFromCloud() {
+            if (!currentActiveCatin || currentActiveCatin === '__NEW__') return;
+            const badge = document.getElementById('admin-bio-status-badge');
+            if (badge) badge.innerText = "Memuat dari Cloud...";
+            try {
+                const res = await fetch(CLOUD_SHEET_URL);
+                const cloudRes = await res.json();
+                let foundBio = null;
+                if (cloudRes.db && cloudRes.db[currentActiveCatin] && cloudRes.db[currentActiveCatin].biodata) {
+                    foundBio = cloudRes.db[currentActiveCatin].biodata;
+                } else if (cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
+                    const row = cloudRes.biodata.find(r => r['User Key'] === currentActiveCatin);
+                    if (row) {
+                        foundBio = {
+                            cpwFull: row['Nama CPW'] || '', cppFull: row['Nama CPP'] || '',
+                            cpwAyah: row['Ayah CPW'] || '', cpwIbu: row['Ibu CPW'] || '',
+                            cppAyah: row['Ayah CPP'] || '', cppIbu: row['Ibu CPP'] || '',
+                            vip: row['VIP'] || '', lagu: row['Lagu Request'] || ''
+                        };
+                    }
+                }
+                if (foundBio) {
+                    renderAdminBiodata(foundBio);
+                    const db = getDB();
+                    if (db[currentActiveCatin]) {
+                        db[currentActiveCatin].biodata = Object.assign(db[currentActiveCatin].biodata || {}, foundBio);
+                        saveDB(db);
+                    }
+                    alert("✓ Data biodata berhasil ditarik dari Spreadsheet!");
+                } else {
+                    renderAdminBiodata({});
+                    alert("Belum ada data isian baru untuk klien ini di Spreadsheet.");
+                }
+            } catch (err) {
+                alert("Gagal terhubung ke Google Spreadsheet.");
+            }
+        }
+
         function switchAdminCatin(key) { if (!key) return; currentActiveCatin = key; loadAdminData(key); }
         function loadAdminData(key) {
             const db = getDB(); const data = db[key]; if (!data) return;
@@ -1296,7 +1382,9 @@
             document.getElementById('admin-edit-pass').value = data.password || 'langit2026';
             const checkbox = document.getElementById('admin-show-progress'); checkbox.disabled = !isEligibleForProgress(data.package);
             checkbox.checked = isEligibleForProgress(data.package) && (data.showProgress !== false);
-            handleAdminPackageChange(); renderAdminVendorInputs(data.vendors);
+            handleAdminPackageChange(); 
+            renderAdminVendorInputs(data.vendors);
+            renderAdminBiodata(data.biodata);
         }
 
         function prepareNewCatinForm() {
@@ -1310,6 +1398,9 @@
             handleAdminPackageChange();
             const blankVendors = VENDOR_CATEGORIES.map(cat => ({ cat: cat, name: '', status: 'Sudah Dibooking Admin' }));
             renderAdminVendorInputs(blankVendors);
+            renderAdminBiodata({});
+            const badge = document.getElementById('admin-bio-status-badge');
+            if (badge) { badge.className = "text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-stone-200 text-stone-700"; badge.innerText = "Akun Baru"; }
         }
 
         function renderAdminVendorInputs(vendorList) {
@@ -1340,11 +1431,33 @@
             const updatedVendors = VENDOR_CATEGORIES.map((catName, i) => ({ cat: catName, name: document.getElementById(`admin-v-name-${i}`).value.trim() || 'Mitra Langit Planner', status: document.getElementById(`admin-v-status-${i}`).value }));
             const db = getDB();
             let existingBiodata = {};
-            if (db[usernameKey] && db[usernameKey].biodata) { existingBiodata = db[usernameKey].biodata; }
+            if (db[usernameKey] && db[usernameKey].biodata) { existingBiodata = Object.assign({}, db[usernameKey].biodata); }
             if (currentActiveCatin !== '__NEW__' && currentActiveCatin !== usernameKey && db[currentActiveCatin]) {
-                existingBiodata = db[currentActiveCatin].biodata || {};
+                existingBiodata = Object.assign({}, db[currentActiveCatin].biodata || {});
                 delete db[currentActiveCatin];
             }
+
+            // Gabungkan nilai biodata dari input form admin
+            const currentAdminBio = {
+                cpwFull: document.getElementById('admin-bio-cpw-full') ? document.getElementById('admin-bio-cpw-full').value.trim() : '',
+                cpwNick: document.getElementById('admin-bio-cpw-nick') ? document.getElementById('admin-bio-cpw-nick').value.trim() : '',
+                cpwAyah: document.getElementById('admin-bio-cpw-ayah') ? document.getElementById('admin-bio-cpw-ayah').value.trim() : '',
+                cpwIbu: document.getElementById('admin-bio-cpw-ibu') ? document.getElementById('admin-bio-cpw-ibu').value.trim() : '',
+                cpwSaudara: document.getElementById('admin-bio-cpw-saudara') ? document.getElementById('admin-bio-cpw-saudara').value.trim() : '',
+                cpwSaksi: document.getElementById('admin-bio-cpw-saksi') ? document.getElementById('admin-bio-cpw-saksi').value.trim() : '',
+                cppFull: document.getElementById('admin-bio-cpp-full') ? document.getElementById('admin-bio-cpp-full').value.trim() : '',
+                cppNick: document.getElementById('admin-bio-cpp-nick') ? document.getElementById('admin-bio-cpp-nick').value.trim() : '',
+                cppAyah: document.getElementById('admin-bio-cpp-ayah') ? document.getElementById('admin-bio-cpp-ayah').value.trim() : '',
+                cppIbu: document.getElementById('admin-bio-cpp-ibu') ? document.getElementById('admin-bio-cpp-ibu').value.trim() : '',
+                cppSaudara: document.getElementById('admin-bio-cpp-saudara') ? document.getElementById('admin-bio-cpp-saudara').value.trim() : '',
+                cppSaksi: document.getElementById('admin-bio-cpp-saksi') ? document.getElementById('admin-bio-cpp-saksi').value.trim() : '',
+                sambutan: document.getElementById('admin-bio-sambutan') ? document.getElementById('admin-bio-sambutan').value.trim() : '',
+                tilawah: document.getElementById('admin-bio-tilawah') ? document.getElementById('admin-bio-tilawah').value.trim() : '',
+                vip: document.getElementById('admin-bio-vip') ? document.getElementById('admin-bio-vip').value.trim() : '',
+                lagu: document.getElementById('admin-bio-lagu') ? document.getElementById('admin-bio-lagu').value.trim() : ''
+            };
+            existingBiodata = Object.assign(existingBiodata, currentAdminBio);
+
             db[usernameKey] = { username: usernameKey, password: customPass, groomFull: groomFull, groomNick: groomNick, brideFull: brideFull, brideNick: brideNick, package: selectedPkg, venue: document.getElementById('admin-edit-venue').value.trim() || 'Tanjung Selor', weddingDate: document.getElementById('admin-edit-date').value || '', docUrl: document.getElementById('admin-edit-doc').value.trim() || '', showProgress: showProg, progress: showProg ? (parseInt(document.getElementById('admin-edit-progress').value) || 0) : 0, biodata: existingBiodata, vendors: updatedVendors };
             saveDB(db); populateAdminDropdown(); currentActiveCatin = usernameKey; document.getElementById('admin-select-catin').value = usernameKey;
             const fb = document.getElementById('admin-save-feedback'); fb.innerText = `✓ Tersimpan! User: ${usernameKey} | Pass: ${customPass}`;
@@ -1423,15 +1536,58 @@
             if (!CLOUD_SHEET_URL) return;
             try {
                 const res = await fetch(CLOUD_SHEET_URL);
-                const cloudData = await res.json();
-                // Validasi ketat: Cloud data harus berupa Object kamus (bukan Array) dan memiliki data valid
-                if (cloudData && typeof cloudData === 'object' && !Array.isArray(cloudData) && Object.keys(cloudData).length > 0) {
-                    // Hanya update jika data valid dan memiliki struktur catin yang benar
-                    const sampleKey = Object.keys(cloudData)[0];
-                    if (cloudData[sampleKey] && cloudData[sampleKey].groomNick) {
-                        localStorage.setItem('langit_db_catin_v6', JSON.stringify(cloudData));
-                        renderPublicProjects();
+                const cloudRes = await res.json();
+                
+                let targetDb = null;
+                // A. Jika respon memuat master db di cloudRes.db
+                if (cloudRes && cloudRes.db && typeof cloudRes.db === 'object' && !Array.isArray(cloudRes.db) && Object.keys(cloudRes.db).length > 0) {
+                    targetDb = cloudRes.db;
+                } else if (cloudRes && typeof cloudRes === 'object' && !Array.isArray(cloudRes) && Object.keys(cloudRes).length > 0) {
+                    const sampleKey = Object.keys(cloudRes)[0];
+                    if (cloudRes[sampleKey] && cloudRes[sampleKey].groomNick) {
+                        targetDb = cloudRes;
                     }
+                }
+
+                if (targetDb) {
+                    // Jika ada data baris dari sheet Biodata, merge secara akurat
+                    if (cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
+                        cloudRes.biodata.forEach(row => {
+                            const uKey = row['User Key'];
+                            if (uKey && targetDb[uKey]) {
+                                targetDb[uKey].biodata = targetDb[uKey].biodata || {};
+                                if (row['Nama CPW']) targetDb[uKey].biodata.cpwFull = row['Nama CPW'];
+                                if (row['Nama CPP']) targetDb[uKey].biodata.cppFull = row['Nama CPP'];
+                                if (row['Ayah CPW']) targetDb[uKey].biodata.cpwAyah = row['Ayah CPW'];
+                                if (row['Ibu CPW']) targetDb[uKey].biodata.cpwIbu = row['Ibu CPW'];
+                                if (row['Ayah CPP']) targetDb[uKey].biodata.cppAyah = row['Ayah CPP'];
+                                if (row['Ibu CPP']) targetDb[uKey].biodata.cppIbu = row['Ibu CPP'];
+                                if (row['VIP']) targetDb[uKey].biodata.vip = row['VIP'];
+                                if (row['Lagu Request']) targetDb[uKey].biodata.lagu = row['Lagu Request'];
+                            }
+                        });
+                    }
+                    localStorage.setItem('langit_db_catin_v6', JSON.stringify(targetDb));
+                    renderPublicProjects();
+                } else if (cloudRes && cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
+                    // Respon hanya baris biodata, gabungkan ke DB lokal
+                    const db = getDB();
+                    cloudRes.biodata.forEach(row => {
+                        const uKey = row['User Key'];
+                        if (uKey && db[uKey]) {
+                            db[uKey].biodata = db[uKey].biodata || {};
+                            if (row['Nama CPW']) db[uKey].biodata.cpwFull = row['Nama CPW'];
+                            if (row['Nama CPP']) db[uKey].biodata.cppFull = row['Nama CPP'];
+                            if (row['Ayah CPW']) db[uKey].biodata.cpwAyah = row['Ayah CPW'];
+                            if (row['Ibu CPW']) db[uKey].biodata.cpwIbu = row['Ibu CPW'];
+                            if (row['Ayah CPP']) db[uKey].biodata.cppAyah = row['Ayah CPP'];
+                            if (row['Ibu CPP']) db[uKey].biodata.cppIbu = row['Ibu CPP'];
+                            if (row['VIP']) db[uKey].biodata.vip = row['VIP'];
+                            if (row['Lagu Request']) db[uKey].biodata.lagu = row['Lagu Request'];
+                        }
+                    });
+                    localStorage.setItem('langit_db_catin_v6', JSON.stringify(db));
+                    renderPublicProjects();
                 }
             } catch (err) {
                 console.log('Menggunakan database lokal...');
@@ -1458,7 +1614,8 @@
                 const raw = localStorage.getItem('langit_db_catin_v6');
                 if (raw) {
                     const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed) || !parsed || Object.keys(parsed).length === 0 || !parsed.rizki) {
+                    // Jangan cek !parsed.rizki agar data klien baru (Aldi & Kristin, dll) tidak terhapus otomatis!
+                    if (Array.isArray(parsed) || !parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0) {
                         localStorage.removeItem('langit_db_catin_v6');
                     }
                 }
