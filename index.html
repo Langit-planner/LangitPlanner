@@ -806,7 +806,7 @@
                             <div><label class="block font-bold mb-1">List Lagu Request</label><textarea id="catin-lagu" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
                         </div>
                         <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
-                            <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Biodata &amp; Kirim Notifikasi ke Admin (Yogs)</span>
+                            <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Biodata dan Send ke Admin</span>
                         </button>
                     </form>
                 </div>
@@ -1324,7 +1324,7 @@
             // Buka notifikasi ke WhatsApp Admin
             const cpwName = bioData.cpwNick || 'Mempelai';
             const cppName = bioData.cppNick || 'Mempelai';
-            const text = `Halo Yogs Langit Planner! Pengantin (*${cpwName} & ${cppName}*) baru saja meng-update biodata acara (Data otomatis tersimpan di Spreadsheet).`;
+            const text = `Halo Admin Langit Planner! Pengantin (*${cpwName} & ${cppName}*) baru saja meng-update biodata acara (Data otomatis tersimpan di Spreadsheet).`;
             window.open(`https://wa.me/6285190920279?text=${encodeURIComponent(text)}`, '_blank');
         }
 
@@ -1609,7 +1609,7 @@
         }
         function sendToWhatsApp(e) {
             e.preventDefault();
-            const text = `Halo Yogs Langit Planner! Jadwal konsultasi:%0A- Nama: ${document.getElementById('form-nama').value}%0A- WA: ${document.getElementById('form-wa').value}%0A- Tanggal: ${document.getElementById('form-tanggal').value}%0A- Tamu: ${document.getElementById('form-tamu').value}%0A- Venue: ${document.getElementById('form-venue').value}%0A- Paket: ${document.getElementById('form-paket').value}%0A- Diskusi: ${selectedConsultDate}`;
+            const text = `Halo Admin Langit Planner! Jadwal konsultasi:%0A- Nama: ${document.getElementById('form-nama').value}%0A- WA: ${document.getElementById('form-wa').value}%0A- Tanggal: ${document.getElementById('form-tanggal').value}%0A- Tamu: ${document.getElementById('form-tamu').value}%0A- Venue: ${document.getElementById('form-venue').value}%0A- Paket: ${document.getElementById('form-paket').value}%0A- Diskusi: ${selectedConsultDate}`;
             window.open(`https://wa.me/6285190920279?text=${text}`, '_blank');
         }
 
@@ -1780,4 +1780,3 @@
         });
     </script>
 </body>
-</html>
