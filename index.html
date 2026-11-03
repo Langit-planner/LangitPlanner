@@ -1196,29 +1196,78 @@
 
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
-        // 1. Fungsi ambil data otomatis saat catin login
+       // 1. Fungsi penempatan biodata ke formulir Catin
+        function applyBioToCatinForm(bio) {
+            if (!bio) return;
+            const fields = [
+                ['catin-cpw-full', bio.cpwFull], ['catin-cpw-nick', bio.cpwNick],
+                ['catin-cpw-ayah', bio.cpwAyah], ['catin-cpw-ibu', bio.cpwIbu],
+                ['catin-cpw-saudara', bio.cpwSaudara], ['catin-cpw-saksi', bio.cpwSaksi],
+                ['catin-cpp-full', bio.cppFull], ['catin-cpp-nick', bio.cppNick],
+                ['catin-cpp-ayah', bio.cppAyah], ['catin-cpp-ibu', bio.cppIbu],
+                ['catin-cpp-saudara', bio.cppSaudara], ['catin-cpp-saksi', bio.cppSaksi],
+                ['catin-sambutan', bio.sambutan], ['catin-tilawah', bio.tilawah],
+                ['catin-vip', bio.vip], ['catin-lagu', bio.lagu]
+            ];
+            fields.forEach(([id, val]) => {
+                const el = document.getElementById(id);
+                if (el && val !== undefined) el.value = val;
+            });
+        }
+
+        // 2. Fungsi ambil data otomatis saat catin login (Anti-Kosong saat Refresh)
         async function loadCatinFromCloud(usernameKey) {
             try {
+                // Pulihkan cadangan lokal seketika agar saat refresh tidak kosong
+                const localBackup = localStorage.getItem('langit_bio_' + usernameKey);
+                if (localBackup) {
+                    try { applyBioToCatinForm(JSON.parse(localBackup)); } catch (e) {}
+                }
+
                 const response = await fetch(SCRIPT_URL);
-                const dataList = await response.json();
-                const clientData = dataList.find(item => item['User Key'] === usernameKey);
+                const result = await response.json();
+                
+                let clientData = null;
+                if (Array.isArray(result)) {
+                    clientData = result.find(item => item['User Key'] === usernameKey);
+                } else if (result && result.biodata && Array.isArray(result.biodata)) {
+                    clientData = result.biodata.find(item => item['User Key'] === usernameKey);
+                }
         
                 if (clientData) {
-                    if (document.getElementById('catin-cpw-full')) document.getElementById('catin-cpw-full').value = clientData['Nama CPW'] || '';
-                    if (document.getElementById('catin-cpp-full')) document.getElementById('catin-cpp-full').value = clientData['Nama CPP'] || '';
-                    if (document.getElementById('catin-cpw-ayah')) document.getElementById('catin-cpw-ayah').value = clientData['Ayah CPW'] || '';
-                    if (document.getElementById('catin-cpw-ibu')) document.getElementById('catin-cpw-ibu').value = clientData['Ibu CPW'] || '';
-                    if (document.getElementById('catin-cpp-ayah')) document.getElementById('catin-cpp-ayah').value = clientData['Ayah CPP'] || '';
-                    if (document.getElementById('catin-cpp-ibu')) document.getElementById('catin-cpp-ibu').value = clientData['Ibu CPP'] || '';
-                    if (document.getElementById('catin-vip')) document.getElementById('catin-vip').value = clientData['VIP'] || '';
-                    if (document.getElementById('catin-lagu')) document.getElementById('catin-lagu').value = clientData['Lagu Request'] || '';
+                    const mappedBio = {
+                        cpwFull: clientData['Nama CPW'] || clientData.cpwFull || '',
+                        cpwNick: clientData['Panggilan CPW'] || clientData.cpwNick || '',
+                        cpwAyah: clientData['Ayah CPW'] || clientData.cpwAyah || '',
+                        cpwIbu: clientData['Ibu CPW'] || clientData.cpwIbu || '',
+                        cpwSaudara: clientData['Saudara CPW'] || clientData.cpwSaudara || '',
+                        cpwSaksi: clientData['Saksi CPW'] || clientData.cpwSaksi || '',
+                        cppFull: clientData['Nama CPP'] || clientData.cppFull || '',
+                        cppNick: clientData['Panggilan CPP'] || clientData.cppNick || '',
+                        cppAyah: clientData['Ayah CPP'] || clientData.cppAyah || '',
+                        cppIbu: clientData['Ibu CPP'] || clientData.cppIbu || '',
+                        cppSaudara: clientData['Saudara CPP'] || clientData.cppSaudara || '',
+                        cppSaksi: clientData['Saksi CPP'] || clientData.cppSaksi || '',
+                        sambutan: clientData['Sambutan'] || clientData.sambutan || '',
+                        tilawah: clientData['Tilawah'] || clientData.tilawah || '',
+                        vip: clientData['VIP'] || clientData.vip || '',
+                        lagu: clientData['Lagu Request'] || clientData.lagu || ''
+                    };
+                    applyBioToCatinForm(mappedBio);
+                    localStorage.setItem('langit_bio_' + usernameKey, JSON.stringify(mappedBio));
+                    
+                    const db = getDB();
+                    if (db[usernameKey]) {
+                        db[usernameKey].biodata = Object.assign(db[usernameKey].biodata || {}, mappedBio);
+                        localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
+                    }
                 }
             } catch (e) {
                 console.error("Gagal memuat data dari Spreadsheet:", e);
             }
         }
 
-        // 2. Fungsi simpan biodata Catin (Tersimpan Lokal + Kirim Otomatis ke Spreadsheet)
+        // 3. Simpan Biodata Catin (Tersimpan Ganda: Offline Backup + Online Sheet)
         async function saveAndSendCatinBiodata(e) {
             e.preventDefault();
             if (!loggedInClientKey) return;
@@ -1242,6 +1291,89 @@
                 vip: document.getElementById('catin-vip') ? document.getElementById('catin-vip').value.trim() : '',
                 lagu: document.getElementById('catin-lagu') ? document.getElementById('catin-lagu').value.trim() : ''
             };
+
+            // Simpan langsung ke cadangan lokal browser agar saat di-refresh tidak hilang
+            localStorage.setItem('langit_bio_' + loggedInClientKey, JSON.stringify(bioData));
+            const db = getDB();
+            if (db[loggedInClientKey]) {
+                db[loggedInClientKey].biodata = bioData;
+                saveDB(db);
+            }
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bioData)
+                });
+            } catch (err) {
+                console.error("Koneksi Spreadsheet:", err);
+            }
+
+            const alertBox = document.getElementById('catin-success-alert');
+            if (alertBox) {
+                alertBox.classList.remove('hidden');
+                setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
+            }
+
+            const cpwName = bioData.cpwNick || 'Mempelai';
+            const cppName = bioData.cppNick || 'Mempelai';
+            const text = `Halo Yogs Langit Planner! Pengantin (*${cpwName} & ${cppName}*) baru saja meng-update biodata acara.`;
+            window.open(`https://wa.me/6282293697141?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // 4. Tarik Data Terbaru oleh Admin (Langsung Membaca Baris Isian Catin)
+        async function refreshAdminBioFromCloud() {
+            if (!currentActiveCatin || currentActiveCatin === '__NEW__') return;
+            const badge = document.getElementById('admin-bio-status-badge');
+            if (badge) badge.innerText = "Memuat dari Cloud...";
+            try {
+                const res = await fetch(CLOUD_SHEET_URL);
+                const cloudRes = await res.json();
+                let foundBio = {};
+
+                // Prioritaskan mencari data dari rekap baris Biodata
+                let rowFound = null;
+                if (Array.isArray(cloudRes)) {
+                    rowFound = cloudRes.find(r => r['User Key'] === currentActiveCatin);
+                } else if (cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
+                    rowFound = cloudRes.biodata.find(r => r['User Key'] === currentActiveCatin);
+                }
+                
+                if (rowFound) {
+                    foundBio = {
+                        cpwFull: rowFound['Nama CPW'] || '', cpwNick: rowFound['Panggilan CPW'] || '',
+                        cpwAyah: rowFound['Ayah CPW'] || '', cpwIbu: rowFound['Ibu CPW'] || '',
+                        cpwSaudara: rowFound['Saudara CPW'] || '', cpwSaksi: rowFound['Saksi CPW'] || '',
+                        cppFull: rowFound['Nama CPP'] || '', cppNick: rowFound['Panggilan CPP'] || '',
+                        cppAyah: rowFound['Ayah CPP'] || '', cppIbu: rowFound['Ibu CPP'] || '',
+                        cppSaudara: rowFound['Saudara CPP'] || '', cppSaksi: rowFound['Saksi CPP'] || '',
+                        sambutan: rowFound['Sambutan'] || '', tilawah: rowFound['Tilawah'] || '',
+                        vip: rowFound['VIP'] || '', lagu: rowFound['Lagu Request'] || ''
+                    };
+                }
+
+                const hasData = Object.values(foundBio).some(v => typeof v === 'string' && v.trim().length > 0);
+
+                if (hasData) {
+                    renderAdminBiodata(foundBio);
+                    const db = getDB();
+                    if (db[currentActiveCatin]) {
+                        db[currentActiveCatin].biodata = Object.assign(db[currentActiveCatin].biodata || {}, foundBio);
+                        localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
+                    }
+                    localStorage.setItem('langit_bio_' + currentActiveCatin, JSON.stringify(foundBio));
+                    alert("✓ Data biodata berhasil ditarik dari Spreadsheet!");
+                } else {
+                    renderAdminBiodata({});
+                    alert("Belum ada data isian baru untuk klien ini di Spreadsheet.");
+                }
+            } catch (err) {
+                console.error("Gagal refresh biodata:", err);
+                alert("Gagal terhubung ke Google Spreadsheet.");
+            }
+        }
 
             // Simpan ke LocalStorage browser lokal agar tidak hilang saat reload
             const db = getDB();
