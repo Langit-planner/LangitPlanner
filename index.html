@@ -1016,7 +1016,7 @@
         let loggedInClientKey = null;
 
                 function getDB() {
-            const saved = localStorage.getItem('langit_db_catin_v6');
+            const saved = localStorage.getItem('langit_db_catin_v7');
             if (saved !== null) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -1024,7 +1024,7 @@
                         // Pastikan setiap record memiliki properti lengkap agar tidak crash
                         for (let k in parsed) {
                             if (!parsed[k].vendors || !Array.isArray(parsed[k].vendors)) {
-                                parsed[k].vendors = DEFAULT_DATABASE.rizki ? DEFAULT_DATABASE.rizki.vendors : [];
+                                parsed[k].vendors = DEFAULT_DATABASE.aldi ? DEFAULT_DATABASE.aldi.vendors : [];
                             }
                         }
                         return parsed;
@@ -1033,11 +1033,11 @@
                     console.error("Gagal parse DB lokal, reset ke default:", e);
                 }
             }
-            localStorage.setItem('langit_db_catin_v6', JSON.stringify(DEFAULT_DATABASE));
+            localStorage.setItem('langit_db_catin_v7', JSON.stringify(DEFAULT_DATABASE));
             return DEFAULT_DATABASE;
         }
 
-        function saveDB(db) { localStorage.setItem('langit_db_catin_v6', JSON.stringify(db)); renderPublicProjects(); }
+        function saveDB(db) { localStorage.setItem('langit_db_catin_v7', JSON.stringify(db)); renderPublicProjects(); }
         function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
 
                 function renderPublicProjects() {
@@ -1567,7 +1567,7 @@
                             }
                         });
                     }
-                    localStorage.setItem('langit_db_catin_v6', JSON.stringify(targetDb));
+                    localStorage.setItem('langit_db_catin_v7', JSON.stringify(targetDb));
                     renderPublicProjects();
                 } else if (cloudRes && cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
                     // Respon hanya baris biodata, gabungkan ke DB lokal
@@ -1586,7 +1586,7 @@
                             if (row['Lagu Request']) db[uKey].biodata.lagu = row['Lagu Request'];
                         }
                     });
-                    localStorage.setItem('langit_db_catin_v6', JSON.stringify(db));
+                    localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
                     renderPublicProjects();
                 }
             } catch (err) {
@@ -1596,7 +1596,7 @@
 
         const originalSaveDB = window.saveDB;
         window.saveDB = function(db) {
-            localStorage.setItem('langit_db_catin_v6', JSON.stringify(db));
+            localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
             renderPublicProjects();
             if (CLOUD_SHEET_URL) {
                 fetch(CLOUD_SHEET_URL, {
@@ -1608,19 +1608,21 @@
             }
         };
 
-        // Self-healing / perbaikan otomatis jika memori browser sebelumnya tertimpa data kosong / korup
+        // Bersihkan memori versi lama (v6, v5) dari HP & browser lain agar tidak terkunci di data Rizki
         (function autoRepairStorage() {
             try {
-                const raw = localStorage.getItem('langit_db_catin_v6');
+                localStorage.removeItem('langit_db_catin_v6');
+                localStorage.removeItem('langit_db_catin_v5');
+                const raw = localStorage.getItem('langit_db_catin_v7');
                 if (raw) {
                     const parsed = JSON.parse(raw);
-                    // Jangan cek !parsed.rizki agar data klien baru (Aldi & Kristin, dll) tidak terhapus otomatis!
-                    if (Array.isArray(parsed) || !parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0) {
-                        localStorage.removeItem('langit_db_catin_v6');
+                    // Jika memori masih menyimpan data demo lama (rizki) atau korup, bersihkan agar Aldi & Kristin langsung muncul
+                    if (Array.isArray(parsed) || !parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0 || (parsed.rizki && !parsed.aldi)) {
+                        localStorage.removeItem('langit_db_catin_v7');
                     }
                 }
             } catch (e) {
-                localStorage.removeItem('langit_db_catin_v6');
+                localStorage.removeItem('langit_db_catin_v7');
             }
         })();
 
