@@ -92,7 +92,7 @@
 
     <header class="fixed w-full top-0 z-50 glass-nav border-b border-stone-200/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group shrink-0">
+            <a href="javascript:void(0)" onclick="switchTab('projek')" class="flex items-center gap-3 group shrink-0">
                 <div class="w-11 h-11 rounded-full ig-ring shrink-0 shadow-sm">
                     <img src="img/logo-ig.JPG" 
                          onerror="const f=['img/logo-ig.jpg','img/logo-ig.png','img/logo-ig.jpeg','img/Logo-ig.JPG','img/Logo-ig.jpg','img/logo.JPG','img/logo.png']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
@@ -105,19 +105,19 @@
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-5 text-xs font-semibold uppercase tracking-wider text-charcoal/80">
-                <button onclick="openLoginModal()" class="text-champagneDark hover:text-champagne transition flex items-center gap-1.5 bg-sand px-3.5 py-2 rounded-full border border-stone-300/80 shadow-sm">
+            <nav class="hidden lg:flex items-center space-x-1.5 text-xs font-semibold uppercase tracking-wider text-charcoal/80">
+                <button onclick="openLoginModal()" class="text-champagneDark hover:text-champagne transition flex items-center gap-1.5 bg-sand px-3 py-1.5 rounded-full border border-stone-300/80 shadow-sm mr-2">
                     <i data-lucide="lock" class="w-3.5 h-3.5"></i>
                     <span>Langit Tracker</span>
                 </button>
-                <a href="#projek" class="hover:text-champagne transition">Project</a>
-                <a href="#alur" class="hover:text-champagne transition">Alur</a>
-                <a href="#layanan" class="hover:text-champagne transition">Paket</a>
-                <a href="#paket" class="hover:text-champagne transition">Pricelist</a>
-                <a href="#portofolio" class="hover:text-champagne transition">Portofolio</a>
-                <a href="#testimoni" class="hover:text-champagne transition">Testimoni</a>
-                <a href="#faq" class="hover:text-champagne transition">FAQ</a>
-                <a href="#konsultasi" class="hover:text-champagne transition">Kontak</a>
+                <button onclick="switchTab('projek')" data-tab="projek" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-bold transition">Dashboard</button>
+                <button onclick="switchTab('alur')" data-tab="alur" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Alur</button>
+                <button onclick="switchTab('layanan')" data-tab="layanan" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Paket</button>
+                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Pricelist</button>
+                <button onclick="switchTab('portofolio')" data-tab="portofolio" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Portofolio</button>
+                <button onclick="switchTab('testimoni')" data-tab="testimoni" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Testimoni</button>
+                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">FAQ</button>
+                <button onclick="switchTab('konsultasi')" data-tab="konsultasi" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Booking</button>
             </nav>
 
             <div class="hidden md:flex items-center gap-3 shrink-0">
@@ -132,22 +132,41 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-b border-stone-200 px-6 py-5 space-y-3 text-sm font-medium shadow-xl">
+        <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-b border-stone-200 px-6 py-5 space-y-2.5 text-sm font-medium shadow-xl">
             <button onclick="openLoginModal(); toggleMobileMenu();" class="w-full text-left py-2.5 px-3 rounded-xl bg-sand text-champagneDark font-bold flex items-center gap-2">
                 <i data-lucide="lock" class="w-4 h-4"></i> Masuk Langit Tracker (Portal Catin)
             </button>
-            <a href="#projek" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Project Berjalan</a>
-            <a href="#alur" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Alur Kerja Kami</a>
-            <a href="#layanan" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Pilihan Paket</a>
-            <a href="#paket" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Pricelist Resmi</a>
-            <a href="#portofolio" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Portofolio</a>
-            <a href="#testimoni" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">Testimoni Pengantin</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne border-b border-stone-100">FAQ</a>
-            <a href="#konsultasi" onclick="toggleMobileMenu()" class="block py-2 hover:text-champagne">Kontak & Jadwal</a>
-        </div>
-    </header>
+            <button onclick="switchTab('projek'); toggleMobileMenu();" data-tab="projek" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Dashboard &amp; Project</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('alur'); toggleMobileMenu();" data-tab="alur" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Alur Kerja Kami</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('layanan'); toggleMobileMenu();" data-tab="layanan" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Pilihan Paket</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('paket'); toggleMobileMenu();" data-tab="paket" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Pricelist Resmi</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('portofolio'); toggleMobileMenu();" data-tab="portofolio" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Portofolio</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('testimoni'); toggleMobileMenu();" data-tab="testimoni" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Testimoni Pengantin</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('faq'); toggleMobileMenu();" data-tab="faq" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>FAQ (Pertanyaan)</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+            <button onclick="switchTab('konsultasi'); toggleMobileMenu();" data-tab="konsultasi" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne flex items-center justify-between">
+                <span>Kontak &amp; Booking Jadwal</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+            </button>
+        </div></header>
 
-    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <!-- ================= MULTI-TAB PAGE VIEWS ================= -->
+    <main id="main-content-tabs">
+        <!-- TAB 1: DASHBOARD (Foto Kami & Project Berjalan) -->
+        <div id="view-projek" class="page-view transition-all duration-300">
+<section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6">
@@ -225,7 +244,8 @@
         </div>
     </section>
 
-    <section id="projek" class="py-24 bg-sand/70 border-y border-stone-200/80">
+    
+<section id="projek" class="py-24 bg-sand/70 border-y border-stone-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-5 space-y-6">
@@ -260,7 +280,12 @@
         </div>
     </section>
 
-    <section id="alur" class="py-20 bg-ivory border-b border-stone-200/70">
+    
+        </div>
+
+        <!-- TAB 2: ALUR KERJA -->
+        <div id="view-alur" class="page-view hidden transition-all duration-300">
+<section id="alur" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-ivory border-b border-stone-200/70 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">How We Work</p>
@@ -293,7 +318,12 @@
         </div>
     </section>
 
-    <section id="layanan" class="py-20 bg-white border-b border-stone-200/70">
+    
+        </div>
+
+        <!-- TAB 3: PAKET LAYANAN -->
+        <div id="view-layanan" class="page-view hidden transition-all duration-300">
+<section id="layanan" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-white border-b border-stone-200/70 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Skema Pendampingan</p>
@@ -349,7 +379,12 @@
         </div>
     </section>
 
-    <section id="paket" class="py-20 bg-sand/60 border-b border-stone-200/70">
+    
+        </div>
+
+        <!-- TAB 4: PRICELIST & VENUE -->
+        <div id="view-paket" class="page-view hidden transition-all duration-300">
+<section id="paket" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-sand/60 border-b border-stone-200/70 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Official Pricelist & Venue Package</p>
@@ -408,43 +443,25 @@
             <div class="mt-16 pt-12 border-t border-stone-300/70 text-center">
                 <p class="text-[11px] uppercase tracking-[0.22em] text-muted font-bold mb-6">Mitra Vendor &amp; Rekanan Terbaik Kami di Kalimantan Utara</p>
                 <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ SalonAnna</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Family</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Momento</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ AlfaDekor</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Hadi</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Ratih</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Monic Hairdo</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Ratih </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Alvina </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Diana </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 Najwa Zenuba</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 Nazia Indah</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 Novan</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 Yolanda</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 Norma</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Oppa Music Entertainment</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Ozi</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Arcana</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Fortuna </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Salonanna </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Hj.Sabar </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Lina  </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🌿 Rofiqohenna </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🌿 Yuni </span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">✨ Erza Art Decor</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">💄 Ratih Salon Professional</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎤 MC Najwa Zenuba</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🎵 Opa Music Entertainment</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🍽️ Wafda Catering</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">🌿 Henna Art Kaltara</span>
                     <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Langit WCC</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 SukaPhotographer </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Kalimasada </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Mahkota</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Cerita Kita </span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 YD Photo</span>
-                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">📸 Visedaur</span>
+                    <span class="px-5 py-2.5 rounded-full bg-white border border-stone-200 text-xs font-bold text-charcoal shadow-sm">👗 Mahligai Atelier</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portofolio" class="py-20 bg-white border-t border-stone-200/70">
+    
+        </div>
+
+        <!-- TAB 5: PORTOFOLIO -->
+        <div id="view-portofolio" class="page-view hidden transition-all duration-300">
+<section id="portofolio" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-white border-t border-stone-200/70 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Instagram Showcase</p>
@@ -454,7 +471,12 @@
         </div>
     </section>
 
-    <section id="testimoni" class="py-20 bg-sand/50 border-t border-stone-200/80">
+    
+        </div>
+
+        <!-- TAB 6: TESTIMONI -->
+        <div id="view-testimoni" class="page-view hidden transition-all duration-300">
+<section id="testimoni" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-sand/50 border-t border-stone-200/80 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
                 <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Love Stories &amp; Reviews</p>
@@ -496,7 +518,12 @@
     </section>
 
     <!-- SECTION FAQ LENGKAP (8 PERTANYAAN) -->
-    <section id="faq" class="py-24 bg-ivory border-t border-stone-200/80">
+    
+        </div>
+
+        <!-- TAB 7: FAQ (PERTANYAAN) -->
+        <div id="view-faq" class="page-view hidden transition-all duration-300">
+<section id="faq" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-ivory border-t border-stone-200/80 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
@@ -574,7 +601,12 @@
         </div>
     </section>
 
-    <section id="konsultasi" class="py-24 bg-[#EFECE6] border-t border-stone-300/80">
+    
+        </div>
+
+        <!-- TAB 8: BOOKING & KONTAK -->
+        <div id="view-konsultasi" class="page-view hidden transition-all duration-300">
+<section id="konsultasi" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-[#EFECE6] border-t border-stone-300/80 min-h-[80vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 space-y-8 pt-2">
@@ -626,7 +658,10 @@
         </div>
     </section>
 
-    <footer class="bg-charcoal text-stone-300 py-16 border-t border-white/10">
+    
+        </div>
+    </main>
+<footer class="bg-charcoal text-stone-300 py-16 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
                 <div class="md:col-span-5 space-y-4">
@@ -636,9 +671,11 @@
                 <div class="md:col-span-3 space-y-3 text-xs">
                     <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Navigasi</p>
                     <ul class="space-y-2 text-stone-400">
-                        <li><a href="#projek" class="hover:text-white transition">Langit Tracker Live</a></li>
-                        <li><a href="#alur" class="hover:text-white transition">4 Langkah Kerja</a></li>
-                        <li><a href="#paket" class="hover:text-white transition">Pricelist</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('projek')" class="hover:text-white transition">Dashboard &amp; Project</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('alur')" class="hover:text-white transition">4 Langkah Kerja</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('paket')" class="hover:text-white transition">Pricelist Resmi</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('faq')" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchTab('konsultasi')" class="hover:text-white transition">Kontak &amp; Booking</a></li>
                     </ul>
                 </div>
                 <div class="md:col-span-4 space-y-3 text-xs">
@@ -888,112 +925,23 @@
 
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
         const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
-      const DEFAULT_DATABASE = {
-    "ka0327": {
-        "username": "ka0327",
-        "password": "langit2026",
-        "groomFull": "Aldi",
-        "groomNick": "Aldi",
-        "brideFull": "Kristin",
-        "brideNick": "Kristin",
-        "package": "Silver Package",
-        "venue": "Gedung Wanita - 2027",
-        "weddingDate": "2027-03-20",
-        "docUrl": "",
-        "showProgress": true,
-        "progress": 21,
-        "biodata": {},
-        "vendors": [
-            {
-                "cat": "Dekorasi",
-                "name": "SalonAnna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MUA",
-                "name": "Ratih",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MC",
-                "name": "MC Najwa Zenuba",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Musik",
-                "name": "Opa Music Entertainment",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Henna",
-                "name": "Rofiqohenna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "WCC",
-                "name": "Langit Wedding Content Creator",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Catering",
-                "name": "Hj Sabar",
-                "status": "Sudah Dibooking Admin"
+
+        const DEFAULT_DATABASE = {
+            rizki: {
+                username: "rizki", password: "langit2026", groomFull: "Rizki Pratama, S.Kom", groomNick: "Rizki", brideFull: "Nova Aulia, S.Pd", brideNick: "Nova", package: "Diamond Package", venue: "Ballroom — 20 Des 2026", weddingDate: "2026-12-20", docUrl: "", showProgress: true, progress: 85,
+                biodata: { cpwFull: "", cpwNick: "", cpwAyah: "", cpwIbu: "", cpwSaudara: "", cpwSaksi: "", cppFull: "", cppNick: "", cppAyah: "", cppIbu: "", cppSaudara: "", cppSaksi: "", sambutan: "", tilawah: "", vip: "", lagu: "" },
+                vendors: [
+                    { cat: "Dekorasi", name: "Erza Art Decor", status: "Sudah Dibooking Admin" },
+                    { cat: "MUA", name: "Ratih Salon Professional", status: "Sudah Dibooking Admin" },
+                    { cat: "MC", name: "MC Najwa Zenuba", status: "Sudah Dibooking Admin" },
+                    { cat: "Musik", name: "Opa Music Entertainment", status: "Sudah Dibooking Admin" },
+                    { cat: "Henna", name: "Henna Art Kaltara", status: "Sudah Dibooking Admin" },
+                    { cat: "WCC", name: "Langit Wedding Content Creator", status: "Sudah Dibooking Admin" },
+                    { cat: "Catering", name: "Wafda Catering (1000 Porsi)", status: "Sudah Dibooking Admin" }
+                ]
             }
-        ]
-    },
-    "tamadun26": {
-        "username": "tamadun26",
-        "password": "langit2026",
-        "groomFull": "Tamadun",
-        "groomNick": "Tamadun",
-        "brideFull": "Desember",
-        "brideNick": "Desember",
-        "package": "Silver Package",
-        "venue": "tamadun - 2026",
-        "weddingDate": "2026-12-29",
-        "docUrl": "",
-        "showProgress": true,
-        "progress": 50,
-        "biodata": {},
-        "vendors": [
-            {
-                "cat": "Dekorasi",
-                "name": "Salonanna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MUA",
-                "name": "alvina",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "MC",
-                "name": "Ayu",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Musik",
-                "name": "Arcana",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Henna",
-                "name": "Rofiqohenna",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "WCC",
-                "name": "Langit Wedding Content Creator",
-                "status": "Sudah Dibooking Admin"
-            },
-            {
-                "cat": "Catering",
-                "name": "Fortuna",
-                "status": "Sudah Dibooking Admin"
-            }
-        ]
-    }
-};
+        };
+
         let currentActiveCatin = 'rizki';
         let loggedInClientKey = null;
 
@@ -1398,7 +1346,15 @@
             lucide.createIcons();
         }
 
-        function selectPackage(pkg) { document.getElementById('form-paket').value = pkg; document.getElementById('konsultasi').scrollIntoView({ behavior: 'smooth' }); }
+        function selectPackage(pkg) {
+            switchTab('konsultasi');
+            const selectElem = document.getElementById('form-paket');
+            if (selectElem) {
+                if (pkg.includes('Diamond')) selectElem.value = 'Diamond Package';
+                else if (pkg.includes('Silver')) selectElem.value = 'Silver Package';
+                else selectElem.value = 'Full Planning';
+            }
+        }
         function sendToWhatsApp(e) {
             e.preventDefault();
             const text = `Halo Yogs Langit Planner! Jadwal konsultasi:%0A- Nama: ${document.getElementById('form-nama').value}%0A- WA: ${document.getElementById('form-wa').value}%0A- Tanggal: ${document.getElementById('form-tanggal').value}%0A- Tamu: ${document.getElementById('form-tamu').value}%0A- Venue: ${document.getElementById('form-venue').value}%0A- Paket: ${document.getElementById('form-paket').value}%0A- Diskusi: ${selectedConsultDate}`;
@@ -1456,12 +1412,69 @@
             }
         })();
 
+
+        // ================= TAB NAVIGATION LOGIC =================
+        function switchTab(tabName) {
+            const validTabs = ['projek', 'alur', 'layanan', 'paket', 'portofolio', 'testimoni', 'faq', 'konsultasi'];
+            if (!validTabs.includes(tabName)) tabName = 'projek';
+
+            // Sembunyikan semua page view
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.add('hidden');
+            });
+
+            // Tampilkan page view yang dipilih
+            const targetView = document.getElementById('view-' + tabName);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+            }
+
+            // Update styling aktif untuk tombol desktop nav
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tabName) {
+                    btn.className = 'nav-tab-btn px-3 py-1.5 rounded-full text-xs font-bold text-charcoal bg-sand border border-stone-300 shadow-sm transition';
+                } else {
+                    btn.className = 'nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition';
+                }
+            });
+
+            // Update styling aktif untuk tombol mobile nav
+            document.querySelectorAll('.mobile-tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tabName) {
+                    btn.classList.add('bg-sand', 'font-bold', 'text-champagneDark');
+                } else {
+                    btn.classList.remove('bg-sand', 'font-bold', 'text-champagneDark');
+                }
+            });
+
+            // Update hash di URL tanpa reload halaman
+            if (window.history && window.history.pushState) {
+                window.history.pushState(null, null, '#' + tabName);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
+            }
+        }
+
+        window.addEventListener('popstate', () => {
+            let hash = (window.location.hash || '').replace('#', '').toLowerCase() || 'projek';
+            switchTab(hash);
+        });
+
         document.addEventListener('DOMContentLoaded', () => { 
             renderPortfolios(); 
             renderPublicProjects(); 
             renderCalendar(); 
             lucide.createIcons(); 
             syncDatabaseFromCloud();
+
+            // Tangani tab awal sesuai hash URL atau default ke dashboard
+            let initialHash = (window.location.hash || '').replace('#', '').toLowerCase();
+            if (initialHash === 'kontak' || initialHash === 'booking') initialHash = 'konsultasi';
+            if (initialHash === 'home' || initialHash === 'beranda') initialHash = 'projek';
+            switchTab(initialHash || 'projek');
         });
     </script>
 </body>
