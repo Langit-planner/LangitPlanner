@@ -26,8 +26,10 @@
                     colors: {
                         ivory: '#FAF8F5',
                         sand: '#EFECE6',
-                        champagne: '#C5A059',
-                        champagneDark: '#9A7B3E',
+                        sapphire: '#0042AC',
+                        ocean: '#00D3FB',
+                        champagne: '#00D3FB',
+                        champagneDark: '#0042AC',
                         charcoal: '#1F1E1C',
                         muted: '#78736A'
                     },
@@ -51,8 +53,8 @@
         .input-editorial::placeholder { color: #A39E93; font-weight: 300; }
 
         .custom-cursor { pointer-events: none; position: fixed; top: 0; left: 0; z-index: 9999; border-radius: 50%; transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s; transform: translate(-50%, -50%); }
-        #cursor-ring { width: 36px; height: 36px; border: 1.5px solid #C5A059; background-color: rgba(197, 160, 89, 0.05); }
-        #cursor-dot { width: 8px; height: 8px; background-color: #C5A059; }
+        #cursor-ring { width: 36px; height: 36px; border: 1.5px solid #00D3FB; background-color: rgba(0, 211, 251, 0.08); }
+        #cursor-dot { width: 8px; height: 8px; background-color: #0042AC; }
 
         .fan-deck { position: relative; width: 100%; height: 460px; display: flex; align-items: center; justify-content: center; perspective: 1200px; }
         .fan-card { position: absolute; width: 240px; height: 330px; border-radius: 1.35rem; border: 6px solid #FFFFFF; box-shadow: 0 20px 38px -10px rgba(31, 30, 28, 0.28); overflow: hidden; transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 50% 110%; background: #1F1E1C; }
@@ -70,7 +72,7 @@
         .fan-deck:hover .fan-card.pos-4 { transform: translateX(75px) translateY(10px) rotate(11deg) scale(0.94); }
         .fan-deck:hover .fan-card.pos-5 { transform: translateX(145px) translateY(28px) rotate(22deg) scale(0.88); }
 
-        .fan-deck .fan-card:hover { transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important; z-index: 60 !important; box-shadow: 0 32px 60px -12px rgba(31, 30, 28, 0.5); border-color: #C5A059; }
+        .fan-deck .fan-card:hover { transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important; z-index: 60 !important; box-shadow: 0 32px 60px -12px rgba(0, 66, 172, 0.35); border-color: #00D3FB; }
         .fan-deck .fan-card:hover img { transform: scale(1.06); }
 
         /* Animasi Transisi Halus (Smooth Tab Fade & Slide-In) */
@@ -269,7 +271,7 @@
                         Setiap pasangan yang bekerja sama dengan kami mendapat akses pribadi ke <strong>Langit Tracker</strong> — dashboard persiapan pernikahan eksklusif yang dilindungi kata sandi. Detail administrasi, hitung mundur hari-H, ceklis persiapan, dan formulir rundown hanya dapat diakses oleh pengantin bersangkutan dan Admin.
                     </p>
                     <div class="flex flex-wrap gap-3 pt-4">
-                        <button onclick="openLoginModal()" class="bg-[#6E5D46] hover:bg-charcoal text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-2">
+                        <button onclick="openLoginModal()" class="bg-[#0042AC] hover:bg-charcoal text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-2">
                             <i data-lucide="lock" class="w-3.5 h-3.5"></i>
                             <span>Login ke Langit Tracker</span>
                         </button>
@@ -662,7 +664,7 @@
                                     <div class="grid grid-cols-7 gap-1.5 text-center text-xs" id="calendar-grid"></div>
                                 </div>
                             </div>
-                            <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-semibold py-4 rounded-full text-xs uppercase tracking-[0.2em] transition shadow-md">KIRIM & JADWALKAN VIA WHATSAPP</button>
+                            <button type="submit" class="w-full bg-[#0042AC] hover:bg-charcoal text-white font-semibold py-4 rounded-full text-xs uppercase tracking-[0.2em] transition shadow-md">KIRIM & JADWALKAN VIA WHATSAPP</button>
                         </form>
                     </div>
                 </div>
@@ -720,7 +722,7 @@
                 <form id="login-form-element" onsubmit="handleLogin(event)" class="space-y-4">
                     <div><label class="block text-xs font-semibold text-charcoal mb-1">Username</label><input type="text" id="login-user" required placeholder="Username..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm"></div>
                     <div><label class="block text-xs font-semibold text-charcoal mb-1">Password</label><input type="password" id="login-pass" required placeholder="Password..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm"></div>
-                    <button type="submit" class="w-full bg-[#9A7B3E] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl text-sm transition mt-2">Masuk ke Langit Tracker →</button>
+                    <button type="submit" class="w-full bg-[#0042AC] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl text-sm transition mt-2">Masuk ke Langit Tracker →</button>
                 </form>
             </div>
         </div>
@@ -805,7 +807,7 @@
                             <div><label class="block font-bold mb-1">Tamu VIP</label><textarea id="catin-vip" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
                             <div><label class="block font-bold mb-1">List Lagu Request</label><textarea id="catin-lagu" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
                         </div>
-                        <button type="submit" class="w-full bg-[#6E5D46] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-[#0042AC] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
                             <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Biodata dan Send ke Admin</span>
                         </button>
                     </form>
@@ -850,7 +852,7 @@
                     <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3 text-xs">
                         <div class="flex flex-wrap items-center justify-between gap-4">
                             <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                                <input type="checkbox" id="admin-show-progress" onchange="toggleAdminProgressInput()" class="w-4 h-4 accent-[#9A7B3E] rounded cursor-pointer">
+                                <input type="checkbox" id="admin-show-progress" onchange="toggleAdminProgressInput()" class="w-4 h-4 accent-[#0042AC] rounded cursor-pointer">
                                 <span class="font-bold text-charcoal">Tampilkan Progres Pembayaran di Portal Catin</span>
                             </label>
                             <span id="admin-pkg-progress-note" class="text-[11px] text-muted italic">*Khusus Diamond &amp; Silver</span>
@@ -1138,7 +1140,7 @@
                 const isChecked = !!savedChecks[idx];
                 container.innerHTML += `
                     <label class="flex items-center gap-3 p-3 rounded-xl border ${isChecked ? 'bg-emerald-50/70 border-emerald-200 text-emerald-950' : 'bg-ivory border-stone-200 text-charcoal'} cursor-pointer transition">
-                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleClientCheck('${usernameKey}', ${idx}, this.checked)" class="w-4 h-4 accent-[#9A7B3E] rounded cursor-pointer">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleClientCheck('${usernameKey}', ${idx}, this.checked)" class="w-4 h-4 accent-[#0042AC] rounded cursor-pointer">
                         <span class="font-medium ${isChecked ? 'line-through opacity-75' : ''}">${label}</span>
                     </label>
                 `;
