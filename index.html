@@ -15,12 +15,12 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
-        // ================= INTERACTIVE SPARKLE ENGINE (BLUE & WHITE PARTICLES) =================
+        // ================= INTERACTIVE SPARKLE ENGINE (BLUE & WHITE SMOOTH PARTICLES) =================
         (function initSparkles() {
             const canvas = document.createElement('canvas');
             canvas.id = 'sparkle-canvas';
@@ -43,13 +43,13 @@
             });
 
             const particles = [];
-            const particleCount = 45;
+            const particleCount = 45; // Kerapatan ideal agar tetap estetik & tidak berat
 
             const colors = [
                 'rgba(0, 211, 251, ',  // Ocean Cyan
                 'rgba(0, 66, 172, ',   // Sapphire Blue
                 'rgba(99, 102, 241, ',  // Indigo
-                'rgba(255, 255, 255, '  // Pure White
+                'rgba(255, 255, 255, '  // Pure Crisp White
             ];
 
             for (let i = 0; i < particleCount; i++) {
@@ -61,8 +61,8 @@
                     alpha: Math.random() * 0.8 + 0.2,
                     alphaSpeed: (Math.random() * 0.02 + 0.008) * (Math.random() < 0.5 ? 1 : -1),
                     vx: (Math.random() - 0.5) * 0.75,
-                    vy: (Math.random() - 0.5) * 0.75 - 0.2,
-                    isSparkle: Math.random() > 0.45
+                    vy: (Math.random() - 0.5) * 0.75 - 0.2, // Cenderung naik perlahan
+                    isSparkle: Math.random() > 0.45 // Sebagian berbentuk kilau 4 sisi bintang
                 });
             }
 
@@ -134,16 +134,16 @@
                     colors: {
                         ivory: '#FFFFFF',
                         sand: '#F8FAFC',
-                        sapphire: '#0042AC',
-                        ocean: '#00D3FB',
+                        sapphire: '#4F46E5',
+                        ocean: '#06B6D4',
                         champagne: '#6366F1',
                         champagneDark: '#4338CA',
-                        charcoal: '#0B0F19',
+                        charcoal: '#0F172A',
                         muted: '#64748B'
                     },
                     fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        tech: ['"Space Grotesk"', 'sans-serif'],
                     }
                 }
             }
@@ -154,30 +154,28 @@
             background-color: #FFFFFF;
             background-image: 
                 radial-gradient(circle at 88% 10%, rgba(224, 195, 252, 0.45) 0%, rgba(244, 114, 182, 0.15) 32%, transparent 65%),
-                radial-gradient(circle at 10% 28%, rgba(0, 66, 172, 0.22) 0%, rgba(0, 211, 251, 0.16) 35%, transparent 60%),
+                radial-gradient(circle at 10% 28%, rgba(99, 102, 241, 0.32) 0%, rgba(6, 182, 212, 0.16) 35%, transparent 60%),
                 radial-gradient(circle at 85% 65%, rgba(199, 210, 254, 0.28) 0%, transparent 55%),
                 radial-gradient(circle at 15% 85%, rgba(224, 231, 255, 0.35) 0%, transparent 60%);
             background-attachment: fixed;
-            color: #0B0F19;
+            color: #0F172A;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
         }
         @media (min-width: 1024px) { body, a, button, input, select, textarea { cursor: none; } }
-        .font-tech { font-family: 'Space Grotesk', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(16px); box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04); }
-        .ig-ring { background: linear-gradient(135deg, #0042AC 0%, #00D3FB 50%, #6366F1 100%); padding: 2px; }
+        .font-editorial { font-family: 'Cormorant Garamond', serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.84); backdrop-filter: blur(16px); box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04); }
+        .ig-ring { background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%); padding: 2px; }
         details > summary::-webkit-details-marker { display: none; }
-        
-        .input-editorial { background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 0.85rem; padding: 0.75rem 1rem; font-size: 0.875rem; color: #0B0F19; width: 100%; transition: all 0.2s; }
-        .input-editorial:focus { outline: none; border-color: #0042AC; box-shadow: 0 0 0 3px rgba(0, 66, 172, 0.12); }
+        .input-editorial { background: transparent; border-bottom: 1.5px solid #E2E8F0; padding: 0.6rem 0; font-size: 0.875rem; color: #0F172A; width: 100%; transition: border-color 0.2s; }
+        .input-editorial:focus { outline: none; border-bottom-color: #4F46E5; }
         .input-editorial::placeholder { color: #94A3B8; font-weight: 300; }
 
         .custom-cursor { pointer-events: none; position: fixed; top: 0; left: 0; z-index: 9999; border-radius: 50%; transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s; transform: translate(-50%, -50%); }
-        #cursor-ring { width: 36px; height: 36px; border: 1.5px solid #00D3FB; background-color: rgba(0, 211, 251, 0.08); box-shadow: 0 0 16px rgba(0, 211, 251, 0.25); }
-        #cursor-dot { width: 8px; height: 8px; background-color: #0042AC; }
+        #cursor-ring { width: 36px; height: 36px; border: 1.5px solid #6366F1; background-color: rgba(99, 102, 241, 0.06); box-shadow: 0 0 16px rgba(99, 102, 241, 0.2); }
+        #cursor-dot { width: 8px; height: 8px; background-color: #4F46E5; }
 
         .fan-deck { position: relative; width: 100%; height: 460px; display: flex; align-items: center; justify-content: center; perspective: 1200px; }
-        .fan-card { position: absolute; width: 240px; height: 330px; border-radius: 1.5rem; border: 5px solid #FFFFFF; box-shadow: 0 20px 45px -12px rgba(0, 66, 172, 0.18), 0 10px 20px -5px rgba(15, 23, 42, 0.08); overflow: hidden; transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 50% 110%; background: #0B0F19; }
+        .fan-card { position: absolute; width: 240px; height: 330px; border-radius: 1.5rem; border: 5px solid #FFFFFF; box-shadow: 0 20px 45px -12px rgba(79, 70, 229, 0.18), 0 10px 20px -5px rgba(15, 23, 42, 0.08); overflow: hidden; transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 50% 110%; background: #0F172A; }
         @media (max-width: 640px) { .fan-deck { height: 370px; } .fan-card { width: 175px; height: 245px; border-width: 4px; } }
         .fan-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .fan-card.pos-1 { transform: translateX(-115px) translateY(24px) rotate(-18deg) scale(0.88); z-index: 10; }
@@ -186,17 +184,33 @@
         .fan-card.pos-4 { transform: translateX(60px) translateY(8px) rotate(9deg) scale(0.94); z-index: 20; }
         .fan-card.pos-5 { transform: translateX(115px) translateY(24px) rotate(18deg) scale(0.88); z-index: 10; }
 
-        .fan-deck .fan-card:hover { transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important; z-index: 60 !important; box-shadow: 0 35px 70px -15px rgba(0, 66, 172, 0.45); border-color: #00D3FB; }
+        .fan-deck:hover .fan-card.pos-1 { transform: translateX(-145px) translateY(28px) rotate(-22deg) scale(0.88); }
+        .fan-deck:hover .fan-card.pos-2 { transform: translateX(-75px) translateY(10px) rotate(-11deg) scale(0.94); }
+        .fan-deck:hover .fan-card.pos-3 { transform: translateX(0px) translateY(-4px) rotate(0deg) scale(1); }
+        .fan-deck:hover .fan-card.pos-4 { transform: translateX(75px) translateY(10px) rotate(11deg) scale(0.94); }
+        .fan-deck:hover .fan-card.pos-5 { transform: translateX(145px) translateY(28px) rotate(22deg) scale(0.88); }
+
+        .fan-deck .fan-card:hover { transform: translateX(0px) translateY(-22px) rotate(0deg) scale(1.18) !important; z-index: 60 !important; box-shadow: 0 35px 70px -15px rgba(99, 102, 241, 0.45); border-color: #6366F1; }
         .fan-deck .fan-card:hover img { transform: scale(1.06); }
 
+        /* Animasi Transisi Halus (Smooth Tab Fade & Slide-In) */
         @keyframes tabFadeSlideIn {
-            0% { opacity: 0; transform: translateY(14px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .tab-anim-enter { animation: tabFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; will-change: opacity, transform; }
+        .tab-anim-enter {
+            animation: tabFadeSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            will-change: opacity, transform;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-ocean selection:text-white">
+<body class="antialiased selection:bg-champagne selection:text-white">
 
     <div id="cursor-ring" class="custom-cursor hidden lg:block"></div>
     <div id="cursor-dot" class="custom-cursor hidden lg:block"></div>
@@ -207,216 +221,400 @@
         <source src="img/Backsound.MP3" type="audio/mpeg">
     </audio>
 
-    <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-white/95 backdrop-blur-md text-charcoal px-4 py-3 rounded-full shadow-2xl border border-slate-200 flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-slate-900 hover:text-white">
-        <i data-lucide="volume-x" id="music-icon" class="w-4 h-4 text-sapphire"></i>
+    <button onclick="toggleMusic()" id="music-toggle-btn" class="fixed bottom-6 right-6 z-50 bg-charcoal text-champagne px-4 py-3 rounded-full shadow-2xl border-2 border-champagne flex items-center gap-2 text-xs font-bold transition-all duration-300 hover:scale-105 hover:bg-champagneDark hover:text-white">
+        <i data-lucide="volume-x" id="music-icon" class="w-4 h-4"></i>
         <span id="music-text">Putar Musik</span>
     </button>
 
-    <header class="fixed w-full top-0 z-50 glass-nav border-b border-slate-200/60 transition-all duration-300">
+    <header class="fixed w-full top-0 z-50 glass-nav border-b border-stone-200/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="javascript:void(0)" onclick="switchTab('projek')" class="flex items-center gap-3 group shrink-0">
                 <div class="w-11 h-11 rounded-full ig-ring shrink-0 shadow-sm">
                     <img src="img/logo-ig.JPG" 
-                         onerror="const f=['img/logo-ig.jpg','img/logo-ig.png','img/logo-ig.jpeg','img/Logo-ig.JPG','img/Logo-ig.jpg','img/logo.JPG','img/logo.png']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=0B0F19&color=00D3FB&bold=true&size=128';}" 
+                         onerror="const f=['img/logo-ig.jpg','img/logo-ig.png','img/logo-ig.jpeg','img/Logo-ig.JPG','img/Logo-ig.jpg','img/logo.JPG','img/logo.png']; const idx=parseInt(this.dataset.idx||0); if(idx<f.length){this.dataset.idx=idx+1;this.src=f[idx];}else{this.src='https://ui-avatars.com/api/?name=LP&background=1F1E1C&color=C5A059&bold=true&size=128';}" 
                          alt="Logo Langit Planner" 
-                         class="site-logo-img w-full h-full rounded-full object-cover border-2 border-white bg-slate-900">
+                         class="site-logo-img w-full h-full rounded-full object-cover border-2 border-white bg-charcoal">
                 </div>
                 <div class="flex items-center gap-1.5">
-                    <span class="font-tech text-2xl sm:text-3xl font-extrabold tracking-tight text-charcoal leading-none">LANGIT</span>
-                    <span class="text-[10px] uppercase tracking-[0.22em] text-sapphire font-bold px-1.5 py-0.5 bg-blue-50 border border-blue-100 rounded-md">Planner</span>
+                    <span class="font-editorial text-2xl sm:text-3xl font-bold tracking-wider text-charcoal leading-none">LANGIT</span>
+                    <span class="text-[11px] uppercase tracking-[0.22em] text-champagneDark font-bold">Planner</span>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center bg-slate-100/80 p-1 rounded-full border border-slate-200/60 text-xs font-semibold text-slate-600">
-                <button onclick="switchTab('projek')" data-tab="projek" class="nav-tab-btn px-3 py-1.5 rounded-full text-xs font-bold transition">Dashboard</button>
-                <button onclick="switchTab('custom')" data-tab="custom" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-bold text-sapphire bg-white shadow-sm border border-slate-200 transition flex items-center gap-1"><span>✨ Custom Pricelist</span></button>
-                <button onclick="switchTab('alur')" data-tab="alur" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Alur</button>
-                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Price List</button>
-                <button onclick="switchTab('layanan')" data-tab="layanan" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Paket</button>
-                <button onclick="switchTab('portofolio')" data-tab="portofolio" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Portofolio</button>
-                <button onclick="switchTab('testimoni')" data-tab="testimoni" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Testimoni</button>
-                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Pertanyaan</button>
-                <button onclick="switchTab('konsultasi')" data-tab="konsultasi" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold hover:text-sapphire transition">Booking</button>
+            <nav class="hidden lg:flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-charcoal/80">
+                <button onclick="switchTab('projek')" data-tab="projek" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-bold transition">Dashboard</button>
+                <button onclick="switchTab('custom')" data-tab="custom" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-bold text-sapphire bg-blue-50 border border-blue-200 shadow-sm hover:bg-sapphire hover:text-white transition flex items-center gap-1"><span>✨ Custom Pricelist</span></button>
+                <button onclick="switchTab('alur')" data-tab="alur" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Alur</button>
+                <button onclick="switchTab('paket')" data-tab="paket" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Price List</button>
+                <button onclick="switchTab('layanan')" data-tab="layanan" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Paket</button>
+                <button onclick="switchTab('portofolio')" data-tab="portofolio" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Portofolio</button>
+                <button onclick="switchTab('testimoni')" data-tab="testimoni" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Testimoni</button>
+                <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Pertanyaan</button>
+                <button onclick="switchTab('konsultasi')" data-tab="konsultasi" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition">Booking</button>
             </nav>
 
             <div class="hidden md:flex items-center gap-3 shrink-0">
-                <a href="https://wa.me/message/ZCVGANZISCDWJ1" target="_blank" class="bg-slate-900 hover:bg-sapphire text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition duration-300 shadow-sm flex items-center gap-1.5">
-                    <i data-lucide="message-circle" class="w-4 h-4 text-ocean"></i>
+                <a href="https://wa.me/message/ZCVGANZISCDWJ1" target="_blank" class="bg-charcoal hover:bg-champagne text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition duration-300 shadow-sm flex items-center gap-1.5">
+                    <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
                     <span>Hubungi Saya</span>
                 </a>
             </div>
 
-            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden text-charcoal p-2 rounded-xl hover:bg-slate-100 transition">
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden text-charcoal p-2 rounded-lg hover:bg-sand transition">
                 <i data-lucide="menu" id="mobile-menu-icon" class="w-6 h-6"></i>
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-6 py-5 space-y-2 text-sm font-medium shadow-2xl">
-            <button onclick="openLoginModal(); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-xl bg-blue-50 text-sapphire font-bold flex items-center gap-2 border border-blue-100">
-                <i data-lucide="lock" class="w-4 h-4 text-sapphire"></i> Masuk Langit Tracker (Portal Catin)
+        <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-b border-stone-200 px-6 py-5 space-y-2.5 text-sm font-medium shadow-xl">
+            <button onclick="openLoginModal(); toggleMobileMenu();" class="w-full text-left py-2.5 px-3 rounded-xl bg-sand text-champagneDark font-bold flex items-center gap-2">
+                <i data-lucide="lock" class="w-4 h-4"></i> Masuk Langit Tracker (Portal Catin)
             </button>
-            <button onclick="switchTab('custom'); toggleMobileMenu();" data-tab="custom" class="mobile-tab-btn w-full text-left py-2.5 px-3 rounded-xl bg-indigo-50/80 text-sapphire font-bold border-b border-indigo-100 flex items-center justify-between">
-                <span>✨ Custom Pricelist &amp; Kalkulator</span><i data-lucide="chevron-right" class="w-4 h-4 text-sapphire"></i>
+            <button onclick="switchTab('custom'); toggleMobileMenu();" data-tab="custom" class="mobile-tab-btn w-full text-left py-2.5 px-3 rounded-xl bg-blue-50 text-sapphire font-bold border-b border-blue-100 flex items-center justify-between">
+                <span>✨ Custom Pricelist (Kalkulator)</span><i data-lucide="chevron-right" class="w-4 h-4 text-sapphire"></i>
             </button>
-            <button onclick="switchTab('projek'); toggleMobileMenu();" data-tab="projek" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Dashboard</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('projek'); toggleMobileMenu();" data-tab="projek" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Dashboard</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('alur'); toggleMobileMenu();" data-tab="alur" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Alur</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('alur'); toggleMobileMenu();" data-tab="alur" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Alur</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('paket'); toggleMobileMenu();" data-tab="paket" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Price List</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('paket'); toggleMobileMenu();" data-tab="paket" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Price List</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('layanan'); toggleMobileMenu();" data-tab="layanan" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Paket</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('layanan'); toggleMobileMenu();" data-tab="layanan" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Paket</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('portofolio'); toggleMobileMenu();" data-tab="portofolio" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Portofolio</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('portofolio'); toggleMobileMenu();" data-tab="portofolio" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Portofolio</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('testimoni'); toggleMobileMenu();" data-tab="testimoni" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Testimoni</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('testimoni'); toggleMobileMenu();" data-tab="testimoni" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Testimoni</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('faq'); toggleMobileMenu();" data-tab="faq" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire border-b border-slate-100 flex items-center justify-between">
-                <span>Pertanyaan</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('faq'); toggleMobileMenu();" data-tab="faq" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne border-b border-stone-100 flex items-center justify-between">
+                <span>Pertanyaan</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-            <button onclick="switchTab('konsultasi'); toggleMobileMenu();" data-tab="konsultasi" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-sapphire flex items-center justify-between">
-                <span>Booking</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            <button onclick="switchTab('konsultasi'); toggleMobileMenu();" data-tab="konsultasi" class="mobile-tab-btn w-full text-left py-2 px-3 rounded-xl hover:text-champagne flex items-center justify-between">
+                <span>Booking</span><i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
             </button>
-        </div>
-    </header>
+        </div></header>
 
-    <!-- ================= MULTI-TAB PAGE VIEWS ================= -->
-    <main id="main-content-tabs" class="relative z-10">
-        <!-- TAB 1: DASHBOARD -->
+        <!-- ================= MULTI-TAB PAGE VIEWS ================= -->
+    <main id="main-content-tabs">
+        <!-- TAB 1: DASHBOARD (Foto Kami & Project Berjalan) -->
         <div id="view-projek" class="page-view transition-all duration-300">
-            <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid lg:grid-cols-12 gap-12 items-center">
-                        <div class="lg:col-span-7 space-y-6">
-                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm text-xs font-semibold text-slate-700">
-                                <span class="w-2.5 h-2.5 rounded-full bg-ocean animate-ping"></span>
-                                Wedding & Event Organizer — Tanjung Selor, Kaltara
+<section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand border border-stone-300/60 text-xs font-medium text-charcoal/80">
+                        <span class="w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
+                        Wedding & Event Organizer — Tanjung Selor, Kaltara
+                    </div>
+                    <h1 class="font-editorial text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.08] text-charcoal">
+                        Wujudkan <span class="italic font-normal text-champagneDark">Pernikahan Impian</span> Tanpa Cemas.
+                    </h1>
+                    <p class="text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
+                        Pantau seluruh progres persiapan dan status booking 7 vendor utama Anda secara real-time melalui portal eksklusif <strong>Langit Tracker</strong>.
+                    </p>
+                    <!-- AI Pill Search Bar (Inspirasi Desain Gambar) -->
+                    <div class="pt-2 max-w-xl">
+                        <div class="bg-white/85 backdrop-blur-xl border border-indigo-100/80 p-2 pl-5 rounded-full shadow-[0_12px_36px_rgba(79,70,229,0.08)] flex items-center justify-between gap-3 transition-all hover:border-indigo-300">
+                            <div class="flex items-center gap-3 overflow-hidden text-muted text-xs sm:text-sm">
+                                <i data-lucide="search" class="w-4 h-4 text-indigo-500 shrink-0"></i>
+                                <span class="truncate">Pantau persiapan pernikahan &amp; 7 vendor utama...</span>
                             </div>
-                            <h1 class="font-tech text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-charcoal leading-[1.08]">
-                                Wujudkan <span class="text-transparent bg-clip-text bg-gradient-to-r from-sapphire via-ocean to-indigo-600">Pernikahan Impian</span> Tanpa Cemas.
-                            </h1>
-                            <p class="text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
-                                Pantau seluruh persiapan pernikahan dan status booking vendor utama secara real-time melalui portal cerdas <strong>Langit Tracker</strong>.
-                            </p>
-                            
-                            <div class="pt-2 max-w-xl">
-                                <div class="bg-white/90 backdrop-blur-xl border border-indigo-100 p-2 pl-5 rounded-full shadow-[0_12px_36px_rgba(0,66,172,0.08)] flex items-center justify-between gap-3 transition-all hover:border-sapphire">
-                                    <div class="flex items-center gap-3 overflow-hidden text-muted text-xs sm:text-sm">
-                                        <i data-lucide="search" class="w-4 h-4 text-sapphire shrink-0"></i>
-                                        <span class="truncate">Hitung custom vendor / cek jadwal pernikahan...</span>
-                                    </div>
-                                    <button onclick="switchTab('custom')" class="bg-slate-900 hover:bg-sapphire text-white px-6 py-2.5 rounded-full text-xs font-bold transition duration-300 shadow-md shrink-0 flex items-center gap-1.5">
-                                        <span>Hitung Vendor</span>
-                                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                                    </button>
-                                </div>
-                                <div class="flex flex-wrap items-center gap-2 pt-3 text-[11px] font-semibold text-slate-600">
-                                    <span onclick="switchTab('custom')" class="cursor-pointer px-3.5 py-1 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-sapphire hover:border-sapphire transition shadow-sm font-bold flex items-center gap-1">✨ 5 Pilihan Venue</span>
-                                    <span onclick="switchTab('custom')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white border border-slate-200 hover:border-sapphire hover:text-sapphire transition shadow-sm">🏨 Luminor</span>
-                                    <span onclick="switchTab('custom')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white border border-slate-200 hover:border-sapphire hover:text-sapphire transition shadow-sm">🏛️ Tamadun</span>
-                                    <span onclick="switchTab('custom')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white border border-slate-200 hover:border-sapphire hover:text-sapphire transition shadow-sm">🏢 Gedung Wanita</span>
-                                    <span onclick="switchTab('custom')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white border border-slate-200 hover:border-sapphire hover:text-sapphire transition shadow-sm">✨ Ballroom</span>
-                                </div>
-                            </div>
+                            <button onclick="openLoginModal()" class="bg-slate-900 hover:bg-indigo-600 text-white px-6 py-2.5 rounded-full text-xs font-bold transition duration-300 shadow-md shrink-0 flex items-center gap-1.5">
+                                <span>Cek Tracker</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </button>
                         </div>
-
-                        <div class="lg:col-span-5 relative">
-                            <div class="fan-deck">
-                                <div class="fan-card pos-1">
-                                    <img src="img/ig-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80';" alt="Portofolio 1">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-                                    <div class="absolute bottom-4 left-4 right-4 text-white">
-                                        <p class="text-[9px] uppercase tracking-widest text-ocean font-bold">Elegance</p>
-                                        <p class="font-tech text-sm font-bold">Jackie &amp; Dewi</p>
-                                    </div>
-                                </div>
-                                <div class="fan-card pos-2">
-                                    <img src="img/ig-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80';" alt="Portofolio 2">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-                                    <div class="absolute bottom-4 left-4 right-4 text-white">
-                                        <p class="text-[9px] uppercase tracking-widest text-ocean font-bold">Sacred Details</p>
-                                        <p class="font-tech text-sm font-bold">Kristin &amp; Aldy</p>
-                                    </div>
-                                </div>
-                                <div class="fan-card pos-3">
-                                    <img src="img/ig-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';" alt="Portofolio Utama">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                                    <div class="absolute bottom-4 left-4 right-4 text-white">
-                                        <p class="text-[10px] uppercase tracking-widest text-ocean font-bold">Special Promo</p>
-                                        <p class="font-tech text-base font-bold leading-tight">"Gratis Laundry Pakaian 1 Tahun"</p>
-                                    </div>
-                                </div>
-                                <div class="fan-card pos-4">
-                                    <img src="img/ig-4.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-2.jpg';}else{this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80';}" alt="Portofolio 4">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-                                    <div class="absolute bottom-4 left-4 right-4 text-white">
-                                        <p class="text-[9px] uppercase tracking-widest text-ocean font-bold">Exclusive Venue</p>
-                                        <p class="font-tech text-sm font-bold">Langit Planner</p>
-                                    </div>
-                                </div>
-                                <div class="fan-card pos-5">
-                                    <img src="img/ig-5.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-3.jpg';}else{this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80';}" alt="Portofolio 5">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-                                    <div class="absolute bottom-4 left-4 right-4 text-white">
-                                        <p class="text-[9px] uppercase tracking-widest text-ocean font-bold">Best Moment</p>
-                                        <p class="font-tech text-sm font-bold">Kaltara Wedding</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-center text-[11px] text-muted mt-3 font-medium">✨ Arahkan kursor ke kartu foto untuk efek visual 3D</p>
+                        <!-- Quick Filter Pills -->
+                        <div class="flex flex-wrap items-center gap-2 pt-3 text-[11px] font-semibold text-slate-600">
+                            <span onclick="switchTab('paket')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white/90 border border-slate-200/80 hover:border-indigo-400 hover:text-indigo-600 transition shadow-sm">💎 Diamond</span>
+                            <span onclick="switchTab('paket')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white/90 border border-slate-200/80 hover:border-indigo-400 hover:text-indigo-600 transition shadow-sm">💍 Silver</span>
+                            <span onclick="switchTab('paket')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white/90 border border-slate-200/80 hover:border-indigo-400 hover:text-indigo-600 transition shadow-sm">🏛️ Ballroom</span>
+                            <span onclick="switchTab('alur')" class="cursor-pointer px-3.5 py-1 rounded-full bg-white/90 border border-slate-200/80 hover:border-indigo-400 hover:text-indigo-600 transition shadow-sm">⚡ Alur Kerja</span>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="projek" class="py-24 bg-white/70 border-y border-slate-200/70">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid lg:grid-cols-12 gap-12 items-start">
-                        <div class="lg:col-span-5 space-y-6">
-                            <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">● Langit Tracker Live</span>
-                            <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal leading-tight">
-                                Pantau persiapan pernikahan Anda secara real-time.
-                            </h2>
-                            <p class="text-muted text-sm sm:text-base leading-relaxed">
-                                Setiap pasangan yang bekerja sama dengan kami mendapat akses pribadi ke <strong>Langit Tracker</strong> — dashboard persiapan pernikahan eksklusif. Detail administrasi, hitung mundur hari-H, ceklis persiapan, dan formulir rundown hanya dapat diakses oleh pengantin bersangkutan dan Admin.
-                            </p>
-                            <div class="pt-4">
-                                <button onclick="openLoginModal()" class="bg-slate-900 hover:bg-sapphire text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-lg flex items-center gap-2">
-                                    <i data-lucide="lock" class="w-4 h-4 text-ocean"></i>
-                                    <span>Login ke Langit Tracker</span>
-                                </button>
+                <div class="lg:col-span-5 relative">
+                    <div class="fan-deck">
+                        <div class="fan-card pos-1">
+                            <img src="img/ig-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80';" alt="Portofolio 1">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Elegance</p>
+                                <p class="font-editorial text-sm italic">Jackie &amp; Dewi</p>
                             </div>
                         </div>
 
-                        <div class="lg:col-span-7">
-                            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl space-y-6">
-                                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
-                                    <div>
-                                        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">● Active Wedding Projects</span>
-                                        <h3 class="font-tech text-2xl font-bold text-charcoal mt-2">Project Pernikahan yang Sedang Berjalan</h3>
-                                    </div>
-                                </div>
-                                <div class="space-y-4 max-h-[520px] overflow-y-auto pr-1" id="public-project-list"></div>
+                        <div class="fan-card pos-2">
+                            <img src="img/ig-3.jpg" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80';" alt="Portofolio 2">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Sacred Details</p>
+                                <p class="font-editorial text-sm italic">Kristin &amp; Aldy</p>
+                            </div>
+                        </div>
+
+                        <div class="fan-card pos-3">
+                            <img src="img/ig-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';" alt="Portofolio Utama">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <p class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Special Promo</p>
+                                <p class="font-editorial text-lg leading-tight italic">"Gratis Laundry Pakaian 1 Tahun"</p>
+                            </div>
+                        </div>
+
+                        <div class="fan-card pos-4">
+                            <img src="img/ig-4.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-2.jpg';}else{this.src='https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80';}" alt="Portofolio 4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Exclusive Venue</p>
+                                <p class="font-editorial text-sm italic">Langit Planner</p>
+                            </div>
+                        </div>
+
+                        <div class="fan-card pos-5">
+                            <img src="img/ig-5.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='img/ig-3.jpg';}else{this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80';}" alt="Portofolio 5">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3 text-white">
+                                <p class="text-[9px] uppercase tracking-widest text-champagne font-bold">Best Moment</p>
+                                <p class="font-editorial text-sm italic">Kaltara Wedding</p>
                             </div>
                         </div>
                     </div>
+                    <p class="text-center text-[11px] text-muted mt-3 italic">✨ Arahkan kursor ke salah satu dari 5 kartu foto di atas untuk memperbesar</p>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
+
+    
+<section id="projek" class="py-24 bg-sand/70 border-y border-stone-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-5 space-y-6">
+                    <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold">— LANGIT TRACKER LIVE</p>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-normal italic text-charcoal leading-tight">
+                        Pantau persiapan pernikahan Anda kapan saja, dari mana saja.
+                    </h2>
+                    <p class="text-muted text-sm leading-relaxed">
+                        Setiap pasangan yang bekerja sama dengan kami mendapat akses pribadi ke <strong>Langit Tracker</strong> — dashboard persiapan pernikahan eksklusif yang dilindungi kata sandi. Detail administrasi, hitung mundur hari-H, ceklis persiapan, dan formulir rundown hanya dapat diakses oleh pengantin bersangkutan dan Admin.
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <button onclick="openLoginModal()" class="bg-[#0042AC] hover:bg-charcoal text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-md flex items-center gap-2">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                            <span>Login ke Langit Tracker</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-xl space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-4">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">● Active Wedding Projects</span>
+                                <h3 class="font-editorial text-2xl sm:text-3xl font-bold text-charcoal mt-2">Project Pernikahan yang Sedang Berjalan</h3>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 max-h-[520px] overflow-y-auto pr-1" id="public-project-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
         </div>
 
-        <!-- TAB BARU: CUSTOM PRICELIST & KALKULATOR VENDOR INTERAKTIF -->
+        <!-- TAB 2: ALUR KERJA -->
+        <div id="view-alur" class="page-view hidden transition-all duration-300">
+<section id="alur" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-ivory border-b border-stone-200/70 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">How We Work</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">4 Langkah Menuju Hari Bahagia</h2>
+                <p class="text-muted text-sm sm:text-base mt-3">Proses perencanaan yang terstruktur, transparan, dan bebas stres sejak hari pertama.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-7 rounded-3xl border border-stone-200/85 shadow-sm relative group hover:border-champagne transition">
+                    <span class="font-editorial text-5xl font-bold text-champagne/30 group-hover:text-champagne transition">01</span>
+                    <h3 class="font-editorial text-2xl font-bold text-charcoal mt-3">Obrolan &amp; Konsultasi</h3>
+                    <p class="text-xs text-muted mt-2 leading-relaxed">Diskusi santai membahas konsep impian, estimasi jumlah tamu, pilihan venue, dan anggaran tanpa biaya.</p>
+                </div>
+                <div class="bg-white p-7 rounded-3xl border border-stone-200/85 shadow-sm relative group hover:border-champagne transition">
+                    <span class="font-editorial text-5xl font-bold text-champagne/30 group-hover:text-champagne transition">02</span>
+                    <h3 class="font-editorial text-2xl font-bold text-charcoal mt-3">Lock Tanggal &amp; Akun</h3>
+                    <p class="text-xs text-muted mt-2 leading-relaxed">Penguncian tanggal acara melalui DP dan pembuatan akun eksklusif <strong>Langit Tracker</strong>.</p>
+                </div>
+                <div class="bg-white p-7 rounded-3xl border border-stone-200/85 shadow-sm relative group hover:border-champagne transition">
+                    <span class="font-editorial text-5xl font-bold text-champagne/30 group-hover:text-champagne transition">03</span>
+                    <h3 class="font-editorial text-2xl font-bold text-charcoal mt-3">Kurasi Vendor &amp; Rundown</h3>
+                    <p class="text-xs text-muted mt-2 leading-relaxed">Pemilihan 7 vendor utama, pengisian form biodata rundown online, serta Technical Meeting.</p>
+                </div>
+                <div class="bg-charcoal text-white p-7 rounded-3xl border border-champagne shadow-lg relative">
+                    <span class="font-editorial text-5xl font-bold text-champagne">04</span>
+                    <h3 class="font-editorial text-2xl font-bold text-white mt-3">Eksekusi Hari-H</h3>
+                    <p class="text-xs text-stone-300 mt-2 leading-relaxed">Tim profesional Langit Planner mengatur jalannya acara dari awal hingga akhir tanpa cemas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+        </div>
+
+        <!-- TAB 3: PAKET LAYANAN -->
+        <div id="view-layanan" class="page-view hidden transition-all duration-300">
+<section id="layanan" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-white border-b border-stone-200/70 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Skema Pendampingan</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Pilihan Paket Layanan</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-ivory rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-stone-100 px-3 py-1 rounded-full">Day-of Coordination</span>
+                        <h3 class="font-editorial text-3xl font-bold mt-4 text-charcoal">Day-of Coordination</h3>
+                        <p class="text-sm text-muted mt-2">Untuk Anda yang sudah menyiapkan sendiri, tinggal butuh eksekutor hari-H.</p>
+                        <div class="my-6 pt-6 border-t border-stone-200 space-y-3 text-xs text-charcoal/85">
+                            <p class="font-semibold uppercase tracking-wider text-champagneDark">Fasilitas Utama:</p>
+                            <p>— Koordinator utama + 8 kru di hari-H</p>
+                            <p>— Technical meeting & rundown (H-30)</p>
+                            <p>— Konfirmasi ulang vendor (H-7)</p>
+                            <p>— Pendampingan penuh 12 jam</p>
+                        </div>
+                    </div>
+                    <a href="#konsultasi" onclick="selectPackage('Day-of Coordination')" class="w-full text-center py-3 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-medium transition">Tanya Paket Ini</a>
+                </div>
+
+                <div class="bg-charcoal text-white rounded-3xl p-8 border-2 border-champagne shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2">
+                    <div class="absolute -top-3.5 right-6 bg-champagne text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">Paling Diminati</div>
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-champagne bg-white/10 px-3 py-1 rounded-full">Full Planning</span>
+                        <h3 class="font-editorial text-4xl font-bold mt-4">Full Planning</h3>
+                        <p class="text-sm text-stone-300 mt-2">Pendampingan menyeluruh sejak ide pertama sampai tamu terakhir pulang.</p>
+                        <div class="my-6 pt-6 border-t border-white/10 space-y-3 text-sm text-stone-200">
+                            <p class="font-semibold text-champagne">✨ Fasilitas Utama:</p>
+                            <p class="text-xs leading-relaxed text-stone-300">Konsultasi konsep &amp; desain | Kurasi seluruh vendor | Manajemen anggaran | Timeline lengkap H-12 bulan | Koordinator + 15 kru di hari-H | Konsultasi tanpa batas via WA.</p>
+                        </div>
+                    </div>
+                    <a href="#konsultasi" onclick="selectPackage('Full Planning')" class="w-full text-center py-3 rounded-full bg-champagne hover:bg-champagneDark text-white text-sm font-bold transition">Konsultasi Full Planning</a>
+                </div>
+
+                <div class="bg-ivory rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-stone-100 px-3 py-1 rounded-full">Custom Package</span>
+                        <h3 class="font-editorial text-3xl font-bold mt-4 text-charcoal">Custom Package</h3>
+                        <p class="text-sm text-muted mt-2">Susun sendiri cakupan kerjanya — cocok untuk intimate, adat, atau destination wedding.</p>
+                        <div class="my-6 pt-6 border-t border-stone-200 space-y-3 text-xs text-charcoal/85">
+                            <p class="font-semibold uppercase tracking-wider text-champagneDark">Fasilitas:</p>
+                            <p>— Pilih modul sesuai kebutuhan</p>
+                            <p>— Opsi paket adat lengkap (Jawa, Sunda, Minang, Batak)</p>
+                            <p>— Kolaborasi brand rekanan terkurasi</p>
+                        </div>
+                    </div>
+                    <a href="#konsultasi" onclick="selectPackage('Custom Package')" class="w-full text-center py-3 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-medium transition">Minta Penawaran</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+        </div>
+
+        <!-- TAB 4: PRICELIST & VENUE -->
+        <div id="view-paket" class="page-view hidden transition-all duration-300">
+<section id="paket" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-sand/60 border-b border-stone-200/70 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Official Pricelist & Venue Package</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Daftar Pricelist Resmi</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="bg-charcoal text-white rounded-3xl p-8 sm:p-10 border-2 border-champagne shadow-2xl relative flex flex-col justify-between">
+                    <div class="absolute -top-3.5 right-6 bg-champagne text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow">Most Exclusive</div>
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-champagne bg-white/10 px-3 py-1 rounded-full">Diamond Package</span>
+                        <h3 class="font-editorial text-4xl font-bold mt-4">Diamond Package</h3>
+                        <p class="text-sm text-stone-300 mt-2">Paket termegah dengan fasilitas lengkap dan bonus eksklusif berlimpah.</p>
+                        <div class="my-6 pt-6 border-t border-white/10 space-y-3 text-sm text-stone-200">
+                            <p class="font-semibold text-champagne">✨ Fasilitas Utama:</p>
+                            <p class="text-xs leading-relaxed text-stone-300">Dekorasi Venue | MUA | Gaun | Photographer | Catering 1000 Porsi | MC | WO | VideoTron | Music | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
+                            <p class="font-semibold text-champagne pt-2">🎁 Bonus Spesial:</p>
+                            <p class="text-xs leading-relaxed text-stone-300">Honeymoon Derawan | Seserahan | Prewedding | WCC | Refleksi | Buku Tamu | Undangan Digital | <strong class="text-white underline">Gratis Laundry Pakaian 1 Tahun</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Pilihan Harga Berdasarkan Venue:</p>
+                        <div class="grid grid-cols-3 gap-3 text-center mb-6">
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-stone-400">Ballroom</p><p class="font-bold text-base text-champagne mt-0.5">93.550 K</p></div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-stone-400">Tamadun</p><p class="font-bold text-base text-champagne mt-0.5">116.850 K</p></div>
+                            <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-stone-400">Gedung Wanita</p><p class="font-bold text-base text-champagne mt-0.5">106.850 K</p></div>
+                        </div>
+                        <a href="#konsultasi" onclick="selectPackage('Diamond Package')" class="w-full block text-center py-3.5 rounded-full bg-champagne hover:bg-champagneDark text-white text-sm font-bold transition shadow-lg">Booking Diamond Package</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-stone-200 shadow-xl relative flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-stone-100 px-3 py-1 rounded-full">Silver Package</span>
+                        <h3 class="font-editorial text-4xl font-bold mt-4 text-charcoal">Silver Package</h3>
+                        <p class="text-sm text-muted mt-2">Pilihan elegan dan efisien untuk pernikahan impian yang tetap berkesan.</p>
+                        <div class="my-6 pt-6 border-t border-stone-100 space-y-3 text-sm text-charcoal/85">
+                            <p class="font-semibold text-champagneDark">✨ Fasilitas Utama:</p>
+                            <p class="text-xs leading-relaxed text-muted">Dekorasi Venue | MUA | Gaun | Photographer | Catering 1000 Porsi | MC | WO | Music | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
+                            <p class="font-semibold text-champagneDark pt-2">🎁 Bonus Spesial:</p>
+                            <p class="text-xs leading-relaxed text-muted">Tempat Seserahan | Prewedding | Refleksi Lavender 81 | Buku Tamu.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-stone-100">
+                        <p class="text-xs text-muted mb-3 uppercase tracking-wider font-semibold">Pilihan Harga Berdasarkan Venue:</p>
+                        <div class="grid grid-cols-3 gap-3 text-center mb-6">
+                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200"><p class="text-[11px] text-muted">Ballroom</p><p class="font-bold text-base text-charcoal mt-0.5">71.500 K</p></div>
+                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200"><p class="text-[11px] text-muted">Tamadun</p><p class="font-bold text-base text-charcoal mt-0.5">87.600 K</p></div>
+                            <div class="bg-stone-50 rounded-2xl p-3 border border-stone-200"><p class="text-[11px] text-muted">Gedung Wanita</p><p class="font-bold text-base text-charcoal mt-0.5">77.600 K</p></div>
+                        </div>
+                        <a href="#konsultasi" onclick="selectPackage('Silver Package')" class="w-full block text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-charcoal hover:text-white text-sm font-bold transition">Booking Silver Package</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-12 border-t border-stone-300/70 text-center">
+                <p class="text-[11px] uppercase tracking-[0.22em] text-muted font-bold mb-6">Mitra Vendor &amp; Rekanan Terbaik Kami di Kalimantan Utara</p>
+                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>✨</span> Erza Art Decor</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>💄</span> Ratih Salon Professional</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>🎤</span> MC Najwa Zenuba</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>🎵</span> Opa Music Entertainment</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>🍽️</span> Wafda Catering</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>🌿</span> Henna Art Kaltara</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>📸</span> Langit WCC</span>
+                    <span class="px-5 py-2 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition shadow-sm flex items-center gap-2"><span>👗</span> Mahligai Atelier</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+        </div>
+
+        
+        <!-- TAB CUSTOM PRICELIST & KALKULATOR VENDOR INTERAKTIF -->
         <div id="view-custom" class="page-view hidden transition-all duration-300">
             <section class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[85vh]">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
                         <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3.5 py-1 bg-blue-50 border border-blue-200 rounded-full inline-block">✨ Interactive Custom Wedding Calculator</span>
                         <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal">Tentukan Vendor Favorit &amp; Hitung Biaya</h2>
-                        <p class="text-muted text-sm sm:text-base leading-relaxed">Pilih vendor impianmu secara fleksibel di setiap kategori. Sistem akan otomatis menghitung total estimasi biaya dan nominal DP untuk mengunci jadwal.</p>
+                        <p class="text-muted text-sm sm:text-base leading-relaxed">Pilih vendor impianmu secara fleksibel di setiap kategori (termasuk 5 pilihan venue: Tamadun, Gedung Wanita, Ballroom, Luminor, dan Pasparawi). Sistem akan otomatis menghitung total estimasi biaya dan nominal DP untuk mengunci jadwal.</p>
                     </div>
 
                     <div class="grid lg:grid-cols-12 gap-8 items-start">
@@ -433,22 +631,6 @@
                                 </div>
 
                                 <div id="custom-selected-summary-list" class="space-y-2.5 text-xs text-slate-700 max-h-60 overflow-y-auto pr-1"></div>
-
-                                <!-- Box Notis WO & Dana Tak Terduga -->
-                                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-[11px] text-slate-700 leading-relaxed">
-                                    <div class="flex items-center gap-1.5 font-bold text-emerald-700">
-                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-                                        <span>Sudah Termasuk WO Langit Planner Hari-H</span>
-                                    </div>
-                                    <div class="flex items-center gap-1.5 font-bold text-sapphire">
-                                        <i data-lucide="shield-alert" class="w-4 h-4 text-sapphire shrink-0"></i>
-                                        <span>Termasuk Alokasi Dana Tak Terduga Hari-H (Rp 10.000.000)</span>
-                                    </div>
-                                    <div class="flex items-center gap-1.5 font-bold text-purple-700 pt-1 border-t border-slate-200">
-                                        <i data-lucide="sparkles" class="w-4 h-4 text-purple-600 shrink-0"></i>
-                                        <span>🎁 Bonus: Bebas Laundry Pakaian Selama 1 Tahun Penuh</span>
-                                    </div>
-                                </div>
 
                                 <div class="pt-4 border-t border-slate-100 space-y-2 text-xs">
                                     <div class="flex justify-between text-muted">
@@ -497,342 +679,219 @@
             </section>
         </div>
 
-        <!-- TAB 2: ALUR KERJA -->
-        <div id="view-alur" class="page-view hidden transition-all duration-300">
-            <section id="alur" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                        <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">How We Work</span>
-                        <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal">4 Langkah Menuju Hari Bahagia</h2>
-                        <p class="text-muted text-sm sm:text-base">Proses perencanaan yang terstruktur, transparan, dan bebas stres sejak hari pertama.</p>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm hover:border-ocean hover:shadow-lg transition">
-                            <span class="font-tech text-5xl font-extrabold text-slate-200">01</span>
-                            <h3 class="font-tech text-2xl font-bold text-charcoal mt-3">Obrolan &amp; Konsultasi</h3>
-                            <p class="text-xs text-muted mt-2 leading-relaxed">Diskusi santai membahas konsep impian, estimasi jumlah tamu, pilihan venue, dan anggaran tanpa biaya.</p>
-                        </div>
-                        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm hover:border-ocean hover:shadow-lg transition">
-                            <span class="font-tech text-5xl font-extrabold text-slate-200">02</span>
-                            <h3 class="font-tech text-2xl font-bold text-charcoal mt-3">Lock Tanggal &amp; Akun</h3>
-                            <p class="text-xs text-muted mt-2 leading-relaxed">Penguncian tanggal acara melalui DP dan pembuatan akun eksklusif <strong>Langit Tracker</strong>.</p>
-                        </div>
-                        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm hover:border-ocean hover:shadow-lg transition">
-                            <span class="font-tech text-5xl font-extrabold text-slate-200">03</span>
-                            <h3 class="font-tech text-2xl font-bold text-charcoal mt-3">Kurasi Vendor &amp; Rundown</h3>
-                            <p class="text-xs text-muted mt-2 leading-relaxed">Pemilihan 7 vendor utama, pengisian form biodata rundown online, serta Technical Meeting.</p>
-                        </div>
-                        <div class="rounded-3xl p-7 border-2 border-sapphire shadow-xl relative overflow-hidden" style="background-color: #0B0F19 !important; color: #FFFFFF !important;">
-                            <span class="font-tech text-5xl font-extrabold text-ocean">04</span>
-                            <h3 class="font-tech text-2xl font-bold text-white mt-3">Eksekusi Hari-H</h3>
-                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">Tim profesional Langit Planner mengatur jalannya acara dari awal hingga akhir tanpa cemas.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- TAB 3: PAKET LAYANAN (FIXED HIGH CONTRAST) -->
-        <div id="view-layanan" class="page-view hidden transition-all duration-300">
-            <section id="layanan" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                        <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">Skema Pendampingan</span>
-                        <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal">Pilihan Paket Layanan</h2>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-sapphire bg-blue-50 px-3 py-1 rounded-full">Day-of Coordination</span>
-                                <h3 class="font-tech text-3xl font-extrabold mt-4 text-charcoal">Day-of Coordination</h3>
-                                <p class="text-sm text-muted mt-2">Untuk Anda yang sudah menyiapkan sendiri, tinggal butuh eksekutor hari-H.</p>
-                                <div class="my-6 pt-6 border-t border-slate-100 space-y-3 text-xs text-slate-700">
-                                    <p class="font-semibold uppercase tracking-wider text-sapphire">Fasilitas Utama:</p>
-                                    <p>— Koordinator utama + 8 kru di hari-H</p>
-                                    <p>— Technical meeting & rundown (H-30)</p>
-                                    <p>— Konfirmasi ulang vendor (H-7)</p>
-                                    <p>— Pendampingan penuh 12 jam</p>
-                                </div>
-                            </div>
-                            <a href="#konsultasi" onclick="selectPackage('Day-of Coordination')" class="w-full text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-slate-900 hover:text-white text-sm font-medium transition">Tanya Paket Ini</a>
-                        </div>
-
-                        <!-- KARTU TENGAH SOLID DARK (100% VISIBLE) -->
-                        <div class="rounded-3xl p-8 border-2 border-ocean shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2" style="background-color: #0B0F19 !important; color: #FFFFFF !important;">
-                            <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-sapphire to-ocean text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">Paling Diminati</div>
-                            <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-ocean bg-white/10 px-3 py-1 rounded-full">Full Planning</span>
-                                <h3 class="font-tech text-4xl font-extrabold mt-4 text-white">Full Planning</h3>
-                                <p class="text-sm text-slate-200 mt-2">Pendampingan menyeluruh sejak ide pertama sampai tamu terakhir pulang.</p>
-                                <div class="my-6 pt-6 border-t border-white/20 space-y-3 text-sm text-slate-200">
-                                    <p class="font-bold text-ocean">✨ Fasilitas Utama:</p>
-                                    <p class="text-xs leading-relaxed text-slate-200">Konsultasi konsep &amp; desain | Kurasi seluruh vendor | Manajemen anggaran | Timeline lengkap H-12 bulan | Koordinator + 15 kru di hari-H | Konsultasi tanpa batas via WA.</p>
-                                </div>
-                            </div>
-                            <a href="#konsultasi" onclick="selectPackage('Full Planning')" class="w-full text-center py-3.5 rounded-full bg-gradient-to-r from-sapphire to-ocean hover:opacity-90 text-white text-sm font-bold transition shadow-lg">Konsultasi Full Planning</a>
-                        </div>
-
-                        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-slate-100 px-3 py-1 rounded-full">Custom Package</span>
-                                <h3 class="font-tech text-3xl font-extrabold mt-4 text-charcoal">Custom Package</h3>
-                                <p class="text-sm text-muted mt-2">Susun sendiri cakupan kerjanya — cocok untuk intimate, adat, atau destination wedding.</p>
-                                <div class="my-6 pt-6 border-t border-slate-100 space-y-3 text-xs text-slate-700">
-                                    <p class="font-semibold uppercase tracking-wider text-sapphire">Fasilitas:</p>
-                                    <p>— Pilih modul sesuai kebutuhan</p>
-                                    <p>— Opsi paket adat lengkap (Jawa, Sunda, Minang, Batak)</p>
-                                    <p>— Kolaborasi brand rekanan terkurasi</p>
-                                </div>
-                            </div>
-                            <a href="#konsultasi" onclick="selectPackage('Custom Package')" class="w-full text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-slate-900 hover:text-white text-sm font-medium transition">Minta Penawaran</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- TAB 4: PRICELIST & VENUE RESMI (FIXED HIGH CONTRAST) -->
-        <div id="view-paket" class="page-view hidden transition-all duration-300">
-            <section id="paket" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                        <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">Official Pricelist &amp; Venue Package</span>
-                        <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal">Daftar Pricelist Resmi</h2>
-                    </div>
-
-                    <div class="grid lg:grid-cols-2 gap-10">
-                        <!-- KARTU DIAMOND SOLID DARK (100% VISIBLE) -->
-                        <div class="rounded-3xl p-8 sm:p-10 border-2 border-ocean shadow-2xl relative flex flex-col justify-between" style="background-color: #0B0F19 !important; color: #FFFFFF !important;">
-                            <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-sapphire to-ocean text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow">Most Exclusive</div>
-                            <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-ocean bg-white/10 px-3 py-1 rounded-full">Diamond Package</span>
-                                <h3 class="font-tech text-4xl font-extrabold mt-4 text-white">Diamond Package</h3>
-                                <p class="text-sm text-slate-200 mt-2">Paket termegah dengan fasilitas lengkap dan bonus eksklusif berlimpah.</p>
-                                <div class="my-6 pt-6 border-t border-white/20 space-y-3 text-sm text-slate-200">
-                                    <p class="font-semibold text-ocean">✨ Fasilitas Utama:</p>
-                                    <p class="text-xs leading-relaxed text-slate-200">Dekorasi Venue | MUA | Gaun | Photographer | Catering 1000 Porsi | MC | WO | VideoTron | Music | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
-                                    <p class="font-semibold text-ocean pt-2">🎁 Bonus Spesial:</p>
-                                    <p class="text-xs leading-relaxed text-slate-200">Honeymoon Derawan | Seserahan | Prewedding | WCC | Refleksi | Buku Tamu | Undangan Digital | <strong class="text-white underline">Gratis Laundry Pakaian 1 Tahun</strong>.</p>
-                                </div>
-                            </div>
-                            <div class="mt-8 pt-6 border-t border-white/20">
-                                <p class="text-xs text-slate-300 mb-3 uppercase tracking-wider font-semibold">Pilihan Harga Berdasarkan Venue:</p>
-                                <div class="grid grid-cols-3 gap-3 text-center mb-6">
-                                    <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-slate-300">Ballroom</p><p class="font-bold text-base text-ocean mt-0.5">93.550 K</p></div>
-                                    <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-slate-300">Tamadun</p><p class="font-bold text-base text-ocean mt-0.5">116.850 K</p></div>
-                                    <div class="bg-white/10 rounded-2xl p-3 border border-white/10"><p class="text-[11px] text-slate-300">Gedung Wanita</p><p class="font-bold text-base text-ocean mt-0.5">106.850 K</p></div>
-                                </div>
-                                <a href="#konsultasi" onclick="selectPackage('Diamond Package')" class="w-full block text-center py-3.5 rounded-full bg-gradient-to-r from-sapphire to-ocean hover:opacity-90 text-white text-sm font-bold transition shadow-lg">Booking Diamond Package</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl relative flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-muted bg-slate-100 px-3 py-1 rounded-full">Silver Package</span>
-                                <h3 class="font-tech text-4xl font-extrabold mt-4 text-charcoal">Silver Package</h3>
-                                <p class="text-sm text-muted mt-2">Pilihan elegan dan efisien untuk pernikahan impian yang tetap berkesan.</p>
-                                <div class="my-6 pt-6 border-t border-slate-100 space-y-3 text-sm text-slate-700">
-                                    <p class="font-semibold text-sapphire">✨ Fasilitas Utama:</p>
-                                    <p class="text-xs leading-relaxed text-muted">Dekorasi Venue | MUA | Gaun | Photographer | Catering 1000 Porsi | MC | WO | Music | Sewa Venue | Lighting Beam | Kipas Salju | Hotel 2 Malam.</p>
-                                    <p class="font-semibold text-sapphire pt-2">🎁 Bonus Spesial:</p>
-                                    <p class="text-xs leading-relaxed text-muted">Tempat Seserahan | Prewedding | Refleksi Lavender 81 | Buku Tamu.</p>
-                                </div>
-                            </div>
-                            <div class="mt-8 pt-6 border-t border-slate-100">
-                                <p class="text-xs text-muted mb-3 uppercase tracking-wider font-semibold">Pilihan Harga Berdasarkan Venue:</p>
-                                <div class="grid grid-cols-3 gap-3 text-center mb-6">
-                                    <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200"><p class="text-[11px] text-muted">Ballroom</p><p class="font-bold text-base text-charcoal mt-0.5">71.500 K</p></div>
-                                    <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200"><p class="text-[11px] text-muted">Tamadun</p><p class="font-bold text-base text-charcoal mt-0.5">87.600 K</p></div>
-                                    <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200"><p class="text-[11px] text-muted">Gedung Wanita</p><p class="font-bold text-base text-charcoal mt-0.5">77.600 K</p></div>
-                                </div>
-                                <a href="#konsultasi" onclick="selectPackage('Silver Package')" class="w-full block text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-slate-900 hover:text-white text-sm font-bold transition">Booking Silver Package</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
         <!-- TAB 5: PORTOFOLIO -->
         <div id="view-portofolio" class="page-view hidden transition-all duration-300">
-            <section id="portofolio" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12 space-y-3">
-                        <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">Instagram Showcase</span>
-                        <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal">Portofolio</h2>
-                    </div>
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7" id="portfolio-grid"></div>
-                </div>
-            </section>
+<section id="portofolio" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-white border-t border-stone-200/70 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Instagram Showcase</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Portofolio</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7" id="portfolio-grid"></div>
+        </div>
+    </section>
+
+    
         </div>
 
         <!-- TAB 6: TESTIMONI -->
         <div id="view-testimoni" class="page-view hidden transition-all duration-300">
-            <section id="testimoni" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-                        <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">Love Stories &amp; Reviews</span>
-                        <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal">Kata Mereka Tentang Langit Planner</h2>
+<section id="testimoni" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-sand/50 border-t border-stone-200/80 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold mb-2">Love Stories &amp; Reviews</p>
+                <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal">Kata Mereka Tentang Langit Planner</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex text-champagne text-sm">★★★★★</div>
+                        <p class="text-sm text-charcoal/85 italic leading-relaxed">"Awalnya sempat pusing mengatur vendor, tapi sejak pakai Langit Planner semuanya beres! Fitur Langit Tracker-nya juara banget, kami bisa pantau semua persiapan dari HP."</p>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
-                            <div class="space-y-4">
-                                <div class="flex text-amber-400 text-sm">★★★★★</div>
-                                <p class="text-sm text-slate-700 italic leading-relaxed">"Awalnya sempat pusing mengatur vendor, tapi sejak pakai Langit Planner semuanya beres! Fitur Langit Tracker-nya juara banget, kami bisa pantau semua persiapan dari HP."</p>
-                            </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
-                                <div class="w-10 h-10 rounded-full bg-slate-900 text-ocean font-tech font-bold flex items-center justify-center">R&amp;N</div>
-                                <div><h4 class="font-bold text-xs text-charcoal">Rizki &amp; Nova</h4><p class="text-[11px] text-muted">Diamond Package — Ballroom</p></div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
-                            <div class="space-y-4">
-                                <div class="flex text-amber-400 text-sm">★★★★★</div>
-                                <p class="text-sm text-slate-700 italic leading-relaxed">"Tim Kak Yogs super sigap dan komunikatif. Semua detail kecil diatur rapi banget lewat form online mereka. Terima kasih Langit Planner!"</p>
-                            </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
-                                <div class="w-10 h-10 rounded-full bg-slate-900 text-ocean font-tech font-bold flex items-center justify-center">J&amp;D</div>
-                                <div><h4 class="font-bold text-xs text-charcoal">Jackie &amp; Dewi</h4><p class="text-[11px] text-muted">Full Planning — Tanjung Selor</p></div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
-                            <div class="space-y-4">
-                                <div class="flex text-amber-400 text-sm">★★★★★</div>
-                                <p class="text-sm text-slate-700 italic leading-relaxed">"Kru di lapangan sangat ramah kepada tamu VIP dan orang tua kami. Koordinasi berjalan mulus tanpa kendala. Sangat merekomendasikan Langit Planner!"</p>
-                            </div>
-                            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
-                                <div class="w-10 h-10 rounded-full bg-slate-900 text-ocean font-tech font-bold flex items-center justify-center">K&amp;A</div>
-                                <div><h4 class="font-bold text-xs text-charcoal">Kristin &amp; Aldy</h4><p class="text-[11px] text-muted">Silver Package — Gedung Wanita</p></div>
-                            </div>
-                        </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+                        <div class="w-10 h-10 rounded-full bg-charcoal text-champagne font-editorial font-bold flex items-center justify-center">R&amp;N</div>
+                        <div><h4 class="font-bold text-xs text-charcoal">Rizki &amp; Nova</h4><p class="text-[11px] text-muted">Diamond Package — Ballroom</p></div>
                     </div>
                 </div>
-            </section>
+                <div class="bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex text-champagne text-sm">★★★★★</div>
+                        <p class="text-sm text-charcoal/85 italic leading-relaxed">"Tim Kak Yogs super sigap dan komunikatif. Semua detail kecil diatur rapi banget lewat form online mereka. Terima kasih Langit Planner!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+                        <div class="w-10 h-10 rounded-full bg-charcoal text-champagne font-editorial font-bold flex items-center justify-center">J&amp;D</div>
+                        <div><h4 class="font-bold text-xs text-charcoal">Jackie &amp; Dewi</h4><p class="text-[11px] text-muted">Full Planning — Tanjung Selor</p></div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-stone-200/90 shadow-sm flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex text-champagne text-sm">★★★★★</div>
+                        <p class="text-sm text-charcoal/85 italic leading-relaxed">"Kru di lapangan sangat ramah kepada tamu VIP dan orang tua kami. Koordinasi berjalan mulus tanpa kendala. Sangat merekomendasikan Langit Planner!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+                        <div class="w-10 h-10 rounded-full bg-charcoal text-champagne font-editorial font-bold flex items-center justify-center">K&amp;A</div>
+                        <div><h4 class="font-bold text-xs text-charcoal">Kristin &amp; Aldy</h4><p class="text-[11px] text-muted">Silver Package — Gedung Wanita</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FAQ LENGKAP (8 PERTANYAAN) -->
+    
         </div>
 
         <!-- TAB 7: FAQ (PERTANYAAN) -->
         <div id="view-faq" class="page-view hidden transition-all duration-300">
-            <section id="faq" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid lg:grid-cols-12 gap-12 items-start">
-                        <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
-                            <span class="text-xs uppercase tracking-[0.2em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">— FAQ</span>
-                            <h2 class="font-tech text-4xl sm:text-5xl font-extrabold text-charcoal leading-tight">Pertanyaan yang sering ditanyakan</h2>
-                            <p class="text-muted text-sm leading-relaxed">Belum terjawab? Kirim pertanyaan Anda langsung ke WhatsApp kami di jam kerja.</p>
-                            <a href="https://wa.me/message/ZCVGANZISCDWJ1" target="_blank" class="inline-block bg-slate-900 hover:bg-sapphire text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition shadow-md">Tanya Lewat WhatsApp</a>
-                        </div>
-                        <div class="lg:col-span-8 space-y-4">
-                            <details class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm cursor-pointer" open>
-                                <summary class="font-tech text-lg sm:text-xl font-bold text-charcoal flex items-center justify-between list-none">
-                                    <span>Kapan waktu terbaik mulai menghubungi wedding organizer?</span>
-                                    <span class="text-xl font-light text-slate-400 group-open:rotate-45 transition transform duration-300">+</span>
-                                </summary>
-                                <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-slate-100">Waktu terbaik adalah 6 hingga 12 bulan sebelum hari H untuk paket Full Planning agar Anda bisa mengamankan tanggal venue dan vendor favorit. Namun untuk paket Day-of Coordination, minimal 1 hingga 2 bulan sebelum acara.</p>
-                            </details>
-
-                            <details class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm cursor-pointer">
-                                <summary class="font-tech text-lg sm:text-xl font-bold text-charcoal flex items-center justify-between list-none">
-                                    <span>Bagaimana sistem pembayarannya?</span>
-                                    <span class="text-xl font-light text-slate-400 group-open:rotate-180 transition transform duration-300">+</span>
-                                </summary>
-                                <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-slate-100">Pembayaran dilakukan secara bertahap (termin) sesuai kesepakatan kontrak kerja. Untuk DP awal saat penguncian tanggal, dan pelunasan termin terakhir maksimal 30 hari sebelum hari-H acara.</p>
-                            </details>
-
-                            <details class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm cursor-pointer">
-                                <summary class="font-tech text-lg sm:text-xl font-bold text-charcoal flex items-center justify-between list-none">
-                                    <span>Apakah deposit bisa dikembalikan?</span>
-                                    <span class="text-xl font-light text-slate-400 group-open:rotate-180 transition transform duration-300">+</span>
-                                </summary>
-                                <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-slate-100">Dana deposit atau Down Payment (DP) yang telah disetorkan bersifat tidak dapat dikembalikan (non-refundable) karena digunakan untuk mengunci tanggal dan mengikat vendor utama, namun dapat dijadwalkan ulang sesuai ketentuan force majeure.</p>
-                            </details>
-
-                            <details class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm cursor-pointer">
-                                <summary class="font-tech text-lg sm:text-xl font-bold text-charcoal flex items-center justify-between list-none">
-                                    <span>Area kerja kalian sampai mana?</span>
-                                    <span class="text-xl font-light text-slate-400 group-open:rotate-180 transition transform duration-300">+</span>
-                                </summary>
-                                <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-slate-100">Basis utama Langit Planner adalah di Tanjung Selor dan mencakup seluruh wilayah Kalimantan Utara (Bulungan, Tarakan, Malinau, Nunukan, Berau) serta melayani destination wedding ke luar kota.</p>
-                            </details>
-                        </div>
-                    </div>
+<section id="faq" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-ivory border-t border-stone-200/80 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
+                    <p class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold">— FAQ</p>
+                    <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-charcoal leading-tight">Pertanyaan yang sering ditanyakan</h2>
+                    <p class="text-muted text-sm leading-relaxed">Belum terjawab? Kirim pertanyaan Anda langsung ke WhatsApp kami di jam kerja.</p>
+                    <a href="https://wa.me/message/ZCVGANZISCDWJ1" target="_blank" class="inline-block border border-charcoal hover:bg-charcoal hover:text-white text-charcoal px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition">Tanya Lewat WhatsApp</a>
                 </div>
-            </section>
+                <div class="lg:col-span-8 space-y-4">
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer" open>
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Kapan waktu terbaik mulai menghubungi wedding organizer?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-45 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Waktu terbaik adalah 6 hingga 12 bulan sebelum hari H untuk paket Full Planning agar Anda bisa mengamankan tanggal venue dan vendor favorit. Namun untuk paket Day-of Coordination, minimal 1 hingga 2 bulan sebelum acara.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Bagaimana sistem pembayarannya?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Pembayaran dilakukan secara bertahap (termin) sesuai kesepakatan kontrak kerja. Untuk DP awal saat penguncian tanggal, dan pelunasan termin terakhir maksimal 30 hari sebelum hari-H acara.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Apakah deposit bisa dikembalikan?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Dana deposit atau Down Payment (DP) yang telah disetorkan bersifat tidak dapat dikembalikan (non-refundable) karena digunakan untuk mengunci tanggal dan mengikat vendor utama, namun dapat dijadwalkan ulang sesuai ketentuan force majeure.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Area kerja kalian sampai mana?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Basis utama Langit Planner adalah di Tanjung Selor dan mencakup seluruh wilayah Kalimantan Utara (Bulungan, Tarakan, Malinau, Nunukan, Berau) serta melayani destination wedding ke luar kota.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Apakah harus memakai vendor rekanan Langit Planner?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Tidak harus. Anda bebas menggunakan vendor pilihan sendiri maupun memilih dari daftar rekanan terkurasi kami. Tim Langit Planner akan tetap melakukan koordinasi penuh di hari-H.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Berapa jumlah kru yang hadir di hari-H?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Jumlah kru bervariasi mulai dari 8 hingga 15 orang profesional terlatih tergantung dari skala paket yang diambil untuk memastikan seluruh area acara tertangani dengan sempurna.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Apakah bisa menangani pernikahan adat?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Sangat bisa! Kami berpengalaman dalam menangani berbagai prosesi adat Nusantara maupun pernikahan berkonsep modern / religious.</p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl p-6 border border-stone-200/80 shadow-sm cursor-pointer">
+                        <summary class="font-editorial text-xl sm:text-2xl font-semibold text-charcoal flex items-center justify-between list-none">
+                            <span>Bagaimana kalau terjadi hal di luar rencana saat hari-H?</span>
+                            <span class="text-2xl font-light text-muted group-open:rotate-180 transition transform duration-300">+</span>
+                        </summary>
+                        <p class="text-sm text-muted mt-4 leading-relaxed pt-3 border-t border-stone-100">Setiap acara selalu kami lengkapi dengan rencana cadangan (Plan B) serta koordinator lapangan yang sigap mengambil tindakan cepat agar pengantin dan keluarga tetap tenang.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
         </div>
 
         <!-- TAB 8: BOOKING & KONTAK -->
         <div id="view-konsultasi" class="page-view hidden transition-all duration-300">
-            <section id="konsultasi" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                        <div class="lg:col-span-5 space-y-8 pt-2">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-[0.25em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full mb-4 inline-block">— KONTAK &amp; Jadwal</span>
-                                <h2 class="font-tech text-5xl sm:text-6xl font-extrabold text-charcoal leading-[1.08]">Mari mulai dari obrolan santai</h2>
-                                <p class="text-sm text-muted mt-5 leading-relaxed">Konsultasi gratis, tanpa kewajiban apa pun. Ceritakan rencana Anda.</p>
-                            </div>
-                            <div class="space-y-6 text-xs text-muted pt-2">
-                                <div><p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1">KANTOR &amp; AREA</p><p class="leading-relaxed">Tanjung Selor, Kab. Bulungan, Kaltara</p></div>
-                                <div><p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1">WHATSAPP RESMI</p><p class="leading-relaxed font-bold text-sapphire text-sm">085190920279</p></div>
-                            </div>
-                        </div>
-                        <div class="lg:col-span-7">
-                            <div class="bg-white p-8 sm:p-12 shadow-xl shadow-slate-100 border border-slate-200/90 rounded-3xl">
-                                <span class="text-[10px] uppercase tracking-[0.25em] text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full mb-3 inline-block">— FORMULIR KONSULTASI</span>
-                                <h3 class="font-tech text-3xl font-extrabold text-charcoal mb-8">Ceritakan rencana pernikahan Anda</h3>
-                                <form onsubmit="sendToWhatsApp(event)" class="space-y-6">
-                                    <div class="grid sm:grid-cols-2 gap-6">
-                                        <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">NAMA LENGKAP</label><input type="text" id="form-nama" required placeholder="Nama Anda & pasangan" class="input-editorial"></div>
-                                        <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">NOMOR WHATSAPP</label><input type="tel" id="form-wa" required placeholder="08xxxxxxxxxx" class="input-editorial"></div>
-                                    </div>
-                                    <div class="grid sm:grid-cols-2 gap-6">
-                                        <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">TANGGAL PERNIKAHAN</label><input type="date" id="form-tanggal" required class="input-editorial"></div>
-                                        <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">ESTIMASI JUMLAH TAMU</label><select id="form-tamu" class="input-editorial"><option value="Belum pasti">Pilih perkiraan</option><option value="< 300 Tamu">&lt; 300 Tamu</option><option value="1000 Porsi">1000 Porsi</option></select></div>
-                                    </div>
-                                    <div class="grid sm:grid-cols-2 gap-6">
-                                        <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">LOKASI / VENUE</label><input type="text" id="form-venue" placeholder="Luminor, Ballroom, Tamadun, dll" class="input-editorial"></div>
-                                        <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">PAKET</label><select id="form-paket" class="input-editorial"><option value="Diamond Package">Diamond Package</option><option value="Silver Package">Silver Package</option><option value="Full Planning">Full Planning</option></select></div>
-                                    </div>
-                                    <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-1.5">KONSEP IMPIAN</label><textarea id="form-konsep" rows="2" placeholder="Ceritakan konsep impian..." class="input-editorial resize-y"></textarea></div>
-                                    <div>
-                                        <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 mb-2">JADWAL SESI DISKUSI <span id="selected-consultation-date" class="text-sapphire font-bold ml-1"></span></label>
-                                        <div class="bg-slate-50 p-6 border border-slate-200 rounded-2xl">
-                                            <div class="flex items-center justify-between mb-4">
-                                                <button type="button" onclick="changeCalendarMonth(-1)" class="p-1.5 rounded-lg hover:bg-slate-200 text-charcoal transition"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                                                <span id="calendar-month-label" class="font-tech text-base font-bold text-charcoal">November 2026</span>
-                                                <button type="button" onclick="changeCalendarMonth(1)" class="p-1.5 rounded-lg hover:bg-slate-200 text-charcoal transition"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                                            </div>
-                                            <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 uppercase mb-2"><span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span></div>
-                                            <div class="grid grid-cols-7 gap-1.5 text-center text-xs" id="calendar-grid"></div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="w-full bg-slate-900 hover:bg-sapphire text-white font-bold py-4 rounded-full text-xs uppercase tracking-[0.2em] transition shadow-lg">KIRIM &amp; JADWALKAN VIA WHATSAPP</button>
-                                </form>
-                            </div>
-                        </div>
+<section id="konsultasi" class="pt-32 pb-24 md:pt-40 md:pb-28 bg-[#EFECE6] border-t border-stone-300/80 min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <div class="lg:col-span-5 space-y-8 pt-2">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-[0.25em] text-muted font-semibold mb-4">— KONTAK & Jadwal</p>
+                        <h2 class="font-editorial text-5xl sm:text-6xl font-normal text-charcoal leading-[1.08]">Mari mulai dari obrolan santai</h2>
+                        <p class="text-sm text-muted mt-5 leading-relaxed">Konsultasi gratis, tanpa kewajiban apa pun. Ceritakan rencana Anda.</p>
+                    </div>
+                    <div class="space-y-6 text-xs text-muted pt-2">
+                        <div><p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">KANTOR & AREA</p><p class="leading-relaxed">Tanjung Selor, Kab. Bulungan, Kaltara</p></div>
+                        <div><p class="text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal mb-1.5">WHATSAPP</p><p class="leading-relaxed font-semibold text-charcoal">085190920279</p></div>
                     </div>
                 </div>
-            </section>
+                <div class="lg:col-span-7">
+                    <div class="bg-[#FAF8F5] p-8 sm:p-12 shadow-sm border border-stone-200/80 rounded-3xl">
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-muted font-semibold mb-2">— FORMULIR KONSULTASI</p>
+                        <h3 class="font-editorial text-3xl sm:text-4xl font-normal text-charcoal mb-8">Ceritakan rencana pernikahan Anda</h3>
+                        <form onsubmit="sendToWhatsApp(event)" class="space-y-7">
+                            <div class="grid sm:grid-cols-2 gap-8">
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">NAMA LENGKAP</label><input type="text" id="form-nama" required placeholder="Nama Anda & pasangan" class="input-editorial"></div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">NOMOR WHATSAPP</label><input type="tel" id="form-wa" required placeholder="08xxxxxxxxxx" class="input-editorial"></div>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-8">
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">TANGGAL PERNIKAHAN</label><input type="date" id="form-tanggal" required class="input-editorial"></div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">ESTIMASI JUMLAH TAMU</label><select id="form-tamu" class="input-editorial"><option value="Belum pasti">Pilih perkiraan</option><option value="< 300 Tamu">&lt; 300 Tamu</option><option value="1000 Porsi">1000 Porsi</option></select></div>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-8">
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">LOKASI / VENUE</label><input type="text" id="form-venue" placeholder="Ballroom, Tamadun, dll" class="input-editorial"></div>
+                                <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">PAKET</label><select id="form-paket" class="input-editorial"><option value="Diamond Package">Diamond Package</option><option value="Silver Package">Silver Package</option><option value="Full Planning">Full Planning</option></select></div>
+                            </div>
+                            <div><label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-1">KONSEP IMPIAN</label><textarea id="form-konsep" rows="2" placeholder="Ceritakan konsep impian" class="input-editorial resize-y"></textarea></div>
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted mb-3">JADWAL SESI DISKUSI <span id="selected-consultation-date" class="text-champagneDark font-bold ml-1"></span></label>
+                                <div class="bg-[#F4F1EA] p-6 border border-stone-200 rounded-2xl">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <button type="button" onclick="changeCalendarMonth(-1)" class="p-1.5 rounded-lg hover:bg-stone-200 text-charcoal transition"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                                        <span id="calendar-month-label" class="font-editorial text-xl font-bold text-charcoal">November 2026</span>
+                                        <button type="button" onclick="changeCalendarMonth(1)" class="p-1.5 rounded-lg hover:bg-stone-200 text-charcoal transition"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-muted uppercase mb-2"><span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span></div>
+                                    <div class="grid grid-cols-7 gap-1.5 text-center text-xs" id="calendar-grid"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-[#0042AC] hover:bg-charcoal text-white font-semibold py-4 rounded-full text-xs uppercase tracking-[0.2em] transition shadow-md">KIRIM & JADWALKAN VIA WHATSAPP</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
         </div>
     </main>
-
-    <!-- FOOTER SOLID DARK (100% VISIBLE & SHARP) -->
-    <footer class="py-16 border-t border-slate-800 relative z-10" style="background-color: #0B0F19 !important; color: #CBD5E1 !important;">
+<footer class="bg-charcoal text-stone-300 py-16 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
                 <div class="md:col-span-5 space-y-4">
-                    <div class="flex items-center gap-2">
-                        <span class="font-tech text-3xl font-extrabold text-white">LANGIT</span>
-                        <span class="text-xs uppercase tracking-[0.25em] text-ocean font-bold px-2 py-0.5 bg-white/5 border border-white/10 rounded-md">Planner</span>
-                    </div>
-                    <p class="text-xs text-slate-300 leading-relaxed max-w-sm">Wedding &amp; Event Organizer profesional berbasis di Tanjung Selor, Kaltara.</p>
+                    <div class="flex items-center gap-2"><span class="font-editorial text-3xl font-bold tracking-wider text-white">LANGIT</span><span class="text-xs uppercase tracking-[0.22em] text-champagne font-bold">Planner</span></div>
+                    <p class="text-xs text-stone-400 leading-relaxed max-w-sm">Wedding &amp; Event Organizer profesional berbasis di Tanjung Selor, Kaltara.</p>
                 </div>
                 <div class="md:col-span-3 space-y-3 text-xs">
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-ocean">Navigasi</p>
-                    <ul class="space-y-2 text-slate-300">
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Navigasi</p>
+                    <ul class="space-y-2 text-stone-400">
                         <li><a href="javascript:void(0)" onclick="switchTab('projek')" class="hover:text-white transition">Dashboard &amp; Project</a></li>
-                        <li><a href="javascript:void(0)" onclick="switchTab('custom')" class="hover:text-white transition">Custom Pricelist (Kalkulator)</a></li>
                         <li><a href="javascript:void(0)" onclick="switchTab('alur')" class="hover:text-white transition">4 Langkah Kerja</a></li>
                         <li><a href="javascript:void(0)" onclick="switchTab('paket')" class="hover:text-white transition">Pricelist Resmi</a></li>
                         <li><a href="javascript:void(0)" onclick="switchTab('faq')" class="hover:text-white transition">FAQ</a></li>
@@ -840,124 +899,122 @@
                     </ul>
                 </div>
                 <div class="md:col-span-4 space-y-3 text-xs">
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-ocean">Kontak</p>
-                    <p class="text-slate-300">Tanjung Selor, Kaltara</p>
-                    <p class="text-slate-300">WhatsApp: <a href="https://wa.me/message/ZCVGANZISCDWJ1" target="_blank" class="text-white font-bold hover:text-ocean transition">085190920279</a></p>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-champagne">Kontak</p>
+                    <p class="text-stone-400">Tanjung Selor, Kaltara</p>
+                    <p class="text-stone-400">WhatsApp: <a href="https://wa.me/message/ZCVGANZISCDWJ1" target="_blank" class="text-white font-semibold">085190920279</a></p>
                 </div>
             </div>
-            <div class="pt-8 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-400">
+            <div class="pt-8 flex flex-wrap items-center justify-between gap-4 text-[11px] text-stone-500">
                 <p>© 2026 Langit Planner. All rights reserved.</p>
-                <button onclick="openLoginModal()" class="text-ocean hover:underline flex items-center gap-1 font-semibold"><i data-lucide="lock" class="w-3 h-3"></i> Portal Catin &amp; Admin</button>
+                <button onclick="openLoginModal()" class="text-champagne hover:underline flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Portal Catin &amp; Admin</button>
             </div>
         </div>
     </footer>
 
     <!-- MODAL LOGIN -->
-    <div id="login-modal" class="hidden fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-4xl w-full p-3 sm:p-4 relative shadow-2xl overflow-hidden border border-slate-200 grid md:grid-cols-12">
-            <button type="button" onclick="closeLoginModal()" class="absolute top-5 right-5 z-20 text-slate-500 hover:text-charcoal bg-slate-100 p-2 rounded-full transition shadow-sm"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div id="login-modal" class="hidden fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#FAF8F5] rounded-3xl max-w-4xl w-full p-3 sm:p-4 relative shadow-2xl overflow-hidden border border-stone-200 grid md:grid-cols-12">
+            <button type="button" onclick="closeLoginModal()" class="absolute top-5 right-5 z-20 text-muted hover:text-charcoal bg-white/80 p-2 rounded-full shadow-sm"><i data-lucide="x" class="w-5 h-5"></i></button>
             <div class="md:col-span-6 relative rounded-2xl overflow-hidden min-h-[280px]">
                 <img src="img/ig-1.jpg" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80';" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
-                    <h4 class="font-tech text-2xl font-extrabold leading-tight">Every Step to Your <span class="text-ocean">Perfect Day.</span></h4>
-                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-white space-y-2"><h4 class="font-editorial text-3xl leading-tight">Every Step to Your <span class="text-champagne italic">Perfect Day.</span></h4></div>
             </div>
             <div class="md:col-span-6 p-6 sm:p-10 flex flex-col justify-center">
                 <div class="text-center mb-6">
-                    <span class="text-[10px] uppercase tracking-widest text-sapphire font-bold px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">Private Portal</span>
-                    <h3 class="font-tech text-3xl font-extrabold text-charcoal mt-2">Langit Tracker</h3>
-                    <p class="text-xs text-muted mt-1">Portal Khusus Catin &amp; Admin</p>
+                    <h3 class="font-editorial text-3xl font-semibold text-charcoal">Langit Tracker</h3>
+                    <p class="text-xs text-muted mt-1">Portal Khusus Catin &amp; Admin (Private)</p>
                 </div>
                 <form id="login-form-element" onsubmit="handleLogin(event)" class="space-y-4">
-                    <div><label class="block text-xs font-semibold text-charcoal mb-1">Username</label><input type="text" id="login-user" required placeholder="Username..." class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-sm focus:bg-white focus:outline-none focus:border-sapphire"></div>
-                    <div><label class="block text-xs font-semibold text-charcoal mb-1">Password</label><input type="password" id="login-pass" required placeholder="Password..." class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-sm focus:bg-white focus:outline-none focus:border-sapphire"></div>
-                    <button type="submit" class="w-full bg-slate-900 hover:bg-sapphire text-white font-bold py-3.5 rounded-xl text-sm transition mt-2 shadow-lg">Masuk ke Langit Tracker →</button>
+                    <div><label class="block text-xs font-semibold text-charcoal mb-1">Username</label><input type="text" id="login-user" required placeholder="Username..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm"></div>
+                    <div><label class="block text-xs font-semibold text-charcoal mb-1">Password</label><input type="password" id="login-pass" required placeholder="Password..." class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm"></div>
+                    <button type="submit" class="w-full bg-[#0042AC] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl text-sm transition mt-2">Masuk ke Langit Tracker →</button>
                 </form>
             </div>
         </div>
     </div>
 
     <!-- MODAL DASHBOARD -->
-    <div id="dashboard-modal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
-        <div class="bg-white rounded-3xl max-w-5xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh] border border-slate-200">
-            <button type="button" onclick="closeDashboardModal()" class="absolute top-5 right-5 text-slate-500 hover:text-charcoal bg-slate-100 p-2 rounded-full transition shadow"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div id="dashboard-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+        <div class="bg-ivory rounded-3xl max-w-5xl w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh] border border-stone-200">
+            <button type="button" onclick="closeDashboardModal()" class="absolute top-5 right-5 text-muted hover:text-charcoal bg-white p-2 rounded-full shadow"><i data-lucide="x" class="w-5 h-5"></i></button>
 
-            <div class="flex items-center gap-4 border-b border-slate-200 pb-4 mb-6 pr-10">
-                <div class="w-12 h-12 rounded-2xl bg-slate-900 text-ocean flex items-center justify-center font-bold text-xl font-tech">LP</div>
+            <div class="flex items-center gap-4 border-b border-stone-200 pb-4 mb-6 pr-10">
+                <div class="w-12 h-12 rounded-full bg-charcoal text-champagne flex items-center justify-center font-bold text-xl font-editorial">LP</div>
                 <div>
-                    <span id="user-role-badge" class="text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-sapphire border border-blue-200 px-3 py-0.5 rounded-full">Langit Tracker</span>
-                    <h3 id="dashboard-title" class="font-tech text-2xl sm:text-3xl font-extrabold text-charcoal mt-0.5">Portal Persiapan</h3>
+                    <span id="user-role-badge" class="text-[10px] font-bold uppercase tracking-wider bg-champagne text-white px-2.5 py-0.5 rounded-full">Langit Tracker</span>
+                    <h3 id="dashboard-title" class="font-editorial text-2xl sm:text-3xl font-bold text-charcoal mt-0.5">Portal Persiapan</h3>
                 </div>
             </div>
 
             <div id="client-dashboard-content" class="space-y-6">
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm"><p class="text-[10px] text-muted uppercase tracking-widest font-bold">Mempelai</p><h4 id="client-fullname-couple" class="font-tech text-lg font-bold text-charcoal mt-1">—</h4><p id="client-nickname-couple" class="text-xs text-sapphire font-semibold mt-1">Panggilan: —</p></div>
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm"><p class="text-[10px] text-muted uppercase tracking-widest font-bold">Paket</p><h4 id="client-package" class="font-bold text-sm text-charcoal mt-1.5">—</h4></div>
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm"><p class="text-[10px] text-muted uppercase tracking-widest font-bold">Venue</p><h4 id="client-venue" class="font-bold text-sm text-charcoal mt-1.5">—</h4></div>
-                    <div class="bg-slate-900 text-white p-5 rounded-2xl border border-sapphire shadow-sm flex flex-col justify-between"><p class="text-[10px] text-ocean uppercase tracking-widest font-bold">Countdown</p><h4 id="client-countdown-badge" class="font-tech text-2xl font-extrabold text-white mt-1">Hari-H</h4><p id="client-doc-area" class="text-[11px] text-slate-300 mt-1"></p></div>
+                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm"><p class="text-[10px] text-muted uppercase tracking-widest font-bold">Mempelai</p><h4 id="client-fullname-couple" class="font-editorial text-xl font-bold text-charcoal mt-1">—</h4><p id="client-nickname-couple" class="text-xs text-champagneDark font-semibold mt-1">Panggilan: —</p></div>
+                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm"><p class="text-[10px] text-muted uppercase tracking-widest font-bold">Paket</p><h4 id="client-package" class="font-bold text-sm text-charcoal mt-1.5">—</h4></div>
+                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm"><p class="text-[10px] text-muted uppercase tracking-widest font-bold">Venue</p><h4 id="client-venue" class="font-bold text-sm text-charcoal mt-1.5">—</h4></div>
+                    <div class="bg-charcoal text-white p-5 rounded-2xl border border-champagne shadow-sm flex flex-col justify-between"><p class="text-[10px] text-champagne uppercase tracking-widest font-bold">Countdown</p><h4 id="client-countdown-badge" class="font-editorial text-2xl font-bold text-white mt-1">Hari-H</h4><p id="client-doc-area" class="text-[11px] text-stone-300 mt-1"></p></div>
                 </div>
 
-                <div id="client-payment-progress-box" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center"><h4 class="font-bold text-xs text-charcoal uppercase tracking-wider">Progres Pembayaran (Private)</h4><span id="client-progress-text" class="text-xs font-bold text-white bg-sapphire px-3 py-1 rounded-full">0%</span></div>
-                    <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden"><div id="client-progress-bar" class="bg-gradient-to-r from-sapphire to-ocean h-full rounded-full transition-all duration-500" style="width: 0%"></div></div>
+                <div id="client-payment-progress-box" class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center"><h4 class="font-bold text-xs text-charcoal uppercase tracking-wider">Progres Pembayaran (Private)</h4><span id="client-progress-text" class="text-xs font-bold text-white bg-champagneDark px-3 py-1 rounded-full">0%</span></div>
+                    <div class="w-full bg-stone-100 h-3 rounded-full overflow-hidden"><div id="client-progress-bar" class="bg-champagne h-full rounded-full transition-all duration-500" style="width: 0%"></div></div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
                     <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider">Daftar 7 Vendor Terlibat</h4>
-                    <div class="overflow-x-auto"><table class="w-full text-left text-xs"><thead><tr class="border-b border-slate-200 text-slate-400 uppercase text-[10px]"><th class="pb-3 font-bold">Kategori</th><th class="pb-3 font-bold">Nama Vendor</th><th class="pb-3 font-bold">Status</th></tr></thead><tbody id="vendor-table-body" class="divide-y divide-slate-100"></tbody></table></div>
+                    <div class="overflow-x-auto"><table class="w-full text-left text-xs"><thead><tr class="border-b border-stone-200 text-muted uppercase text-[10px]"><th class="pb-3 font-bold">Kategori</th><th class="pb-3 font-bold">Nama Vendor</th><th class="pb-3 font-bold">Status</th></tr></thead><tbody id="vendor-table-body" class="divide-y divide-stone-100"></tbody></table></div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
                     <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider">Checklist Persiapan Menuju Hari-H</h4>
                     <div class="grid sm:grid-cols-2 gap-3 text-xs" id="client-checklist-container"></div>
                 </div>
 
-                <!-- FORMULIR BIODATA CATIN -->
-                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <!-- FORMULIR BIODATA CATIN (OTOMATIS SIMPAN & NOTIFIKASI) -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm space-y-6">
                     <div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-sapphire border border-blue-200 px-3 py-1 rounded-full">Formulir Eksklusif Catin</span>
-                        <h4 class="font-tech text-2xl font-extrabold text-charcoal mt-2">Isi &amp; Update Biodata Acara Anda</h4>
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-champagne text-white px-2.5 py-1 rounded-full">Formulir Eksklusif Catin</span>
+                        <h4 class="font-editorial text-2xl font-bold text-charcoal mt-2">Isi &amp; Update Biodata Acara Anda</h4>
                         <p class="text-xs text-muted mt-1">Data yang Anda simpan akan otomatis tersimpan. Anda bisa mengubahnya kapan saja jika ada perubahan.</p>
                     </div>
 
-                    <div id="catin-success-alert" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold flex items-center gap-2">
+                    <!-- Kotak Notifikasi Sukses -->
+                    <div id="catin-success-alert" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium flex items-center gap-2">
                         <span>✅ Terima kasih sudah mengisi, silakan menunggu admin akan segera memproses.</span>
                     </div>
 
                     <form id="catin-biodata-form" onsubmit="saveAndSendCatinBiodata(event)" class="space-y-5 text-xs">
-                        <div class="grid sm:grid-cols-2 gap-6 p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="grid sm:grid-cols-2 gap-6 p-4 rounded-xl bg-ivory border border-stone-200">
                             <div class="space-y-4">
-                                <h5 class="font-bold text-sapphire uppercase tracking-wider text-xs">1. Data Wanita (CPW)</h5>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Lengkap &amp; Gelar</label><input type="text" id="catin-cpw-full" required class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Panggilan</label><input type="text" id="catin-cpw-nick" required class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Ayahanda</label><input type="text" id="catin-cpw-ayah" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Ibunda</label><input type="text" id="catin-cpw-ibu" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saudara-saudara</label><textarea id="catin-cpw-saudara" rows="2" class="input-editorial"></textarea></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saksi Pihak Wanita</label><input type="text" id="catin-cpw-saksi" class="input-editorial"></div>
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">1. Data Wanita (CPW)</h5>
+                                <div><label class="block font-bold mb-1">Nama Lengkap &amp; Gelar</label><input type="text" id="catin-cpw-full" required class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Nama Panggilan</label><input type="text" id="catin-cpw-nick" required class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Nama Ayahanda</label><input type="text" id="catin-cpw-ayah" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Nama Ibunda</label><input type="text" id="catin-cpw-ibu" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Saudara-saudara</label><textarea id="catin-cpw-saudara" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
+                                <div><label class="block font-bold mb-1">Saksi Pihak Wanita</label><input type="text" id="catin-cpw-saksi" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
                             </div>
                             <div class="space-y-4">
-                                <h5 class="font-bold text-sapphire uppercase tracking-wider text-xs">2. Data Pria (CPP)</h5>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Lengkap &amp; Gelar</label><input type="text" id="catin-cpp-full" required class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Panggilan</label><input type="text" id="catin-cpp-nick" required class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Ayahanda</label><input type="text" id="catin-cpp-ayah" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Ibunda</label><input type="text" id="catin-cpp-ibu" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saudara-saudara</label><textarea id="catin-cpp-saudara" rows="2" class="input-editorial"></textarea></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saksi Pihak Pria</label><input type="text" id="catin-cpp-saksi" class="input-editorial"></div>
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">2. Data Pria (CPP)</h5>
+                                <div><label class="block font-bold mb-1">Nama Lengkap &amp; Gelar</label><input type="text" id="catin-cpp-full" required class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Nama Panggilan</label><input type="text" id="catin-cpp-nick" required class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Nama Ayahanda</label><input type="text" id="catin-cpp-ayah" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Nama Ibunda</label><input type="text" id="catin-cpp-ibu" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Saudara-saudara</label><textarea id="catin-cpp-saudara" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
+                                <div><label class="block font-bold mb-1">Saksi Pihak Pria</label><input type="text" id="catin-cpp-saksi" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
                             </div>
                         </div>
-                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
-                            <h5 class="font-bold text-sapphire uppercase tracking-wider text-xs">3. Pendukung Acara &amp; Request</h5>
+                        <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-4">
+                            <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">3. Pendukung Acara &amp; Request</h5>
                             <div class="grid sm:grid-cols-2 gap-4">
-                                <div><label class="block font-semibold mb-1 text-slate-600">Sambutan Resepsi</label><input type="text" id="catin-sambutan" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="catin-tilawah" class="input-editorial"></div>
+                                <div><label class="block font-bold mb-1">Sambutan Resepsi</label><input type="text" id="catin-sambutan" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
+                                <div><label class="block font-bold mb-1">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="catin-tilawah" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></div>
                             </div>
-                            <div><label class="block font-semibold mb-1 text-slate-600">Tamu VIP</label><textarea id="catin-vip" rows="2" class="input-editorial"></textarea></div>
-                            <div><label class="block font-semibold mb-1 text-slate-600">List Lagu Request</label><textarea id="catin-lagu" rows="2" class="input-editorial"></textarea></div>
+                            <div><label class="block font-bold mb-1">Tamu VIP</label><textarea id="catin-vip" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
+                            <div><label class="block font-bold mb-1">List Lagu Request</label><textarea id="catin-lagu" rows="2" class="w-full px-3 py-2 bg-white rounded-lg border border-stone-300"></textarea></div>
                         </div>
-                        <button type="submit" class="w-full bg-slate-900 hover:bg-sapphire text-white font-bold py-4 rounded-xl uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
-                            <i data-lucide="save" class="w-4 h-4 text-ocean"></i><span>Simpan Biodata dan Send ke Admin</span>
+                        <button type="submit" class="w-full bg-[#0042AC] hover:bg-charcoal text-white font-bold py-3.5 rounded-xl uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
+                            <i data-lucide="save" class="w-4 h-4"></i><span>Simpan Biodata dan Send ke Admin</span>
                         </button>
                     </form>
                 </div>
@@ -965,40 +1022,40 @@
 
             <!-- DASHBOARD ADMIN -->
             <div id="admin-dashboard-content" class="hidden space-y-6">
-                <div class="bg-slate-900 text-white p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4">
-                    <div><p class="text-xs text-ocean font-bold uppercase tracking-wider">Admin Control (Yogs)</p><p class="text-xs text-slate-300 mt-0.5">Kelola akun, password, dan vendor Catin.</p></div>
+                <div class="bg-charcoal text-white p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4">
+                    <div><p class="text-xs text-champagne font-semibold uppercase tracking-wider">Admin Control (Yogs)</p><p class="text-xs text-stone-300 mt-0.5">Kelola akun, password, dan vendor Catin.</p></div>
                     <div class="flex flex-wrap items-center gap-3">
                         <select id="admin-select-catin" onchange="switchAdminCatin(this.value)" class="px-4 py-2.5 rounded-xl text-xs font-bold text-charcoal bg-white"></select>
-                        <button type="button" onclick="prepareNewCatinForm()" class="bg-sapphire hover:bg-ocean hover:text-charcoal text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow"><i data-lucide="user-plus" class="w-4 h-4"></i><span>+ Catin Baru</span></button>
+                        <button type="button" onclick="prepareNewCatinForm()" class="bg-champagne hover:bg-champagneDark text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow"><i data-lucide="user-plus" class="w-4 h-4"></i><span>+ Catin Baru</span></button>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-stone-100 pb-3">
                         <h4 id="admin-form-mode-title" class="font-bold text-sm text-charcoal uppercase tracking-wider">Edit Data Catin</h4>
                         <button type="button" onclick="deleteCurrentCatin()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i><span>Hapus Catin</span></button>
                     </div>
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                        <div><label class="block font-bold mb-1 text-slate-700">Nama Pria (Lengkap)</label><input type="text" id="admin-groom-full" class="input-editorial"></div>
-                        <div><label class="block font-bold mb-1 text-slate-700">Nama Panggilan Pria</label><input type="text" id="admin-groom-nick" class="input-editorial"></div>
-                        <div><label class="block font-bold mb-1 text-slate-700">Nama Wanita (Lengkap)</label><input type="text" id="admin-bride-full" class="input-editorial"></div>
-                        <div><label class="block font-bold mb-1 text-slate-700">Nama Panggilan Wanita</label><input type="text" id="admin-bride-nick" class="input-editorial"></div>
+                        <div><label class="block font-bold mb-1">Nama Pria (Lengkap)</label><input type="text" id="admin-groom-full" class="w-full px-3 py-2 rounded-xl border border-stone-300"></div>
+                        <div><label class="block font-bold mb-1">Nama Panggilan Pria</label><input type="text" id="admin-groom-nick" class="w-full px-3 py-2 rounded-xl border border-stone-300"></div>
+                        <div><label class="block font-bold mb-1">Nama Wanita (Lengkap)</label><input type="text" id="admin-bride-full" class="w-full px-3 py-2 rounded-xl border border-stone-300"></div>
+                        <div><label class="block font-bold mb-1">Nama Panggilan Wanita</label><input type="text" id="admin-bride-nick" class="w-full px-3 py-2 rounded-xl border border-stone-300"></div>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs pt-3 border-t border-slate-100">
-                        <div><label class="block font-bold mb-1 text-slate-700">Paket</label><select id="admin-edit-pkg" onchange="handleAdminPackageChange()" class="input-editorial font-semibold"><option value="Diamond Package">Diamond Package</option><option value="Silver Package">Silver Package</option><option value="Full Planning">Full Planning</option><option value="Day-of Coordination">Day-of Coordination</option><option value="Custom Package">Custom Package</option></select></div>
-                        <div><label class="block font-bold mb-1 text-slate-700">Venue &amp; Tanggal</label><input type="text" id="admin-edit-venue" class="input-editorial"></div>
-                        <div><label class="block font-bold mb-1 text-slate-700">📅 Tanggal Hari-H (Countdown)</label><input type="date" id="admin-edit-date" class="input-editorial"></div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs pt-3 border-t border-stone-100">
+                        <div><label class="block font-bold mb-1">Paket</label><select id="admin-edit-pkg" onchange="handleAdminPackageChange()" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white font-semibold"><option value="Diamond Package">Diamond Package</option><option value="Silver Package">Silver Package</option><option value="Full Planning">Full Planning</option><option value="Day-of Coordination">Day-of Coordination</option><option value="Custom Package">Custom Package</option></select></div>
+                        <div><label class="block font-bold mb-1">Venue &amp; Tanggal</label><input type="text" id="admin-edit-venue" class="w-full px-3 py-2 rounded-xl border border-stone-300"></div>
+                        <div><label class="block font-bold mb-1">📅 Tanggal Hari-H (Countdown)</label><input type="date" id="admin-edit-date" class="w-full px-3 py-2 rounded-xl border border-stone-300 bg-white"></div>
                     </div>
 
                     <div class="grid sm:grid-cols-3 gap-4 text-xs">
-                        <div><label class="block font-bold text-sapphire mb-1">🔑 Username</label><input type="text" id="admin-edit-user" class="input-editorial border-blue-200 bg-blue-50/40 font-mono"></div>
-                        <div><label class="block font-bold text-sapphire mb-1">🔒 Password</label><input type="text" id="admin-edit-pass" class="input-editorial border-blue-200 bg-blue-50/40 font-mono"></div>
-                        <div><label class="block font-bold text-slate-700 mb-1">📄 Link Dokumen</label><input type="url" id="admin-edit-doc" placeholder="https://..." class="input-editorial"></div>
+                        <div><label class="block font-bold text-champagneDark mb-1">🔑 Username</label><input type="text" id="admin-edit-user" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono"></div>
+                        <div><label class="block font-bold text-champagneDark mb-1">🔒 Password</label><input type="text" id="admin-edit-pass" class="w-full px-3 py-2 rounded-xl border border-amber-400 bg-amber-50/40 font-mono"></div>
+                        <div><label class="block font-bold mb-1">📄 Link Dokumen</label><input type="url" id="admin-edit-doc" placeholder="https://..." class="w-full px-3 py-2 rounded-xl border border-stone-300"></div>
                     </div>
 
-                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+                    <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3 text-xs">
                         <div class="flex flex-wrap items-center justify-between gap-4">
                             <label class="flex items-center gap-2.5 cursor-pointer select-none">
                                 <input type="checkbox" id="admin-show-progress" onchange="toggleAdminProgressInput()" class="w-4 h-4 accent-[#0042AC] rounded cursor-pointer">
@@ -1006,19 +1063,19 @@
                             </label>
                             <span id="admin-pkg-progress-note" class="text-[11px] text-muted italic">*Khusus Diamond &amp; Silver</span>
                         </div>
-                        <div id="admin-progress-input-wrapper" class="flex items-center gap-4 pt-2 border-t border-slate-200">
-                            <label class="font-bold shrink-0 text-slate-700">Persentase (%):</label>
-                            <input type="number" id="admin-edit-progress" min="0" max="100" class="w-28 px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-bold">
+                        <div id="admin-progress-input-wrapper" class="flex items-center gap-4 pt-2 border-t border-stone-200">
+                            <label class="font-bold shrink-0">Persentase (%):</label>
+                            <input type="number" id="admin-edit-progress" min="0" max="100" class="w-28 px-3 py-1.5 rounded-lg border border-stone-300 bg-white font-bold">
                         </div>
                     </div>
 
-                    <div class="pt-4 border-t border-slate-200">
+                    <div class="pt-4 border-t border-stone-200">
                         <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider mb-3">7 Vendor Utama</h4>
-                        <div class="overflow-x-auto"><table class="w-full text-left text-xs"><thead><tr class="border-b border-slate-200 text-slate-400"><th class="pb-2 font-bold w-1/4">Kategori</th><th class="pb-2 font-bold w-2/5">Nama Vendor</th><th class="pb-2 font-bold w-1/3">Status</th></tr></thead><tbody id="admin-vendor-tbody" class="divide-y divide-slate-100"></tbody></table></div>
+                        <div class="overflow-x-auto"><table class="w-full text-left text-xs"><thead><tr class="border-b border-stone-200 text-muted"><th class="pb-2 font-bold w-1/4">Kategori</th><th class="pb-2 font-bold w-2/5">Nama Vendor</th><th class="pb-2 font-bold w-1/3">Status</th></tr></thead><tbody id="admin-vendor-tbody" class="divide-y divide-stone-100"></tbody></table></div>
                     </div>
 
                     <!-- BIODATA DARI CATIN (DAPAT DILIHAT OLEH ADMIN) -->
-                    <div class="pt-5 border-t border-slate-200 space-y-4">
+                    <div class="pt-5 border-t border-stone-200 space-y-4">
                         <div class="flex flex-wrap items-center justify-between gap-2">
                             <div>
                                 <h4 class="font-bold text-sm text-charcoal uppercase tracking-wider flex items-center gap-2">
@@ -1027,63 +1084,66 @@
                                 </h4>
                                 <p class="text-xs text-muted mt-0.5">Data yang diisi oleh Catin di portal atau disinkronkan dari Google Spreadsheet.</p>
                             </div>
-                            <button type="button" onclick="refreshAdminBioFromCloud()" class="text-xs font-bold text-sapphire hover:text-charcoal flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 px-3.5 py-2 rounded-xl border border-blue-200 transition shadow-sm">
+                            <button type="button" onclick="refreshAdminBioFromCloud()" class="text-xs font-bold text-champagneDark hover:text-charcoal flex items-center gap-1.5 bg-sand hover:bg-stone-200 px-3 py-1.5 rounded-xl border border-stone-300 transition shadow-sm">
                                 <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
                                 <span>Tarik Data Terbaru</span>
                             </button>
                         </div>
 
                         <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-                                <h5 class="font-bold text-sapphire uppercase tracking-wider">1. Biodata CPW (Mempelai Wanita)</h5>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Lengkap &amp; Gelar</label><input type="text" id="admin-bio-cpw-full" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Panggilan</label><input type="text" id="admin-bio-cpw-nick" class="input-editorial"></div>
+                            <!-- Biodata Wanita (CPW) -->
+                            <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3">
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">1. Biodata CPW (Mempelai Wanita)</h5>
+                                <div><label class="block font-bold mb-1">Nama Lengkap &amp; Gelar</label><input type="text" id="admin-bio-cpw-full" placeholder="Nama lengkap CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div><label class="block font-bold mb-1">Nama Panggilan</label><input type="text" id="admin-bio-cpw-nick" placeholder="Nama panggilan..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                                 <div class="grid grid-cols-2 gap-2">
-                                    <div><label class="block font-semibold mb-1 text-slate-600">Nama Ayah</label><input type="text" id="admin-bio-cpw-ayah" class="input-editorial"></div>
-                                    <div><label class="block font-semibold mb-1 text-slate-600">Nama Ibu</label><input type="text" id="admin-bio-cpw-ibu" class="input-editorial"></div>
+                                    <div><label class="block font-bold mb-1">Nama Ayah</label><input type="text" id="admin-bio-cpw-ayah" placeholder="Ayah CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                    <div><label class="block font-bold mb-1">Nama Ibu</label><input type="text" id="admin-bio-cpw-ibu" placeholder="Ibu CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                                 </div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saudara-saudara</label><textarea id="admin-bio-cpw-saudara" rows="2" class="input-editorial"></textarea></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saksi Pihak Wanita</label><input type="text" id="admin-bio-cpw-saksi" class="input-editorial"></div>
+                                <div><label class="block font-bold mb-1">Saudara-saudara</label><textarea id="admin-bio-cpw-saudara" rows="2" placeholder="Nama saudara..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                                <div><label class="block font-bold mb-1">Saksi Pihak Wanita</label><input type="text" id="admin-bio-cpw-saksi" placeholder="Saksi CPW..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                             </div>
 
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-                                <h5 class="font-bold text-sapphire uppercase tracking-wider">2. Biodata CPP (Mempelai Pria)</h5>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Lengkap &amp; Gelar</label><input type="text" id="admin-bio-cpp-full" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Nama Panggilan</label><input type="text" id="admin-bio-cpp-nick" class="input-editorial"></div>
+                            <!-- Biodata Pria (CPP) -->
+                            <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3">
+                                <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">2. Biodata CPP (Mempelai Pria)</h5>
+                                <div><label class="block font-bold mb-1">Nama Lengkap &amp; Gelar</label><input type="text" id="admin-bio-cpp-full" placeholder="Nama lengkap CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div><label class="block font-bold mb-1">Nama Panggilan</label><input type="text" id="admin-bio-cpp-nick" placeholder="Nama panggilan..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                                 <div class="grid grid-cols-2 gap-2">
-                                    <div><label class="block font-semibold mb-1 text-slate-600">Nama Ayah</label><input type="text" id="admin-bio-cpp-ayah" class="input-editorial"></div>
-                                    <div><label class="block font-semibold mb-1 text-slate-600">Nama Ibu</label><input type="text" id="admin-bio-cpp-ibu" class="input-editorial"></div>
+                                    <div><label class="block font-bold mb-1">Nama Ayah</label><input type="text" id="admin-bio-cpp-ayah" placeholder="Ayah CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                    <div><label class="block font-bold mb-1">Nama Ibu</label><input type="text" id="admin-bio-cpp-ibu" placeholder="Ibu CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                                 </div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saudara-saudara</label><textarea id="admin-bio-cpp-saudara" rows="2" class="input-editorial"></textarea></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Saksi Pihak Pria</label><input type="text" id="admin-bio-cpp-saksi" class="input-editorial"></div>
+                                <div><label class="block font-bold mb-1">Saudara-saudara</label><textarea id="admin-bio-cpp-saudara" rows="2" placeholder="Nama saudara..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                                <div><label class="block font-bold mb-1">Saksi Pihak Pria</label><input type="text" id="admin-bio-cpp-saksi" placeholder="Saksi CPP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                             </div>
                         </div>
 
-                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
-                            <h5 class="font-bold text-sapphire uppercase tracking-wider">3. Rundown, VIP &amp; Musik</h5>
+                        <!-- Rundown & Musik -->
+                        <div class="p-4 rounded-xl bg-ivory border border-stone-200 space-y-3 text-xs">
+                            <h5 class="font-bold text-charcoal uppercase tracking-wider text-champagneDark">3. Rundown, VIP &amp; Musik</h5>
                             <div class="grid sm:grid-cols-2 gap-3">
-                                <div><label class="block font-semibold mb-1 text-slate-600">Sambutan Resepsi</label><input type="text" id="admin-bio-sambutan" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="admin-bio-tilawah" class="input-editorial"></div>
+                                <div><label class="block font-bold mb-1">Sambutan Resepsi</label><input type="text" id="admin-bio-sambutan" placeholder="Pemberi sambutan..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
+                                <div><label class="block font-bold mb-1">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="admin-bio-tilawah" placeholder="Nama Qori/Tilawah..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></div>
                             </div>
                             <div class="grid sm:grid-cols-2 gap-3">
-                                <div><label class="block font-semibold mb-1 text-slate-600">Tamu VIP</label><textarea id="admin-bio-vip" rows="2" class="input-editorial"></textarea></div>
-                                <div><label class="block font-semibold mb-1 text-slate-600">List Lagu Request (Entertainment)</label><textarea id="admin-bio-lagu" rows="2" class="input-editorial"></textarea></div>
+                                <div><label class="block font-bold mb-1">Tamu VIP</label><textarea id="admin-bio-vip" rows="2" placeholder="Daftar tamu VIP..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
+                                <div><label class="block font-bold mb-1">List Lagu Request (Entertainment)</label><textarea id="admin-bio-lagu" rows="2" placeholder="Judul lagu favorit..." class="w-full px-3 py-2 rounded-lg border border-stone-300 bg-white"></textarea></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-200">
+                    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-stone-200">
                         <span id="admin-save-feedback" class="text-xs font-bold text-emerald-700"></span>
                         <div class="flex flex-wrap items-center gap-3">
-                            <button type="button" onclick="copyDatabaseForGitHub()" class="bg-slate-800 hover:bg-slate-900 text-ocean px-5 py-3.5 rounded-xl text-xs font-bold transition shadow flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i><span>Salin Kode Database</span></button>
-                            <button type="button" onclick="saveAdminChanges()" class="bg-sapphire hover:bg-ocean hover:text-charcoal text-white px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg flex items-center gap-2"><i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data</span></button>
+                            <button type="button" onclick="copyDatabaseForGitHub()" class="bg-stone-800 hover:bg-charcoal text-amber-300 px-5 py-3.5 rounded-xl text-xs font-bold transition shadow flex items-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i><span>Salin Kode Database</span></button>
+                            <button type="button" onclick="saveAdminChanges()" class="bg-champagne hover:bg-champagneDark text-white px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg flex items-center gap-2"><i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data</span></button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="mt-6 text-center">
-                <button type="button" onclick="closeDashboardModal()" class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-xs font-semibold">Tutup Portal</button>
+                <button type="button" onclick="closeDashboardModal()" class="bg-charcoal text-white px-6 py-2.5 rounded-full text-xs font-semibold">Tutup Portal</button>
             </div>
         </div>
     </div>
@@ -1098,7 +1158,7 @@
         function animateCursor() { ringX += (mouseX - ringX) * 0.2; ringY += (mouseY - ringY) * 0.2; cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`; requestAnimationFrame(animateCursor); }
         animateCursor();
 
-        const bgAudio = document.getElementById('bg-music');
+                const bgAudio = document.getElementById('bg-music');
         let isMusicPlaying = false;
         const audioCandidates = ['img/Backsound.mp3', 'img/backsound.mp3', 'img/Backsound.MP3', 'img/backsound.MP3'];
         let audioTryIndex = 0;
@@ -1144,57 +1204,59 @@
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
         const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
 
-        // Database Katalog Lengkap (Termasuk Matriks Harga Dekorasi Berbasis Venue)
+        
+        // Database Katalog Lengkap (Termasuk 5 Pilihan Venue: Tamadun, Gedung Wanita, Ballroom, Luminor, Pasparawi)
         const VENDOR_CATALOG = {
             "Venue": [
                 { name: "Tamadun", price: 20000000, desc: "Gedung megah dengan kapasitas besar & area parkir luas" },
                 { name: "Gedung Wanita", price: 15000000, desc: "Venue favorit paling strategis di pusat Tanjung Selor" },
                 { name: "Ballroom", price: 12000000, desc: "Modern & berkelas dengan pendingin ruangan penuh" },
                 { name: "Luminor", price: 18000000, desc: "Grand Ballroom Hotel Luminor Tanjung Selor fasilitas hotel bintang" },
-                { name: "Pasparawi", price: 10000000, desc: "Venue luas, nyaman, dan sejuk untuk pesta keluarga" }
+                { name: "Pasparawi", price: 10000000, desc: "Venue luas, nyaman, dan sejuk untuk pesta keluarga" },
+                { name: "Rumah", price: 5000000, desc: "Pernikahan intimate di halaman / kediaman mempelai" }
             ],
             "Dekorasi": [
                 { 
                     name: "Salonanna", 
-                    price: 22000000, 
-                    desc: "Dekorasi floral mewah & pelaminan eksklusif",
-                    venuePrices: { "Tamadun": 35000000, "Gedung Wanita": 30000000, "Ballroom": 25000000, "Luminor": 28000000, "Pasparawi": 22000000 }
+                    price: 25000000, 
+                    desc: "Dekorasi floral mewah & pelaminan eksklusif (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 35000000, "Gedung Wanita": 30000000, "Ballroom": 25000000, "Luminor": 28000000, "Pasparawi": 22000000, "Rumah": 18000000 }
                 },
                 { 
                     name: "Family Dekorasi", 
-                    price: 18000000, 
-                    desc: "Konsep hangat, elegan, dan estetik",
-                    venuePrices: { "Tamadun": 28000000, "Gedung Wanita": 24000000, "Ballroom": 20000000, "Luminor": 22000000, "Pasparawi": 18000000 }
+                    price: 20000000, 
+                    desc: "Konsep hangat, elegan, dan estetik (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 28000000, "Gedung Wanita": 24000000, "Ballroom": 20000000, "Luminor": 22000000, "Pasparawi": 18000000, "Rumah": 15000000 }
                 },
                 { 
                     name: "Ratih Salon", 
-                    price: 19000000, 
-                    desc: "Dekorasi adat & modern berkelas",
-                    venuePrices: { "Tamadun": 30000000, "Gedung Wanita": 25000000, "Ballroom": 22000000, "Luminor": 24000000, "Pasparawi": 19000000 }
+                    price: 22000000, 
+                    desc: "Dekorasi adat & modern berkelas (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 30000000, "Gedung Wanita": 25000000, "Ballroom": 22000000, "Luminor": 24000000, "Pasparawi": 19000000, "Rumah": 16000000 }
                 },
                 { 
                     name: "Alfa Dekor", 
-                    price: 17500000, 
-                    desc: "Kreatif dengan pencahayaan dramatis",
-                    venuePrices: { "Tamadun": 27000000, "Gedung Wanita": 23000000, "Ballroom": 19000000, "Luminor": 21000000, "Pasparawi": 17500000 }
+                    price: 19000000, 
+                    desc: "Kreatif dengan pencahayaan dramatis (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 27000000, "Gedung Wanita": 23000000, "Ballroom": 19000000, "Luminor": 21000000, "Pasparawi": 17500000, "Rumah": 15000000 }
                 },
                 { 
                     name: "Tiwi", 
-                    price: 16000000, 
-                    desc: "Sentuhan minimalis dan elegan",
-                    venuePrices: { "Tamadun": 25000000, "Gedung Wanita": 21000000, "Ballroom": 18000000, "Luminor": 20000000, "Pasparawi": 16000000 }
+                    price: 18000000, 
+                    desc: "Sentuhan minimalis dan elegan (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 25000000, "Gedung Wanita": 21000000, "Ballroom": 18000000, "Luminor": 20000000, "Pasparawi": 16000000, "Rumah": 14000000 }
                 },
                 { 
                     name: "Momento", 
-                    price: 21000000, 
-                    desc: "Dekorasi kontemporer & photobooth 3D",
-                    venuePrices: { "Tamadun": 32000000, "Gedung Wanita": 28000000, "Ballroom": 24000000, "Luminor": 26000000, "Pasparawi": 21000000 }
+                    price: 24000000, 
+                    desc: "Dekorasi kontemporer & photobooth 3D (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 32000000, "Gedung Wanita": 28000000, "Ballroom": 24000000, "Luminor": 26000000, "Pasparawi": 21000000, "Rumah": 17000000 }
                 },
                 { 
                     name: "Diana", 
-                    price: 17000000, 
-                    desc: "Dekorasi manis bernuansa romantis",
-                    venuePrices: { "Tamadun": 26000000, "Gedung Wanita": 22000000, "Ballroom": 19000000, "Luminor": 21000000, "Pasparawi": 17000000 }
+                    price: 19000000, 
+                    desc: "Dekorasi manis bernuansa romantis (Tarif otomatis menyesuaikan venue)",
+                    venuePrices: { "Tamadun": 26000000, "Gedung Wanita": 22000000, "Ballroom": 19000000, "Luminor": 21000000, "Pasparawi": 17000000, "Rumah": 14500000 }
                 }
             ],
             "MUA": [
@@ -1242,25 +1304,24 @@
                 { name: "Rofiqohena", price: 1500000, desc: "Desain henna glitter 3D & kuku palsu mewah" }
             ]
         };
-
         let selectedCustomVendors = {};
-        const ONGKOS_WO_SILENT = 4000000;         // Ongkos WO Rp 4 Juta (tidak tertulis nominalnya)
-        const BIAYA_TAK_TERDUGA = 10000000;       // Dana tak terduga Rp 10 Juta
 
         function formatRupiah(num) {
             return "Rp " + Number(num).toLocaleString("id-ID");
         }
 
-        // Dapatkan tarif efektif dekorasi berdasarkan venue yang dipilih
+        
+        
+        // Dapatkan tarif efektif dekorasi berbasis venue secara otomatis
         function getEffectivePrice(cat, vendorObj) {
             if (!vendorObj || !vendorObj.price) return 0;
             if (cat === "Dekorasi" && vendorObj.venuePrices) {
                 const chosenVenue = selectedCustomVendors["Venue"] ? selectedCustomVendors["Venue"].name : "";
                 if (chosenVenue && vendorObj.venuePrices[chosenVenue]) {
-                    return vendorObj.venuePrices[chosenVenue];
+                    return Number(vendorObj.venuePrices[chosenVenue]) || vendorObj.price;
                 }
             }
-            return vendorObj.price;
+            return Number(vendorObj.price) || 0;
         }
 
         function renderCustomPricelistUI() {
@@ -1290,6 +1351,7 @@
                     `;
                 });
 
+                // Opsi lewati / sudah punya sendiri
                 const isNone = selectedCustomVendors[cat] && selectedCustomVendors[cat].name === 'Tidak Perlu / Sudah Ada Sendiri';
                 optionsHtml += `
                     <label class="relative flex items-center justify-between p-3.5 rounded-2xl border-2 transition cursor-pointer select-none ${isNone ? 'bg-slate-100 border-slate-400' : 'bg-slate-50/70 border-slate-200 hover:border-slate-300'}">
@@ -1340,16 +1402,15 @@
             if (!listEl) return;
 
             listEl.innerHTML = '';
-            let rawVendorTotal = 0;
+            let total = 0;
             let activeVendorCount = 0;
 
             const selectedKeys = Object.keys(selectedCustomVendors);
             selectedKeys.forEach(cat => {
                 const item = selectedCustomVendors[cat];
-                if (item && item.name !== 'Tidak Perlu / Sudah Ada Sendiri') {
+                if (item && item.price > 0 && item.name !== 'Tidak Perlu / Sudah Ada Sendiri') {
                     activeVendorCount++;
-                    const effectivePrice = getEffectivePrice(cat, item);
-                    rawVendorTotal += effectivePrice;
+                    total += item.price;
                     listEl.innerHTML += `
                         <div class="flex items-center justify-between border-b border-slate-50 pb-1.5">
                             <div>
@@ -1363,13 +1424,11 @@
             });
 
             const isEligible = activeVendorCount >= 4;
-            // Total = Subtotal Vendor + Ongkos WO (Rp 4jt) + Biaya Tak Terduga (Rp 10jt)
-            const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
-            const dpAmount = Math.round(grandTotal * 0.3); // DP 30%
+            const dpAmount = Math.round(total * 0.3); // DP 30%
 
             if (isEligible) {
-                subtotalEl.innerText = formatRupiah(rawVendorTotal);
-                grandTotalEl.innerText = formatRupiah(grandTotal);
+                subtotalEl.innerText = formatRupiah(total);
+                grandTotalEl.innerText = formatRupiah(total);
                 dpEl.innerText = formatRupiah(dpAmount);
 
                 const existingNotice = document.getElementById('custom-vendor-min-notice');
@@ -1379,6 +1438,7 @@
                 grandTotalEl.innerText = `(Saat ini: ${activeVendorCount}/4)`;
                 dpEl.innerText = `Rp 0`;
 
+                // Tampilkan banner panduan jika kurang dari 4 vendor
                 let noticeBox = document.getElementById('custom-vendor-min-notice');
                 if (!noticeBox) {
                     noticeBox = document.createElement('div');
@@ -1392,15 +1452,14 @@
 
         function sendCustomPricelistToWA() {
             let activeVendorCount = 0;
-            let rawVendorTotal = 0;
+            let total = 0;
             let vendorDetails = '';
 
             for (const cat in selectedCustomVendors) {
                 const item = selectedCustomVendors[cat];
-                if (item && item.name !== 'Tidak Perlu / Sudah Ada Sendiri') {
+                if (item && item.price > 0 && item.name !== 'Tidak Perlu / Sudah Ada Sendiri') {
                     activeVendorCount++;
-                    const effectivePrice = getEffectivePrice(cat, item);
-                    rawVendorTotal += effectivePrice;
+                    total += item.price;
                     vendorDetails += `• ${cat}: ${item.name}%0A`;
                 }
             }
@@ -1410,17 +1469,12 @@
                 return;
             }
 
-            const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
-            const dp = Math.round(grandTotal * 0.3);
-
+            const dp = Math.round(total * 0.3);
             let text = "Halo Admin Langit Planner! Saya ingin memesan paket pernikahan custom dengan rincian vendor berikut:%0A%0A";
             text += vendorDetails;
-            text += `%0A- Jasa WO Langit Planner Hari-H: Sudah Termasuk`;
-            text += `%0A- Alokasi Biaya Tak Terduga Hari-H: Sudah Termasuk (Rp 10.000.000)`;
-            text += `%0A- Bonus Eksklusif: Gratis Laundry Pakaian 1 Tahun`;
-            text += `%0A%0A*Total Estimasi Paket:* ${formatRupiah(grandTotal)}`;
+            text += `%0A*Total Estimasi Paket:* ${formatRupiah(total)}`;
             text += `%0A*Estimasi Booking DP (30%):* ${formatRupiah(dp)}`;
-            text += `%0A%0AMohon informasi ketersediaan tanggal dan konfirmasi tanda jadi booking DP. Terima kasih!`;
+            text += `%0A%0AMohon informasi ketersediaan tanggal dan verifikasi rekening booking DP. Terima kasih!`;
 
             window.open(`https://wa.me/6285190920279?text=${text}`, '_blank');
         }
@@ -1444,12 +1498,13 @@
         let currentActiveCatin = 'aldi';
         let loggedInClientKey = null;
 
-        function getDB() {
+                function getDB() {
             const saved = localStorage.getItem('langit_db_catin_v7');
             if (saved !== null) {
                 try {
                     const parsed = JSON.parse(saved);
                     if (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && Object.keys(parsed).length > 0) {
+                        // Pastikan setiap record memiliki properti lengkap agar tidak crash
                         for (let k in parsed) {
                             if (!parsed[k].vendors || !Array.isArray(parsed[k].vendors)) {
                                 parsed[k].vendors = DEFAULT_DATABASE.aldi ? DEFAULT_DATABASE.aldi.vendors : [];
@@ -1468,7 +1523,7 @@
         function saveDB(db) { localStorage.setItem('langit_db_catin_v7', JSON.stringify(db)); renderPublicProjects(); }
         function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
 
-        function renderPublicProjects() {
+                function renderPublicProjects() {
             const container = document.getElementById('public-project-list');
             if (!container) return;
             container.innerHTML = '';
@@ -1518,7 +1573,7 @@
         function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
         function closeDashboardModal() { document.getElementById('dashboard-modal').classList.add('hidden'); }
 
-        function handleLogin(e) {
+               function handleLogin(e) {
             e.preventDefault();
             const user = document.getElementById('login-user').value.toLowerCase().trim();
             const pass = document.getElementById('login-pass').value.trim();
@@ -1539,7 +1594,7 @@
                 closeLoginModal(); 
                 loggedInClientKey = user; 
                 loadClientData(user);
-                loadCatinFromCloud(user);
+                loadCatinFromCloud(user); // Otomatis sinkronisasi data biodata terbaru dari Google Sheets
                 document.getElementById('admin-dashboard-content').classList.add('hidden'); 
                 document.getElementById('client-dashboard-content').classList.remove('hidden');
                 document.getElementById('dashboard-modal').classList.remove('hidden'); 
@@ -1624,6 +1679,7 @@
 
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
+        // Fungsi penempatan biodata ke formulir Catin
         function applyBioToCatinForm(bio) {
             if (!bio) return;
             const fields = [
@@ -1642,8 +1698,10 @@
             });
         }
 
+        // 1. Fungsi ambil data otomatis saat catin login (Anti-Kosong saat Refresh)
         async function loadCatinFromCloud(usernameKey) {
             try {
+                // Membaca backup lokal terlebih dahulu agar formulir langsung terisi seketika saat refresh
                 const localBackup = localStorage.getItem('langit_bio_' + usernameKey);
                 if (localBackup) {
                     try { applyBioToCatinForm(JSON.parse(localBackup)); } catch (e) {}
@@ -1694,6 +1752,7 @@
             }
         }
 
+        // 2. Fungsi simpan biodata Catin (Dual-Storage: Offline Backup + Online Google Sheets)
         async function saveAndSendCatinBiodata(e) {
             e.preventDefault();
             if (!loggedInClientKey) return;
@@ -1718,6 +1777,7 @@
                 lagu: document.getElementById('catin-lagu') ? document.getElementById('catin-lagu').value.trim() : ''
             };
 
+            // Simpan langsung ke memori lokal browser agar saat di-refresh tidak hilang
             localStorage.setItem('langit_bio_' + loggedInClientKey, JSON.stringify(bioData));
             const db = getDB();
             if (db[loggedInClientKey]) {
@@ -1725,6 +1785,7 @@
                 saveDB(db);
             }
 
+            // Kirim langsung ke Google Sheets secara online & real-time
             try {
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
@@ -1736,12 +1797,14 @@
                 console.error("Koneksi Spreadsheet:", err);
             }
 
+            // Munculkan notifikasi sukses di layar catin
             const alertBox = document.getElementById('catin-success-alert');
             if (alertBox) {
                 alertBox.classList.remove('hidden');
                 setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
             }
 
+            // Buka notifikasi ke WhatsApp Admin
             const cpwName = bioData.cpwNick || 'Mempelai';
             const cppName = bioData.cppNick || 'Mempelai';
             const text = `Halo Admin Langit Planner! Pengantin (*${cpwName} & ${cppName}*) baru saja meng-update biodata acara.`;
@@ -1813,6 +1876,7 @@
                 const cloudRes = await res.json();
                 let foundBio = {};
 
+                // 1. Mencari dari rekap baris sheet Biodata yang diisi oleh klien
                 let rowFound = null;
                 if (Array.isArray(cloudRes)) {
                     rowFound = cloudRes.find(r => r['User Key'] === currentActiveCatin);
@@ -1841,6 +1905,7 @@
                     };
                 }
 
+                // 2. Jika di Database_Klien ada data tambahan, gabungkan jika belum ada
                 if (cloudRes.db && cloudRes.db[currentActiveCatin] && cloudRes.db[currentActiveCatin].biodata) {
                     const dbBio = cloudRes.db[currentActiveCatin].biodata;
                     for (let k in dbBio) {
@@ -1939,6 +2004,7 @@
                 delete db[currentActiveCatin];
             }
 
+            // Gabungkan nilai biodata dari input form admin
             const currentAdminBio = {
                 cpwFull: document.getElementById('admin-bio-cpw-full') ? document.getElementById('admin-bio-cpw-full').value.trim() : '',
                 cpwNick: document.getElementById('admin-bio-cpw-nick') ? document.getElementById('admin-bio-cpw-nick').value.trim() : '',
@@ -2030,6 +2096,7 @@
             window.open(`https://wa.me/6285190920279?text=${text}`, '_blank');
         }
 
+                // Sinkronisasi Database Otomatis ke Google Sheets
         const CLOUD_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
         async function syncDatabaseFromCloud() {
@@ -2038,17 +2105,26 @@
                 const res = await fetch(CLOUD_SHEET_URL);
                 const cloudRes = await res.json();
                 
+                
                 // Jika respon spreadsheet memuat pembaruan harga dari sheet Katalog_Vendor
                 if (cloudRes && cloudRes.catalog && typeof cloudRes.catalog === 'object') {
                     for (let c in cloudRes.catalog) {
                         if (VENDOR_CATALOG[c]) {
-                            VENDOR_CATALOG[c] = cloudRes.catalog[c];
+                            cloudRes.catalog[c].forEach(newV => {
+                                const localV = VENDOR_CATALOG[c].find(v => v.name.toLowerCase().trim() === newV.name.toLowerCase().trim());
+                                if (localV) {
+                                    if (newV.price) localV.price = newV.price;
+                                    if (newV.desc) localV.desc = newV.desc;
+                                    if (newV.venuePrices) localV.venuePrices = Object.assign(localV.venuePrices || {}, newV.venuePrices);
+                                }
+                            });
                         }
                     }
                     renderCustomPricelistUI();
                 }
 
                 let targetDb = null;
+                // A. Jika respon memuat master db di cloudRes.db
                 if (cloudRes && cloudRes.db && typeof cloudRes.db === 'object' && !Array.isArray(cloudRes.db) && Object.keys(cloudRes.db).length > 0) {
                     targetDb = cloudRes.db;
                 } else if (cloudRes && typeof cloudRes === 'object' && !Array.isArray(cloudRes) && Object.keys(cloudRes).length > 0) {
@@ -2059,6 +2135,7 @@
                 }
 
                 if (targetDb) {
+                    // Jika ada data baris dari sheet Biodata, merge secara akurat
                     if (cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
                         cloudRes.biodata.forEach(row => {
                             const uKey = row['User Key'];
@@ -2076,6 +2153,25 @@
                         });
                     }
                     localStorage.setItem('langit_db_catin_v7', JSON.stringify(targetDb));
+                    renderPublicProjects();
+                } else if (cloudRes && cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
+                    // Respon hanya baris biodata, gabungkan ke DB lokal
+                    const db = getDB();
+                    cloudRes.biodata.forEach(row => {
+                        const uKey = row['User Key'];
+                        if (uKey && db[uKey]) {
+                            db[uKey].biodata = db[uKey].biodata || {};
+                            if (row['Nama CPW']) db[uKey].biodata.cpwFull = row['Nama CPW'];
+                            if (row['Nama CPP']) db[uKey].biodata.cppFull = row['Nama CPP'];
+                            if (row['Ayah CPW']) db[uKey].biodata.cpwAyah = row['Ayah CPW'];
+                            if (row['Ibu CPW']) db[uKey].biodata.cpwIbu = row['Ibu CPW'];
+                            if (row['Ayah CPP']) db[uKey].biodata.cppAyah = row['Ayah CPP'];
+                            if (row['Ibu CPP']) db[uKey].biodata.cppIbu = row['Ibu CPP'];
+                            if (row['VIP']) db[uKey].biodata.vip = row['VIP'];
+                            if (row['Lagu Request']) db[uKey].biodata.lagu = row['Lagu Request'];
+                        }
+                    });
+                    localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
                     renderPublicProjects();
                 }
             } catch (err) {
@@ -2097,6 +2193,7 @@
             }
         };
 
+        // Bersihkan memori versi lama (v6, v5) dari HP & browser lain agar tidak terkunci di data Rizki
         (function autoRepairStorage() {
             try {
                 localStorage.removeItem('langit_db_catin_v6');
@@ -2104,6 +2201,7 @@
                 const raw = localStorage.getItem('langit_db_catin_v7');
                 if (raw) {
                     const parsed = JSON.parse(raw);
+                    // Jika memori masih menyimpan data demo lama (rizki) atau korup, bersihkan agar Aldi & Kristin langsung muncul
                     if (Array.isArray(parsed) || !parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0 || (parsed.rizki && !parsed.aldi)) {
                         localStorage.removeItem('langit_db_catin_v7');
                     }
@@ -2113,39 +2211,46 @@
             }
         })();
 
+
         // ================= TAB NAVIGATION LOGIC =================
         function switchTab(tabName) {
             const validTabs = ['projek', 'custom', 'alur', 'paket', 'layanan', 'portofolio', 'testimoni', 'faq', 'konsultasi'];
             if (!validTabs.includes(tabName)) tabName = 'projek';
 
+            // Sembunyikan semua page view dan bersihkan class animasi
             document.querySelectorAll('.page-view').forEach(view => {
                 view.classList.add('hidden');
                 view.classList.remove('tab-anim-enter');
             });
 
+            // Tampilkan page view yang dipilih dengan trigger animasi halus
             const targetView = document.getElementById('view-' + tabName);
             if (targetView) {
                 targetView.classList.remove('hidden');
+                // Force reflow agar animasi CSS terulang secara konsisten & smooth
                 void targetView.offsetWidth;
                 targetView.classList.add('tab-anim-enter');
             }
 
+            // Update styling aktif untuk tombol desktop nav
             document.querySelectorAll('.nav-tab-btn').forEach(btn => {
                 if (btn.dataset.tab === tabName) {
-                    btn.className = 'nav-tab-btn px-4 py-1.5 rounded-full text-xs font-bold text-charcoal bg-white shadow-sm border border-slate-200 transition';
+                    btn.className = 'nav-tab-btn px-3 py-1.5 rounded-full text-xs font-bold text-charcoal bg-sand border border-stone-300 shadow-sm transition';
                 } else {
-                    btn.className = 'nav-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-sapphire transition';
+                    btn.className = 'nav-tab-btn px-3 py-1.5 rounded-full text-xs font-semibold text-charcoal/75 hover:text-champagne transition';
                 }
             });
 
+            // Update styling aktif untuk tombol mobile nav
             document.querySelectorAll('.mobile-tab-btn').forEach(btn => {
                 if (btn.dataset.tab === tabName) {
-                    btn.classList.add('bg-blue-50', 'font-bold', 'text-sapphire');
+                    btn.classList.add('bg-sand', 'font-bold', 'text-champagneDark');
                 } else {
-                    btn.classList.remove('bg-blue-50', 'font-bold', 'text-sapphire');
+                    btn.classList.remove('bg-sand', 'font-bold', 'text-champagneDark');
                 }
             });
 
+            // Update hash di URL tanpa reload halaman
             if (window.history && window.history.pushState) {
                 window.history.pushState(null, null, '#' + tabName);
             }
@@ -2168,17 +2273,18 @@
             lucide.createIcons(); 
             syncDatabaseFromCloud();
 
-            // Default seleksi 1 venue & dekorasi awal agar kalkulator langsung terisi
-            if (!selectedCustomVendors["Venue"]) selectedCustomVendors["Venue"] = VENDOR_CATALOG["Venue"][0];
-            if (!selectedCustomVendors["Dekorasi"]) selectedCustomVendors["Dekorasi"] = VENDOR_CATALOG["Dekorasi"][0];
-            if (!selectedCustomVendors["MUA"]) selectedCustomVendors["MUA"] = VENDOR_CATALOG["MUA"][0];
-            if (!selectedCustomVendors["Catering"]) selectedCustomVendors["Catering"] = VENDOR_CATALOG["Catering"][0];
+            // Inisialisasi default pilihan vendor custom pricelist
+            for (const cat in VENDOR_CATALOG) {
+                if (!selectedCustomVendors[cat]) {
+                    selectedCustomVendors[cat] = VENDOR_CATALOG[cat][0];
+                }
+            }
             renderCustomPricelistUI();
 
+            // Tangani tab awal sesuai hash URL atau default ke dashboard
             let initialHash = (window.location.hash || '').replace('#', '').toLowerCase();
             if (initialHash === 'kontak' || initialHash === 'booking') initialHash = 'konsultasi';
             if (initialHash === 'home' || initialHash === 'beranda') initialHash = 'projek';
-            if (initialHash === 'custom') initialHash = 'custom';
             switchTab(initialHash || 'projek');
         });
     </script>
