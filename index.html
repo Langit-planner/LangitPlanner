@@ -20,6 +20,114 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
+        // ================= INTERACTIVE SPARKLE ENGINE (BLUE & WHITE SMOOTH PARTICLES) =================
+        (function initSparkles() {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'sparkle-canvas';
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100vw';
+            canvas.style.height = '100vh';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            document.body.prepend(canvas);
+
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const particles = [];
+            const particleCount = 45; // Kerapatan ideal agar tetap estetik & tidak berat
+
+            const colors = [
+                'rgba(0, 211, 251, ',  // Ocean Cyan
+                'rgba(0, 66, 172, ',   // Sapphire Blue
+                'rgba(99, 102, 241, ',  // Indigo
+                'rgba(255, 255, 255, '  // Pure Crisp White
+            ];
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 2.8 + 1,
+                    colorPrefix: colors[Math.floor(Math.random() * colors.length)],
+                    alpha: Math.random() * 0.8 + 0.2,
+                    alphaSpeed: (Math.random() * 0.02 + 0.008) * (Math.random() < 0.5 ? 1 : -1),
+                    vx: (Math.random() - 0.5) * 0.75,
+                    vy: (Math.random() - 0.5) * 0.75 - 0.2, // Cenderung naik perlahan
+                    isSparkle: Math.random() > 0.45 // Sebagian berbentuk kilau 4 sisi bintang
+                });
+            }
+
+            function drawSparkle(ctx, cx, cy, spikes, outerRadius, innerRadius, color) {
+                let rot = Math.PI / 2 * 3;
+                let x = cx;
+                let y = cy;
+                const step = Math.PI / spikes;
+
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - outerRadius);
+                for (let i = 0; i < spikes; i++) {
+                    x = cx + Math.cos(rot) * outerRadius;
+                    y = cy + Math.sin(rot) * outerRadius;
+                    ctx.lineTo(x, y);
+                    rot += step;
+
+                    x = cx + Math.cos(rot) * innerRadius;
+                    y = cy + Math.sin(rot) * innerRadius;
+                    ctx.lineTo(x, y);
+                    rot += step;
+                }
+                ctx.lineTo(cx, cy - outerRadius);
+                ctx.closePath();
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.alpha += p.alphaSpeed;
+
+                    if (p.alpha >= 0.95 || p.alpha <= 0.15) {
+                        p.alphaSpeed = -p.alphaSpeed;
+                    }
+
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height;
+                    if (p.y > height) p.y = 0;
+
+                    const color = p.colorPrefix + p.alpha + ')';
+
+                    if (p.isSparkle) {
+                        drawSparkle(ctx, p.x, p.y, 4, p.size * 2.5, p.size * 0.6, color);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = color;
+                        ctx.shadowBlur = 8;
+                        ctx.shadowColor = color;
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
         tailwind.config = {
             theme: {
                 extend: {
@@ -1167,6 +1275,7 @@
             return "Rp " + Number(num).toLocaleString("id-ID");
         }
 
+        
         function renderCustomPricelistUI() {
             const container = document.getElementById('custom-vendor-categories-container');
             if (!container) return;
@@ -1179,19 +1288,22 @@
                 list.forEach((v, idx) => {
                     const isChecked = selectedCustomVendors[cat] && selectedCustomVendors[cat].name === v.name;
                     optionsHtml += `
-                        <label class="relative flex flex-col p-4 rounded-2xl border-2 transition cursor-pointer select-none ${isChecked ? 'bg-blue-50/70 border-sapphire shadow-md' : 'bg-white border-slate-200 hover:border-slate-300'}">
+                        <label class="relative flex flex-col p-4 rounded-2xl border-2 transition cursor-pointer select-none ${isChecked ? 'bg-blue-50/80 border-sapphire shadow-md' : 'bg-white border-slate-200 hover:border-slate-300'}">
                             <div class="flex items-start justify-between gap-2">
                                 <div class="flex items-center gap-2.5">
                                     <input type="radio" name="cat_${cat}" value="${idx}" ${isChecked ? 'checked' : ''} onchange="selectCustomVendor('${cat}', ${idx})" class="w-4 h-4 accent-[#0042AC]">
                                     <span class="font-tech font-bold text-sm text-charcoal">${v.name}</span>
                                 </div>
-                                <span class="text-xs font-extrabold text-sapphire whitespace-nowrap">${formatRupiah(v.price)}</span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isChecked ? 'bg-sapphire text-white shadow-sm' : 'bg-slate-100 text-slate-500'}">
+                                    ${isChecked ? '✓ Terpilih' : 'Pilih'}
+                                </span>
                             </div>
-                            <p class="text-[11px] text-muted mt-2 pl-6 leading-relaxed">${v.desc}</p>
+                            <p class="text-[11px] text-muted mt-2 pl-6 leading-relaxed">${v.desc || ''}</p>
                         </label>
                     `;
                 });
 
+                // Opsi lewati / sudah punya sendiri
                 const isNone = selectedCustomVendors[cat] && selectedCustomVendors[cat].name === 'Tidak Perlu / Sudah Ada Sendiri';
                 optionsHtml += `
                     <label class="relative flex items-center justify-between p-3.5 rounded-2xl border-2 transition cursor-pointer select-none ${isNone ? 'bg-slate-100 border-slate-400' : 'bg-slate-50/70 border-slate-200 hover:border-slate-300'}">
@@ -1199,7 +1311,7 @@
                             <input type="radio" name="cat_${cat}" value="-1" ${isNone ? 'checked' : ''} onchange="selectCustomVendor('${cat}', -1)" class="w-4 h-4 accent-[#0042AC]">
                             <span class="text-xs font-semibold text-slate-500">Tidak Perlu / Bawa Sendiri</span>
                         </div>
-                        <span class="text-xs font-bold text-slate-400">Rp 0</span>
+                        <span class="text-[10px] text-slate-400 font-medium">Dilewati</span>
                     </label>
                 `;
 
@@ -1210,7 +1322,7 @@
                                 <span class="w-2.5 h-2.5 rounded-full bg-ocean"></span>
                                 <span>Kategori: ${cat}</span>
                             </h3>
-                            <span class="text-[11px] text-muted font-medium">${list.length} Pilihan Vendor</span>
+                            <span class="text-[11px] text-muted font-medium">${list.length} Rekanan</span>
                         </div>
                         <div class="grid sm:grid-cols-2 gap-3.5">
                             ${optionsHtml}
@@ -1243,13 +1355,13 @@
 
             listEl.innerHTML = '';
             let total = 0;
+            let activeVendorCount = 0;
 
             const selectedKeys = Object.keys(selectedCustomVendors);
-            if (selectedKeys.length === 0) {
-                listEl.innerHTML = '<p class="text-slate-400 italic">Silakan pilih vendor di sebelah kiri untuk mulai menghitung.</p>';
-            } else {
-                selectedKeys.forEach(cat => {
-                    const item = selectedCustomVendors[cat];
+            selectedKeys.forEach(cat => {
+                const item = selectedCustomVendors[cat];
+                if (item && item.price > 0 && item.name !== 'Tidak Perlu / Sudah Ada Sendiri') {
+                    activeVendorCount++;
                     total += item.price;
                     listEl.innerHTML += `
                         <div class="flex items-center justify-between border-b border-slate-50 pb-1.5">
@@ -1257,37 +1369,64 @@
                                 <span class="font-bold text-charcoal">${cat}:</span>
                                 <span class="text-slate-600 ml-1">${item.name}</span>
                             </div>
-                            <span class="font-semibold text-slate-800">${formatRupiah(item.price)}</span>
+                            <span class="text-xs text-emerald-600 font-semibold">✓ Terpilih</span>
                         </div>
                     `;
-                });
-            }
+                }
+            });
 
-            const dpAmount = Math.round(total * 0.3);
-            subtotalEl.innerText = formatRupiah(total);
-            grandTotalEl.innerText = formatRupiah(total);
-            dpEl.innerText = formatRupiah(dpAmount);
+            const isEligible = activeVendorCount >= 4;
+            const dpAmount = Math.round(total * 0.3); // DP 30%
+
+            if (isEligible) {
+                subtotalEl.innerText = formatRupiah(total);
+                grandTotalEl.innerText = formatRupiah(total);
+                dpEl.innerText = formatRupiah(dpAmount);
+
+                const existingNotice = document.getElementById('custom-vendor-min-notice');
+                if (existingNotice) existingNotice.remove();
+            } else {
+                subtotalEl.innerText = `Pilih minimal 4 vendor`;
+                grandTotalEl.innerText = `(Saat ini: ${activeVendorCount}/4)`;
+                dpEl.innerText = `Rp 0`;
+
+                // Tampilkan banner panduan jika kurang dari 4 vendor
+                let noticeBox = document.getElementById('custom-vendor-min-notice');
+                if (!noticeBox) {
+                    noticeBox = document.createElement('div');
+                    noticeBox.id = 'custom-vendor-min-notice';
+                    noticeBox.className = 'p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[11px] leading-relaxed font-medium mb-3';
+                    listEl.prepend(noticeBox);
+                }
+                noticeBox.innerHTML = `⚠️ <strong>Syarat Minimum:</strong> Silakan pilih minimal <strong>4 vendor</strong> untuk mengaktifkan perhitungan total harga dan nominal DP (Terpilih: <strong>${activeVendorCount}/4</strong> vendor).`;
+            }
         }
 
         function sendCustomPricelistToWA() {
-            const keys = Object.keys(selectedCustomVendors);
-            if (keys.length === 0) {
-                alert("Silakan pilih minimal satu vendor sebelum melakukan booking!");
+            let activeVendorCount = 0;
+            let total = 0;
+            let vendorDetails = '';
+
+            for (const cat in selectedCustomVendors) {
+                const item = selectedCustomVendors[cat];
+                if (item && item.price > 0 && item.name !== 'Tidak Perlu / Sudah Ada Sendiri') {
+                    activeVendorCount++;
+                    total += item.price;
+                    vendorDetails += `• ${cat}: ${item.name}%0A`;
+                }
+            }
+
+            if (activeVendorCount < 4) {
+                alert(`Mohon pilih minimal 4 vendor untuk melanjutkan booking! (Saat ini baru memilih ${activeVendorCount} vendor).`);
                 return;
             }
 
-            let text = "Halo Admin Langit Planner! Saya ingin memesan paket pernikahan custom dengan rincian vendor berikut:%0A%0A";
-            let total = 0;
-            keys.forEach(cat => {
-                const item = selectedCustomVendors[cat];
-                total += item.price;
-                text += `• ${cat}: ${item.name} (${formatRupiah(item.price)})%0A`;
-            });
-
             const dp = Math.round(total * 0.3);
-            text += `%0A*Total Estimasi Biaya:* ${formatRupiah(total)}`;
-            text += `%0A*Nominal Booking DP (30%):* ${formatRupiah(dp)}`;
-            text += `%0A%0AMohon informasi ketersediaan tanggal dan konfirmasi tanda jadi booking DP. Terima kasih!`;
+            let text = "Halo Admin Langit Planner! Saya ingin memesan paket pernikahan custom dengan rincian vendor berikut:%0A%0A";
+            text += vendorDetails;
+            text += `%0A*Total Estimasi Paket:* ${formatRupiah(total)}`;
+            text += `%0A*Estimasi Booking DP (30%):* ${formatRupiah(dp)}`;
+            text += `%0A%0AMohon informasi ketersediaan tanggal dan verifikasi rekening booking DP. Terima kasih!`;
 
             window.open(`https://wa.me/6285190920279?text=${text}`, '_blank');
         }
@@ -1918,7 +2057,17 @@
                 const res = await fetch(CLOUD_SHEET_URL);
                 const cloudRes = await res.json();
                 
-                let targetDb = null;
+                
+                // Jika respon spreadsheet memuat pembaruan harga dari sheet Katalog_Vendor
+                if (cloudRes && cloudRes.catalog && typeof cloudRes.catalog === 'object') {
+                    for (let c in cloudRes.catalog) {
+                        if (VENDOR_CATALOG[c]) {
+                            VENDOR_CATALOG[c] = cloudRes.catalog[c];
+                        }
+                    }
+                    renderCustomPricelistUI();
+                }
+let targetDb = null;
                 // A. Jika respon memuat master db di cloudRes.db
                 if (cloudRes && cloudRes.db && typeof cloudRes.db === 'object' && !Array.isArray(cloudRes.db) && Object.keys(cloudRes.db).length > 0) {
                     targetDb = cloudRes.db;
