@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembaruan Tarif Vendor 2027 | Langit Planner</title>
+    <link rel="icon" href="img/logo-ig.JPG" type="image/jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { font-family: 'Poppins', sans-serif !important; }
+        body {
+            background-color: #FFFFFF;
+            background-image: 
+                radial-gradient(circle at 88% 10%, rgba(224, 195, 252, 0.45) 0%, rgba(244, 114, 182, 0.15) 32%, transparent 65%),
+                radial-gradient(circle at 10% 28%, rgba(0, 66, 172, 0.22) 0%, rgba(0, 211, 251, 0.16) 35%, transparent 60%),
+                radial-gradient(circle at 85% 65%, rgba(199, 210, 254, 0.28) 0%, transparent 55%),
+                radial-gradient(circle at 15% 85%, rgba(224, 231, 255, 0.35) 0%, transparent 60%);
+            background-attachment: fixed;
+            color: #002B80;
+            min-height: 100vh;
+        }
+        .input-box {
+            background: #FFFFFF;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 0.85rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            color: #002B80;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        .input-box:focus {
+            outline: none;
+            border-color: #0042AC;
+            box-shadow: 0 0 0 3px rgba(0, 66, 172, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#00D3FB] selection:text-white relative py-12 px-4 sm:px-6">
+
+    <!-- Sparkle Background -->
+    <canvas id="sparkle-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <div class="max-w-2xl mx-auto relative z-10 space-y-8">
+        <!-- Header Brand -->
+        <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-[#0042AC] shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-[#00D3FB] animate-ping"></span>
+                Official Vendor Partner Portal 2027
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-[#002B80] tracking-tight">Formulir Pembaruan Tarif Vendor</h1>
+            <p class="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
+                Halo Rekanan Langit Planner! Mohon lengkapi pembaruan data dan tarif layanan Anda untuk musim pernikahan <strong>2027</strong> agar terdata akurat di sistem kami.
+            </p>
+        </div>
+
+        <!-- Form Box -->
+        <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-10 border-2 border-blue-100 shadow-2xl space-y-6">
+            <form id="vendor-update-form" onsubmit="handleVendorSubmit(event)" class="space-y-6">
+                <!-- Data Vendor -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-extrabold text-[#0042AC] uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="store" class="w-4 h-4 text-[#00D3FB]"></i>
+                        <span>1. Informasi Vendor</span>
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Nama Vendor / Brand *</label>
+                            <input type="text" id="v-name" required placeholder="Contoh: Salonanna" class="input-box font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Nama Penanggung Jawab (PIC) *</label>
+                            <input type="text" id="v-pic" required placeholder="Nama Anda" class="input-box font-medium">
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Nomor WhatsApp Aktif *</label>
+                            <input type="tel" id="v-wa" required placeholder="08xxxxxxxxxx" class="input-box font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Kategori Layanan *</label>
+                            <select id="v-cat" required onchange="handleCategoryChange()" class="input-box font-semibold text-[#0042AC]">
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="Dekorasi">Dekorasi (Matriks Venue)</option>
+                                <option value="Venue">Venue (Gedung / Tempat)</option>
+                                <option value="MUA">MUA (Tata Rias)</option>
+                                <option value="Catering">Catering (Katering)</option>
+                                <option value="Photographer">Photographer (Dokumentasi)</option>
+                                <option value="WCC">WCC (Wedding Content Creator)</option>
+                                <option value="MC">MC (Master of Ceremony)</option>
+                                <option value="Musik">Musik (Live Music / Band)</option>
+                                <option value="Henna">Henna & Nails</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Harga Standar (Non-Dekorasi) -->
+                <div id="section-standard-price" class="space-y-4 pt-4 border-t border-slate-100 hidden">
+                    <h3 class="text-xs font-extrabold text-[#0042AC] uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="tag" class="w-4 h-4 text-[#00D3FB]"></i>
+                        <span>2. Tarif Paket Resmi 2027</span>
+                    </h3>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Tarif Standar / Paket Lengkap (Rp) *</label>
+                        <input type="text" id="v-price-std" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC] text-base">
+                        <p class="text-[11px] text-slate-500 mt-1">Masukkan nominal tarif resmi Anda untuk acara di tahun 2027.</p>
+                    </div>
+                </div>
+
+                <!-- Bagian Matriks Harga Dekorasi Berbasis Venue (Khusus Dekorasi) -->
+                <div id="section-dekorasi-matrix" class="space-y-4 pt-4 border-t border-slate-100 hidden">
+                    <div class="space-y-1">
+                        <h3 class="text-xs font-extrabold text-[#0042AC] uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="building" class="w-4 h-4 text-[#00D3FB]"></i>
+                            <span>2. Matriks Tarif Dekorasi Berbasis Venue (2027)</span>
+                        </h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Karena kapasitas dan dimensi tempat berbeda-beda, silakan isi estimasi tarif dekorasi Anda untuk masing-masing venue di bawah ini:
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 space-y-1">
+                            <label class="block text-xs font-bold text-[#002B80]">1. Gedung Tamadun (Rp)</label>
+                            <input type="text" id="v-price-tamadun" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC]">
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 space-y-1">
+                            <label class="block text-xs font-bold text-[#002B80]">2. Gedung Wanita (Rp)</label>
+                            <input type="text" id="v-price-wanita" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC]">
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 space-y-1">
+                            <label class="block text-xs font-bold text-[#002B80]">3. Ballroom (Rp)</label>
+                            <input type="text" id="v-price-ballroom" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC]">
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 space-y-1">
+                            <label class="block text-xs font-bold text-[#002B80]">4. Hotel Luminor (Rp)</label>
+                            <input type="text" id="v-price-luminor" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC]">
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 space-y-1">
+                            <label class="block text-xs font-bold text-[#002B80]">5. Gedung Pasparawi (Rp)</label>
+                            <input type="text" id="v-price-pasparawi" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC]">
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 space-y-1">
+                            <label class="block text-xs font-bold text-[#002B80]">6. Acara di Rumah (Rp)</label>
+                            <input type="text" id="v-price-rumah" oninput="formatInputField(this)" placeholder="Rp 0" class="input-box font-bold text-[#0042AC]">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fasilitas & Catatan -->
+                <div class="space-y-4 pt-4 border-t border-slate-100">
+                    <h3 class="text-xs font-extrabold text-[#0042AC] uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-[#00D3FB]"></i>
+                        <span>3. Fasilitas Termasuk &amp; Catatan Khusus</span>
+                    </h3>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Fasilitas Termasuk dalam Paket</label>
+                        <textarea id="v-desc" rows="3" placeholder="Contoh: Sudah termasuk pelaminan 12 meter, lorong masuk, photobooth, panggung musik, bunga segar..." class="input-box resize-y"></textarea>
+                    </div>
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit" class="w-full py-4 rounded-full bg-[#0042AC] hover:bg-[#002D7A] text-white font-bold text-sm tracking-wider uppercase transition shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4 text-[#00D3FB]"></i>
+                    <span>Kirim Pembaruan Tarif ke WhatsApp Admin</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-slate-500 space-y-1 pb-8">
+            <p>© 2026 Langit Planner • Tanjung Selor, Kalimantan Utara</p>
+            <p>Official Admin WhatsApp: <a href="https://wa.me/6285190920279" target="_blank" class="font-bold text-[#0042AC] underline">085190920279</a></p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function handleCategoryChange() {
+            const cat = document.getElementById('v-cat').value;
+            const secStd = document.getElementById('section-standard-price');
+            const secDeko = document.getElementById('section-dekorasi-matrix');
+
+            if (cat === 'Dekorasi') {
+                secDeko.classList.remove('hidden');
+                secStd.classList.add('hidden');
+            } else if (cat) {
+                secStd.classList.remove('hidden');
+                secDeko.classList.add('hidden');
+            } else {
+                secStd.classList.add('hidden');
+                secDeko.classList.add('hidden');
+            }
+            lucide.createIcons();
+        }
+
+        function formatInputField(input) {
+            let val = input.value.replace(/[^0-9]/g, '');
+            if (val) {
+                input.value = "Rp " + Number(val).toLocaleString("id-ID");
+            } else {
+                input.value = "";
+            }
+        }
+
+        function handleVendorSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('v-name').value.trim();
+            const pic = document.getElementById('v-pic').value.trim();
+            const wa = document.getElementById('v-wa').value.trim();
+            const cat = document.getElementById('v-cat').value;
+            const desc = document.getElementById('v-desc').value.trim();
+
+            if (!name || !cat) {
+                alert("Mohon lengkapi nama vendor dan kategori layanan!");
+                return;
+            }
+
+            let msg = `*KONFIRMASI PEMBARUAN TARIF VENDOR 2027*%0A`;
+            msg += `----------------------------------------%0A`;
+            msg += `• *Nama Brand:* ${name}%0A`;
+            msg += `• *PIC:* ${pic}%0A`;
+            msg += `• *WhatsApp:* ${wa}%0A`;
+            msg += `• *Kategori:* ${cat}%0A%0A`;
+
+            if (cat === 'Dekorasi') {
+                msg += `*Rincian Tarif Matriks Venue (Dekorasi):*%0A`;
+                msg += `- Tamadun: ${document.getElementById('v-price-tamadun').value || 'Rp 0'}%0A`;
+                msg += `- Gedung Wanita: ${document.getElementById('v-price-wanita').value || 'Rp 0'}%0A`;
+                msg += `- Ballroom: ${document.getElementById('v-price-ballroom').value || 'Rp 0'}%0A`;
+                msg += `- Luminor: ${document.getElementById('v-price-luminor').value || 'Rp 0'}%0A`;
+                msg += `- Pasparawi: ${document.getElementById('v-price-pasparawi').value || 'Rp 0'}%0A`;
+                msg += `- Rumah: ${document.getElementById('v-price-rumah').value || 'Rp 0'}%0A%0A`;
+            } else {
+                msg += `• *Tarif Paket 2027:* ${document.getElementById('v-price-std').value || 'Rp 0'}%0A%0A`;
+            }
+
+            if (desc) {
+                msg += `• *Fasilitas / Catatan:*%0A${desc}%0A%0A`;
+            }
+
+            msg += `Terima kasih Langit Planner! Mohon dicatat untuk data sistem 2027.`;
+
+            window.open(`https://wa.me/6285190920279?text=${msg}`, '_blank');
+        }
+
+        // Sparkle engine
+        const canvas = document.getElementById('sparkle-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let w = canvas.width = window.innerWidth;
+            let h = canvas.height = window.innerHeight;
+            window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
+
+            const pts = [];
+            for (let i = 0; i < 40; i++) {
+                pts.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: Math.random() * 2 + 1,
+                    alpha: Math.random() * 0.7 + 0.3,
+                    speed: Math.random() * 0.02 + 0.005,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5 - 0.2
+                });
+            }
+
+            function anim() {
+                ctx.clearRect(0, 0, w, h);
+                pts.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    p.alpha += p.speed;
+                    if (p.alpha > 0.9 || p.alpha < 0.2) p.speed = -p.speed;
+                    if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+                    if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(0, 211, 251, ${p.alpha})`;
+                    ctx.shadowBlur = 6;
+                    ctx.shadowColor = `rgba(0, 66, 172, ${p.alpha})`;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                });
+                requestAnimationFrame(anim);
+            }
+            anim();
+        }
+    </script>
+</body>
+</html>
