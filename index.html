@@ -1153,7 +1153,7 @@
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
         const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
 
-        // Database Default Sesuai Spreadsheet Anda (ballroom2026 & ka2027)
+       // Database Default Mengunci Proyek Nyata dari Spreadsheet Anda
         const DEFAULT_DATABASE = {
             ballroom2026: {
                 username: "ballroom2026",
@@ -1238,7 +1238,6 @@
                 console.log('Menggunakan database lokal...');
                 renderPublicProjects();
             }
-        }
         
         function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
 
