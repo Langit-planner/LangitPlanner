@@ -1770,26 +1770,41 @@
         async function syncDatabaseFromCloud() {
             if (!CLOUD_SHEET_URL) return;
             try {
-                const res = await fetch(CLOUD_SHEET_URL);
+                // Beri parameter timestamp agar browser TIDAK menyimpan cache data lama
+                const cacheBusterUrl = CLOUD_SHEET_URL + (CLOUD_SHEET_URL.includes('?') ? '&' : '?') + 't=' + new Date().getTime();
+                const res = await fetch(cacheBusterUrl);
                 const cloudRes = await res.json();
                 
-                // 1. Update harga vendor dari spreadsheet jika ada
+                // 1. Update harga vendor & matriks venue langsung dari sheet Katalog_Vendor
                 if (cloudRes && cloudRes.catalog && typeof cloudRes.catalog === 'object') {
                     for (let c in cloudRes.catalog) {
-                        if (VENDOR_CATALOG[c]) {
+                        // Cari kategori di VENDOR_CATALOG (case-insensitive)
+                        const matchedCat = Object.keys(VENDOR_CATALOG).find(k => k.toLowerCase().trim() === c.toLowerCase().trim());
+                        if (matchedCat) {
                             cloudRes.catalog[c].forEach(newV => {
-                                const localV = VENDOR_CATALOG[c].find(v => v.name.toLowerCase().trim() === newV.name.toLowerCase().trim());
+                                const localV = VENDOR_CATALOG[matchedCat].find(v => v.name.toLowerCase().trim() === newV.name.toLowerCase().trim());
                                 if (localV) {
-                                    if (newV.price) localV.price = newV.price;
-                                    if (newV.venuePrices) localV.venuePrices = Object.assign(localV.venuePrices || {}, newV.venuePrices);
+                                    if (newV.price !== undefined && newV.price !== null) localV.price = Number(newV.price);
+                                    if (newV.venuePrices) {
+                                        localV.venuePrices = Object.assign(localV.venuePrices || {}, newV.venuePrices);
+                                    }
                                 }
                             });
+                        }
+                    }
+                    // Sinkronkan kembali objek vendor yang sedang terpilih agar kalkulasi total langsung membaca angka baru
+                    for (let cat in selectedCustomVendors) {
+                        const cur = selectedCustomVendors[cat];
+                        if (cur && VENDOR_CATALOG[cat]) {
+                            const updatedObj = VENDOR_CATALOG[cat].find(v => v.name.toLowerCase().trim() === cur.name.toLowerCase().trim());
+                            if (updatedObj) {
+                                selectedCustomVendors[cat] = updatedObj;
+                            }
                         }
                     }
                     renderCustomPricelistUI();
                 }
 
-                // 2. Tarik daftar project aktif dari Database_Klien di Spreadsheet
                 let targetDb = null;
                 if (cloudRes && cloudRes.db && typeof cloudRes.db === 'object' && !Array.isArray(cloudRes.db) && Object.keys(cloudRes.db).length > 0) {
                     targetDb = cloudRes.db;
