@@ -1205,33 +1205,39 @@
             }
         };
 
-        let currentActiveCatin = 'ka2027';
-        let loggedInClientKey = null;
-
         function getDB() {
             const saved = localStorage.getItem('langit_db_catin_v7');
             if (saved !== null) {
                 try {
                     const parsed = JSON.parse(saved);
-                    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && Object.keys(parsed).length > 0) {
-                        for (let k in parsed) {
-                            if (!parsed[k].vendors || !Array.isArray(parsed[k].vendors)) {
-                                parsed[k].vendors = DEFAULT_DATABASE.ka2027 ? DEFAULT_DATABASE.ka2027.vendors : [];
-                            }
-                        }
+                    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
                         return parsed;
                     }
-                } catch (e) {
-                    console.error("Gagal parse DB lokal, reset ke default:", e);
-                }
+                } catch (e) {}
             }
             localStorage.setItem('langit_db_catin_v7', JSON.stringify(DEFAULT_DATABASE));
             return DEFAULT_DATABASE;
         }
 
-        function saveDB(db) { 
-            localStorage.setItem('langit_db_catin_v7', JSON.stringify(db)); 
-            renderPublicProjects(); 
+        async function syncDatabaseFromCloud() {
+            if (!CLOUD_SHEET_URL) return;
+            try {
+                const res = await fetch(CLOUD_SHEET_URL);
+                const cloudRes = await res.json();
+
+                if (cloudRes && cloudRes.db && typeof cloudRes.db === 'object' && Object.keys(cloudRes.db).length > 0) {
+                    const currentDb = getDB();
+                    // Gabungkan data cloud secara aman tanpa menghapus data yang ada
+                    for (let key in cloudRes.db) {
+                        currentDb[key] = cloudRes.db[key];
+                    }
+                    localStorage.setItem('langit_db_catin_v7', JSON.stringify(currentDb));
+                    renderPublicProjects();
+                }
+            } catch (err) {
+                console.log('Menggunakan database lokal...');
+                renderPublicProjects();
+            }
         }
         
         function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
