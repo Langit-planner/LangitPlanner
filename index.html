@@ -1260,11 +1260,17 @@
         }
 
         function getEffectivePrice(cat, vendorObj) {
-            if (!vendorObj || !vendorObj.price) return 0;
+            if (!vendorObj) return 0;
+            // Jika kategori adalah Dekorasi, patokannya HANYA nama vendor dekorasi tersebut di venue yang dipilih
             if (cat === "Dekorasi" && vendorObj.venuePrices) {
-                const chosenVenue = selectedCustomVendors["Venue"] ? selectedCustomVendors["Venue"].name : "";
-                if (chosenVenue && vendorObj.venuePrices[chosenVenue]) {
-                    return Number(vendorObj.venuePrices[chosenVenue]) || vendorObj.price;
+                const chosenVenue = selectedCustomVendors["Venue"] ? selectedCustomVendors["Venue"].name.trim().toLowerCase() : "";
+                if (chosenVenue) {
+                    for (let vKey in vendorObj.venuePrices) {
+                        if (vKey.trim().toLowerCase() === chosenVenue) {
+                            const vPrice = Number(vendorObj.venuePrices[vKey]);
+                            if (!isNaN(vPrice) && vPrice > 0) return vPrice;
+                        }
+                    }
                 }
             }
             return Number(vendorObj.price) || 0;
