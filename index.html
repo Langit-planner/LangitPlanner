@@ -1160,96 +1160,249 @@
 
         // Database Katalog Lengkap (Matriks 6 Venue)
         const VENDOR_CATALOG = {
-            "Venue": [
-                { name: "Tamadun", price: 20000000 },
-                { name: "Gedung Wanita", price: 15000000 },
-                { name: "Ballroom", price: 12000000 },
-                { name: "Luminor", price: 18000000 },
-                { name: "Pasparawi", price: 10000000 },
-                { name: "Rumah", price: 5000000 }
-            ],
-            "Dekorasi": [
-                { 
-                    name: "Salonanna", 
-                    price: 25000000, 
-                    venuePrices: { "Tamadun": 35000000, "Gedung Wanita": 30000000, "Ballroom": 25000000, "Luminor": 28000000, "Pasparawi": 22000000, "Rumah": 18000000 }
-                },
-                { 
-                    name: "Family Dekorasi", 
-                    price: 20000000, 
-                    venuePrices: { "Tamadun": 28000000, "Gedung Wanita": 24000000, "Ballroom": 20000000, "Luminor": 22000000, "Pasparawi": 18000000, "Rumah": 15000000 }
-                },
-                { 
-                    name: "Ratih Salon", 
-                    price: 22000000, 
-                    venuePrices: { "Tamadun": 30000000, "Gedung Wanita": 25000000, "Ballroom": 22000000, "Luminor": 24000000, "Pasparawi": 19000000, "Rumah": 16000000 }
-                },
-                { 
-                    name: "Alfa Dekor", 
-                    price: 19000000, 
-                    venuePrices: { "Tamadun": 27000000, "Gedung Wanita": 23000000, "Ballroom": 19000000, "Luminor": 21000000, "Pasparawi": 17500000, "Rumah": 15000000 }
-                },
-                { 
-                    name: "Tiwi", 
-                    price: 18000000, 
-                    venuePrices: { "Tamadun": 25000000, "Gedung Wanita": 21000000, "Ballroom": 18000000, "Luminor": 20000000, "Pasparawi": 16000000, "Rumah": 14000000 }
-                },
-                { 
-                    name: "Momento", 
-                    price: 24000000, 
-                    venuePrices: { "Tamadun": 32000000, "Gedung Wanita": 28000000, "Ballroom": 24000000, "Luminor": 26000000, "Pasparawi": 21000000, "Rumah": 17000000 }
-                },
-                { 
-                    name: "Diana", 
-                    price: 19000000, 
-                    venuePrices: { "Tamadun": 26000000, "Gedung Wanita": 22000000, "Ballroom": 19000000, "Luminor": 21000000, "Pasparawi": 17000000, "Rumah": 14500000 }
-                }
-            ],
-            "MUA": [
-                { name: "Alvina", price: 5000000 },
-                { name: "Ratih", price: 4500000 },
-                { name: "Tiwi", price: 4000000 },
-                { name: "Juna", price: 5500000 },
-                { name: "Dynmely", price: 4500000 }
-            ],
-            "Catering": [
-                { name: "Fortuna", price: 32000000 },
-                { name: "Hj.Sabar", price: 30000000 },
-                { name: "Salonanna", price: 31000000 },
-                { name: "Lina Ben", price: 29000000 }
-            ],
-            "Photographer": [
-                { name: "Kalimasada", price: 7500000 },
-                { name: "Mahkota", price: 6000000 },
-                { name: "Suka Photographer", price: 5500000 },
-                { name: "Cerita Kita Picture", price: 6500000 },
-                { name: "YD Photo", price: 5000000 },
-                { name: "Soleil", price: 7000000 },
-                { name: "Kummoto Studio", price: 5500000 }
-            ],
-            "WCC": [
-                { name: "Langit Wedding Content Creator", price: 3500000 },
-                { name: "Visedaur", price: 3000000 }
-            ],
-            "MC": [
-                { name: "Najwa Zanuba", price: 2500000 },
-                { name: "Nazia Indah", price: 2000000 },
-                { name: "Yolanda", price: 2000000 },
-                { name: "Novan", price: 2000000 },
-                { name: "Norma", price: 1800000 },
-                { name: "Qurrantu Ayu", price: 2200000 }
-            ],
-            "Musik": [
-                { name: "Ozi", price: 4500000 },
-                { name: "Arcana", price: 5000000 },
-                { name: "Oppa (Opa Music)", price: 5500000 },
-                { name: "Suwandy Music", price: 4000000 }
-            ],
-            "Henna": [
-                { name: "Yuni", price: 1200000 },
-                { name: "Rofiqohena", price: 1500000 }
-            ]
-        };
+    "Venue": [
+        {
+            "name": "Tamadun",
+            "price": 5000000.0
+        },
+        {
+            "name": "Gedung Wanita",
+            "price": 15000000.0
+        },
+        {
+            "name": "Ballroom",
+            "price": 3000000.0
+        },
+        {
+            "name": "Luminor",
+            "price": 18000000.0
+        },
+        {
+            "name": "Pasparawi",
+            "price": 7000000.0
+        },
+        {
+            "name": "Rumah",
+            "price": 12000000.0
+        }
+    ],
+    "Dekorasi": [
+        {
+            "name": "Salonanna",
+            "price": 25000000.0,
+            "venuePrices": {
+                "Tamadun": 35000000.0,
+                "Gedung Wanita": 30000000.0,
+                "Ballroom": 25000000.0,
+                "Luminor": 28000000.0,
+                "Pasparawi": 22000000.0,
+                "Rumah": 18000000.0
+            }
+        },
+        {
+            "name": "Family Dekorasi",
+            "price": 20000000.0,
+            "venuePrices": {
+                "Tamadun": 28000000.0,
+                "Gedung Wanita": 22000000.0,
+                "Ballroom": 20000000.0,
+                "Luminor": 15000000.0,
+                "Pasparawi": 35000000.0,
+                "Rumah": 12000000.0
+            }
+        },
+        {
+            "name": "Ratih Salon",
+            "price": 22000000.0,
+            "venuePrices": {
+                "Tamadun": 30000000.0,
+                "Gedung Wanita": 25000000.0,
+                "Ballroom": 22000000.0,
+                "Luminor": 24000000.0,
+                "Pasparawi": 19000000.0,
+                "Rumah": 12000000.0
+            }
+        },
+        {
+            "name": "Alfa Dekor",
+            "price": 19000000.0,
+            "venuePrices": {
+                "Tamadun": 40000000.0,
+                "Gedung Wanita": 30000000.0,
+                "Ballroom": 25000000.0,
+                "Pasparawi": 17500000.0,
+                "Rumah": 12000000.0
+            }
+        },
+        {
+            "name": "Tiwi",
+            "price": 18000000.0,
+            "venuePrices": {
+                "Tamadun": 40000000.0,
+                "Gedung Wanita": 35000000.0,
+                "Ballroom": 20000000.0,
+                "Luminor": 20000000.0,
+                "Pasparawi": 16000000.0,
+                "Rumah": 12000000.0
+            }
+        },
+        {
+            "name": "Momento",
+            "price": 12000000.0,
+            "venuePrices": {
+                "Ballroom": 12000000.0,
+                "Luminor": 10000000.0,
+                "Rumah": 12000000.0
+            }
+        },
+        {
+            "name": "Diana",
+            "price": 19000000.0,
+            "venuePrices": {
+                "Tamadun": 26000000.0,
+                "Gedung Wanita": 22000000.0,
+                "Ballroom": 19000000.0,
+                "Luminor": 21000000.0,
+                "Pasparawi": 17000000.0,
+                "Rumah": 14500000.0
+            }
+        }
+    ],
+    "MUA": [
+        {
+            "name": "Alvina",
+            "price": 2000000.0
+        },
+        {
+            "name": "Ratih",
+            "price": 8000000.0
+        },
+        {
+            "name": "Tiwi",
+            "price": 7000000.0
+        },
+        {
+            "name": "Juna",
+            "price": 2000000.0
+        },
+        {
+            "name": "Dynmely",
+            "price": 4500000.0
+        }
+    ],
+    "Catering": [
+        {
+            "name": "Fortuna",
+            "price": 27000000.0
+        },
+        {
+            "name": "Hj.Sabar",
+            "price": 30000000.0
+        },
+        {
+            "name": "Salonanna",
+            "price": 35000000.0
+        },
+        {
+            "name": "Lina Ben",
+            "price": 33000000.0
+        }
+    ],
+    "Photographer": [
+        {
+            "name": "Kalimasada",
+            "price": 5500000.0
+        },
+        {
+            "name": "Mahkota",
+            "price": 4500000.0
+        },
+        {
+            "name": "Suka Photographer",
+            "price": 7000000.0
+        },
+        {
+            "name": "Cerita Kita Picture",
+            "price": 4000000.0
+        },
+        {
+            "name": "YD Photo",
+            "price": 5000000.0
+        },
+        {
+            "name": "Soleil",
+            "price": 8000000.0
+        },
+        {
+            "name": "Kummoto Studio",
+            "price": 4000000.0
+        }
+    ],
+    "WCC": [
+        {
+            "name": "Langit Wedding Content Creator",
+            "price": 750000.0
+        },
+        {
+            "name": "Visedaur",
+            "price": 550000.0
+        }
+    ],
+    "MC": [
+        {
+            "name": "Najwa Zanuba",
+            "price": 1500000.0
+        },
+        {
+            "name": "Nazia Indah",
+            "price": 2000000.0
+        },
+        {
+            "name": "Yolanda",
+            "price": 2000000.0
+        },
+        {
+            "name": "Novan",
+            "price": 1200000.0
+        },
+        {
+            "name": "Norma",
+            "price": 1500000.0
+        },
+        {
+            "name": "Qurrantu Ayu",
+            "price": 1300000.0
+        }
+    ],
+    "Musik": [
+        {
+            "name": "Ozi",
+            "price": 3000000.0
+        },
+        {
+            "name": "Arcana",
+            "price": 3000000.0
+        },
+        {
+            "name": "Oppa",
+            "price": 3000000.0
+        },
+        {
+            "name": "Suwandy Music",
+            "price": 3000000.0
+        }
+    ],
+    "Henna": [
+        {
+            "name": "Yuni",
+            "price": 500000.0
+        },
+        {
+            "name": "Rofiqohena",
+            "price": 600000.0
+        }
+    ]
+};
 
         let selectedCustomVendors = {};
         const ONGKOS_WO_SILENT = 4000000;
@@ -1374,7 +1527,8 @@
             });
 
             const isEligible = activeVendorCount >= 4;
-            const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
+            // Total Estimasi murni sama persis dengan total vendor dari Spreadsheet (sesuai tampilan asli website)
+            const grandTotal = rawVendorTotal;
             const dpAmount = Math.round(grandTotal * 0.3);
 
             if (isEligible) {
@@ -1420,7 +1574,7 @@
                 return;
             }
 
-            const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
+            const grandTotal = rawVendorTotal;
             const dp = Math.round(grandTotal * 0.3);
 
             let text = "Halo Admin Langit Planner! Saya ingin memesan paket pernikahan custom dengan rincian vendor berikut:%0A%0A";
