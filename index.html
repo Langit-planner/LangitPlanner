@@ -20,114 +20,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
-        // ================= INTERACTIVE SPARKLE ENGINE (BLUE & WHITE SMOOTH PARTICLES) =================
-        (function initSparkles() {
-            const canvas = document.createElement('canvas');
-            canvas.id = 'sparkle-canvas';
-            canvas.style.position = 'fixed';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100vw';
-            canvas.style.height = '100vh';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '1';
-            document.body.prepend(canvas);
-
-            const ctx = canvas.getContext('2d');
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
-
-            const particles = [];
-            const particleCount = 45;
-
-            const colors = [
-                'rgba(0, 211, 251, ',  // Ocean Cyan
-                'rgba(0, 66, 172, ',   // Sapphire Blue
-                'rgba(99, 102, 241, ',  // Indigo
-                'rgba(255, 255, 255, '  // Pure Crisp White
-            ];
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    size: Math.random() * 2.8 + 1,
-                    colorPrefix: colors[Math.floor(Math.random() * colors.length)],
-                    alpha: Math.random() * 0.8 + 0.2,
-                    alphaSpeed: (Math.random() * 0.02 + 0.008) * (Math.random() < 0.5 ? 1 : -1),
-                    vx: (Math.random() - 0.5) * 0.75,
-                    vy: (Math.random() - 0.5) * 0.75 - 0.2,
-                    isSparkle: Math.random() > 0.45
-                });
-            }
-
-            function drawSparkle(ctx, cx, cy, spikes, outerRadius, innerRadius, color) {
-                let rot = Math.PI / 2 * 3;
-                let x = cx;
-                let y = cy;
-                const step = Math.PI / spikes;
-
-                ctx.beginPath();
-                ctx.moveTo(cx, cy - outerRadius);
-                for (let i = 0; i < spikes; i++) {
-                    x = cx + Math.cos(rot) * outerRadius;
-                    y = cy + Math.sin(rot) * outerRadius;
-                    ctx.lineTo(x, y);
-                    rot += step;
-
-                    x = cx + Math.cos(rot) * innerRadius;
-                    y = cy + Math.sin(rot) * innerRadius;
-                    ctx.lineTo(x, y);
-                    rot += step;
-                }
-                ctx.lineTo(cx, cy - outerRadius);
-                ctx.closePath();
-                ctx.fillStyle = color;
-                ctx.fill();
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, width, height);
-
-                particles.forEach(p => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.alpha += p.alphaSpeed;
-
-                    if (p.alpha >= 0.95 || p.alpha <= 0.15) {
-                        p.alphaSpeed = -p.alphaSpeed;
-                    }
-
-                    if (p.x < 0) p.x = width;
-                    if (p.x > width) p.x = 0;
-                    if (p.y < 0) p.y = height;
-                    if (p.y > height) p.y = 0;
-
-                    const color = p.colorPrefix + p.alpha + ')';
-
-                    if (p.isSparkle) {
-                        drawSparkle(ctx, p.x, p.y, 4, p.size * 2.5, p.size * 0.6, color);
-                    } else {
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                        ctx.fillStyle = color;
-                        ctx.shadowBlur = 8;
-                        ctx.shadowColor = color;
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    }
-                });
-
-                requestAnimationFrame(animate);
-            }
-            animate();
-        })();
-
         tailwind.config = {
             theme: {
                 extend: {
@@ -567,7 +459,7 @@
                             <a href="#konsultasi" onclick="selectPackage('Day-of Coordination')" class="w-full text-center py-3.5 rounded-full border-2 border-[#0042AC] text-[#0042AC] hover:bg-[#0042AC] hover:text-white text-sm font-bold transition">Tanya Paket Ini</a>
                         </div>
 
-                        <!-- KARTU TENGAH SOLID DEEP SAPPHIRE (100% VISIBLE) -->
+                        <!-- KARTU TENGAH SOLID DEEP SAPPHIRE -->
                         <div class="rounded-3xl p-8 border-2 border-ocean shadow-2xl relative flex flex-col justify-between transform md:-translate-y-2" style="background-color: #002B80 !important; color: #FFFFFF !important;">
                             <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-[#0042AC] to-ocean text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">Paling Diminati</div>
                             <div>
@@ -611,7 +503,7 @@
                     </div>
 
                     <div class="grid lg:grid-cols-2 gap-10">
-                        <!-- KARTU DIAMOND SOLID DEEP SAPPHIRE (100% VISIBLE) -->
+                        <!-- KARTU DIAMOND SOLID DEEP SAPPHIRE -->
                         <div class="rounded-3xl p-8 sm:p-10 border-2 border-ocean shadow-2xl relative flex flex-col justify-between" style="background-color: #002B80 !important; color: #FFFFFF !important;">
                             <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-[#0042AC] to-ocean text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow">Most Exclusive</div>
                             <div>
@@ -655,29 +547,15 @@
                                     <div class="bg-blue-50/50 rounded-2xl p-3 border border-blue-100"><p class="text-[11px] text-slate-600">Tamadun</p><p class="font-bold text-base text-[#0042AC] mt-0.5">87.600 K</p></div>
                                     <div class="bg-blue-50/50 rounded-2xl p-3 border border-blue-100"><p class="text-[11px] text-slate-600">Gedung Wanita</p><p class="font-bold text-base text-[#0042AC] mt-0.5">77.600 K</p></div>
                                 </div>
-                                <a href="#konsultasi" onclick="selectPackage('Silver Package')" class="w-full block text-center py-3.5 rounded-full border-2 border-[#0042AC] text-[#0042AC] hover:bg-[#0042AC] hover:text-white text-sm font-bold transition">Booking Silver Package</a>
+                                <a href="#konsultasi" onclick="selectPackage('Silver Package')" class="w-full block text-center py-3.5 rounded-full border border-charcoal text-charcoal hover:bg-[#0042AC] hover:text-white text-sm font-bold transition">Booking Silver Package</a>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-16 pt-12 border-t border-blue-100 text-center">
-                        <p class="text-[11px] uppercase tracking-[0.22em] text-slate-500 font-bold mb-6">Mitra Vendor &amp; Rekanan Terbaik Kami di Kalimantan Utara</p>
-                        <div class="flex flex-wrap items-center justify-center gap-3">
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">✨ Erza Art Decor</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">💄 Ratih Salon Professional</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">🎤 MC Najwa Zenuba</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">🎵 Opa Music Entertainment</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">🍽️ Wafda Catering</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">🌿 Henna Art Kaltara</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">📸 Langit WCC</span>
-                            <span class="px-5 py-2.5 rounded-full bg-white border border-blue-100 text-xs font-bold text-[#0042AC] shadow-sm">👗 Mahligai Atelier</span>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 5: PORTOFOLIO -->
+        <!-- TAB 5: PORTOFOLIO (100% TERHUBUNG & TERSEDIA) -->
         <div id="view-portofolio" class="page-view hidden transition-all duration-300">
             <section id="portofolio" class="pt-32 pb-24 md:pt-40 md:pb-28 min-h-[80vh]">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -839,7 +717,7 @@
         </div>
     </main>
 
-    <!-- FOOTER SOLID DEEP SAPPHIRE (100% VISIBLE & SHARP) -->
+    <!-- FOOTER SOLID DEEP SAPPHIRE -->
     <footer class="py-16 border-t border-blue-900/60 relative z-10" style="background-color: #002B80 !important; color: #FFFFFF !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-blue-900/80">
@@ -972,8 +850,8 @@
                         <div class="p-5 rounded-2xl bg-blue-50/40 border border-blue-100 space-y-4">
                             <h5 class="font-bold text-[#0042AC] uppercase tracking-wider text-xs">3. Pendukung Acara &amp; Request</h5>
                             <div class="grid sm:grid-cols-2 gap-4">
-                                <div><label class="block font-semibold mb-1 text-slate-700">Sambutan Resepsi</label><input type="text" id="catin-sambutan" class="input-editorial"></div>
-                                <div><label class="block font-semibold mb-1 text-slate-700">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="catin-tilawah" class="input-editorial"></div>
+                                <div><label class="block font-semibold mb-1 text-slate-700">Sambutan Resepsi</label><input type="text" id="admin-bio-sambutan" class="input-editorial"></div>
+                                <div><label class="block font-semibold mb-1 text-slate-700">Pembaca Al-Qur'an (Tilawah)</label><input type="text" id="admin-bio-tilawah" class="input-editorial"></div>
                             </div>
                             <div><label class="block font-semibold mb-1 text-slate-700">Tamu VIP</label><textarea id="catin-vip" rows="2" class="input-editorial"></textarea></div>
                             <div><label class="block font-semibold mb-1 text-slate-700">List Lagu Request</label><textarea id="catin-lagu" rows="2" class="input-editorial"></textarea></div>
@@ -1155,6 +1033,7 @@
             }
         }
 
+        // Konfigurasi Portofolio yang Selalu Aman & Memiliki Cadangan Gambar
         const SITE_CONFIG = {
             portfolios: [
                 { couple: "Rizki & Nova", caption: "The sacred moment of Rizki & Nova", localImage: "img/ig-1.jpg", fallbackImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", igPostUrl: "https://www.instagram.com/langit_planner/" },
@@ -1166,7 +1045,7 @@
         const VENDOR_CATEGORIES = ["Dekorasi", "MUA", "MC", "Musik", "Henna", "WCC", "Catering"];
         const DEFAULT_CHECKLIST_ITEMS = ["Penentuan tanggal & booking venue", "Pendaftaran KUA/Catatan Sipil", "Fitting busana pengantin", "Prewedding & undangan digital", "Formulir biodata & rundown", "Technical Meeting"];
 
-        // Database Katalog Lengkap (Termasuk Matriks Harga Dekorasi Berbasis 6 Venue)
+        // Database Katalog Lengkap (Matriks 6 Venue)
         const VENDOR_CATALOG = {
             "Venue": [
                 { name: "Tamadun", price: 20000000 },
@@ -1260,14 +1139,13 @@
         };
 
         let selectedCustomVendors = {};
-        const ONGKOS_WO_SILENT = 4000000;         // Jasa WO Rp 4 Juta (tidak tertulis nominalnya)
-        const BIAYA_TAK_TERDUGA = 10000000;       // Dana darurat Rp 10 Juta (tidak tertulis nominalnya)
+        const ONGKOS_WO_SILENT = 4000000;
+        const BIAYA_TAK_TERDUGA = 10000000;
 
         function formatRupiah(num) {
             return "Rp " + Number(num).toLocaleString("id-ID");
         }
 
-        // Hitung tarif dekorasi berdasarkan venue yang dipilih
         function getEffectivePrice(cat, vendorObj) {
             if (!vendorObj || !vendorObj.price) return 0;
             if (cat === "Dekorasi" && vendorObj.venuePrices) {
@@ -1279,7 +1157,6 @@
             return Number(vendorObj.price) || 0;
         }
 
-        // Tampilan Opsi Vendor Bersih (Hanya Nama Vendor, Tanpa Harga & Tanpa Deskripsi)
         function renderCustomPricelistUI() {
             const container = document.getElementById('custom-vendor-categories-container');
             if (!container) return;
@@ -1378,7 +1255,7 @@
 
             const isEligible = activeVendorCount >= 4;
             const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
-            const dpAmount = Math.round(grandTotal * 0.3); // DP 30%
+            const dpAmount = Math.round(grandTotal * 0.3);
 
             if (isEligible) {
                 subtotalEl.innerText = formatRupiah(rawVendorTotal);
@@ -1440,23 +1317,59 @@
             window.open(`https://wa.me/6285190920279?text=${text}`, '_blank');
         }
 
+        // Database Default Mengunci Proyek Nyata dari Spreadsheet Anda (ballroom2026 & ka2027)
         const DEFAULT_DATABASE = {
-            aldi: {
-                username: "aldi", password: "langit2026", groomFull: "Aldi & Kristin", groomNick: "Aldi", brideFull: "Kristin", brideNick: "Kristin", package: "Diamond Package", venue: "Tanjung Selor — 2026", weddingDate: "2026-12-28", docUrl: "", showProgress: true, progress: 85,
-                biodata: { cpwFull: "", cpwNick: "", cpwAyah: "", cpwIbu: "", cpwSaudara: "", cpwSaksi: "", cppFull: "", cppNick: "", cppAyah: "", cppIbu: "", cppSaudara: "", cppSaksi: "", sambutan: "", tilawah: "", vip: "", lagu: "" },
+            ballroom2026: {
+                username: "ballroom2026",
+                password: "langit2026",
+                groomFull: "Ballroom",
+                groomNick: "Ballroom",
+                brideFull: "2026",
+                brideNick: "2026",
+                package: "Day-of Coordination",
+                venue: "Ballroom - 2026",
+                weddingDate: "2026-11-12",
+                docUrl: "",
+                showProgress: true,
+                progress: 0,
+                biodata: {},
                 vendors: [
-                    { cat: "Dekorasi", name: "SalonAnna", status: "Sudah Dibooking Admin" },
+                    { cat: "Dekorasi", name: "Ratih", status: "Sudah Dibooking Admin" },
+                    { cat: "MUA", name: "Alvina", status: "Sudah Dibooking Admin" },
+                    { cat: "MC", name: "Najwa", status: "Sudah Dibooking Admin" },
+                    { cat: "Musik", name: "Oppa", status: "Sudah Dibooking Admin" },
+                    { cat: "Henna", name: "Rofiqohhenna", status: "Sudah Dibooking Admin" },
+                    { cat: "WCC", name: "-", status: "Sudah Dibooking Admin" },
+                    { cat: "Catering", name: "Fortuna", status: "Sudah Dibooking Admin" }
+                ]
+            },
+            ka2027: {
+                username: "ka2027",
+                password: "langit2026",
+                groomFull: "Aldi & Kristin",
+                groomNick: "Aldi",
+                brideFull: "Kristin",
+                brideNick: "Kristin",
+                package: "Silver Package",
+                venue: "Gedung Wanita - 2027",
+                weddingDate: "2027-03-20",
+                docUrl: "",
+                showProgress: true,
+                progress: 30,
+                biodata: {},
+                vendors: [
+                    { cat: "Dekorasi", name: "Salonanna", status: "Sudah Dibooking Admin" },
                     { cat: "MUA", name: "Ratih", status: "Sudah Dibooking Admin" },
-                    { cat: "MC", name: "MC Najwa Zenuba", status: "Sudah Dibooking Admin" },
-                    { cat: "Musik", name: "Opa Music Entertainment", status: "Sudah Dibooking Admin" },
-                    { cat: "Henna", name: "Rofiqohenna", status: "Sudah Dibooking Admin" },
+                    { cat: "MC", name: "Yolanda", status: "Sudah Dibooking Admin" },
+                    { cat: "Musik", name: "Oppa", status: "Sudah Dibooking Admin" },
+                    { cat: "Henna", name: "-", status: "Sudah Dibooking Admin" },
                     { cat: "WCC", name: "Langit Wedding Content Creator", status: "Sudah Dibooking Admin" },
-                    { cat: "Catering", name: "Hj Sabar", status: "Sudah Dibooking Admin" }
+                    { cat: "Catering", name: "Hj.sabar", status: "Sudah Dibooking Admin" }
                 ]
             }
         };
 
-        let currentActiveCatin = 'aldi';
+        let currentActiveCatin = 'ka2027';
         let loggedInClientKey = null;
 
         function getDB() {
@@ -1464,35 +1377,35 @@
             if (saved !== null) {
                 try {
                     const parsed = JSON.parse(saved);
-                    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && Object.keys(parsed).length > 0) {
-                        for (let k in parsed) {
-                            if (!parsed[k].vendors || !Array.isArray(parsed[k].vendors)) {
-                                parsed[k].vendors = DEFAULT_DATABASE.aldi ? DEFAULT_DATABASE.aldi.vendors : [];
-                            }
-                        }
+                    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
                         return parsed;
                     }
-                } catch (e) {
-                    console.error("Gagal parse DB lokal, reset ke default:", e);
-                }
+                } catch (e) {}
             }
             localStorage.setItem('langit_db_catin_v7', JSON.stringify(DEFAULT_DATABASE));
             return DEFAULT_DATABASE;
         }
 
-        function saveDB(db) { localStorage.setItem('langit_db_catin_v7', JSON.stringify(db)); renderPublicProjects(); }
+        function saveDB(db) { 
+            localStorage.setItem('langit_db_catin_v7', JSON.stringify(db)); 
+            renderPublicProjects(); 
+        }
+        
         function isEligibleForProgress(pkgName) { return pkgName === 'Diamond Package' || pkgName === 'Silver Package'; }
 
+        // Render Kartu Proyek Pernikahan yang Sedang Berjalan (Permanen & Pasti Muncul)
         function renderPublicProjects() {
             const container = document.getElementById('public-project-list');
             if (!container) return;
             container.innerHTML = '';
             const db = getDB();
             const keys = Object.keys(db);
+            
             if (keys.length === 0) { 
-                container.innerHTML = `<div class="p-8 text-center rounded-2xl bg-blue-50/50 border border-blue-100 text-slate-500 text-sm">Belum ada project aktif.</div>`; 
+                container.innerHTML = `<div class="p-8 text-center rounded-2xl bg-blue-50/50 border border-blue-100 text-[#002B80] text-sm">Belum ada project aktif.</div>`; 
                 return; 
             }
+            
             keys.forEach(key => {
                 const item = db[key];
                 if (!item) return;
@@ -1506,7 +1419,7 @@
                         <div class="flex flex-wrap items-center justify-between gap-2">
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <h4 class="text-2xl font-bold text-[#002B80]">${item.groomNick || 'Pengantin'} & ${item.brideNick || 'Pengantin'}</h4>
+                                    <h4 class="text-xl font-bold text-[#002B80]">${item.groomNick || 'Pengantin'} & ${item.brideNick || 'Pengantin'}</h4>
                                     <span class="text-[10px] font-bold uppercase bg-[#002B80] text-ocean px-2.5 py-0.5 rounded-full">${item.package || 'Wedding Package'}</span>
                                 </div>
                                 <p class="text-xs text-slate-500 mt-0.5">${item.groomFull || ''} &amp; ${item.brideFull || ''} — 📍 ${item.venue || 'Tanjung Selor'}</p>
@@ -1523,6 +1436,7 @@
                     </div>
                 `;
             });
+            
             if (window.lucide && typeof lucide.createIcons === 'function') {
                 lucide.createIcons();
             }
@@ -1602,7 +1516,7 @@
             document.getElementById('client-package').innerText = data.package; document.getElementById('client-venue').innerText = data.venue;
             document.getElementById('client-countdown-badge').innerText = calculateCountdownText(data.weddingDate);
             const docArea = document.getElementById('client-doc-area');
-            docArea.innerHTML = data.docUrl ? `<a href="${data.docUrl}" target="_blank" class="text-[#00D3FB] underline font-semibold">📄 Buka Dokumen ↗</a>` : "Pantau persiapan berkala";
+            docArea.innerHTML = data.docUrl ? `<a href="${data.docUrl}" target="_blank" class="text-ocean underline font-semibold">📄 Buka Dokumen ↗</a>` : "Pantau persiapan berkala";
 
             const progressBox = document.getElementById('client-payment-progress-box');
             if (isEligibleForProgress(data.package) && data.showProgress !== false) {
@@ -1638,6 +1552,7 @@
         }
 
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
+        const CLOUD_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
 
         function applyBioToCatinForm(bio) {
             if (!bio) return;
@@ -1709,351 +1624,42 @@
             }
         }
 
-        async function saveAndSendCatinBiodata(e) {
-            e.preventDefault();
-            if (!loggedInClientKey) return;
-
-            const bioData = {
-                userKey: loggedInClientKey,
-                cpwFull: document.getElementById('catin-cpw-full') ? document.getElementById('catin-cpw-full').value.trim() : '',
-                cpwNick: document.getElementById('catin-cpw-nick') ? document.getElementById('catin-cpw-nick').value.trim() : '',
-                cpwAyah: document.getElementById('catin-cpw-ayah') ? document.getElementById('catin-cpw-ayah').value.trim() : '',
-                cpwIbu: document.getElementById('catin-cpw-ibu') ? document.getElementById('catin-cpw-ibu').value.trim() : '',
-                cpwSaudara: document.getElementById('catin-cpw-saudara') ? document.getElementById('catin-cpw-saudara').value.trim() : '',
-                cpwSaksi: document.getElementById('catin-cpw-saksi') ? document.getElementById('catin-cpw-saksi').value.trim() : '',
-                cppFull: document.getElementById('catin-cpp-full') ? document.getElementById('catin-cpp-full').value.trim() : '',
-                cppNick: document.getElementById('catin-cpp-nick') ? document.getElementById('catin-cpp-nick').value.trim() : '',
-                cppAyah: document.getElementById('catin-cpp-ayah') ? document.getElementById('catin-cpp-ayah').value.trim() : '',
-                cppIbu: document.getElementById('catin-cpp-ibu') ? document.getElementById('catin-cpp-ibu').value.trim() : '',
-                cppSaudara: document.getElementById('catin-cpp-saudara') ? document.getElementById('catin-cpp-saudara').value.trim() : '',
-                cppSaksi: document.getElementById('catin-cpp-saksi') ? document.getElementById('catin-cpp-saksi').value.trim() : '',
-                sambutan: document.getElementById('catin-sambutan') ? document.getElementById('catin-sambutan').value.trim() : '',
-                tilawah: document.getElementById('catin-tilawah') ? document.getElementById('catin-tilawah').value.trim() : '',
-                vip: document.getElementById('catin-vip') ? document.getElementById('catin-vip').value.trim() : '',
-                lagu: document.getElementById('catin-lagu') ? document.getElementById('catin-lagu').value.trim() : ''
-            };
-
-            localStorage.setItem('langit_bio_' + loggedInClientKey, JSON.stringify(bioData));
-            const db = getDB();
-            if (db[loggedInClientKey]) {
-                db[loggedInClientKey].biodata = bioData;
-                saveDB(db);
-            }
-
-            try {
-                await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(bioData)
-                });
-            } catch (err) {
-                console.error("Koneksi Spreadsheet:", err);
-            }
-
-            const alertBox = document.getElementById('catin-success-alert');
-            if (alertBox) {
-                alertBox.classList.remove('hidden');
-                setTimeout(() => { alertBox.classList.add('hidden'); }, 7000);
-            }
-
-            const cpwName = bioData.cpwNick || 'Mempelai';
-            const cppName = bioData.cppNick || 'Mempelai';
-            const text = `Halo Admin Langit Planner! Pengantin (*${cpwName} & ${cppName}*) baru saja meng-update biodata acara.`;
-            window.open(`https://wa.me/6285190920279?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        function handleAdminPackageChange() {
-            const pkg = document.getElementById('admin-edit-pkg').value;
-            const checkbox = document.getElementById('admin-show-progress');
-            const note = document.getElementById('admin-pkg-progress-note');
-            if (isEligibleForProgress(pkg)) { checkbox.disabled = false; note.innerText = "*Mendukung progres pembayaran."; note.className = "text-[11px] text-emerald-700 font-medium"; }
-            else { checkbox.checked = false; checkbox.disabled = true; note.innerText = "*Tidak mendukung progres."; note.className = "text-[11px] text-rose-600 font-medium"; }
-            toggleAdminProgressInput();
-        }
-
-        function toggleAdminProgressInput() {
-            const checkbox = document.getElementById('admin-show-progress');
-            const wrapper = document.getElementById('admin-progress-input-wrapper');
-            if (checkbox.checked && !checkbox.disabled) wrapper.classList.remove('hidden'); else wrapper.classList.add('hidden');
-        }
-
-        function populateAdminDropdown() {
-            const db = getDB(); const sel = document.getElementById('admin-select-catin'); sel.innerHTML = '';
-            const keys = Object.keys(db);
-            if (keys.length === 0) { sel.innerHTML = `<option value="">-- Belum Ada Catin --</option>`; return; }
-            keys.forEach(k => { const c = db[k]; sel.innerHTML += `<option value="${k}">${c.groomNick} & ${c.brideNick} (User: ${k})</option>`; });
-        }
-
-        function renderAdminBiodata(bio) {
-            bio = bio || {};
-            if (document.getElementById('admin-bio-cpw-full')) document.getElementById('admin-bio-cpw-full').value = bio.cpwFull || '';
-            if (document.getElementById('admin-bio-cpw-nick')) document.getElementById('admin-bio-cpw-nick').value = bio.cpwNick || '';
-            if (document.getElementById('admin-bio-cpw-ayah')) document.getElementById('admin-bio-cpw-ayah').value = bio.cpwAyah || '';
-            if (document.getElementById('admin-bio-cpw-ibu')) document.getElementById('admin-bio-cpw-ibu').value = bio.cpwIbu || '';
-            if (document.getElementById('admin-bio-cpw-saudara')) document.getElementById('admin-bio-cpw-saudara').value = bio.cpwSaudara || '';
-            if (document.getElementById('admin-bio-cpw-saksi')) document.getElementById('admin-bio-cpw-saksi').value = bio.cpwSaksi || '';
-
-            if (document.getElementById('admin-bio-cpp-full')) document.getElementById('admin-bio-cpp-full').value = bio.cppFull || '';
-            if (document.getElementById('admin-bio-cpp-nick')) document.getElementById('admin-bio-cpp-nick').value = bio.cppNick || '';
-            if (document.getElementById('admin-bio-cpp-ayah')) document.getElementById('admin-bio-cpp-ayah').value = bio.cppAyah || '';
-            if (document.getElementById('admin-bio-cpp-ibu')) document.getElementById('admin-bio-cpp-ibu').value = bio.cppIbu || '';
-            if (document.getElementById('admin-bio-cpp-saudara')) document.getElementById('admin-bio-cpp-saudara').value = bio.cppSaudara || '';
-            if (document.getElementById('admin-bio-cpp-saksi')) document.getElementById('admin-bio-cpp-saksi').value = bio.cppSaksi || '';
-
-            if (document.getElementById('admin-bio-sambutan')) document.getElementById('admin-bio-sambutan').value = bio.sambutan || '';
-            if (document.getElementById('admin-bio-tilawah')) document.getElementById('admin-bio-tilawah').value = bio.tilawah || '';
-            if (document.getElementById('admin-bio-vip')) document.getElementById('admin-bio-vip').value = bio.vip || '';
-            if (document.getElementById('admin-bio-lagu')) document.getElementById('admin-bio-lagu').value = bio.lagu || '';
-
-            const badge = document.getElementById('admin-bio-status-badge');
-            if (badge) {
-                const hasData = Object.values(bio).some(v => typeof v === 'string' && v.trim().length > 0);
-                if (hasData) {
-                    badge.className = "text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800";
-                    badge.innerText = "Sudah Diisi Catin ✅";
-                } else {
-                    badge.className = "text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800";
-                    badge.innerText = "Belum Diisi Catin ⏳";
-                }
-            }
-        }
-
-        async function refreshAdminBioFromCloud() {
-            if (!currentActiveCatin || currentActiveCatin === '__NEW__') return;
-            const badge = document.getElementById('admin-bio-status-badge');
-            if (badge) badge.innerText = "Memuat dari Cloud...";
-            try {
-                const res = await fetch(CLOUD_SHEET_URL);
-                const cloudRes = await res.json();
-                let foundBio = {};
-
-                let rowFound = null;
-                if (Array.isArray(cloudRes)) {
-                    rowFound = cloudRes.find(r => r['User Key'] === currentActiveCatin);
-                } else if (cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
-                    rowFound = cloudRes.biodata.find(r => r['User Key'] === currentActiveCatin);
-                }
-                
-                if (rowFound) {
-                    foundBio = {
-                        cpwFull: rowFound['Nama CPW'] || '',
-                        cpwNick: rowFound['Panggilan CPW'] || '',
-                        cpwAyah: rowFound['Ayah CPW'] || '',
-                        cpwIbu: rowFound['Ibu CPW'] || '',
-                        cpwSaudara: rowFound['Saudara CPW'] || '',
-                        cpwSaksi: rowFound['Saksi CPW'] || '',
-                        cppFull: rowFound['Nama CPP'] || '',
-                        cppNick: rowFound['Panggilan CPP'] || '',
-                        cppAyah: rowFound['Ayah CPP'] || '',
-                        cppIbu: rowFound['Ibu CPP'] || '',
-                        cppSaudara: rowFound['Saudara CPP'] || '',
-                        cppSaksi: rowFound['Saksi CPP'] || '',
-                        sambutan: rowFound['Sambutan'] || '',
-                        tilawah: rowFound['Tilawah'] || '',
-                        vip: rowFound['VIP'] || '',
-                        lagu: rowFound['Lagu Request'] || ''
-                    };
-                }
-
-                if (cloudRes.db && cloudRes.db[currentActiveCatin] && cloudRes.db[currentActiveCatin].biodata) {
-                    const dbBio = cloudRes.db[currentActiveCatin].biodata;
-                    for (let k in dbBio) {
-                        if (dbBio[k] && (!foundBio[k] || foundBio[k].trim() === '')) {
-                            foundBio[k] = dbBio[k];
-                        }
-                    }
-                }
-
-                const hasData = Object.values(foundBio).some(v => typeof v === 'string' && v.trim().length > 0);
-
-                if (hasData) {
-                    renderAdminBiodata(foundBio);
-                    const db = getDB();
-                    if (db[currentActiveCatin]) {
-                        db[currentActiveCatin].biodata = Object.assign(db[currentActiveCatin].biodata || {}, foundBio);
-                        localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
-                    }
-                    localStorage.setItem('langit_bio_' + currentActiveCatin, JSON.stringify(foundBio));
-                    alert("✓ Data biodata berhasil ditarik dari Spreadsheet!");
-                } else {
-                    renderAdminBiodata({});
-                    alert("Belum ada data isian baru untuk klien ini di Spreadsheet.");
-                }
-            } catch (err) {
-                console.error("Gagal refresh biodata:", err);
-                alert("Gagal terhubung ke Google Spreadsheet.");
-            }
-        }
-
-        function switchAdminCatin(key) { if (!key) return; currentActiveCatin = key; loadAdminData(key); }
-        function loadAdminData(key) {
-            const db = getDB(); const data = db[key]; if (!data) return;
-            currentActiveCatin = key; document.getElementById('admin-select-catin').value = key;
-            document.getElementById('admin-form-mode-title').innerText = `Edit: ${data.groomNick} & ${data.brideNick}`;
-            document.getElementById('admin-groom-full').value = data.groomFull || ''; document.getElementById('admin-groom-nick').value = data.groomNick || '';
-            document.getElementById('admin-bride-full').value = data.brideFull || ''; document.getElementById('admin-bride-nick').value = data.brideNick || '';
-            document.getElementById('admin-edit-pkg').value = data.package || 'Diamond Package'; document.getElementById('admin-edit-venue').value = data.venue || '';
-            document.getElementById('admin-edit-date').value = data.weddingDate || ''; document.getElementById('admin-edit-doc').value = data.docUrl || '';
-            document.getElementById('admin-edit-progress').value = data.progress || 0; document.getElementById('admin-edit-user').value = data.username || key;
-            document.getElementById('admin-edit-pass').value = data.password || 'langit2026';
-            const checkbox = document.getElementById('admin-show-progress'); checkbox.disabled = !isEligibleForProgress(data.package);
-            checkbox.checked = isEligibleForProgress(data.package) && (data.showProgress !== false);
-            handleAdminPackageChange(); 
-            renderAdminVendorInputs(data.vendors);
-            renderAdminBiodata(data.biodata);
-        }
-
-        function prepareNewCatinForm() {
-            currentActiveCatin = '__NEW__'; document.getElementById('admin-form-mode-title').innerText = "Input Catin Baru";
-            document.getElementById('admin-groom-full').value = ''; document.getElementById('admin-groom-nick').value = '';
-            document.getElementById('admin-bride-full').value = ''; document.getElementById('admin-bride-nick').value = '';
-            document.getElementById('admin-edit-pkg').value = 'Diamond Package'; document.getElementById('admin-edit-venue').value = 'Ballroom — 2027';
-            document.getElementById('admin-edit-date').value = ''; document.getElementById('admin-edit-doc').value = '';
-            document.getElementById('admin-edit-progress').value = 30; document.getElementById('admin-edit-user').value = ''; document.getElementById('admin-edit-pass').value = 'langit2026';
-            document.getElementById('admin-show-progress').disabled = false; document.getElementById('admin-show-progress').checked = true;
-            handleAdminPackageChange();
-            const blankVendors = VENDOR_CATEGORIES.map(cat => ({ cat: cat, name: '', status: 'Sudah Dibooking Admin' }));
-            renderAdminVendorInputs(blankVendors);
-            renderAdminBiodata({});
-            const badge = document.getElementById('admin-bio-status-badge');
-            if (badge) { badge.className = "text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-stone-200 text-stone-700"; badge.innerText = "Akun Baru"; }
-        }
-
-        function renderAdminVendorInputs(vendorList) {
-            const tbody = document.getElementById('admin-vendor-tbody'); tbody.innerHTML = '';
-            VENDOR_CATEGORIES.forEach((catName, i) => {
-                const existing = vendorList.find(v => v.cat.toLowerCase() === catName.toLowerCase()) || vendorList[i] || { cat: catName, name: '', status: 'Belum Dibooking' };
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="py-2.5 font-bold text-[#002B80]">- ${catName} :</td>
-                        <td class="py-2.5 pr-3"><input type="text" id="admin-v-name-${i}" value="${existing.name}" placeholder="Nama vendor..." class="input-editorial"></td>
-                        <td class="py-2.5"><select id="admin-v-status-${i}" class="input-editorial font-semibold"><option value="Sudah Dibooking Admin" ${existing.status === 'Sudah Dibooking Admin' ? 'selected' : ''}>✓ Terbooking</option><option value="Proses Negosiasi" ${existing.status === 'Proses Negosiasi' ? 'selected' : ''}>⏳ Negosiasi</option><option value="Belum Dibooking" ${existing.status === 'Belum Dibooking' ? 'selected' : ''}>○ Belum</option></select></td>
-                    </tr>
-                `;
-            });
-        }
-
-        function saveAdminChanges() {
-            const groomFull = document.getElementById('admin-groom-full').value.trim();
-            const groomNick = document.getElementById('admin-groom-nick').value.trim();
-            const brideFull = document.getElementById('admin-bride-full').value.trim();
-            const brideNick = document.getElementById('admin-bride-nick').value.trim();
-            if (!groomFull || !groomNick || !brideFull || !brideNick) { alert("Lengkapi nama lengkap & panggilan!"); return; }
-            let usernameKey = document.getElementById('admin-edit-user').value.toLowerCase().replace(/\s+/g, '');
-            if (!usernameKey) usernameKey = groomNick.toLowerCase().replace(/\s+/g, '');
-            const customPass = document.getElementById('admin-edit-pass').value.trim() || 'langit2026';
-            const selectedPkg = document.getElementById('admin-edit-pkg').value;
-            const showProg = isEligibleForProgress(selectedPkg) && document.getElementById('admin-show-progress').checked;
-            const updatedVendors = VENDOR_CATEGORIES.map((catName, i) => ({ cat: catName, name: document.getElementById(`admin-v-name-${i}`).value.trim() || 'Mitra Langit Planner', status: document.getElementById(`admin-v-status-${i}`).value }));
-            const db = getDB();
-            let existingBiodata = {};
-            if (db[usernameKey] && db[usernameKey].biodata) { existingBiodata = Object.assign({}, db[usernameKey].biodata); }
-            if (currentActiveCatin !== '__NEW__' && currentActiveCatin !== usernameKey && db[currentActiveCatin]) {
-                existingBiodata = Object.assign({}, db[currentActiveCatin].biodata || {});
-                delete db[currentActiveCatin];
-            }
-
-            const currentAdminBio = {
-                cpwFull: document.getElementById('admin-bio-cpw-full') ? document.getElementById('admin-bio-cpw-full').value.trim() : '',
-                cpwNick: document.getElementById('admin-bio-cpw-nick') ? document.getElementById('admin-bio-cpw-nick').value.trim() : '',
-                cpwAyah: document.getElementById('admin-bio-cpw-ayah') ? document.getElementById('admin-bio-cpw-ayah').value.trim() : '',
-                cpwIbu: document.getElementById('admin-bio-cpw-ibu') ? document.getElementById('admin-bio-cpw-ibu').value.trim() : '',
-                cpwSaudara: document.getElementById('admin-bio-cpw-saudara') ? document.getElementById('admin-bio-cpw-saudara').value.trim() : '',
-                cpwSaksi: document.getElementById('admin-bio-cpw-saksi') ? document.getElementById('admin-bio-cpw-saksi').value.trim() : '',
-                cppFull: document.getElementById('admin-bio-cpp-full') ? document.getElementById('admin-bio-cpp-full').value.trim() : '',
-                cppNick: document.getElementById('admin-bio-cpp-nick') ? document.getElementById('admin-bio-cpp-nick').value.trim() : '',
-                cppAyah: document.getElementById('admin-bio-cpp-ayah') ? document.getElementById('admin-bio-cpp-ayah').value.trim() : '',
-                cppIbu: document.getElementById('admin-bio-cpp-ibu') ? document.getElementById('admin-bio-cpp-ibu').value.trim() : '',
-                cppSaudara: document.getElementById('admin-bio-cpp-saudara') ? document.getElementById('admin-bio-cpp-saudara').value.trim() : '',
-                cppSaksi: document.getElementById('admin-bio-cpp-saksi') ? document.getElementById('admin-bio-cpp-saksi').value.trim() : '',
-                sambutan: document.getElementById('admin-bio-sambutan') ? document.getElementById('admin-bio-sambutan').value.trim() : '',
-                tilawah: document.getElementById('admin-bio-tilawah') ? document.getElementById('admin-bio-tilawah').value.trim() : '',
-                vip: document.getElementById('admin-bio-vip') ? document.getElementById('admin-bio-vip').value.trim() : '',
-                lagu: document.getElementById('admin-bio-lagu') ? document.getElementById('admin-bio-lagu').value.trim() : ''
-            };
-            existingBiodata = Object.assign(existingBiodata, currentAdminBio);
-
-            db[usernameKey] = { username: usernameKey, password: customPass, groomFull: groomFull, groomNick: groomNick, brideFull: brideFull, brideNick: brideNick, package: selectedPkg, venue: document.getElementById('admin-edit-venue').value.trim() || 'Tanjung Selor', weddingDate: document.getElementById('admin-edit-date').value || '', docUrl: document.getElementById('admin-edit-doc').value.trim() || '', showProgress: showProg, progress: showProg ? (parseInt(document.getElementById('admin-edit-progress').value) || 0) : 0, biodata: existingBiodata, vendors: updatedVendors };
-            saveDB(db); populateAdminDropdown(); currentActiveCatin = usernameKey; document.getElementById('admin-select-catin').value = usernameKey;
-            const fb = document.getElementById('admin-save-feedback'); fb.innerText = `✓ Tersimpan! User: ${usernameKey} | Pass: ${customPass}`;
-            setTimeout(() => fb.innerText = '', 5000);
-        }
-
-        function copyDatabaseForGitHub() {
-            const db = getDB();
-            const codeString = `const DEFAULT_DATABASE = ${JSON.stringify(db, null, 4)};`;
-            navigator.clipboard.writeText(codeString).then(() => {
-                alert("✓ Berhasil Disalin! Tempelkan ke bagian 'const DEFAULT_DATABASE = ...' di file index.html GitHub.");
-            }).catch(() => { prompt("Salin kode ini:", codeString); });
-        }
-
-        function deleteCurrentCatin() {
-            const db = getDB();
-            if (currentActiveCatin === '__NEW__' || !db[currentActiveCatin]) { alert("Pilih Catin terdaftar."); return; }
-            const c = db[currentActiveCatin];
-            if (confirm(`Yakin hapus data "${c.groomNick} & ${c.brideNick}"?`)) {
-                delete db[currentActiveCatin]; saveDB(db); populateAdminDropdown();
-                const keys = Object.keys(db); if (keys.length > 0) loadAdminData(keys[0]); else prepareNewCatinForm();
-            }
-        }
-
-        const MONTH_NAMES_ID = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-        let calYear = new Date().getFullYear(), calMonth = new Date().getMonth(), selectedDay = new Date().getDate();
-        let selectedConsultDate = `${selectedDay} ${MONTH_NAMES_ID[calMonth]} ${calYear}`;
-
-        function renderCalendar() {
-            const grid = document.getElementById('calendar-grid'), label = document.getElementById('calendar-month-label'), selectedText = document.getElementById('selected-consultation-date');
-            if (!grid || !label) return;
-            label.innerText = `${MONTH_NAMES_ID[calMonth]} ${calYear}`; selectedText.innerText = `(${selectedConsultDate})`; grid.innerHTML = '';
-            const firstDay = new Date(calYear, calMonth, 1).getDay(), daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-            for (let s = 0; s < firstDay; s++) grid.innerHTML += `<span></span>`;
-            for (let d = 1; d <= daysInMonth; d++) {
-                grid.innerHTML += `<button type="button" onclick="selectCalendarDate(${d})" class="py-2 rounded-full transition ${d === selectedDay ? 'bg-[#0042AC] text-white font-bold shadow' : 'text-slate-700 hover:bg-blue-100'}">${d}</button>`;
-            }
-            lucide.createIcons();
-        }
-        function changeCalendarMonth(delta) { calMonth += delta; if (calMonth > 11) { calMonth = 0; calYear++; } if (calMonth < 0) { calMonth = 11; calYear--; } selectedDay = 1; selectedConsultDate = `${selectedDay} ${MONTH_NAMES_ID[calMonth]} ${calYear}`; renderCalendar(); }
-        function selectCalendarDate(d) { selectedDay = d; selectedConsultDate = `${d} ${MONTH_NAMES_ID[calMonth]} ${calYear}`; renderCalendar(); }
-
+        // Render Galeri Portofolio (Pasti Muncul dengan Fallback Gambar Otomatis)
         function renderPortfolios() {
-            const grid = document.getElementById('portfolio-grid'); if (!grid) return; grid.innerHTML = '';
+            const grid = document.getElementById('portfolio-grid'); 
+            if (!grid) return; 
+            grid.innerHTML = '';
+            
             SITE_CONFIG.portfolios.forEach((item, index) => {
                 grid.innerHTML += `
                     <a href="${item.igPostUrl}" target="_blank" class="portfolio-item group rounded-3xl overflow-hidden bg-white border border-blue-100 shadow-sm hover:shadow-xl hover:border-ocean transition duration-300 block">
-                        <div class="px-4 py-3 bg-white flex items-center justify-between border-b border-blue-50"><span class="text-xs font-bold text-[#002B80]">langit_planner</span><span class="text-[11px] text-[#0042AC] font-semibold">IG ↗</span></div>
-                        <div class="relative aspect-square overflow-hidden bg-slate-100"><img src="${localStorage.getItem('langit_feed_' + index) || item.localImage}" onerror="this.src='${item.fallbackImage}';" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
-                        <div class="p-4 bg-white"><h3 class="font-bold text-sm text-[#002B80]">${item.couple}</h3><p class="text-xs text-slate-500 mt-1">${item.caption}</p></div>
+                        <div class="px-4 py-3 bg-white flex items-center justify-between border-b border-blue-50">
+                            <span class="text-xs font-bold text-[#002B80]">langit_planner</span>
+                            <span class="text-[11px] text-[#0042AC] font-semibold">IG ↗</span>
+                        </div>
+                        <div class="relative aspect-square overflow-hidden bg-blue-50">
+                            <img src="${localStorage.getItem('langit_feed_' + index) || item.localImage}" onerror="this.src='${item.fallbackImage}';" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h3 class="font-bold text-sm text-[#002B80]">${item.couple}</h3>
+                            <p class="text-xs text-slate-500 mt-1">${item.caption}</p>
+                        </div>
                     </a>
                 `;
             });
-            lucide.createIcons();
-        }
-
-        function selectPackage(pkg) {
-            switchTab('konsultasi');
-            const selectElem = document.getElementById('form-paket');
-            if (selectElem) {
-                if (pkg.includes('Diamond')) selectElem.value = 'Diamond Package';
-                else if (pkg.includes('Silver')) selectElem.value = 'Silver Package';
-                else selectElem.value = 'Full Planning';
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
             }
         }
-        function sendToWhatsApp(e) {
-            e.preventDefault();
-            const text = `Halo Admin Langit Planner! Jadwal konsultasi:%0A- Nama: ${document.getElementById('form-nama').value}%0A- WA: ${document.getElementById('form-wa').value}%0A- Tanggal: ${document.getElementById('form-tanggal').value}%0A- Tamu: ${document.getElementById('form-tamu').value}%0A- Venue: ${document.getElementById('form-venue').value}%0A- Paket: ${document.getElementById('form-paket').value}%0A- Diskusi: ${selectedConsultDate}`;
-            window.open(`https://wa.me/6285190920279?text=${text}`, '_blank');
-        }
 
-        const CLOUD_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwkbE4CvoRIwS0xWOfxI4OE3dnkiJoy5JsRIWACa13FJ0orfKnJlAB_pEt3h-8RwBCBew/exec';
-
+        // Sinkronisasi Database Otomatis dari Spreadsheet ke Tampilan Website
         async function syncDatabaseFromCloud() {
             if (!CLOUD_SHEET_URL) return;
             try {
                 const res = await fetch(CLOUD_SHEET_URL);
                 const cloudRes = await res.json();
                 
-                // Jika respon spreadsheet memuat pembaruan harga dari sheet Katalog_Vendor
+                // 1. Update harga vendor dari spreadsheet jika ada
                 if (cloudRes && cloudRes.catalog && typeof cloudRes.catalog === 'object') {
                     for (let c in cloudRes.catalog) {
                         if (VENDOR_CATALOG[c]) {
@@ -2069,88 +1675,49 @@
                     renderCustomPricelistUI();
                 }
 
+                // 2. Tarik daftar project aktif dari Database_Klien di Spreadsheet
                 let targetDb = null;
                 if (cloudRes && cloudRes.db && typeof cloudRes.db === 'object' && !Array.isArray(cloudRes.db) && Object.keys(cloudRes.db).length > 0) {
                     targetDb = cloudRes.db;
-                } else if (cloudRes && typeof cloudRes === 'object' && !Array.isArray(cloudRes) && Object.keys(cloudRes).length > 0) {
-                    const sampleKey = Object.keys(cloudRes)[0];
-                    if (cloudRes[sampleKey] && cloudRes[sampleKey].groomNick) {
-                        targetDb = cloudRes;
-                    }
                 }
 
                 if (targetDb) {
                     if (cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
                         cloudRes.biodata.forEach(row => {
-                            const uKey = row['User Key'];
-                            if (uKey && targetDb[uKey]) {
-                                targetDb[uKey].biodata = targetDb[uKey].biodata || {};
-                                if (row['Nama CPW']) targetDb[uKey].biodata.cpwFull = row['Nama CPW'];
-                                if (row['Nama CPP']) targetDb[uKey].biodata.cppFull = row['Nama CPP'];
-                                if (row['Ayah CPW']) targetDb[uKey].biodata.cpwAyah = row['Ayah CPW'];
-                                if (row['Ibu CPW']) targetDb[uKey].biodata.cpwIbu = row['Ibu CPW'];
-                                if (row['Ayah CPP']) targetDb[uKey].biodata.cppAyah = row['Ayah CPP'];
-                                if (row['Ibu CPP']) targetDb[uKey].biodata.cppIbu = row['Ibu CPP'];
-                                if (row['VIP']) targetDb[uKey].biodata.vip = row['VIP'];
-                                if (row['Lagu Request']) targetDb[uKey].biodata.lagu = row['Lagu Request'];
+                            const uKey = String(row['User Key'] || '').trim().toLowerCase();
+                            for (let k in targetDb) {
+                                if (k.toLowerCase() === uKey) {
+                                    targetDb[k].biodata = targetDb[k].biodata || {};
+                                    if (row['Nama CPW']) targetDb[k].biodata.cpwFull = row['Nama CPW'];
+                                    if (row['Panggilan CPW']) targetDb[k].biodata.cpwNick = row['Panggilan CPW'];
+                                    if (row['Ayah CPW']) targetDb[k].biodata.cpwAyah = row['Ayah CPW'];
+                                    if (row['Ibu CPW']) targetDb[k].biodata.cpwIbu = row['Ibu CPW'];
+                                    if (row['Saudara CPW']) targetDb[k].biodata.cpwSaudara = row['Saudara CPW'];
+                                    if (row['Saksi CPW']) targetDb[k].biodata.cpwSaksi = row['Saksi CPW'];
+                                    if (row['Nama CPP']) targetDb[k].biodata.cppFull = row['Nama CPP'];
+                                    if (row['Panggilan CPP']) targetDb[k].biodata.cppNick = row['Panggilan CPP'];
+                                    if (row['Ayah CPP']) targetDb[k].biodata.cppAyah = row['Ayah CPP'];
+                                    if (row['Ibu CPP']) targetDb[k].biodata.cppIbu = row['Ibu CPP'];
+                                    if (row['Saudara CPP']) targetDb[k].biodata.cppSaudara = row['Saudara CPP'];
+                                    if (row['Saksi CPP']) targetDb[k].biodata.cppSaksi = row['Saksi CPP'];
+                                    if (row['Sambutan']) targetDb[k].biodata.sambutan = row['Sambutan'];
+                                    if (row['Tilawah']) targetDb[k].biodata.tilawah = row['Tilawah'];
+                                    if (row['VIP']) targetDb[k].biodata.vip = row['VIP'];
+                                    if (row['Lagu Request']) targetDb[k].biodata.lagu = row['Lagu Request'];
+                                }
                             }
                         });
                     }
                     localStorage.setItem('langit_db_catin_v7', JSON.stringify(targetDb));
                     renderPublicProjects();
-                } else if (cloudRes && cloudRes.biodata && Array.isArray(cloudRes.biodata)) {
-                    const db = getDB();
-                    cloudRes.biodata.forEach(row => {
-                        const uKey = row['User Key'];
-                        if (uKey && db[uKey]) {
-                            db[uKey].biodata = db[uKey].biodata || {};
-                            if (row['Nama CPW']) db[uKey].biodata.cpwFull = row['Nama CPW'];
-                            if (row['Nama CPP']) db[uKey].biodata.cppFull = row['Nama CPP'];
-                            if (row['Ayah CPW']) db[uKey].biodata.cpwAyah = row['Ayah CPW'];
-                            if (row['Ibu CPW']) db[uKey].biodata.cpwIbu = row['Ibu CPW'];
-                            if (row['Ayah CPP']) db[uKey].biodata.cppAyah = row['Ayah CPP'];
-                            if (row['Ibu CPP']) db[uKey].biodata.cppIbu = row['Ibu CPP'];
-                            if (row['VIP']) db[uKey].biodata.vip = row['VIP'];
-                            if (row['Lagu Request']) db[uKey].biodata.lagu = row['Lagu Request'];
-                        }
-                    });
-                    localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
+                } else {
                     renderPublicProjects();
                 }
             } catch (err) {
                 console.log('Menggunakan database lokal...');
+                renderPublicProjects();
             }
         }
-
-        const originalSaveDB = window.saveDB;
-        window.saveDB = function(db) {
-            localStorage.setItem('langit_db_catin_v7', JSON.stringify(db));
-            renderPublicProjects();
-            if (CLOUD_SHEET_URL) {
-                fetch(CLOUD_SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ action: 'sync_all_db', payload: db })
-                }).catch(err => console.error('Gagal sync ke cloud:', err));
-            }
-        };
-
-        (function autoRepairStorage() {
-            try {
-                localStorage.removeItem('langit_db_catin_v6');
-                localStorage.removeItem('langit_db_catin_v5');
-                const raw = localStorage.getItem('langit_db_catin_v7');
-                if (raw) {
-                    const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed) || !parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0 || (parsed.rizki && !parsed.aldi)) {
-                        localStorage.removeItem('langit_db_catin_v7');
-                    }
-                }
-            } catch (e) {
-                localStorage.removeItem('langit_db_catin_v7');
-            }
-        })();
 
         // ================= TAB NAVIGATION LOGIC =================
         function switchTab(tabName) {
@@ -2193,6 +1760,10 @@
             if (window.lucide && typeof lucide.createIcons === 'function') {
                 lucide.createIcons();
             }
+            
+            if (tabName === 'portofolio') {
+                renderPortfolios();
+            }
         }
 
         window.addEventListener('popstate', () => {
@@ -2207,12 +1778,18 @@
             lucide.createIcons(); 
             syncDatabaseFromCloud();
 
-            // Default seleksi awal
+            // Default seleksi custom vendor
             if (!selectedCustomVendors["Venue"]) selectedCustomVendors["Venue"] = VENDOR_CATALOG["Venue"][0];
             if (!selectedCustomVendors["Dekorasi"]) selectedCustomVendors["Dekorasi"] = VENDOR_CATALOG["Dekorasi"][0];
             if (!selectedCustomVendors["MUA"]) selectedCustomVendors["MUA"] = VENDOR_CATALOG["MUA"][0];
             if (!selectedCustomVendors["Catering"]) selectedCustomVendors["Catering"] = VENDOR_CATALOG["Catering"][0];
             renderCustomPricelistUI();
+
+            // Jalankan inisialisasi sparkle di body saat dokumen siap
+            const canvas = document.getElementById('sparkle-canvas');
+            if (canvas && !canvas.parentElement) {
+                document.body.prepend(canvas);
+            }
 
             let initialHash = (window.location.hash || '').replace('#', '').toLowerCase();
             if (initialHash === 'kontak' || initialHash === 'booking') initialHash = 'konsultasi';
