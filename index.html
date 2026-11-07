@@ -1527,8 +1527,8 @@
             });
 
             const isEligible = activeVendorCount >= 7;
-            // Total Estimasi murni sama persis dengan total vendor dari Spreadsheet (sesuai tampilan asli website)
-            const grandTotal = rawVendorTotal;
+            // Ditambahkan biaya tak terduga (10 juta) dan jasa WO (4 juta)
+            const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
             const dpAmount = Math.round(grandTotal * 0.3);
 
             if (isEligible) {
@@ -1539,8 +1539,8 @@
                 const existingNotice = document.getElementById('custom-vendor-min-notice');
                 if (existingNotice) existingNotice.remove();
             } else {
-                subtotalEl.innerText = `Pilih minimal 4 vendor`;
-                grandTotalEl.innerText = `(Saat ini: ${activeVendorCount}/4)`;
+                subtotalEl.innerText = `Pilih minimal 7 vendor`;
+                grandTotalEl.innerText = `(Saat ini: ${activeVendorCount}/7)`;
                 dpEl.innerText = `Rp 0`;
 
                 let noticeBox = document.getElementById('custom-vendor-min-notice');
@@ -1550,7 +1550,7 @@
                     noticeBox.className = 'p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[11px] leading-relaxed font-medium mb-3';
                     listEl.prepend(noticeBox);
                 }
-                noticeBox.innerHTML = `⚠️ <strong>Syarat Minimum:</strong> Silakan pilih minimal <strong>4 vendor</strong> untuk mengaktifkan perhitungan total harga dan nominal DP (Terpilih: <strong>${activeVendorCount}/7</strong> vendor).`;
+                noticeBox.innerHTML = `⚠️ <strong>Syarat Minimum:</strong> Silakan pilih minimal <strong>7 vendor</strong> untuk mengaktifkan perhitungan total harga dan nominal DP (Terpilih: <strong>${activeVendorCount}/7</strong> vendor).`;
             }
         }
 
@@ -1569,12 +1569,12 @@
                 }
             }
 
-            if (activeVendorCount < 4) {
-                alert(`Mohon pilih minimal 4 vendor untuk melanjutkan booking! (Saat ini baru memilih ${activeVendorCount} vendor).`);
+            if (activeVendorCount < 7) {
+                alert(`Mohon pilih minimal 7 vendor untuk melanjutkan booking! (Saat ini baru memilih ${activeVendorCount} vendor).`);
                 return;
             }
 
-            const grandTotal = rawVendorTotal;
+            const grandTotal = rawVendorTotal + ONGKOS_WO_SILENT + BIAYA_TAK_TERDUGA;
             const dp = Math.round(grandTotal * 0.3);
 
             let text = "Halo Admin Langit Planner! Saya ingin memesan paket pernikahan custom dengan rincian vendor berikut:%0A%0A";
