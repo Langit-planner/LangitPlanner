@@ -1167,7 +1167,7 @@
         },
         {
             "name": "Gedung Wanita",
-            "price": 15000000.0
+            "price": 4000000.0
         },
         {
             "name": "Ballroom",
@@ -1287,7 +1287,7 @@
         },
         {
             "name": "Dynmely",
-            "price": 4500000.0
+            "price": 2500000.0
         }
     ],
     "Catering": [
@@ -1526,7 +1526,7 @@
                 }
             });
 
-            const isEligible = activeVendorCount >= 4;
+            const isEligible = activeVendorCount >= 7;
             // Total Estimasi murni sama persis dengan total vendor dari Spreadsheet (sesuai tampilan asli website)
             const grandTotal = rawVendorTotal;
             const dpAmount = Math.round(grandTotal * 0.3);
@@ -1550,7 +1550,7 @@
                     noticeBox.className = 'p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[11px] leading-relaxed font-medium mb-3';
                     listEl.prepend(noticeBox);
                 }
-                noticeBox.innerHTML = `⚠️ <strong>Syarat Minimum:</strong> Silakan pilih minimal <strong>4 vendor</strong> untuk mengaktifkan perhitungan total harga dan nominal DP (Terpilih: <strong>${activeVendorCount}/4</strong> vendor).`;
+                noticeBox.innerHTML = `⚠️ <strong>Syarat Minimum:</strong> Silakan pilih minimal <strong>4 vendor</strong> untuk mengaktifkan perhitungan total harga dan nominal DP (Terpilih: <strong>${activeVendorCount}/7</strong> vendor).`;
             }
         }
 
